@@ -71,7 +71,16 @@
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll('.reveal');
 
-  if (revealEls.length && 'IntersectionObserver' in window) {
+  // Synchronously show anything already in the initial viewport —
+  // prevents flash of invisible content on mobile before IO fires.
+  revealEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+
+  if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -81,9 +90,10 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    revealEls.forEach(el => observer.observe(el));
+    revealEls.forEach(el => {
+      if (!el.classList.contains('visible')) observer.observe(el);
+    });
   } else {
-    // Fallback: show all immediately
     revealEls.forEach(el => el.classList.add('visible'));
   }
 
