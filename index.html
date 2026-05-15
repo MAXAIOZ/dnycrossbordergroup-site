@@ -50,71 +50,105 @@
 ============================================================ -->
 <section id="home" class="hero" aria-labelledby="hero-heading">
   <div class="hero-bg" aria-hidden="true"></div>
-
-  <!-- Decorative circle motifs -->
-  <svg class="hero-motif" aria-hidden="true" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="280" cy="280" r="270" stroke-width="1"/>
-    <circle cx="280" cy="280" r="210" stroke-width="1" opacity=".7"/>
-    <circle cx="280" cy="280" r="150" stroke-width="1.5" opacity=".5"/>
-    <circle cx="280" cy="280" r="90"  stroke-width="2"   opacity=".35"/>
-    <circle cx="280" cy="280" r="36"  stroke-width="2.5" opacity=".25"/>
-    <!-- Pathway dots -->
-    <circle cx="280" cy="10"  r="4" fill="currentColor" opacity=".4"/>
-    <circle cx="450" cy="80"  r="3" fill="currentColor" opacity=".3"/>
-    <circle cx="530" cy="240" r="3" fill="currentColor" opacity=".25"/>
-    <circle cx="490" cy="420" r="3" fill="currentColor" opacity=".2"/>
-    <circle cx="340" cy="530" r="3" fill="currentColor" opacity=".2"/>
-  </svg>
-
-  <!-- Dot row accent -->
-  <div class="hero-dots" aria-hidden="true">
-    <span style="width:6px;height:6px"></span>
-    <span style="width:8px;height:8px"></span>
-    <span style="width:10px;height:10px"></span>
-    <span style="width:14px;height:14px"></span>
-    <span style="width:18px;height:18px"></span>
-    <span style="width:22px;height:22px"></span>
-  </div>
+  <div class="hero-grid" aria-hidden="true"></div>
 
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span class="dot" aria-hidden="true"></span>
-        <span>Australia-based Cross-border Platform</span>
+    <div class="hero-layout">
+
+      <!-- Content column -->
+      <div class="hero-content">
+        <div class="hero-badge" aria-hidden="true">
+          <span class="hero-badge-dot"></span>
+          Australia-based Cross-border Platform
+        </div>
+
+        <h1 id="hero-heading">
+          Connecting <em class="grad-text">Innovation,</em><br>
+          Industry &amp; Global Markets
+        </h1>
+
+        <p class="hero-subtitle">DNY Cross Border Group is a platform-oriented group based in Australia, building practical cross-border pathways between people, companies, products, projects, supply chains, and international markets.</p>
+
+        <p class="hero-subtitle">From innovation landing to cross-border trade, AI-enabled business services, and international talent exchange — we support sustainable collaboration across Australia, China, ASEAN, Oceania, and beyond.</p>
+
+        <div class="hero-actions">
+          <a href="#about" class="btn btn-primary">Explore DNY</a>
+          <a href="#projects" class="btn btn-secondary">Our Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Platform Pillars</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Market Corridors</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Project Directions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">AU</div>
+            <div class="stat-label">Based in Australia</div>
+          </div>
+        </div>
       </div>
 
-      <h1 id="hero-heading">
-        Connecting <em>Innovation,</em><br>
-        Industry &amp; Global Markets
-      </h1>
+      <!-- Visual data panel column -->
+      <div class="hero-visual" aria-hidden="true">
 
-      <p class="hero-subtitle">DNY Cross Border Group is a platform-oriented group based in Australia, building practical cross-border pathways between people, companies, products, projects, supply chains, and international markets.</p>
+        <div class="vis-row">
+          <div class="vis-card">
+            <div class="vis-metric gold">7</div>
+            <div class="vis-label">Platform Pillars</div>
+          </div>
+          <div class="vis-card">
+            <div class="vis-tag">Active</div>
+            <div class="vis-metric cyan" style="margin-top:10px">AI</div>
+            <div class="vis-label">Business Services</div>
+          </div>
+        </div>
 
-      <p class="hero-subtitle">From innovation landing to cross-border trade, AI-enabled business services, and international talent exchange — we support sustainable collaboration across Australia, China, ASEAN, Oceania, and beyond.</p>
+        <div class="vis-row">
+          <div class="vis-card vis-card-wide">
+            <div class="vis-label" style="font-weight:600;color:var(--t2);margin-bottom:10px">Market Corridors</div>
+            <div class="vis-corridors">
+              <div class="vis-corridor-item">
+                <span class="vis-corridor-label">🇦🇺&nbsp; Australia ↔ China</span>
+                <span class="vis-corridor-status">Active</span>
+              </div>
+              <div class="vis-corridor-item">
+                <span class="vis-corridor-label">🌏&nbsp; Australia ↔ ASEAN</span>
+                <span class="vis-corridor-status">Active</span>
+              </div>
+              <div class="vis-corridor-item">
+                <span class="vis-corridor-label">🌊&nbsp; Australia ↔ Oceania</span>
+                <span class="vis-corridor-status">Active</span>
+              </div>
+              <div class="vis-corridor-item">
+                <span class="vis-corridor-label">🌐&nbsp; Australia ↔ Global</span>
+                <span class="vis-corridor-status">Open</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="hero-actions">
-        <a href="#about" class="btn btn-primary">Explore DNY</a>
-        <a href="#projects" class="btn btn-secondary">Our Projects</a>
-        <a href="#contact" class="btn btn-outline">Contact Us</a>
-      </div>
+        <div class="vis-row">
+          <div class="vis-card">
+            <div class="vis-metric">5</div>
+            <div class="vis-label">Project Directions</div>
+            <div class="vis-bar"><div class="vis-bar-fill" style="width:80%"></div></div>
+          </div>
+          <div class="vis-card">
+            <div class="vis-metric gold">AU</div>
+            <div class="vis-label">Headquarters</div>
+            <div class="vis-tag gold" style="margin-top:8px">Sydney</div>
+          </div>
+        </div>
 
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-num">7</div>
-          <div class="stat-label">Platform Pillars</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">4+</div>
-          <div class="stat-label">Market Corridors</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">5</div>
-          <div class="stat-label">Project Directions</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">AU</div>
-          <div class="stat-label">Based in Australia</div>
-        </div>
       </div>
     </div>
   </div>
