@@ -1112,7 +1112,8 @@ p + p { margin-top: 12px }
   .grid-3,
   .values-grid   { grid-template-columns: 1fr }
   .form-row      { grid-template-columns: 1fr }
-  .hero-content  { padding-block: 88px 72px }
+  .hero          { align-items: flex-start; min-height: auto }
+  .hero-content  { padding-block: 40px 56px }
   .footer-grid   { grid-template-columns: 1fr; gap: 32px }
   .footer-bottom { flex-direction: column; text-align: center }
 }
