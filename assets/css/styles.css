@@ -1089,6 +1089,7 @@ p + p { margin-top: 12px }
   line-height: 1.6;
   text-align: center;
 }
+.footer-disclaimer p { margin: 4px 0 }
 
 /* ── Scroll Reveal ──────────────────────────────────────── */
 .reveal {
