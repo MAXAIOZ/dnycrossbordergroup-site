@@ -1614,24 +1614,24 @@ body.has-glow-cursor textarea { cursor: auto; }
 ============================================================ */
 .hero-visual {
   position: relative;
-  min-height: 540px;
-  padding-block: 60px;
+  min-height: 620px;
+  padding-block: 40px;
   display: block;
 }
 /* globe canvas fills the column generously and may overflow for scale */
 .hero-visual #hero-globe {
   position: absolute;
-  top: 50%; left: 50%;
-  width: 130% !important;
-  height: 130% !important;
+  top: 46%; left: 50%;
+  width: 150% !important;
+  height: 150% !important;
   transform: translate(-50%, -50%);
   opacity: 1;
 }
 
-/* floating caption over the globe */
+/* floating caption below the globe */
 .globe-caption {
   position: absolute;
-  left: 50%; bottom: 18px;
+  left: 50%; bottom: -6px;
   transform: translateX(-50%);
   z-index: 3;
   display: flex;

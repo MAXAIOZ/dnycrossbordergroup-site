@@ -104,22 +104,22 @@
     }
 
     function build() {
+      // Even fibonacci-sphere lattice — full, regular dot globe.
+      // Australia/land points are flagged for highlight but the whole
+      // sphere is uniformly covered for a clean tech look.
       dots = [];
-      // Sample a lat/lng grid; keep land points (dense) + sparse ocean wireframe.
-      var step = innerWidth < 1000 ? 4.5 : 3.2;   // degrees
-      for (var lat = -84; lat <= 84; lat += step) {
-        // vary lng density by latitude so points look even on the sphere
-        var lngStep = step / Math.max(Math.cos(lat * Math.PI / 180), 0.18);
-        for (var lng = -180; lng < 180; lng += lngStep) {
-          var land = isLand(lat, lng);
-          var v = toVec(lat, lng);
-          if (land) {
-            dots.push({ x: v.x, y: v.y, z: v.z, kind: land });
-          } else if (Math.random() < 0.10) {
-            // faint ocean lattice for globe volume
-            dots.push({ x: v.x, y: v.y, z: v.z, kind: 0 });
-          }
-        }
+      var n = innerWidth < 1000 ? 900 : 1500;
+      var off = 2 / n, inc = Math.PI * (3 - Math.sqrt(5));
+      for (var i = 0; i < n; i++) {
+        var y = i * off - 1 + off / 2;
+        var r = Math.sqrt(1 - y * y);
+        var p = i * inc;
+        var x = Math.cos(p) * r, z = Math.sin(p) * r;
+        // recover lat/lng from the unit vector to test landmass
+        var lat = Math.asin(y) * 180 / Math.PI;
+        var lng = Math.atan2(z, -x) * 180 / Math.PI - 180;
+        if (lng < -180) lng += 360; if (lng > 180) lng -= 360;
+        dots.push({ x: x, y: y, z: z, kind: isLand(lat, lng) });
       }
     }
 
@@ -132,7 +132,7 @@
       W = canvas.width = cw * dpr;
       H = canvas.height = ch * dpr;
       CX = W / 2; CY = H / 2;
-      R = Math.min(W, H) * 0.40;
+      R = Math.min(W, H) * 0.46;
       build();
     }
 
@@ -189,36 +189,35 @@
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, W, H);
 
-      // sphere dots — land continents (gold), Australia highlighted, ocean faint
+      // Full even dot globe. Whole sphere drawn; back hemisphere dimmed.
+      // Land = gold, Australia = bright pulsing, ocean = faint cyan lattice.
       var auPulse = (Math.sin(now * 0.0035) + 1) / 2;
       for (var i = 0; i < dots.length; i++) {
         var d = dots[i];
         var p = project(d, ry);
-        if (p.z < -0.15) continue;            // cull far back hemisphere for clarity
         var depth = (p.z + 1) / 2;            // 0 back .. 1 front
-        var front = Math.max(0, (p.z + 0.15) / 1.15);
         var sx = CX + p.x * R;
         var sy = CY + p.y * R;
         var size, color, alpha;
         if (d.kind === 2) {                   // Australia — bright, larger, pulsing
-          size = (1.6 + front * 1.8) * dpr;
+          size = (1.4 + depth * 2.0) * dpr;
           color = GOLD;
-          alpha = (0.55 + front * 0.4) * (0.75 + auPulse * 0.25);
-        } else if (d.kind === 1) {            // other land — solid gold
-          size = (0.9 + front * 1.4) * dpr;
+          alpha = (0.30 + depth * 0.6) * (0.75 + auPulse * 0.25);
+        } else if (d.kind === 1) {            // other land — gold
+          size = (0.8 + depth * 1.5) * dpr;
           color = GOLD;
-          alpha = 0.22 + front * 0.55;
+          alpha = 0.12 + depth * 0.6;
         } else {                              // ocean lattice — faint cyan
-          size = (0.4 + front * 0.7) * dpr;
+          size = (0.5 + depth * 1.0) * dpr;
           color = CYAN;
-          alpha = 0.05 + front * 0.16;
+          alpha = 0.05 + depth * 0.22;
         }
-        if (d.kind === 2) { ctx.shadowBlur = 8 * dpr; ctx.shadowColor = 'rgba(' + GOLD + ',0.9)'; }
+        if (d.kind === 2 && depth > 0.5) { ctx.shadowBlur = 7 * dpr; ctx.shadowColor = 'rgba(' + GOLD + ',0.9)'; }
         ctx.beginPath();
         ctx.arc(sx, sy, size, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(' + color + ',' + alpha.toFixed(3) + ')';
         ctx.fill();
-        if (d.kind === 2) ctx.shadowBlur = 0;
+        ctx.shadowBlur = 0;
       }
 
       // origin marker (Australia) pulse
