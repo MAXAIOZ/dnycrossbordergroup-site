@@ -1607,3 +1607,63 @@ body.has-glow-cursor textarea { cursor: auto; }
   .glow-cursor, .glow-cursor-dot { display: none !important; }
   body.has-glow-cursor, body.has-glow-cursor a { cursor: auto; }
 }
+
+
+/* ============================================================
+   ░░ V5 — Globe as hero主角 (cards removed) ░░
+============================================================ */
+.hero-visual {
+  position: relative;
+  min-height: 540px;
+  padding-block: 60px;
+  display: block;
+}
+/* globe canvas fills the column generously and may overflow for scale */
+.hero-visual #hero-globe {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 130% !important;
+  height: 130% !important;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* floating caption over the globe */
+.globe-caption {
+  position: absolute;
+  left: 50%; bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  pointer-events: none;
+}
+.globe-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--bc);
+  background: rgba(8,14,32,.5);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+.globe-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulse-dot 2s ease infinite;
+}
+.globe-hq {
+  font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 18px var(--gold-glow);
+}
+
+/* on small screens globe becomes a faint backdrop, caption hidden */
+@media (max-width: 1000px) {
+  .hero-visual { display: none; }
+}

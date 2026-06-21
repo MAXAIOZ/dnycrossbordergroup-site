@@ -125,13 +125,14 @@
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var rect = host.getBoundingClientRect();
-      W = canvas.width = rect.width * dpr;
-      H = canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      // Use the canvas's actual rendered box (CSS may scale it beyond host).
+      var rect = canvas.getBoundingClientRect();
+      var cw = rect.width || host.getBoundingClientRect().width;
+      var ch = rect.height || host.getBoundingClientRect().height;
+      W = canvas.width = cw * dpr;
+      H = canvas.height = ch * dpr;
       CX = W / 2; CY = H / 2;
-      R = Math.min(W, H) * 0.42;
+      R = Math.min(W, H) * 0.40;
       build();
     }
 
@@ -282,6 +283,10 @@
     }, { passive: true });
 
     resize();
+    // re-measure after layout/CSS settles (canvas is CSS-scaled to 130%)
+    requestAnimationFrame(resize);
+    setTimeout(resize, 250);
+    window.addEventListener('load', resize);
     window.addEventListener('resize', resize);
     // seed a few arcs
     for (var z = 0; z < 2; z++) spawnArc();
