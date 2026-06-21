@@ -19,6 +19,10 @@
 </head>
 <body>
 
+<!-- Tech-dynamic global FX layers -->
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
+<div class="scanbar" aria-hidden="true"></div>
+
 <!-- ============================================================
      HEADER / NAV
 ============================================================ -->
@@ -35,10 +39,11 @@
     <nav class="site-nav" role="navigation" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#pillars">Platform</a>
+      <a href="#desk">AI Desk</a>
+      <a href="#services">Services</a>
       <a href="#corridors">Markets</a>
       <a href="#projects">Projects</a>
       <a href="#serve">Who We Serve</a>
-      <a href="#cooperation">Cooperation</a>
       <a href="#contact" class="nav-cta">Contact Us</a>
     </nav>
   </div>
@@ -80,16 +85,16 @@
 
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-num">6</div>
+            <div class="stat-num" data-count="6">6</div>
             <div class="stat-label">Core Platforms</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">4+</div>
+            <div class="stat-num" data-count="4" data-suffix="+">4+</div>
             <div class="stat-label">Market Corridors</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">6</div>
-            <div class="stat-label">Core Platforms + Products</div>
+            <div class="stat-num" data-count="2">2</div>
+            <div class="stat-label">Product Lines</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">AU</div>
@@ -356,6 +361,191 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TICKER STRIP (tech motion)
+============================================================ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span><b>AI</b> Trade Rights</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>DNY <b>AI</b> Media Hub</span>
+    <span class="ticker-item"><span class="ticker-dot"></span><b>RWA</b> Trade Finance</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>TrustTrade <b>Labs</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Building <b>Supply</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>HR <b>Hub</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Oracle <b>Data</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><b>Facadia</b> Valuation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AU ↔ <b>China</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AU ↔ <b>ASEAN</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AU ↔ <b>Oceania</b></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span><b>AI</b> Trade Rights</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>DNY <b>AI</b> Media Hub</span>
+    <span class="ticker-item"><span class="ticker-dot"></span><b>RWA</b> Trade Finance</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>TrustTrade <b>Labs</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Building <b>Supply</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>HR <b>Hub</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Oracle <b>Data</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><b>Facadia</b> Valuation</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AU ↔ <b>China</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AU ↔ <b>ASEAN</b></span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AU ↔ <b>Oceania</b></span>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     NEW — AI-POWERED AUSTRALIA DESK
+============================================================ -->
+<section id="desk" class="section desk" aria-labelledby="desk-heading">
+  <div class="container">
+    <div class="desk-layout">
+      <div class="reveal">
+        <span class="kicker">AI-Powered Australia Desk</span>
+        <h2 id="desk-heading">An <span class="grad-text">Australia Desk</span> for your AI agent</h2>
+        <p class="desk-lead">DNY is one of the first platform groups to bridge AI agents with real-world execution in Australia.</p>
+        <div class="desk-body">
+          <p>Your AI agent can analyse documents, plan procurement, structure tasks and manage information. What it <strong>cannot do alone</strong>: call a supplier, verify stock at a warehouse, inspect a site, coordinate logistics, or handle complex local negotiations. That last step — the real-world one — is where DNY's Australia Desk comes in.</p>
+          <p>Running on top of our six platforms, the Australia Desk gives your AI agent a local operations and verification team in Australia — backed by real people, real suppliers and real execution.</p>
+        </div>
+        <div class="hero-actions" style="margin-top:30px;">
+          <a href="#services" class="btn btn-primary">Explore Services</a>
+          <a href="#contact" class="btn btn-outline">Talk to DNY</a>
+        </div>
+      </div>
+
+      <!-- Animated agent ↔ desk diagram -->
+      <div class="desk-vis reveal reveal-delay-1" aria-hidden="true">
+        <div class="desk-node cyan">
+          <div class="dn-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M8 9h.01M16 9h.01M9 13s1 1 3 1 3-1 3-1"/></svg>
+          </div>
+          <div>
+            <h4>Your AI Agent</h4>
+            <p>Analyses · plans · structures · manages information</p>
+          </div>
+        </div>
+
+        <div class="desk-flow">↓ ↓ ↓</div>
+
+        <div class="desk-node">
+          <div class="dn-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9h.01M9 13h.01M9 17h.01"/></svg>
+          </div>
+          <div>
+            <h4>DNY Australia Desk</h4>
+            <p>Real people · suppliers · verification · execution</p>
+          </div>
+        </div>
+
+        <div class="desk-node">
+          <div class="dn-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <h4>Real-World Outcome</h4>
+            <p>Calls made · stock verified · site inspected · delivered</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     NEW — SERVICES
+============================================================ -->
+<section id="services" class="section" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-ring" aria-hidden="true"></div>
+      <span class="kicker">Services</span>
+      <h2 id="services-heading">Five client offerings, one operating layer</h2>
+      <p class="lead">From deploying your first agent to running real-world procurement in Australia — DNY operates the bridge between AI decisions and physical execution.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <span class="svc-idx">01</span>
+        <div class="svc-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        </div>
+        <h3>Agent Launch</h3>
+        <p>Deploy and configure a dedicated AI agent for your business or private affairs. Agent-agnostic — Hermes, OpenAI, Claude, Microsoft-ecosystem agents, Relevance AI, client-built agents, and any MCP/API-compatible system.</p>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-1">
+        <span class="svc-idx">02</span>
+        <div class="svc-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Managed Agent</h3>
+        <p>Long-term operation of your agent — workflow optimisation, model/API management, security, cost control, monthly reports and audit logs.</p>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-2">
+        <span class="svc-idx">03</span>
+        <div class="svc-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Australia Desk</h3>
+        <p>Your agent's local operations and execution team in Australia: business contact, suppliers, warehouses, logistics, property, professional-service coordination, on-site tasks, reporting.</p>
+      </div>
+
+      <div class="svc-card reveal">
+        <span class="svc-idx">04</span>
+        <div class="svc-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg>
+        </div>
+        <h3>Verify</h3>
+        <p>Real-world verification for you and your agent: does the supplier exist, is the business trading, is the stock real, was the delivery made, was the work completed — backed by reports, photos, time/location records and verifiable timestamps.</p>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-1">
+        <span class="svc-idx">05</span>
+        <div class="svc-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 002 1.6h9.7a2 2 0 002-1.6L23 6H6"/></svg>
+        </div>
+        <h3>Procure</h3>
+        <p>AI-driven Australian procurement and supply-chain execution — from spec and quote to verification, ordering, logistics and proof of delivery. First vertical: building materials and supply chain.</p>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-2" style="display:flex;flex-direction:column;justify-content:center;">
+        <span class="kicker" style="margin-bottom:12px;">Get Started</span>
+        <h3 style="margin-bottom:10px;">Build an agent that can actually operate in Australia.</h3>
+        <p style="margin-bottom:18px;">Talk to DNY about your Australia Desk. First submission is qualification only.</p>
+        <a href="#contact" class="btn btn-primary" style="align-self:flex-start;">Book a Consultation</a>
+      </div>
+    </div>
+
+
+    <!-- Who We Serve (V3 — three client types) -->
+    <div class="section-head reveal" style="margin-top:64px;margin-bottom:28px;">
+      <span class="kicker">Who We Serve</span>
+      <h3 style="font-size:24px;margin-top:4px;">One desk, tailored to how you operate</h3>
+    </div>
+
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-num">For Global Businesses</div>
+        <h3>An Australia operations desk</h3>
+        <p>Without building a full local team — supplier communication, procurement, inventory verification, warehouse coordination, delivery tracking, local project follow-up, monthly operational reporting.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-num">For Private Clients</div>
+        <h3>A private AI office</h3>
+        <p>For your Australian affairs — property and maintenance coordination, private procurement, asset verification, document and adviser management, ongoing local execution with private reporting and approval controls.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-num">For Family Offices</div>
+        <h3>A white-label operations desk</h3>
+        <p>Information collection on Australian assets, service-provider verification, document management, professional-firm coordination, cost and task reporting. DNY does not provide investment advice.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -867,6 +1057,39 @@
 </section>
 
 
+<!-- ============================================================
+     COMPLIANCE BOUNDARIES (V3)
+============================================================ -->
+<section id="compliance" class="section dark" aria-labelledby="compliance-heading">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Compliance Boundaries</span>
+      <h2 id="compliance-heading">Clear lines on what DNY does — and does not — do</h2>
+      <p class="lead">DNY coordinates execution and verification. Regulated advice and licensed services stay with qualified specialists.</p>
+    </div>
+
+    <div class="comp-grid">
+      <div class="comp-card reveal">
+        <h4>Professional Services</h4>
+        <p>DNY coordinates lawyers, accountants, tax/migration advisers, financial institutions and property/construction professionals. DNY does <strong>not</strong> itself provide legal, tax, migration, investment, financial-product, building or engineering advice without the relevant licence.</p>
+      </div>
+      <div class="comp-card reveal reveal-delay-1">
+        <h4>Payments &amp; Finance</h4>
+        <p>DNY can verify invoices and payees, match orders, generate payment-approval requests, coordinate licensed payment/banking institutions, and record outcomes. DNY does <strong>not</strong> custody client funds, run unlicensed FX exchange, or market unlicensed cross-border payment or financial services.</p>
+      </div>
+      <div class="comp-card reveal">
+        <h4>Verification Records</h4>
+        <p>Verifiable records prove that a document was submitted or registered at a given time. Real-world truth comes from DNY's execution process, human checks and evidence standards — <strong>not from technology alone</strong>.</p>
+      </div>
+      <div class="comp-card reveal reveal-delay-1">
+        <h4>AI Agent Responsibility</h4>
+        <p>Agents analyse and initiate tasks; clients set budgets, permissions and approvals; DNY executes and verifies; high-risk actions require human approval. Agents are <strong>not</strong> independent Australian legal entities and do <strong>not</strong> auto-sign contracts or make unlimited payments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 </main>
 
@@ -889,10 +1112,10 @@
         <h4>Platform</h4>
         <ul>
           <li><a href="#about">About DNY</a></li>
-          <li><a href="#vision">Vision &amp; Values</a></li>
           <li><a href="#pillars">Platform Architecture</a></li>
-          <li><a href="#corridors">Market Corridors</a></li>
-          <li><a href="#why">Why DNY</a></li>
+          <li><a href="#desk">AI Australia Desk</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#compliance">Compliance</a></li>
         </ul>
       </div>
 
@@ -909,7 +1132,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2025 DNY Cross Border Group. All rights reserved.</span>
+      <span>© 2026 DNY Cross Border Group. All rights reserved.</span>
       <div class="footer-sub-links">
         <a href="#contact">Contact</a>
         <a href="https://dnybuildingsupply.com/" target="_blank" rel="noopener">Building Supply</a>
