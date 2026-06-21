@@ -60,43 +60,56 @@
     // Coarse land bounding boxes [latMin, latMax, lngMin, lngMax].
     // Used to classify a lat/lng as land so the globe shows continents,
     // with Australia flagged for highlight.
+    // Each entry: box [latMin, latMax, lngMin, lngMax] plus an optional
+    // diagonal cut so shapes look less rectangular. au:true = highlight.
     var LAND = [
-      // Australia (highlight)
-      { box: [-39, -11, 113, 154], au: true },
-      // Tasmania
-      { box: [-43.6, -40, 144, 148.5], au: true },
+      // ── Australia (highlight) — mainland with NW/SE taper ──
+      { box: [-39, -11, 113, 154], au: true,
+        cut: function (la, ln) {
+          // trim top-left (Indian Ocean) and bottom-right corners
+          if (ln < 122 && la > -16) return false;     // NW corner ocean
+          if (ln > 150 && la < -33) return false;     // SE corner ocean
+          if (ln < 116 && la < -32) return false;     // SW corner ocean
+          return true;
+        } },
+      { box: [-43.6, -40.5, 144.5, 148.5], au: true }, // Tasmania
       // New Zealand
-      { box: [-47, -34, 166, 178] },
-      // SE Asia / ASEAN archipelago
+      { box: [-47, -34, 166, 179] },
+      // SE Asia / ASEAN archipelago (Indonesia, Philippines)
       { box: [-10, 7, 95, 141] },
-      { box: [5, 21, 97, 110] },        // Indochina
+      { box: [5, 19, 117, 127] },        // Philippines
+      { box: [5, 23, 97, 110] },         // Indochina/Thailand/Malaysia
       // China + East Asia
-      { box: [20, 53, 100, 135] },
-      { box: [30, 46, 128, 146] },      // Japan/Korea
+      { box: [22, 50, 100, 134] },
+      { box: [33, 45, 128, 146] },       // Japan
+      { box: [34, 43, 124, 130] },       // Korea
       // India + South Asia
-      { box: [6, 35, 68, 90] },
+      { box: [7, 35, 68, 90] },
       // Middle East
-      { box: [12, 40, 35, 60] },
+      { box: [13, 40, 35, 60] },
       // Africa
-      { box: [-35, 12, -17, 52] },
-      { box: [10, 37, -10, 35] },       // N Africa
+      { box: [-35, 12, -17, 52],
+        cut: function (la, ln) { if (la < -12 && ln < 12) return false; return true; } },
+      { box: [10, 37, -12, 35] },        // N Africa
       // Europe
       { box: [36, 60, -10, 40] },
-      { box: [60, 71, 5, 60] },         // Scandinavia
+      { box: [55, 71, 5, 45] },          // Scandinavia
       // Russia / N Asia
-      { box: [50, 70, 60, 180] },
+      { box: [48, 72, 60, 180] },
       // North America
-      { box: [25, 60, -125, -65] },
-      { box: [55, 72, -160, -60] },     // Canada north
-      { box: [14, 30, -118, -86] },     // Mexico
+      { box: [25, 62, -125, -66] },
+      { box: [55, 72, -150, -62] },      // Canada north
+      { box: [15, 30, -112, -86] },      // Mexico/Central America
       // South America
-      { box: [-55, 12, -81, -35] }
+      { box: [-55, 12, -80, -35],
+        cut: function (la, ln) { if (la < -35 && ln > -58) return false; return true; } }
     ];
 
     function isLand(lat, lng) {
       for (var i = 0; i < LAND.length; i++) {
         var b = LAND[i].box;
         if (lat >= b[0] && lat <= b[1] && lng >= b[2] && lng <= b[3]) {
+          if (LAND[i].cut && !LAND[i].cut(lat, lng)) continue;
           return LAND[i].au ? 2 : 1; // 2 = Australia, 1 = other land
         }
       }
@@ -104,22 +117,32 @@
     }
 
     function build() {
-      // Even fibonacci-sphere lattice — full, regular dot globe.
-      // Australia/land points are flagged for highlight but the whole
-      // sphere is uniformly covered for a clean tech look.
+      // Two layers, both generated FORWARD from lat/lng via toVec()
+      // so geographic positions are exact (no inverse-projection drift):
+      //   1) even ocean lattice (faint) → full globe volume
+      //   2) dense land grid (gold), Australia highlighted → real map
       dots = [];
-      var n = innerWidth < 1000 ? 900 : 1500;
+
+      // 1) even ocean lattice — fibonacci sphere, sparse & faint
+      var n = innerWidth < 1000 ? 520 : 820;
       var off = 2 / n, inc = Math.PI * (3 - Math.sqrt(5));
       for (var i = 0; i < n; i++) {
         var y = i * off - 1 + off / 2;
         var r = Math.sqrt(1 - y * y);
-        var p = i * inc;
-        var x = Math.cos(p) * r, z = Math.sin(p) * r;
-        // recover lat/lng from the unit vector to test landmass
-        var lat = Math.asin(y) * 180 / Math.PI;
-        var lng = Math.atan2(z, -x) * 180 / Math.PI - 180;
-        if (lng < -180) lng += 360; if (lng > 180) lng -= 360;
-        dots.push({ x: x, y: y, z: z, kind: isLand(lat, lng) });
+        var pa = i * inc;
+        dots.push({ x: Math.cos(pa) * r, y: y, z: Math.sin(pa) * r, kind: 0 });
+      }
+
+      // 2) land grid — iterate real lat/lng, keep only landmass cells
+      var step = innerWidth < 1000 ? 3.6 : 2.6;   // degrees
+      for (var lat = -82; lat <= 82; lat += step) {
+        var lngStep = step / Math.max(Math.cos(lat * Math.PI / 180), 0.20);
+        for (var lng = -180; lng < 180; lng += lngStep) {
+          var land = isLand(lat, lng);
+          if (!land) continue;
+          var v = toVec(lat, lng);
+          dots.push({ x: v.x, y: v.y, z: v.z, kind: land });
+        }
       }
     }
 
