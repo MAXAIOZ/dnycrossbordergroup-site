@@ -1456,3 +1456,154 @@ p + p { margin-top: 12px }
   .svc-grid  { grid-template-columns: 1fr; }
   .comp-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ============================================================
+   ░░ TECH-DYNAMIC V4 — Hero globe, glow cursor, scroll narrative ░░
+   (colors unchanged: gold #E4A535 / cyan #38BDF8 / navy)
+============================================================ */
+
+/* ---- Hero 3D globe canvas (sits in the visual column on desktop,
+        becomes a full-bleed backdrop on mobile) ---- */
+#hero-globe {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .9;
+}
+.hero-visual { position: relative; }
+.hero-visual #hero-globe { z-index: 0; }
+.hero-visual .vis-row    { position: relative; z-index: 2; }
+
+/* slightly lift glass cards so globe glows behind them */
+.hero-visual .vis-card { background: rgba(8,14,32,.42); }
+
+/* ---- Glow cursor (desktop, fine pointer only) ---- */
+.glow-cursor, .glow-cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+.glow-cursor {
+  width: 34px; height: 34px;
+  border: 1.5px solid rgba(228,165,53,.55);
+  box-shadow: 0 0 18px rgba(228,165,53,.35), inset 0 0 12px rgba(56,189,248,.15);
+  transition: width .22s var(--spring), height .22s var(--spring),
+              border-color .22s, background .22s;
+}
+.glow-cursor.is-hot {
+  width: 56px; height: 56px;
+  border-color: rgba(56,189,248,.7);
+  background: rgba(56,189,248,.08);
+}
+.glow-cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--gold-lt);
+  box-shadow: 0 0 10px rgba(245,200,104,.9);
+}
+/* hide native cursor only when custom one active */
+body.has-glow-cursor,
+body.has-glow-cursor a,
+body.has-glow-cursor button,
+body.has-glow-cursor .btn { cursor: none; }
+/* keep a real text caret in form fields */
+body.has-glow-cursor input,
+body.has-glow-cursor select,
+body.has-glow-cursor textarea { cursor: auto; }
+
+/* cursor trail particle */
+.cursor-spark {
+  position: fixed;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  animation: spark-fade .7s ease-out forwards;
+}
+@keyframes spark-fade {
+  from { opacity: .9; }
+  to   { opacity: 0; transform: translate(-50%,-50%) scale(.2); }
+}
+
+/* ---- Scroll-narrative: per-word hero title reveal ---- */
+.word-anim { display: inline-block; }
+.word-anim .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) rotateX(-40deg);
+  transform-origin: bottom;
+  transition: opacity .6s var(--ease), transform .7s var(--spring);
+}
+.word-anim.in .w { opacity: 1; transform: translateY(0) rotateX(0); }
+
+/* directional section reveals (richer than the base fade-up) */
+.reveal-l { opacity: 0; transform: translateX(-46px);  transition: opacity .7s var(--ease), transform .8s var(--ease); }
+.reveal-r { opacity: 0; transform: translateX(46px);   transition: opacity .7s var(--ease), transform .8s var(--ease); }
+.reveal-l.visible, .reveal-r.visible { opacity: 1; transform: none; }
+
+/* staggered children: cards rise in sequence when parent enters */
+.stagger > * { opacity: 0; transform: translateY(34px); transition: opacity .6s var(--ease), transform .7s var(--ease); }
+.stagger.visible > * { opacity: 1; transform: none; }
+.stagger.visible > *:nth-child(1){ transition-delay:.04s }
+.stagger.visible > *:nth-child(2){ transition-delay:.10s }
+.stagger.visible > *:nth-child(3){ transition-delay:.16s }
+.stagger.visible > *:nth-child(4){ transition-delay:.22s }
+.stagger.visible > *:nth-child(5){ transition-delay:.28s }
+.stagger.visible > *:nth-child(6){ transition-delay:.34s }
+.stagger.visible > *:nth-child(7){ transition-delay:.40s }
+.stagger.visible > *:nth-child(8){ transition-delay:.46s }
+
+/* big section headings get a neon underline that draws in on reveal */
+.section-head h2 { position: relative; }
+.section-head.visible h2::after,
+.section-head h2.draw::after {
+  content: "";
+  position: absolute; left: 0; bottom: -10px;
+  height: 2px; width: 0;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  box-shadow: 0 0 12px var(--gold-glow);
+  animation: underline-draw 1s var(--ease) .2s forwards;
+}
+@keyframes underline-draw { to { width: 84px; } }
+
+/* ---- Section number watermark that parallaxes ---- */
+.sec-watermark {
+  position: absolute;
+  top: 40px; right: 4%;
+  font-size: clamp(90px, 16vw, 240px);
+  font-weight: 900;
+  letter-spacing: -.06em;
+  line-height: 1;
+  color: rgba(255,255,255,.022);
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  #hero-globe { display: none; }
+  .glow-cursor, .glow-cursor-dot, .cursor-spark { display: none !important; }
+  body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button { cursor: auto; }
+  .word-anim .w, .reveal-l, .reveal-r, .stagger > * { opacity: 1 !important; transform: none !important; }
+  .section-head h2::after { animation: none; width: 84px; }
+}
+
+/* mobile: globe becomes faint backdrop behind hero content */
+@media (max-width: 1000px) {
+  .hero #hero-globe { display: block; opacity: .35; }
+  .sec-watermark { display: none; }
+}
+@media (hover: none) {
+  .glow-cursor, .glow-cursor-dot { display: none !important; }
+  body.has-glow-cursor, body.has-glow-cursor a { cursor: auto; }
+}

@@ -260,20 +260,18 @@
     });
   })();
 
-  /* ---------- Hero parallax on scroll ---------- */
+  /* ---------- Hero grid parallax on scroll ----------
+     (hero-content and hero-visual/globe parallax handled in fx.js) */
   (function () {
     if (reduceMotion) return;
     const grid = document.querySelector('.hero-grid');
-    const visual = document.querySelector('.hero-visual');
+    if (!grid) return;
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (grid)   grid.style.transform   = `translateY(${y * 0.12}px)`;
-        if (visual && window.innerWidth > 1000)
-          visual.style.transform = `translateY(${y * -0.04}px)`;
+        grid.style.transform = `translateY(${window.scrollY * 0.12}px)`;
         ticking = false;
       });
     }, { passive: true });
