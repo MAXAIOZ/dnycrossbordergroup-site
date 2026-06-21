@@ -33,7 +33,7 @@
     var dpr, W, H, CX, CY, R;
     var dots = [];        // points on the sphere
     var arcs = [];        // travelling light pulses
-    var rot = 0;          // rotation angle (Y axis)
+    var rot = 4.0;        // rotation angle (Y axis) — start with Australia facing viewer
     var tilt = -0.42;     // fixed X tilt
     var mouseX = 0, targetMouseX = 0;
 
@@ -57,16 +57,69 @@
       };
     }
 
+    // Coarse land bounding boxes [latMin, latMax, lngMin, lngMax].
+    // Used to classify a lat/lng as land so the globe shows continents,
+    // with Australia flagged for highlight.
+    var LAND = [
+      // Australia (highlight)
+      { box: [-39, -11, 113, 154], au: true },
+      // Tasmania
+      { box: [-43.6, -40, 144, 148.5], au: true },
+      // New Zealand
+      { box: [-47, -34, 166, 178] },
+      // SE Asia / ASEAN archipelago
+      { box: [-10, 7, 95, 141] },
+      { box: [5, 21, 97, 110] },        // Indochina
+      // China + East Asia
+      { box: [20, 53, 100, 135] },
+      { box: [30, 46, 128, 146] },      // Japan/Korea
+      // India + South Asia
+      { box: [6, 35, 68, 90] },
+      // Middle East
+      { box: [12, 40, 35, 60] },
+      // Africa
+      { box: [-35, 12, -17, 52] },
+      { box: [10, 37, -10, 35] },       // N Africa
+      // Europe
+      { box: [36, 60, -10, 40] },
+      { box: [60, 71, 5, 60] },         // Scandinavia
+      // Russia / N Asia
+      { box: [50, 70, 60, 180] },
+      // North America
+      { box: [25, 60, -125, -65] },
+      { box: [55, 72, -160, -60] },     // Canada north
+      { box: [14, 30, -118, -86] },     // Mexico
+      // South America
+      { box: [-55, 12, -81, -35] }
+    ];
+
+    function isLand(lat, lng) {
+      for (var i = 0; i < LAND.length; i++) {
+        var b = LAND[i].box;
+        if (lat >= b[0] && lat <= b[1] && lng >= b[2] && lng <= b[3]) {
+          return LAND[i].au ? 2 : 1; // 2 = Australia, 1 = other land
+        }
+      }
+      return 0;
+    }
+
     function build() {
-      // fibonacci sphere distribution
       dots = [];
-      var n = innerWidth < 1000 ? 360 : 620;
-      var off = 2 / n, inc = Math.PI * (3 - Math.sqrt(5));
-      for (var i = 0; i < n; i++) {
-        var y = i * off - 1 + off / 2;
-        var r = Math.sqrt(1 - y * y);
-        var p = i * inc;
-        dots.push({ x: Math.cos(p) * r, y: y, z: Math.sin(p) * r });
+      // Sample a lat/lng grid; keep land points (dense) + sparse ocean wireframe.
+      var step = innerWidth < 1000 ? 4.5 : 3.2;   // degrees
+      for (var lat = -84; lat <= 84; lat += step) {
+        // vary lng density by latitude so points look even on the sphere
+        var lngStep = step / Math.max(Math.cos(lat * Math.PI / 180), 0.18);
+        for (var lng = -180; lng < 180; lng += lngStep) {
+          var land = isLand(lat, lng);
+          var v = toVec(lat, lng);
+          if (land) {
+            dots.push({ x: v.x, y: v.y, z: v.z, kind: land });
+          } else if (Math.random() < 0.10) {
+            // faint ocean lattice for globe volume
+            dots.push({ x: v.x, y: v.y, z: v.z, kind: 0 });
+          }
+        }
       }
     }
 
@@ -125,7 +178,7 @@
     function frame(now) {
       ctx.clearRect(0, 0, W, H);
       mouseX += (targetMouseX - mouseX) * 0.05;
-      rot += 0.0016;
+      rot += 0.0011;
       var ry = rot + mouseX * 0.6;
 
       // glow halo
@@ -135,18 +188,36 @@
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, W, H);
 
-      // sphere dots
+      // sphere dots — land continents (gold), Australia highlighted, ocean faint
+      var auPulse = (Math.sin(now * 0.0035) + 1) / 2;
       for (var i = 0; i < dots.length; i++) {
-        var p = project(dots[i], ry);
+        var d = dots[i];
+        var p = project(d, ry);
+        if (p.z < -0.15) continue;            // cull far back hemisphere for clarity
         var depth = (p.z + 1) / 2;            // 0 back .. 1 front
+        var front = Math.max(0, (p.z + 0.15) / 1.15);
         var sx = CX + p.x * R;
         var sy = CY + p.y * R;
-        var size = (0.5 + depth * 1.6) * dpr;
-        var alpha = 0.10 + depth * 0.55;
+        var size, color, alpha;
+        if (d.kind === 2) {                   // Australia — bright, larger, pulsing
+          size = (1.6 + front * 1.8) * dpr;
+          color = GOLD;
+          alpha = (0.55 + front * 0.4) * (0.75 + auPulse * 0.25);
+        } else if (d.kind === 1) {            // other land — solid gold
+          size = (0.9 + front * 1.4) * dpr;
+          color = GOLD;
+          alpha = 0.22 + front * 0.55;
+        } else {                              // ocean lattice — faint cyan
+          size = (0.4 + front * 0.7) * dpr;
+          color = CYAN;
+          alpha = 0.05 + front * 0.16;
+        }
+        if (d.kind === 2) { ctx.shadowBlur = 8 * dpr; ctx.shadowColor = 'rgba(' + GOLD + ',0.9)'; }
         ctx.beginPath();
         ctx.arc(sx, sy, size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + (depth > 0.86 ? CYAN : GOLD) + ',' + alpha.toFixed(3) + ')';
+        ctx.fillStyle = 'rgba(' + color + ',' + alpha.toFixed(3) + ')';
         ctx.fill();
+        if (d.kind === 2) ctx.shadowBlur = 0;
       }
 
       // origin marker (Australia) pulse
