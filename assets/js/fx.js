@@ -37,14 +37,26 @@
     var tilt = -0.42;     // fixed X tilt
     var mouseX = 0, targetMouseX = 0;
 
-    // Australia approximate lat/lng (Sydney) as the broadcast origin
+    // Australia (Sydney) — kept for the highlighted home node
     var ORIGIN = { lat: -33.8, lng: 151.2 };
-    // market endpoints: China, ASEAN, Oceania/NZ, Global(Europe)
-    var TARGETS = [
-      { lat: 31.2,  lng: 121.5 }, // Shanghai (China)
-      { lat: 1.35,  lng: 103.8 }, // Singapore (ASEAN)
-      { lat: -41.0, lng: 174.8 }, // Wellington (Oceania)
-      { lat: 51.5,  lng: -0.1  }  // London (Global)
+    // Global network hubs — beams fly between any pair of these,
+    // so the globe reads as a many-to-many cross-border network.
+    var NODES = [
+      { lat: -33.8, lng: 151.2 }, // Sydney (home)
+      { lat: 31.2,  lng: 121.5 }, // Shanghai
+      { lat: 1.35,  lng: 103.8 }, // Singapore
+      { lat: -41.0, lng: 174.8 }, // Wellington
+      { lat: 51.5,  lng: -0.1  }, // London
+      { lat: 22.3,  lng: 114.2 }, // Hong Kong
+      { lat: 3.1,   lng: 101.7 }, // Kuala Lumpur
+      { lat: -6.2,  lng: 106.8 }, // Jakarta
+      { lat: 35.7,  lng: 139.7 }, // Tokyo
+      { lat: 25.0,  lng: 55.3  }, // Dubai
+      { lat: 1.29,  lng: 103.9 }, // (extra ASEAN)
+      { lat: -37.8, lng: 145.0 }, // Melbourne
+      { lat: 40.7,  lng: -74.0 }, // New York
+      { lat: 19.4,  lng: -99.1 }, // Mexico City
+      { lat: 13.7,  lng: 100.5 }  // Bangkok
     ];
 
     function toVec(lat, lng) {
@@ -104,12 +116,17 @@
     }
 
     function spawnArc() {
-      var t = TARGETS[Math.floor(Math.random() * TARGETS.length)];
+      // pick two distinct hubs at random → beam flies between them
+      var ai = Math.floor(Math.random() * NODES.length);
+      var bi = Math.floor(Math.random() * NODES.length);
+      var guard = 0;
+      while (bi === ai && guard++ < 5) bi = Math.floor(Math.random() * NODES.length);
+      var a = NODES[ai], b = NODES[bi];
       arcs.push({
-        a: toVec(ORIGIN.lat, ORIGIN.lng),
-        b: toVec(t.lat, t.lng),
+        a: toVec(a.lat, a.lng),
+        b: toVec(b.lat, b.lng),
         t: 0,
-        speed: 0.006 + Math.random() * 0.006,
+        speed: 0.006 + Math.random() * 0.008,
         color: Math.random() > 0.5 ? GOLD : CYAN
       });
     }
@@ -194,7 +211,7 @@
       }
 
       // spawn arcs over time
-      if (now - lastSpawn > 900) { spawnArc(); lastSpawn = now; }
+      if (now - lastSpawn > 520) { spawnArc(); lastSpawn = now; }
 
       // draw arcs
       for (var k = arcs.length - 1; k >= 0; k--) {
@@ -245,7 +262,7 @@
     window.addEventListener('load', resize);
     window.addEventListener('resize', resize);
     // seed a few arcs
-    for (var z = 0; z < 2; z++) spawnArc();
+    for (var z = 0; z < 5; z++) spawnArc();
     requestAnimationFrame(frame);
   })();
 
