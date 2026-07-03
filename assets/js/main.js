@@ -126,7 +126,7 @@
       const body     = encodeURIComponent(
         `Name: ${name}\nEmail: ${email}\nCompany: ${company || '—'}\nTopic: ${topic || '—'}\n\nMessage:\n${message}`
       );
-      const mailto   = `mailto:info@dny2dny.com?subject=${subject}&body=${body}`;
+      const mailto   = `mailto:info@dnycrossbordergroup.com?subject=${subject}&body=${body}`;
 
       window.location.href = mailto;
 
