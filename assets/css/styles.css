@@ -1667,3 +1667,125 @@ body.has-glow-cursor textarea { cursor: auto; }
 @media (max-width: 1000px) {
   .hero-visual { display: none; }
 }
+
+
+/* ============================================================
+   ░░ V6 — Investment-opportunity framing ░░
+   Deal-style badges, metric rows, opportunity tags.
+   (palette unchanged: gold / cyan / navy)
+============================================================ */
+
+/* ---- Stage / status badge on opportunity cards ---- */
+.deal-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--bc);
+  background: var(--cyan-dim);
+  border-radius: 999px;
+  padding: 5px 13px;
+  white-space: nowrap;
+}
+.deal-badge::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan); box-shadow: 0 0 8px var(--cyan);
+  animation: pulse-dot 2.2s ease infinite;
+}
+.deal-badge.gold { color: var(--gold); border-color: var(--bw); background: var(--gold-dim); }
+.deal-badge.gold::before { background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
+.deal-badge.live { color: #4ADE80; border-color: rgba(74,222,128,.3); background: rgba(74,222,128,.08); }
+.deal-badge.live::before { background: #4ADE80; box-shadow: 0 0 8px rgba(74,222,128,.7); }
+
+/* header row for opportunity cards: title left, badge right */
+.deal-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.deal-head .project-tag { margin-bottom: 0; }
+
+/* ---- Metric row (deal terms) ---- */
+.deal-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 22px;
+  border: 1px solid var(--b1);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--b1);
+}
+.deal-metric {
+  background: rgba(8,14,32,.6);
+  padding: 16px 18px;
+}
+.deal-metric .k {
+  display: block;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--t3); margin-bottom: 6px;
+}
+.deal-metric .v {
+  display: block;
+  font-size: 16px; font-weight: 800; letter-spacing: -.02em;
+  color: var(--t1); line-height: 1.15;
+}
+.deal-metric .v.gold { color: var(--gold); }
+.deal-metric .v.cyan { color: var(--cyan); }
+
+@media (max-width: 720px) {
+  .deal-metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---- Opportunity tag chips (sector / market) ---- */
+.opp-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+.opp-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11.5px; font-weight: 600;
+  color: var(--t2);
+  border: 1px solid var(--b1);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.opp-chip::before {
+  content: ""; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---- Portfolio card: mini metric footer ---- */
+.pf-stat {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+  margin-top: 18px; padding-top: 16px;
+  border-top: 1px solid var(--b1);
+}
+.pf-stat .pf-k { font-size: 11px; color: var(--t3); font-weight: 500; letter-spacing: .04em; }
+.pf-stat .pf-v {
+  font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--gold);
+}
+.pf-stat .pf-v.cyan { color: var(--cyan); }
+
+/* ---- Thesis stat band ---- */
+.thesis-band {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+  margin-bottom: 48px;
+}
+.thesis-stat {
+  border: 1px solid var(--b1);
+  border-radius: var(--r-md);
+  background: var(--glass);
+  padding: 26px 24px;
+  text-align: left;
+}
+.thesis-stat .ts-num {
+  font-size: clamp(30px, 3.4vw, 42px); font-weight: 800; letter-spacing: -.04em;
+  color: var(--gold); line-height: 1; text-shadow: 0 0 22px rgba(228,165,53,.3);
+}
+.thesis-stat .ts-num.cyan { color: var(--cyan); text-shadow: 0 0 22px rgba(56,189,248,.28); }
+.thesis-stat .ts-label { font-size: 12.5px; color: var(--t2); margin-top: 10px; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .thesis-band { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 520px) {
+  .thesis-band { grid-template-columns: 1fr; }
+}
