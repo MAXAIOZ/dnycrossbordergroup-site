@@ -210,8 +210,12 @@
         ctx.stroke();
       }
 
-      // spawn arcs over time
-      if (now - lastSpawn > 520) { spawnArc(); lastSpawn = now; }
+      // spawn arcs over time — fire several beams together for a busier network
+      if (now - lastSpawn > 260 && arcs.length < 48) {
+        var burst = 3 + Math.floor(Math.random() * 2); // 3-4 beams per burst
+        for (var bi = 0; bi < burst; bi++) spawnArc();
+        lastSpawn = now;
+      }
 
       // draw arcs
       for (var k = arcs.length - 1; k >= 0; k--) {
@@ -261,8 +265,8 @@
     setTimeout(resize, 250);
     window.addEventListener('load', resize);
     window.addEventListener('resize', resize);
-    // seed a few arcs
-    for (var z = 0; z < 5; z++) spawnArc();
+    // seed a busier starting network
+    for (var z = 0; z < 16; z++) spawnArc();
     requestAnimationFrame(frame);
   })();
 
