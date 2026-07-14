@@ -284,7 +284,7 @@
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let w, h, dpr, particles = [];
-    const GOLD = '228,165,53', CYAN = '56,189,248';
+    const GOLD = '239,159,39', CYAN = '93,202,165';
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);

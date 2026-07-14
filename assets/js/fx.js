@@ -4,7 +4,7 @@
    2) Glow cursor with trailing sparks
    3) Scroll narrative: per-word title reveal, directional &
       staggered section entrances, parallax watermarks
-   Brand palette only: gold #E4A535, cyan #38BDF8, navy.
+   Brand palette only: harvest gold #EF9F27, jade teal #5DCAA5, deep forest.
 ============================================================ */
 (function () {
   'use strict';
@@ -13,8 +13,8 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  var GOLD = '228,165,53';
-  var CYAN = '56,189,248';
+  var GOLD = '239,159,39';
+  var CYAN = '93,202,165';
 
   /* ========================================================
      1) HERO 3D DOT-MATRIX GLOBE + CROSS-BORDER ARCS
