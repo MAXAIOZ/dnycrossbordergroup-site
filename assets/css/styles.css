@@ -1789,3 +1789,93 @@ body.has-glow-cursor textarea { cursor: auto; }
 @media (max-width: 520px) {
   .thesis-band { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   ░░ V7 — TRUSTED + OPEN SOURCE UPGRADE ░░
+   Six-layer platform stack, verification chips, page heroes.
+   (palette unchanged: gold #EF9F27 / cyan #5DCAA5 / navy)
+============================================================ */
+
+/* footer now 4 columns */
+.footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+@media (max-width: 1000px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 800px)  { .footer-grid { grid-template-columns: 1fr; } }
+
+/* interior page hero */
+.page-hero { position: relative; overflow: hidden; padding-block: 150px 76px; border-bottom: 1px solid var(--b0); }
+.page-hero .hero-bg, .page-hero .hero-grid { position: absolute; inset: 0; z-index: 0; }
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero h1 { font-size: clamp(34px, 5vw, 62px); margin: 18px 0 20px; }
+.page-hero .lead { max-width: 780px; }
+.page-hero .hero-badge { margin-bottom: 8px; }
+
+/* six-layer platform stack */
+.layers { display: flex; flex-direction: column; gap: 12px; }
+.layer {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 52px 1fr auto; gap: 22px; align-items: center;
+  border: 1px solid var(--b1); border-radius: var(--r-lg); padding: 22px 26px;
+  background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--t), transform var(--ts) var(--ease), box-shadow var(--t);
+}
+.layer::before { content: ""; position: absolute; inset: 0; background: var(--g-card); pointer-events: none; }
+.layer:hover { border-color: var(--bw); transform: translateX(5px); box-shadow: var(--s-md); }
+.layer > * { position: relative; z-index: 1; }
+.layer-idx {
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  font-weight: 800; font-size: 15px; color: var(--gold);
+  background: var(--gold-dim); border: 1px solid var(--bw);
+}
+.layer-body h3 { font-size: 17px; margin-bottom: 5px; }
+.layer-body p  { font-size: 13.5px; color: var(--t3); line-height: 1.6; }
+.layer-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 320px; }
+.layer.foundation {
+  border-color: var(--bw);
+  background: linear-gradient(145deg, rgba(239,159,39,.12), rgba(255,255,255,.02));
+}
+@media (max-width: 820px) {
+  .layer { grid-template-columns: 42px 1fr; padding: 18px 20px; }
+  .layer-tags { display: none; }
+}
+
+/* verification / provenance chips */
+.vbadge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: .03em;
+  color: var(--cyan); border: 1px solid var(--bc); background: var(--cyan-dim);
+  border-radius: 999px; padding: 5px 12px;
+}
+.vbadge svg { width: 12px; height: 12px; flex-shrink: 0; }
+.vbadge.gold { color: var(--gold); border-color: var(--bw); background: var(--gold-dim); }
+
+/* source citation line */
+.src { font-size: 11px; color: var(--t3); margin-top: 8px; letter-spacing: .01em; }
+.src a { color: var(--t3); text-decoration: underline; text-underline-offset: 2px; }
+
+/* big link panel */
+.big-panel {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 14px;
+  border: 1px solid var(--b1); border-radius: var(--r-xl); padding: 34px;
+  background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--t), transform var(--ts) var(--ease), box-shadow var(--t);
+}
+.big-panel::before { content: ""; position: absolute; inset: 0; background: var(--g-card); pointer-events: none; }
+.big-panel:hover { border-color: var(--bw); transform: translateY(-4px); box-shadow: var(--s-md); }
+.big-panel > * { position: relative; z-index: 1; }
+.big-panel .k { font-size: 10.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.big-panel h3 { font-size: clamp(21px, 2.5vw, 28px); }
+.big-panel p { color: var(--t2); font-size: 14.5px; }
+.big-panel .project-link { margin-top: 6px; }
+
+/* separation / note box */
+.sep-box {
+  border: 1px solid var(--bw); border-left: 3px solid var(--gold);
+  border-radius: 0 var(--r-md) var(--r-md) 0; background: var(--gold-dim);
+  padding: 22px 26px;
+}
+.sep-box h4 { color: var(--gold); font-size: 14px; letter-spacing: .01em; margin-bottom: 8px; }
+.sep-box p  { font-size: 13px; color: var(--t2); line-height: 1.66; }
+
+/* two/three column helpers reused; source grid */
+.src-note { font-size: 12px; color: var(--t3); line-height: 1.7; }
