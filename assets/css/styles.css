@@ -1182,7 +1182,9 @@ p + p { margin-top: 12px }
 }
 
 /* keep real content above the canvas + body mesh */
-.site-header, main, .site-footer { position: relative; z-index: 1; }
+main, .site-footer { position: relative; z-index: 1; }
+/* header must outrank main so the mobile nav dropdown (fixed, inside the header stacking context) is not covered by page content */
+.site-header { z-index: 200; }
 
 /* ---- Animated gradient sweep on the whole page top edge ---- */
 .scanbar {
