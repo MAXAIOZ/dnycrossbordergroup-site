@@ -4,9 +4,8 @@
 # Full text for AI systems: https://dnycrossbordergroup.com/llms-full.txt
 
 # Content signals (https://contentsignals.org): search, AI answers and AI training all permitted.
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
-
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 # Search engines
