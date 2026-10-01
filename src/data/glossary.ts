@@ -1,0 +1,22 @@
+// Plain-language definitions (brief §15: every technical term gets a 1–2 sentence definition).
+export const GLOSSARY = [
+  { term: 'Trusted AI', def: 'AI whose data sources, model versions, permissions and actions can be verified, traced and audited.', href: '/trusted-ai' },
+  { term: 'Open Source AI', def: 'AI released with the freedom to use, study, modify and share it, including access to the preferred form for modification.', href: '/open-source-ai' },
+  { term: 'Open-weight model', def: 'A model whose trained weights are published for use, but whose licence, training data or modification rights may be more restricted than open source.', href: '/open-source-ai' },
+  { term: 'Source-available', def: 'Code or weights that can be viewed or used under specific conditions, which may limit commercial use or redistribution.', href: '/open-source-ai' },
+  { term: 'Trusted Data Space', def: 'A governed environment where data is shared under recorded provenance, versions, licences and permissions, so parties can collaborate without losing control of their data.', href: '/ai-infrastructure/data-space' },
+  { term: 'Data provenance', def: 'The verifiable record of where data came from, who created it, when, and how it has changed.', href: '/ai-infrastructure/data-space' },
+  { term: 'AI Agent', def: 'Software that uses an AI model to plan and carry out multi-step tasks by calling tools, systems or devices.', href: '/ai-infrastructure/agents' },
+  { term: 'Human oversight', def: 'Keeping a person able to review, approve or override AI decisions where full autonomy is inappropriate or unsafe.', href: '/ai-infrastructure/agents' },
+  { term: 'Physical AI', def: 'AI that perceives the real world through sensors, reasons about it and acts through machines such as drones, robots and industrial equipment.', href: '/physical-intelligence' },
+  { term: 'Open Physical Intelligence Layer', def: 'DNY’s vendor-neutral connection layer that links trusted AI infrastructure — models, agents, identity and audit — with drones, robots, edge devices and real assets.', href: '/physical-intelligence' },
+  { term: 'Embodied AI', def: 'AI that operates through a physical body, such as a robot, so it can perceive, reason and act in its surroundings.', href: '/physical-intelligence/robotics' },
+  { term: 'Commercial drone systems', def: 'Uncrewed aircraft, sensors and software used for inspection, mapping, sensing and industrial data capture in commercial and government operations.', href: '/physical-intelligence/drones' },
+  { term: 'Edge AI', def: 'Running AI inference on or near the device or asset, rather than in a distant cloud, for lower latency, resilience and data control.', href: '/physical-intelligence/edge-ai' },
+  { term: 'Autonomous operations', def: 'Multiple devices — drones, robots and industrial systems — coordinated by AI agents under governed workflows with human escalation.', href: '/physical-intelligence/autonomous-systems' },
+  { term: 'Digital twin', def: 'A live digital model of a physical asset, site or process, updated from real-world data and used to monitor, predict and plan.', href: '/industries/logistics-warehousing' },
+  { term: 'OPC (Office + AI Agents)', def: 'A local business node that combines a workspace, AI agent capabilities and market connections so small teams can deliver like larger organisations.', href: '/opc-fde/opc-network' },
+  { term: 'FDE (Forward Deployed Entrepreneur)', def: 'A delivery role that works directly on a real customer problem in the field, taking a solution from proof of concept to deployment.', href: '/opc-fde/fde-model' },
+  { term: 'AI transaction readiness', def: 'Architecture and interfaces that prepare for AI agents and machines to request, verify and settle services with each other.', href: '/ai-infrastructure/transactions' },
+  { term: 'AILH', def: 'A proposed large-scale industrial deployment environment in Sydney, used as a physical-economy proof point for trusted, open AI. It is a separate interest from DNY, not owned or controlled by DNY.', href: '/physical-intelligence#ailh' },
+];

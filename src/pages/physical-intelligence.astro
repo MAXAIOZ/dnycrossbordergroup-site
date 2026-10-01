@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Definition from '../components/Definition.astro';
+import PIFlow from '../components/PIFlow.astro';
+import TrustDiagram from '../components/TrustDiagram.astro';
+import VentureCard from '../components/VentureCard.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import Arrow from '../components/Arrow.astro';
+import { PI_CHAIN, PI_SUBLAYERS } from '../data/architecture';
+import { VENTURES } from '../data/ventures';
+import { techArticle, definedTerm } from '../data/schema';
+
+const title = 'Physical Intelligence';
+const description = 'The Open Physical Intelligence Layer connects DNY’s trusted, open AI infrastructure with drones, robotics, edge systems and real assets — vendor-neutral, governed and auditable.';
+const crumbs = [{ name: 'Physical Intelligence', href: '/physical-intelligence' }];
+const def = 'DNY’s open physical intelligence layer, connecting trusted AI infrastructure with drones, robots, edge systems and real-world assets so that AI can perceive, decide and act — with every step verifiable.';
+const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
+---
+<Base {title} {description} breadcrumbs={crumbs}
+  schema={[techArticle('The Open Physical Intelligence Layer', description, '/physical-intelligence', ['Physical AI', 'Robotics', 'Drones', 'Edge AI']), definedTerm('Open Physical Intelligence Layer', def, '/physical-intelligence')]}>
+<PageHero badge="Open Physical Intelligence Layer" title="Physical Intelligence: trusted AI that acts in the real world" {crumbs}
+  lead="AI’s next stage is not only generating content. It is perceiving real environments, making decisions and carrying out actions. The Open Physical Intelligence Layer is how DNY extends trusted, open AI infrastructure into the physical economy."
+  primary={{ label: 'Partner on a deployment', href: '/contact?type=enterprise' }}
+  secondary={{ label: 'See the ventures', href: '/ventures?category=Physical%20Intelligence' }}>
+  <Definition term="Open Physical Intelligence Layer" def={def} />
+</PageHero>
+
+<section class="section" aria-labelledby="what-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">What It Is</span>
+      <h2 id="what-h">A connection layer, not a single product</h2>
+      <div class="prose" style="margin-top:16px;">
+        <p>The Physical Intelligence Layer is <strong>not a drone company and not a single robotics project</strong>. It is the unified connection layer through which DNY’s Trusted &amp; Open AI Infrastructure reaches the real world.</p>
+        <p>It links AI models, agents, data governance, identity, security and audit with real devices — and keeps everything multi-model, multi-cloud and multi-vendor so customers are never locked into a single supplier.</p>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <span class="kicker">Why It Matters</span>
+      <h2 class="h2-sm">When AI can act, trust has to be provable</h2>
+      <ul class="check-cols" style="margin-top:18px;grid-template-columns:1fr;">
+        <li>Devices generate the data that physical-economy decisions depend on.</li>
+        <li>Agents increasingly trigger real actions — a flight, a pick, a stop.</li>
+        <li>Every device behaviour, data source, AI judgement and key operation can enter the trusted data and audit system.</li>
+        <li>Vendor neutrality lets the best global hardware connect through standard interfaces.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="arch-h">
+  <div class="container">
+    <SectionHead kicker="Architecture" id="arch-h" title="From device to verified outcome"
+      lead="Every physical intelligence workflow follows the same governed path. Each hop is identity-bound and logged." />
+    <ol class="chain reveal" aria-label="Physical intelligence reference architecture">
+      {PI_CHAIN.map((c) => <li><span>{c}</span></li>)}
+    </ol>
+    <p class="src-note reveal" style="margin-top:14px;">Device → Edge → Trusted Data → Model → Agent → Action → Verification. Text equivalent of the diagram above for screen readers and search systems.</p>
+    <div class="mt-28"><SectionHead kicker="Capability Loop" id="loop-h" title="Perceive → Understand → Decide → Act → Verify" /></div>
+    <PIFlow />
+  </div>
+</section>
+
+<section class="section" aria-labelledby="sub-h">
+  <div class="container">
+    <SectionHead kicker="Sub-layers" id="sub-h" title="Four directions, one layer"
+      lead="The first devices on the layer are commercial drones, embodied robots, warehouse robots, edge devices, vision systems and autonomous systems." />
+    <div class="tiles t4 stagger reveal">
+      {PI_SUBLAYERS.map((s) => (
+        <a href={s.href} class="tile"><span class="t-k">{s.direction}</span><h3>{s.name}</h3><p>{s.line}</p><span class="project-link">Explore <Arrow /></span></a>
+      ))}
+    </div>
+    <div class="grid-2 mt-28 stagger reveal">
+      <div class="big-panel">
+        <span class="k">Industrial Intelligence</span>
+        <h3>Warehousing, automation and digital twins</h3>
+        <p>Warehouse robots, automation, computer vision and digital twins integrated with WMS, ERP and sensor data — moving from pilots with defined KPIs to autonomous operations.</p>
+        <a href="/industries/logistics-warehousing" class="project-link">Logistics &amp; Warehousing <Arrow /></a>
+      </div>
+      <div class="big-panel">
+        <span class="k">Open Hardware Integration</span>
+        <h3>Global devices, standard interfaces</h3>
+        <p>Advanced devices from global manufacturers connect through standard APIs, SDKs and adapters. Hardware is selected on technical maturity, Australian compliance, support and commercial sustainability — never locked to one vendor or country of origin.</p>
+        <div><span class="pill">API</span><span class="pill">SDK</span><span class="pill">Adapters</span><span class="pill">Multi-vendor</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="ts-h">
+  <div class="container">
+    <SectionHead kicker="Trust & Safety" id="ts-h" title="Identity, permission, logging and human escalation"
+      lead="Physical actions carry physical consequences. Every device, model and agent operates under a verified identity and explicit permissions; key decisions are logged; humans stay in the loop where full autonomy is inappropriate; anomalies escalate to people; and operations follow applicable Australian regulation." />
+    <TrustDiagram />
+  </div>
+</section>
+
+<section class="section" id="ailh" aria-labelledby="ailh-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Industrial Deployment Environment</span>
+      <h2 id="ailh-h">AILH — where the layer meets the physical economy at scale</h2>
+      <div class="prose" style="margin-top:16px;">
+        <p><strong>AILH</strong> is a proposed large-scale industrial deployment environment and an important proof point: a practical setting for connecting open, interoperable AI with physical infrastructure, automation, robotics and supply-chain operations.</p>
+        <p>AILH is one deployment environment for the Physical Intelligence Layer — it does not define Physical AI at DNY, which spans drones, robotics, edge systems and autonomous operations across many sites.</p>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <div class="sep-box">
+        <h3 class="h4">Separate legal &amp; economic interests</h3>
+        <p>AILH and DNY remain separate legal and economic interests unless specifically agreed otherwise. Any engagement is documented through project agreements covering scope, fees, data access, IP, confidentiality, liability, service levels and commercialisation rights. Describing AILH as a deployment environment does not imply DNY ownership or control.</p>
+      </div>
+      <ol class="check-cols mt-28" style="grid-template-columns:1fr;">
+        <li>Process mapping — high-cost, high-friction or high-risk workflows</li>
+        <li>Data &amp; systems assessment — WMS, ERP, automation, sensors, robotics</li>
+        <li>Use-case prioritisation — value, feasibility, safety, integration</li>
+        <li>Sandbox &amp; pilot — measurable KPIs</li>
+        <li>Production hardening &amp; scale — security, monitoring, governance</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="pv-h">
+  <div class="container">
+    <SectionHead kicker="Ventures on the Layer" id="pv-h" title="Physical intelligence ventures"
+      lead="Programmes and ventures that build on the layer. Each keeps its own brand, company and business model." />
+    <div class="vgrid reveal">{ventures.map((v) => <VentureCard v={v} />)}</div>
+  </div>
+</section>
+
+<FAQ groups={['physical']} title="Physical Intelligence — common questions" />
+
+<CTABand title="Bring trusted AI to your physical operations"
+  lead="Inspection, warehousing, robotics or multi-device operations — talk to us about a governed pilot."
+  primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }}
+  secondary={{ label: 'Partner as a hardware provider', href: '/contact?type=partnership' }} />
+</Base>

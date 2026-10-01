@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Definition from '../components/Definition.astro';
+import TrustDiagram from '../components/TrustDiagram.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import Arrow from '../components/Arrow.astro';
+import { INFRA_MODULES } from '../data/architecture';
+import { techArticle, definedTerm } from '../data/schema';
+
+const title = 'AI Infrastructure';
+const description = 'DNY’s Trusted & Open AI Infrastructure: Trusted Data Space, open models, deployment and integration, AI agents, identity and audit, and AI transaction readiness — multi-model, multi-cloud and vendor-neutral.';
+const def = 'The digital intelligence layer of the DNY group: the data, models, agents, interfaces and governance that every DNY venture and physical intelligence deployment builds on.';
+const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }];
+const principles = [
+  { k: 'Multi-model by design', d: 'No structural dependency on a single model provider; models and agents are evaluated before production use.' },
+  { k: 'Deploy anywhere', d: 'Multi-cloud, private and hybrid where commercially and technically feasible, with clear separation of customer, operational and third-party data.' },
+  { k: 'Enterprise-grade', d: 'Identity, permissioning, observability and logging as first-class features, not optional add-ons.' },
+  { k: 'Licence-aware', d: 'A component inventory and model licence register underpin every deployment.' },
+  { k: 'API-first integration', d: 'Documented, standardised interfaces to legacy and modern enterprise systems.' },
+  { k: 'Human oversight', d: 'Escalation and review where full autonomy is inappropriate or unsafe.' },
+];
+---
+<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Trusted & Open AI Infrastructure', description, '/ai-infrastructure', ['AI infrastructure', 'Trusted AI', 'Open Source AI', 'AI agents']), definedTerm('Trusted & Open AI Infrastructure', def, '/ai-infrastructure')]}>
+<PageHero badge="Layer 2 · Trusted & Open AI Infrastructure" title="AI Infrastructure: the digital intelligence layer" {crumbs}
+  lead="DNY combines technical evaluation, local integration, managed infrastructure and ongoing operations — so organisations can adopt suitable AI without assembling and governing the entire stack themselves. The same infrastructure powers DNY’s physical intelligence layer and ventures."
+  primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }}
+  secondary={{ label: 'Developer enquiry', href: '/contact?type=developer' }}>
+  <Definition term="Trusted & Open AI Infrastructure" def={def} />
+</PageHero>
+
+<section class="section" aria-labelledby="mod-h">
+  <div class="container">
+    <SectionHead kicker="Six Modules" id="mod-h" title="What the infrastructure is made of"
+      lead="Each module is model-neutral, licence-aware and auditable, and each has its own page with definitions, use cases and boundaries." />
+    <div class="tiles t3 stagger reveal">
+      {INFRA_MODULES.map((m) => (
+        <a href={m.href} class="tile"><span class="t-k">Module {m.n}</span><h3>{m.name}</h3><p>{m.line}</p><span class="project-link">Explore <Arrow /></span></a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="two-h">
+  <div class="container">
+    <SectionHead kicker="Two Principles" id="two-h" title="Trusted by design. Open by design." />
+    <div class="grid-2 stagger reveal">
+      <div class="big-panel">
+        <span class="k">Principle</span>
+        <h3>Trusted AI</h3>
+        <p>Data sources, versions, permissions and model provenance are verifiable and auditable — the foundation for trusted retrieval, reasoning, automation and physical AI.</p>
+        <a href="/trusted-ai" class="project-link">Explore Trusted AI <Arrow /></a>
+      </div>
+      <div class="big-panel">
+        <span class="k">Route</span>
+        <h3>Open Source AI</h3>
+        <p>Selected open-source and open-weight models, clearly distinguished from source-available systems, with investment concentrated on deployment, integration, governance and support.</p>
+        <a href="/open-source-ai" class="project-link">Explore Open Source AI <Arrow /></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="tr-h">
+  <div class="container">
+    <SectionHead kicker="Trust Model" id="tr-h" title="Provenance, identity, permission, audit" lead="One trust model for data, models, agents and devices." />
+    <TrustDiagram />
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="pr-h">
+  <div class="container">
+    <SectionHead kicker="Design Principles" id="pr-h" title="How the infrastructure is built" />
+    <div class="tiles t3 stagger reveal">
+      {principles.map((p) => <div class="tile cyan"><span class="t-k">Principle</span><h3>{p.k}</h3><p>{p.d}</p></div>)}
+    </div>
+    <div class="grid-3 mt-28 stagger reveal">
+      <div class="card"><div class="card-num">For customers</div><h3>Adopt without assembling the whole stack</h3><p>One Australian partner across model evaluation, integration, hosting, governance and support.</p></div>
+      <div class="card"><div class="card-num">For technology providers</div><h3>A structured path into Australia</h3><p>A route for suitable open AI and hardware into Australian enterprise and industry environments.</p></div>
+      <div class="card"><div class="card-num">For Australian partners</div><h3>Local innovation, global reach</h3><p>Local capability combined with international distribution and ecosystem relationships.</p></div>
+    </div>
+    <div class="mt-28 reveal"><a href="/ai-infrastructure/deployment#operating-model" class="project-link">See the operating model: evaluate → integrate → deploy → govern → operate <Arrow /></a></div>
+  </div>
+</section>
+
+<FAQ groups={['trusted', 'open', 'agents']} title="AI Infrastructure — common questions" />
+
+<CTABand title="Build on accountable AI infrastructure"
+  primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }}
+  secondary={{ label: 'Developer enquiry', href: '/contact?type=developer' }} />
+</Base>

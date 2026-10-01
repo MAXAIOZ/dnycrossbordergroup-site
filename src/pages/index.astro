@@ -1,0 +1,190 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import GroupStack from '../components/GroupStack.astro';
+import PIFlow from '../components/PIFlow.astro';
+import VentureCard from '../components/VentureCard.astro';
+import CTABand from '../components/CTABand.astro';
+import FAQ from '../components/FAQ.astro';
+import Arrow from '../components/Arrow.astro';
+import { INDUSTRIES } from '../data/industries';
+import { VENTURES } from '../data/ventures';
+
+const featured = VENTURES.filter((v) => v.featured).concat(VENTURES.filter((v) => v.slug === 'robotic-logistics-warehouse'));
+const physical = [
+  { k: 'Air Intelligence', name: 'Commercial Drones', d: 'Aerial inspection, mapping, sensing and industrial data capture.', href: '/physical-intelligence/drones' },
+  { k: 'Embodied Intelligence', name: 'Embodied Robotics', d: 'Robots that perceive, reason and act in industrial and service settings.', href: '/physical-intelligence/robotics' },
+  { k: 'Edge Intelligence', name: 'Edge AI & Computer Vision', d: 'Local inference, vision and control close to the physical asset.', href: '/physical-intelligence/edge-ai' },
+  { k: 'Industrial Intelligence', name: 'Warehouse & Industrial Automation', d: 'Robotics, vision and digital twins integrated with WMS and ERP.', href: '/industries/logistics-warehousing' },
+  { k: 'Autonomous Operations', name: 'Autonomous Multi-device Operations', d: 'AI agents coordinating drones, robots and systems under governed workflows.', href: '/physical-intelligence/autonomous-systems' },
+];
+---
+<Base
+  title="DNY Cross Border Group | Trusted Open AI, Connected to the Physical World"
+  description="DNY Cross Border Group is an Australia-led technology and commercialisation group building trusted, open AI infrastructure and connecting it with drones, robotics, edge systems and real industry."
+>
+<section id="home" class="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="hero-badge" aria-hidden="true"><span class="hero-badge-dot"></span>Australia-led &middot; Trusted &middot; Open &middot; Physical</div>
+        <h1 id="hero-heading">Trusted Open AI.<br><em class="grad-text">Connected to the Physical World.</em></h1>
+        <p class="hero-subtitle">DNY Cross Border Group builds Australia-led AI infrastructure that connects trusted data, open models and AI agents with drones, robotics, edge systems and real industry.</p>
+        <div class="hero-actions">
+          <a href="/ai-infrastructure" class="btn btn-primary">Explore the Infrastructure</a>
+          <a href="/physical-intelligence" class="btn btn-secondary">Explore Physical Intelligence</a>
+        </div>
+        <p class="hero-links"><a href="/contact?type=partnership">Partner with DNY <Arrow /></a><a href="/contact?type=investment">Request the Group Brief <Arrow /></a></p>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-num" data-count="5">5</div><div class="stat-label">Layer group architecture</div></div>
+          <div class="stat-item"><div class="stat-num">Multi</div><div class="stat-label">Model, cloud &amp; hardware</div></div>
+          <div class="stat-item"><div class="stat-num">AU</div><div class="stat-label">Led from Sydney</div></div>
+          <div class="stat-item"><div class="stat-num">ANZ</div><div class="stat-label">OPC + FDE network</div></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="globe-caption">
+          <span class="globe-tag"><span class="globe-dot"></span>Trusted &middot; Open &middot; Physical</span>
+          <span class="globe-hq">Sydney &middot; Australia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    {[0, 1].map(() => (
+      <>
+        <span class="ticker-item"><span class="ticker-dot"></span>Trusted <b>Data Space</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Open <b>Models</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>AI <b>Agents</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Physical <b>Intelligence</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Commercial <b>Drones</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Embodied <b>Robotics</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Edge <b>AI</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>OPC + <b>FDE</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Built <b>Environment</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Logistics &amp; <b>Warehousing</b></span>
+        <span class="ticker-item"><span class="ticker-dot"></span>Identity &amp; <b>Audit</b></span>
+      </>
+    ))}
+  </div>
+</div>
+
+<!-- 2 · The DNY Stack -->
+<section class="section" id="architecture" aria-labelledby="stack-h">
+  <div class="container">
+    <SectionHead kicker="The DNY Stack" id="stack-h" title="One group, five layers"
+      lead="DNY is not a collection of unrelated projects. Each layer builds on the one below it — from a verifiable trust foundation to independent ventures — so every drone, robot, agent and industry solution inherits the same data governance, identity and audit." />
+    <GroupStack />
+  </div>
+</section>
+
+<!-- 3 · From Digital AI to Physical Intelligence -->
+<section class="section dark" aria-labelledby="d2p-h">
+  <div class="container">
+    <SectionHead kicker="Why DNY Is Different" id="d2p-h" title="From digital AI to physical intelligence"
+      lead="The next stage of AI is not only generating content. It is sensing the real world, deciding and acting — and proving that each step was authorised." />
+    <div class="grid-3 stagger reveal">
+      <div class="card"><div class="card-num">Software AI</div><h3>Understands and decides</h3><p>Open models and AI agents interpret data, plan tasks and make decisions within defined permissions.</p></div>
+      <div class="card"><div class="card-num">Physical Intelligence</div><h3>Perceives and acts</h3><p>Drones, robots, edge devices and vision systems sense the environment and carry out work in it.</p></div>
+      <div class="card"><div class="card-num">Trusted AI</div><h3>Proves it</h3><p>Provenance, identity, permissions and audit show which data, model, agent and device did what — and on whose authority.</p></div>
+    </div>
+    <div class="mt-28"><PIFlow /></div>
+  </div>
+</section>
+
+<!-- 4 · Physical Intelligence -->
+<section class="section" aria-labelledby="pi-h">
+  <div class="container">
+    <SectionHead kicker="Open Physical Intelligence Layer" id="pi-h" title="AI that reaches real assets"
+      lead="One vendor-neutral connection layer links trusted AI infrastructure with the devices that work in the physical economy." />
+    <div class="tiles t5 stagger reveal">
+      {physical.map((p) => (
+        <a href={p.href} class="tile"><span class="t-k">{p.k}</span><h3>{p.name}</h3><p>{p.d}</p><span class="project-link">Explore <Arrow /></span></a>
+      ))}
+    </div>
+    <div class="mt-28 reveal"><a href="/physical-intelligence" class="btn btn-secondary">Physical Intelligence overview</a></div>
+  </div>
+</section>
+
+<!-- 5 · OPC + FDE -->
+<section class="section desk" aria-labelledby="opc-h">
+  <div class="container">
+    <div class="desk-layout">
+      <div class="reveal-l">
+        <span class="kicker">OPC + FDE Network</span>
+        <h2 id="opc-h">Turning infrastructure into <span class="grad-text">real industry solutions</span></h2>
+        <p class="desk-lead">Infrastructure only creates value when it is deployed. The OPC + FDE network is how DNY gets from proof of concept to production.</p>
+        <div class="desk-body">
+          <p><strong>OPC — Office + AI Agents</strong> — local business nodes that combine workspace, AI agent capability and market connections. Not a conventional co-working space.</p>
+          <p><strong>FDE — Forward Deployed Entrepreneurs</strong> — people who work directly on real customer problems, pairing industry knowledge with DNY infrastructure to deliver deployed solutions.</p>
+        </div>
+        <div class="hero-actions">
+          <a href="/opc-fde" class="btn btn-primary">Explore OPC + FDE</a>
+          <a href="/contact?type=partnership" class="btn btn-secondary">Join the network</a>
+        </div>
+      </div>
+      <div class="reveal-r">
+        <div class="desk-vis">
+          <div class="desk-node"><div class="dn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21V9l9-6 9 6v12M9 21v-6h6v6"/></svg></div><div><h3 class="h4">OPC node</h3><p>Office + AI Agents · Sydney first</p></div></div>
+          <div class="desk-flow">&darr;</div>
+          <div class="desk-node cyan"><div class="dn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><div><h3 class="h4">FDE delivery</h3><p>Customer problem → pilot → deployment</p></div></div>
+          <div class="desk-flow">&darr;</div>
+          <div class="desk-node"><div class="dn-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><div><h3 class="h4">Industry outcome</h3><p>Deployed solution or new venture</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Industry Deployment -->
+<section class="section dark" aria-labelledby="ind-h">
+  <div class="container">
+    <SectionHead kicker="Industry Deployment" id="ind-h" title="Where customers use the infrastructure"
+      lead="We start where Australian AI adoption is lowest and the value of trusted, deployable AI is highest." />
+    <div class="tiles t5 stagger reveal">
+      {INDUSTRIES.map((ind) => (
+        <a href={ind.href} class="tile cyan"><span class="t-k">{ind.future ? 'Future expansion' : 'Industry'}</span><h3>{ind.name}</h3><p>{ind.line}</p></a>
+      ))}
+    </div>
+    <div class="mt-28 reveal"><a href="/industries" class="project-link">See the industry × capability matrix <Arrow /></a></div>
+  </div>
+</section>
+
+<!-- 7 · Applied Ventures -->
+<section class="section" aria-labelledby="ven-h">
+  <div class="container">
+    <SectionHead kicker="Applied Ventures" id="ven-h" title="Focused ventures on shared infrastructure"
+      lead="Each venture keeps its own customers and business model while reusing the group's trusted AI and physical intelligence infrastructure." />
+    <div class="vgrid reveal">
+      {featured.map((v) => <VentureCard v={v} />)}
+    </div>
+    <div class="mt-28 reveal"><a href="/ventures" class="btn btn-secondary">View all {VENTURES.length} ventures</a></div>
+  </div>
+</section>
+
+<!-- Evidence -->
+<section class="section dark" aria-labelledby="au-h">
+  <div class="container">
+    <SectionHead kicker="Why Now, Why Australia" id="au-h" title="A real adoption gap in the physical economy" />
+    <div class="thesis-band reveal">
+      <div class="thesis-stat"><div class="ts-num">12%</div><div class="ts-label">of Australian businesses used AI in 2024&ndash;25, up from 1% in 2021&ndash;22 (ABS)</div></div>
+      <div class="thesis-stat"><div class="ts-num cyan">89%</div><div class="ts-label">of organisations use some open source in their AI stack; 63% use an open model (Linux Foundation, 2025)</div></div>
+      <div class="thesis-stat"><div class="ts-num">A$22b</div><div class="ts-label">annual enterprise procurement behind the Buy Australian AI Partnership (DISR, 2026)</div></div>
+      <div class="thesis-stat"><div class="ts-num cyan">1%</div><div class="ts-label">reported AI use in Transport, Postal &amp; Warehousing &mdash; the physical-economy gap we target (ABS)</div></div>
+    </div>
+    <p class="src-note reveal" style="margin-top:18px;max-width:820px;">Sources: Australian Bureau of Statistics, <em>Characteristics of Australian Business 2024&ndash;25</em>; Linux Foundation Research, 2025; Australian Department of Industry, Science and Resources / National AI Centre, 2025&ndash;2026. Figures are indicative and record whether a business reported AI use, not intensity of use.</p>
+  </div>
+</section>
+
+<FAQ groups={['group']} title="DNY at a glance" />
+
+<CTABand kicker="Work With DNY" title="Partner with an accountable Australian AI group"
+  lead="Enterprise deployment, technology or industry partnership, or the group brief for investors — tell us what you need and we will route it to the right team."
+  primary={{ label: 'Partner with DNY', href: '/contact?type=partnership' }}
+  secondary={{ label: 'Request the Group Brief', href: '/contact?type=investment' }} />
+</Base>

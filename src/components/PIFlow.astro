@@ -1,0 +1,14 @@
+---
+import { PI_LOOP } from '../data/architecture';
+---
+<div class="piflow reveal" role="list" aria-label="Physical AI capability loop: Perceive, Understand, Decide, Act, Verify">
+  {PI_LOOP.map((s, i) => (
+    <div class="pf-step" role="listitem" style={`--d:${i * 0.6}s`}>
+      <span class="pf-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+      <h3 class="pf-k">{s.k}</h3>
+      <p class="pf-d">{s.d}</p>
+      <span class="pf-t">{s.t}</span>
+    </div>
+  ))}
+  <div class="pf-loop" aria-hidden="true"><span>Verified outcomes feed back into trusted data</span></div>
+</div>

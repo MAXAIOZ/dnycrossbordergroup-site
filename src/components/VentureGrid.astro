@@ -1,0 +1,35 @@
+---
+import { VENTURES, CATEGORIES, type Venture } from '../data/ventures';
+import VentureCard from './VentureCard.astro';
+export interface Props { items?: Venture[]; filters?: boolean }
+const { items = VENTURES, filters = true } = Astro.props;
+const uniq = (a: string[]) => [...new Set(a)].sort();
+const industries = uniq(items.flatMap((v) => v.industries));
+const tech = uniq(items.flatMap((v) => v.tech));
+const statuses = uniq(items.map((v) => v.status));
+const cats = CATEGORIES.filter((c) => items.some((v) => v.category === c));
+---
+<div class="vgrid-wrap" data-vfilter>
+  {filters && (
+    <form class="vfilters" aria-label="Filter ventures" onsubmit="return false;">
+      <label>Category
+        <select name="category"><option value="">All categories</option>{cats.map((c) => <option>{c}</option>)}</select>
+      </label>
+      <label>Industry
+        <select name="industries"><option value="">All industries</option>{industries.map((c) => <option>{c}</option>)}</select>
+      </label>
+      <label>Technology
+        <select name="tech"><option value="">All technologies</option>{tech.map((c) => <option>{c}</option>)}</select>
+      </label>
+      <label>Status
+        <select name="status"><option value="">All statuses</option>{statuses.map((c) => <option>{c}</option>)}</select>
+      </label>
+      <button type="reset" class="vf-reset">Reset</button>
+      <p class="vf-count" aria-live="polite"><span data-vcount>{items.length}</span> of {items.length} ventures</p>
+    </form>
+  )}
+  <div class="vgrid">
+    {items.map((v) => <VentureCard v={v} />)}
+  </div>
+  <p class="vf-empty" hidden>No ventures match these filters.</p>
+</div>

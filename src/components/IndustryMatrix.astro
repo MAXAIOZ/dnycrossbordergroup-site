@@ -1,0 +1,38 @@
+---
+import { INDUSTRIES, CAPABILITIES } from '../data/industries';
+---
+<div class="imatrix reveal">
+  <div class="imatrix-scroll" tabindex="0" role="region" aria-label="Industry by capability matrix">
+    <table>
+      <caption class="sr-only">Which DNY capabilities apply in each industry. Core means central to the solution; supporting means used where relevant.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Industry</th>
+          {CAPABILITIES.map((c) => <th scope="col"><a href={c.href}>{c.label}</a></th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {INDUSTRIES.map((ind) => (
+          <tr class={ind.future ? 'future' : ''}>
+            <th scope="row"><a href={ind.href}>{ind.name}</a>{ind.future && <span class="fut">Future expansion</span>}</th>
+            {CAPABILITIES.map((c) => {
+              const v = ind.caps[c.key];
+              return <td>{v === 'core' ? <span class="dot core" title="Core">Core</span> : v === 'supporting' ? <span class="dot sup" title="Supporting">Supporting</span> : <span class="dot none">—</span>}</td>;
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <ul class="imatrix-mobile" aria-hidden="true">
+    {INDUSTRIES.map((ind) => (
+      <li>
+        <a href={ind.href} class="im-name">{ind.name}{ind.future && <span class="fut">Future</span>}</a>
+        <div class="im-caps">
+          {CAPABILITIES.filter((c) => ind.caps[c.key]).map((c) => <span class={`pill ${ind.caps[c.key] === 'core' ? 'pill-core' : ''}`}>{c.label}</span>)}
+        </div>
+      </li>
+    ))}
+  </ul>
+  <p class="im-legend"><span class="dot core">Core</span> central to the solution &nbsp; <span class="dot sup">Supporting</span> used where relevant</p>
+</div>

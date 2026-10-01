@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Page not found" description="The page you are looking for has moved or does not exist." noindex>
+<PageHero badge="404" title="This page has moved" lead="The DNY website has been reorganised around the group architecture. Try one of the main sections below."
+  primary={{ label: 'Go to the homepage', href: '/' }} secondary={{ label: 'Contact us', href: '/contact' }}>
+  <p class="hero-links"><a href="/ai-infrastructure">AI Infrastructure</a><a href="/physical-intelligence">Physical Intelligence</a><a href="/opc-fde">OPC + FDE</a><a href="/industries">Industries</a><a href="/ventures">Ventures</a></p>
+</PageHero>
+</Base>

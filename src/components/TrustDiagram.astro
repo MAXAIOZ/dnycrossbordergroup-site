@@ -1,0 +1,15 @@
+---
+import { TRUST_PILLARS } from '../data/architecture';
+---
+<figure class="trustd reveal">
+  <div class="td-core" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    <span>Verified action</span>
+  </div>
+  <ol class="td-pillars">
+    {TRUST_PILLARS.map((p, i) => (
+      <li style={`--i:${i}`}><span class="td-n">{i + 1}</span><h3>{p.k}</h3><p>{p.d}</p></li>
+    ))}
+  </ol>
+  <figcaption>Every data input, model call, agent decision and device action is checked against provenance, identity and permission, and written to an audit record.</figcaption>
+</figure>

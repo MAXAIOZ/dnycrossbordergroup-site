@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import VentureCard from '../../components/VentureCard.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import CTABand from '../../components/CTABand.astro';
+import { VENTURES, STATUS_DEFS, type Venture } from '../../data/ventures';
+import meta from '../../legacy/meta.json';
+
+const bodies = import.meta.glob('../../legacy/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+export function getStaticPaths() {
+  return VENTURES.map((v) => ({ params: { slug: v.slug }, props: { v } }));
+}
+const { v } = Astro.props as { v: Venture };
+const m = (meta as Record<string, { h1?: string; lead?: string; description?: string }>)[v.slug] ?? {};
+const body = bodies[`../../legacy/${v.slug}.html`] ?? '';
+const crumbs = [{ name: 'Ventures', href: '/ventures' }, { name: v.name, href: `/ventures/${v.slug}` }];
+const description = `${v.name} — ${v.short} Status: ${v.status}.`;
+const related = VENTURES.filter((x) => x.slug !== v.slug && (x.category === v.category || x.industries.some((i) => v.industries.includes(i)))).slice(0, 3);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: v.name,
+  description: v.short,
+  about: { '@type': 'Thing', name: v.name, description: v.short },
+  isPartOf: { '@id': 'https://dnycrossbordergroup.com/#website' },
+  publisher: { '@id': 'https://dnycrossbordergroup.com/#organization' },
+  keywords: [...v.capabilities, ...v.tech, ...v.industries].join(', '),
+};
+---
+<Base title={v.name} {description} breadcrumbs={crumbs} schema={[schema]}>
+<PageHero badge={`Venture · ${v.category}`} title={v.name} lead={m.lead || v.short} {crumbs}
+  primary={{ label: 'Express interest', href: '/contact?type=partnership' }}
+  secondary={{ label: 'All ventures', href: '/ventures' }}>
+  <dl class="vfacts">
+    <div class="vfact"><dt>Status</dt><dd><StatusBadge status={v.status} /><span class="sr-only"> — {STATUS_DEFS[v.status]}</span></dd></div>
+    <div class="vfact"><dt>Layer</dt><dd>{v.layer}</dd></div>
+    <div class="vfact"><dt>Industry</dt><dd>{v.industries.join(', ')}</dd></div>
+    <div class="vfact"><dt>Core capabilities</dt><dd>{v.capabilities.join(' · ')}</dd></div>
+  </dl>
+  <p class="vcard-rel" style="margin-top:16px;max-width:860px;"><span>Relationship to DNY infrastructure:</span> {v.relation}</p>
+</PageHero>
+
+<Fragment set:html={body} />
+
+{related.length > 0 && (
+  <section class="section dark" aria-labelledby="rel-h">
+    <div class="container">
+      <SectionHead kicker="Related" id="rel-h" title="Related ventures" />
+      <div class="vgrid reveal">{related.map((r) => <VentureCard v={r} />)}</div>
+    </div>
+  </section>
+)}
+
+<CTABand title={`Interested in ${v.name}?`} lead="Partners, customers and investors can request a venture briefing. Every enquiry is routed by type."
+  primary={{ label: 'Express interest', href: '/contact?type=partnership' }}
+  secondary={{ label: 'Investor briefing', href: '/contact?type=investment' }} />
+</Base>

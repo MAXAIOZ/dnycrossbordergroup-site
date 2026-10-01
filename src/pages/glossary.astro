@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { GLOSSARY } from '../data/glossary';
+import { SITE } from '../data/site';
+const crumbs = [{ name: 'Glossary', href: '/glossary' }];
+const set = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTermSet',
+  name: 'DNY glossary of trusted AI and physical intelligence terms',
+  url: `${SITE.url}/glossary`,
+  hasDefinedTerm: GLOSSARY.map((g) => ({ '@type': 'DefinedTerm', name: g.term, description: g.def, url: new URL(g.href, SITE.url).href })),
+};
+---
+<Base title="Glossary" description="Plain-language definitions of trusted AI, open source AI, physical AI, AI agents, OPC, FDE, commercial drones, embodied AI, edge AI and related terms used by DNY Cross Border Group." breadcrumbs={crumbs} schema={[set]}>
+<PageHero badge="Glossary" title="Glossary: the terms we use, in plain language" {crumbs}
+  lead="Short definitions of the technical terms used across this website. Each links to the page where the topic is explained in full." />
+<section class="section" aria-label="Glossary terms">
+  <div class="container">
+    <dl class="glossary">
+      {GLOSSARY.map((g) => <div id={g.term.toLowerCase().replace(/[^a-z0-9]+/g, '-')}><dt>{g.term}</dt><dd>{g.def} <a href={g.href}>Read more</a></dd></div>)}
+    </dl>
+  </div>
+</section>
+</Base>

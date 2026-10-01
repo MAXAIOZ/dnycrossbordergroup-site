@@ -1,0 +1,7 @@
+---
+import { STATUS_DEFS, type Status } from '../data/ventures';
+export interface Props { status: Status }
+const { status } = Astro.props;
+const cls = status.toLowerCase().replace(/\s+/g, '-');
+---
+<span class={`status-badge s-${cls}`} title={STATUS_DEFS[status]}><span class="sb-dot" aria-hidden="true"></span>{status}</span>

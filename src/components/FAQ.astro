@@ -1,0 +1,29 @@
+---
+import { FAQS } from '../data/faqs';
+export interface Props { groups: string[]; title?: string; dark?: boolean; schema?: boolean }
+const { groups, title = 'Frequently asked questions', dark = false, schema = true } = Astro.props;
+const items = groups.flatMap((g) => FAQS[g].items);
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
+};
+const id = 'faq-' + groups.join('-');
+---
+<section class={`section${dark ? ' dark' : ''}`} aria-labelledby={id}>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2 id={id}>{title}</h2>
+    </div>
+    <div class="faq-list reveal">
+      {items.map((i) => (
+        <details class="faq-item">
+          <summary><h3>{i.q}</h3><span class="faq-ico" aria-hidden="true"></span></summary>
+          <p>{i.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+</section>

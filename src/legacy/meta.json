@@ -1,0 +1,97 @@
+{
+ "robotics-experience-centre": {
+  "title": "Robotics Experience & Innovation Centre",
+  "description": "A proposed open-source AI robotics experience and innovation centre — demonstration, testing, B2B, education and Australian market entry for advanced global robotics and AI hardware.",
+  "h1": "Open-Source AI Robotics Experience & Innovation Centre",
+  "lead": "A physical showcase, testing ground and Australian market-entry environment for advanced global robotics and AI hardware — where open AI software meets real robots, in real scenarios, in front of real customers."
+ },
+ "robotic-logistics-warehouse": {
+  "title": "AI Robotic Logistics Warehouse",
+  "description": "A closer look at DNY's AI Robotic Logistics Warehouse — a robotics-driven fulfilment warehouse for cross-border small-goods e-commerce, built for industry-leading pick accuracy and turnaround.",
+  "h1": "AI Robotic Logistics Warehouse",
+  "lead": "A smart, robotics-driven fulfilment warehouse for cross-border small-goods e-commerce — built to hit industry-leading pick accuracy and turnaround speed."
+ },
+ "ai-trade-services": {
+  "title": "AI Trade Services Platform",
+  "description": "A closer look at DNY's AI International Trade Digital Services Platform — AI agents for content, quoting, customer service, translation and trade data, built for import and export trade across Asia-Pacific, ASEAN and Oceania.",
+  "h1": "AI International Trade Digital Services Platform",
+  "lead": "An Australia-based AI services platform built for import and export trade — giving trading enterprises AI agents for content, quoting, customer service, translation and trade data, so they can move faster across Asia-Pacific, ASEAN, Oceania and beyond."
+ },
+ "ai-media-hub": {
+  "title": "DNY AI Media Hub",
+  "description": "A closer look at DNY AI Media Hub — AI-driven media operations for cross-border sellers, spanning product video, social content, digital humans and multilingual production.",
+  "h1": "DNY AI Media Hub",
+  "lead": "AI-driven media operations for cross-border sellers — product video, social content, digital humans and multilingual production, run as its own dedicated platform rather than a generic marketing add-on."
+ },
+ "australia-ai-oracle": {
+  "title": "Australia AI Oracle",
+  "description": "A closer look at Australia AI Oracle — a not-for-profit, DAO-governed data platform giving AI agents verified, traceable access to Australian pricing and index data.",
+  "h1": "Australia AI Oracle",
+  "lead": "A trusted, rights-verified data platform giving AI agents and smart systems reliable access to Australian pricing and index data — with every figure traceable back to its source and built to be called directly, not scraped or guessed at."
+ },
+ "ai-agent-marketplace": {
+  "title": "Australia AI Agent Marketplace",
+  "description": "A closer look at the Australia AI Agent Marketplace — an industry-specialised marketplace for AI agents built for Australian healthcare, legal, finance, mining, agriculture and education.",
+  "h1": "Australia AI Agent Marketplace",
+  "lead": "An industry-specialised marketplace for AI agents — built for Australian healthcare, legal, finance, mining, agriculture and education, where enterprises, SMEs and government can find AI agents suited to local rules and workflows."
+ },
+ "building-supply": {
+  "title": "DNY Building Supply",
+  "description": "A closer look at DNY Building Supply — a live building-materials and supply-chain venture with a 10,000 sqm showroom and warehouse in Sydney, connecting suppliers, builders and trade partners.",
+  "h1": "DNY Building Supply",
+  "lead": "A live building-materials and supply-chain venture connecting suppliers, manufacturers, builders and trade partners — with an actual showroom and warehouse on the ground in Sydney, not just a catalogue site."
+ },
+ "facadia": {
+  "title": "Facadia — AI Materials Valuation",
+  "description": "A closer look at Facadia — an AI-powered residential facade intelligence app that turns a single photo into a materials report and budget estimate.",
+  "h1": "Facadia — AI Materials Valuation",
+  "lead": "AI-powered residential facade intelligence — snap a photo of a home's exterior and get back a materials report and a budget estimate, instead of a manual quantity take-off."
+ },
+ "hr-hub": {
+  "title": "DNY HR Hub",
+  "description": "A closer look at DNY HR Hub — a live people-focused venture connecting entrepreneurs, professionals and business delegations through exchange programmes, industry visits and professional networking.",
+  "h1": "DNY HR Hub",
+  "lead": "A people-focused venture connecting entrepreneurs, professionals and business delegations with real cross-border projects — through exchange, industry visits and professional networking, not recruitment or migration services."
+ },
+ "livestock-data-rights": {
+  "title": "Livestock Data Rights Platform",
+  "description": "A closer look at DNY's Livestock Data Rights Platform — digital notary infrastructure giving Australia's livestock export industries verifiable proof of identity, health and provenance.",
+  "h1": "Livestock Data Rights Platform",
+  "lead": "Digital notary infrastructure for Australia's livestock export industries — turning records that already exist into tamper-proof, shareable credentials that buyers, banks and regulators can trust."
+ },
+ "trusted-ai": {
+  "title": "Trusted AI",
+  "description": "DNY's Trusted AI layer — a Trusted Data Space and verifiable infrastructure that makes data sources, versions, permissions and model provenance verifiable and auditable.",
+  "badge": "Trusted AI · The Principle",
+  "h1": "Trust is the foundation, not a feature",
+  "lead": "Access to a model is not the same as safe deployment. DNY builds a Trusted Data Space and verifiable infrastructure so that data sources, versions, permissions and model provenance are verifiable, traceable and auditable — the base for trusted retrieval, reasoning and industry automation."
+ },
+ "open-source-ai": {
+  "title": "Open Source",
+  "description": "DNY's open-source strategy — vendor-neutral, multi-model, multi-cloud deployment of open-source and open-weight AI, with clear licence governance and an open commercial model.",
+  "badge": "Open Source · The Route",
+  "h1": "Open technology, commercial infrastructure",
+  "lead": "Open source is already deeply embedded in enterprise technology. DNY does not compete by owning every underlying model — it builds the commercial operating layer around open AI, concentrating investment on deployment tooling, integrations, governance and support."
+ },
+ "investors": {
+  "title": "Investors & Partners",
+  "description": "DNY's investment proposition — an Australian commercialisation layer for open AI, with recurring enterprise revenue and industrial differentiation. General information only; not an offer.",
+  "badge": "Investors & Partners",
+  "h1": "An Australia-led trusted AI and physical intelligence group",
+  "lead": "DNY sits between global open AI technology and Australian industry — creating value through trusted infrastructure, a physical intelligence layer, a delivery network and focused ventures, with recurring revenue and industrial differentiation."
+ },
+ "careers": {
+  "title": "Careers",
+  "description": "Join DNY Cross Border Group — open roles in Sydney across AI solutions, ICT business analysis and technical support. Help build trusted, open AI for cross-border trade.",
+  "badge": "Careers",
+  "h1": "Build trusted, open AI with us",
+  "lead": "DNY Cross Border Group is a Sydney-based cross-border trade and technology group working across international trade, supply-chain operations and technology-enabled business solutions. We’re hiring across AI solutions, ICT business analysis and technical support to help deliver our digital transformation and AI projects."
+ },
+ "alliance": {
+  "title": "Open Source AI Alliance",
+  "description": "The proposed Australian Open Source AI Alliance — an independent, not-for-profit ecosystem for open AI research, developers and industry, kept separate from the commercial platform.",
+  "badge": "Ecosystem",
+  "h1": "Australian Open Source AI Alliance",
+  "lead": "A proposed independent, not-for-profit ecosystem organisation focused on open AI collaboration, research, developer engagement, responsible governance, industry adoption and global partnerships — kept legally and financially separate from the commercial platform."
+ }
+}

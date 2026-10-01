@@ -1,0 +1,36 @@
+---
+import { STACK } from '../data/architecture';
+import Arrow from './Arrow.astro';
+export interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<div class={`gstack${compact ? ' compact' : ''}`} data-gstack>
+  <ol class="gstack-layers" aria-label="DNY Group architecture, top to bottom">
+    {STACK.map((l, i) => (
+      <li class={`gl gl-${l.n}`} style={`--i:${i}`}>
+        <a href={l.href} class="gl-link" data-layer={l.n} aria-describedby={`gl-sum-${l.n}`}>
+          <span class="gl-idx" aria-hidden="true">{l.n}</span>
+          <span class="gl-main">
+            <span class="gl-name">{l.name}</span>
+            <span class="gl-role">{l.role}</span>
+            <span class="gl-sum" id={`gl-sum-${l.n}`}>{l.summary}</span>
+          </span>
+          <span class="gl-go" aria-hidden="true"><Arrow /></span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  {!compact && (
+    <div class="gstack-panel" aria-hidden="true">
+      {STACK.map((l) => (
+        <div class="gp" data-panel={l.n}>
+          <span class="gp-k">Layer {l.n}</span>
+          <h3>{l.name}</h3>
+          <p>{l.summary}</p>
+          <div class="gp-tags">{l.items.map((t) => <span class="pill">{t}</span>)}</div>
+          <span class="gp-hint">Select the layer to open its page</span>
+        </div>
+      ))}
+    </div>
+  )}
+</div>

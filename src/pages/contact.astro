@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE, ENQUIRY_TYPES } from '../data/site';
+import { VENTURES } from '../data/ventures';
+
+const title = 'Contact';
+const description = 'Contact DNY Cross Border Group in Sydney — enterprise, partnership, investment, developer and visit enquiries, each routed to the right team.';
+const crumbs = [{ name: 'Contact', href: '/contact' }];
+const interests = ['Group overview', 'Trusted AI & data', 'Open source AI', 'AI agents', 'Physical intelligence', 'Drones', 'Robotics', 'OPC + FDE network', 'Industry deployment', ...VENTURES.map((v) => `Venture: ${v.name}`)];
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact DNY Cross Border Group',
+  url: `${SITE.url}/contact`,
+  mainEntity: { '@id': `${SITE.url}/#organization` },
+};
+---
+<Base {title} {description} breadcrumbs={crumbs} schema={[contactSchema]}>
+<PageHero badge="Contact" title="Contact DNY Cross Border Group" {crumbs}
+  lead="Partnership, investment, enterprise deployment, developer access or a visit to Sydney — choose the type of enquiry and we will route it to the right team." />
+
+<section class="section" aria-labelledby="ct-h">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal-l">
+        <span class="kicker">Get in Touch</span>
+        <h2 id="ct-h" style="margin-bottom:24px;">Talk to the group</h2>
+        <div class="contact-detail">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="contact-text"><strong>Office</strong><span>{SITE.address.display}</span></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div class="contact-text"><strong>Email</strong><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></div>
+          <div class="contact-text"><strong>Network</strong><span>Sydney first · Auckland next · global technology partners</span></div>
+        </div>
+        <div class="sep-box" style="margin-top:24px;">
+          <h3 class="h4">Enquiry types</h3>
+          <p><strong>Enterprise</strong> — deploy AI or physical intelligence. <strong>Partnership</strong> — technology, hardware, channel or industry. <strong>Investment</strong> — group or venture briefings. <strong>Developer</strong> — APIs, integration and open source. <strong>Visit</strong> — meet the team in Sydney.</p>
+        </div>
+      </div>
+
+      <form id="enquiry-form" class="contact-form reveal-r" action={SITE.formEndpoint} method="POST" data-email={SITE.email} aria-label="Enquiry form" novalidate>
+        <div class="form-group"><label for="enquiry_type">Enquiry type</label>
+          <select id="enquiry_type" name="enquiry_type" required>
+            {ENQUIRY_TYPES.map((t) => <option value={t.value} selected={t.value === 'general'}>{t.label}</option>)}
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
+          <div class="form-group"><label for="organisation">Organisation</label><input id="organisation" name="organisation" type="text" placeholder="Company, fund or institution" autocomplete="organization"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required></div>
+          <div class="form-group"><label for="interest">Area of interest</label>
+            <select id="interest" name="interest">
+              <option value="">Select (optional)</option>
+              {interests.map((i) => <option>{i}</option>)}
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us what you are looking for." required></textarea></div>
+        <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-submit"><button type="submit" class="btn btn-primary">Send enquiry</button></div>
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
+        <p class="form-note">Your enquiry is delivered to {SITE.email} and tagged with its type and the page you came from. Information you send is treated as confidential and used only to respond to you.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</Base>

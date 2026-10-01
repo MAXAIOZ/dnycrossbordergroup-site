@@ -1,0 +1,30 @@
+---
+import type { Venture } from '../data/ventures';
+import StatusBadge from './StatusBadge.astro';
+import Arrow from './Arrow.astro';
+export interface Props { v: Venture; headingLevel?: 'h2' | 'h3' }
+const { v, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+---
+<article
+  class={`vcard${v.featured ? ' featured' : ''}`}
+  data-category={v.category}
+  data-industries={v.industries.join('|')}
+  data-status={v.status}
+  data-tech={v.tech.join('|')}
+>
+  <div class="vcard-top">
+    <span class="vcard-cat">{v.category}</span>
+    <StatusBadge status={v.status} />
+  </div>
+  <H class="vcard-name"><a href={`/ventures/${v.slug}`}>{v.name}</a></H>
+  <p class="vcard-short">{v.short}</p>
+  <dl class="vcard-meta">
+    <div><dt>Layer</dt><dd>{v.layer}</dd></div>
+    <div><dt>Industry</dt><dd>{v.industries.join(', ')}</dd></div>
+    <div><dt>Core capabilities</dt><dd>{v.capabilities.slice(0, 4).join(' · ')}</dd></div>
+  </dl>
+  <p class="vcard-rel"><span>On DNY infrastructure:</span> {v.relation}</p>
+  <div class="vcard-tags">{v.tech.map((t) => <span class="pill">{t}</span>)}</div>
+  <a href={`/ventures/${v.slug}`} class="project-link vcard-cta" aria-label={`View ${v.name}`}>View venture <Arrow /></a>
+</article>

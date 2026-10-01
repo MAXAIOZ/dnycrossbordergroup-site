@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import { FAQS } from '../data/faqs';
+const crumbs = [{ name: 'FAQ', href: '/faq' }];
+const groups = Object.keys(FAQS);
+---
+<Base title="FAQ" description="Answers to common questions about DNY Cross Border Group, Trusted AI, Open Source AI, Physical AI, AI agents, OPC + FDE, commercial drones and embodied robotics." breadcrumbs={crumbs}>
+<PageHero badge="FAQ" title="Frequently asked questions" {crumbs} lead="Straight answers about what DNY is, what it does, and where its boundaries are." />
+{groups.map((g, i) => <FAQ groups={[g]} title={FAQS[g].title} dark={i % 2 === 1} schema={false} />)}
+<CTABand title="Still have a question?" primary={{ label: 'Contact us', href: '/contact' }} secondary={{ label: 'Glossary', href: '/glossary' }} />
+</Base>

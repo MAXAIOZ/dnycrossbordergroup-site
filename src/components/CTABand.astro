@@ -1,0 +1,23 @@
+---
+export interface Props {
+  kicker?: string;
+  title: string;
+  lead?: string;
+  primary: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+const { kicker = 'Next Step', title, lead, primary, secondary } = Astro.props;
+---
+<section class="band" aria-label="Call to action">
+  <div class="container">
+    <div class="reveal">
+      <span class="kicker" style="justify-content:center;">{kicker}</span>
+      <h2>{title}</h2>
+      {lead && <p class="lead">{lead}</p>}
+      <div class="hero-actions" style="justify-content:center; margin-top:32px;">
+        <a href={primary.href} class="btn btn-primary">{primary.label}</a>
+        {secondary && <a href={secondary.href} class="btn btn-secondary">{secondary.label}</a>}
+      </div>
+    </div>
+  </div>
+</section>

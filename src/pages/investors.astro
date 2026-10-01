@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+import body from '../legacy/investors.html?raw';
+import meta from '../legacy/meta.json';
+const m = meta['investors'];
+const crumbs = [{ name: 'Investors & Partners', href: '/investors' }];
+---
+<Base title="Investors & Partners" description="General information for prospective investors and strategic partners in DNY Cross Border Group — the group architecture, business model, governance and what we do and do not claim." breadcrumbs={crumbs}>
+<PageHero badge="Investors & Partners" title={m.h1} lead={m.lead} {crumbs} primary={{ label: "Request the Group Brief", href: "/contact?type=investment" }} secondary={{ label: "Group Overview", href: "/about" }} />
+<Fragment set:html={body} />
+<CTABand title="Talk to DNY" primary={{ label: "Request the Group Brief", href: "/contact?type=investment" }} secondary={{ label: 'Contact', href: '/contact' }} />
+</Base>

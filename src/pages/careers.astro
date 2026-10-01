@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CTABand from '../components/CTABand.astro';
+import body from '../legacy/careers.html?raw';
+import meta from '../legacy/meta.json';
+const m = meta['careers'];
+const crumbs = [{ name: 'Careers', href: '/careers' }];
+---
+<Base title="Careers" description="Careers at DNY Cross Border Group in Sydney — open roles across AI solutions architecture, ICT business analysis and ICT support." breadcrumbs={crumbs}>
+<PageHero badge="Careers" title={m.h1} lead={m.lead} {crumbs} primary={{ label: "Email your application", href: "mailto:head@dnycrossbordergroup.com" }} secondary={{ label: "About the group", href: "/about" }} />
+<Fragment set:html={body} />
+<CTABand title="Talk to DNY" primary={{ label: "Email your application", href: "mailto:head@dnycrossbordergroup.com" }} secondary={{ label: 'Contact', href: '/contact' }} />
+</Base>

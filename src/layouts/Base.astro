@@ -1,0 +1,199 @@
+---
+import { SITE, NAV, CONTACT_NAV, FOOTER } from '../data/site';
+
+export interface Crumb { name: string; href: string }
+export interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: Crumb[];
+  schema?: Record<string, unknown>[];
+  ogImage?: string;
+  noindex?: boolean;
+  bodyClass?: string;
+}
+
+const { title, description, breadcrumbs = [], schema = [], noindex = false, bodyClass = '' } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const canonical = new URL(path === '/' ? '/' : path, SITE.url).href;
+const ogSlug = path === '/' ? 'home' : path.slice(1).replace(/\//g, '--');
+const ogImage = new URL(Astro.props.ogImage ?? `/og/${ogSlug}.jpg`, SITE.url).href;
+const fullTitle = path === '/' ? title : `${title} | ${SITE.name}`;
+
+const isActive = (href: string) => {
+  const base = href.split(/[?#]/)[0];
+  if (base === '/') return path === '/';
+  return path === base || path.startsWith(base + '/');
+};
+// Trusted AI and Open Source AI live at the root but belong to AI Infrastructure.
+const sectionActive = (href: string) =>
+  isActive(href) || (href === '/ai-infrastructure' && (path === '/trusted-ai' || path === '/open-source-ai'));
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: SITE.url,
+  logo: `${SITE.url}/assets/img/logo.svg`,
+  email: SITE.email,
+  description: SITE.positioning,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.locality,
+    addressRegion: SITE.address.region,
+    postalCode: SITE.address.postcode,
+    addressCountry: SITE.address.country,
+  },
+  areaServed: ['AU', 'NZ'],
+  knowsAbout: ['Trusted AI', 'Open Source AI', 'Physical AI', 'AI Agents', 'Commercial drones', 'Embodied AI', 'Edge AI', 'Trusted Data Space'],
+};
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  name: SITE.name,
+  url: SITE.url,
+  publisher: { '@id': `${SITE.url}/#organization` },
+  inLanguage: 'en-AU',
+};
+const crumbSchema = breadcrumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ name: 'Home', href: '/' }, ...breadcrumbs].map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.name,
+        item: new URL(c.href, SITE.url).href,
+      })),
+    }
+  : null;
+const allSchema = [orgSchema, siteSchema, ...(crumbSchema ? [crumbSchema] : []), ...schema];
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <script is:inline>document.documentElement.classList.add('js')</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'}>
+  <link rel="canonical" href={canonical}>
+  <meta property="og:site_name" content={SITE.name}>
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content={path === '/' ? 'website' : 'article'}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_AU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#04201A">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/group.css">
+  {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+</head>
+<body class={bodyClass}>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
+<div class="scanbar" aria-hidden="true"></div>
+<header class="site-header" role="banner">
+  <div class="container nav-wrap">
+    <a href="/" class="brand" aria-label={`${SITE.name} — Home`}>
+      <img src="/assets/img/logo.svg" alt={SITE.name} height="44">
+    </a>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
+      {NAV.map((item) => (
+        <div class={`nav-item${item.children ? ' has-sub' : ''}`}>
+          <a href={item.href} class={sectionActive(item.href) ? 'active' : undefined} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+          {item.children && (
+            <>
+              <button class="sub-toggle" type="button" aria-expanded="false" aria-label={`Show ${item.label} pages`}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="sub-menu">
+                {item.children.map((c) => (
+                  <a href={c.href} class="sub-link">
+                    <span class="sub-label">{c.label}</span>
+                    {c.desc && <span class="sub-desc">{c.desc}</span>}
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      ))}
+      <div class="nav-item has-sub nav-item-cta">
+        <a href={CONTACT_NAV.href} class="nav-cta">{CONTACT_NAV.label}</a>
+        <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show contact options">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="sub-menu sub-menu-right">
+          {CONTACT_NAV.children!.map((c) => (
+            <a href={c.href} class="sub-link"><span class="sub-label">{c.label}</span></a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <slot />
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/img/logo.svg" alt={SITE.name} height="40" loading="lazy">
+        <p style="margin-top:16px;">{SITE.positioning}</p>
+        <p style="margin-top:12px; font-size:13px; color:var(--text-muted);">
+          {SITE.address.display}<br>
+          <a href={`mailto:${SITE.email}`} style="color:var(--sand)">{SITE.email}</a>
+        </p>
+      </div>
+      {FOOTER.map((col) => (
+        <div class="footer-col">
+          <h4>{col.title}</h4>
+          <ul>{col.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+        </div>
+      ))}
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {SITE.name}. All rights reserved.</span>
+      <div class="footer-sub-links">
+        <a href="/contact">Contact</a>
+        <a href="/investors">Investors</a>
+        <a href="/careers">Careers</a>
+        <a href="/glossary">Glossary</a>
+      </div>
+    </div>
+    <div class="footer-disclaimer">
+      The information on this website is general in nature and is not an offer, solicitation, invitation or recommendation to invest or to acquire any securities or financial products, nor does it constitute legal, financial, tax or employment advice. Any potential securities offering would be made only in accordance with applicable Australian law, including the Corporations Act 2001 (Cth). Ventures, programmes and development directions described on this website are at the stage indicated by their status label and are subject to change; no product, contract, approval or funding is implied unless expressly stated. The terms "open", "open-source" and "open-weight" AI are used in their specific technical and legal senses, and model licences are reviewed before any commercial deployment. DNY Cross Border Group does not represent or warrant that the information is accurate, complete or current. You should seek independent professional advice suited to your circumstances before acting on any information on this website.
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/fx.js" defer></script>
+<script src="/assets/js/group.js" defer></script>
+{SITE.cfAnalyticsToken && (
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: SITE.cfAnalyticsToken })}></script>
+)}
+</body>
+</html>

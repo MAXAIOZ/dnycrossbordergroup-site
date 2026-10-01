@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Definition from '../components/Definition.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import Arrow from '../components/Arrow.astro';
+import { techArticle, definedTerm } from '../data/schema';
+
+const title = 'OPC + FDE Network';
+const description = 'The OPC + FDE network is DNY’s deployment, incubation and delivery network: OPC (Office + AI Agents) nodes and Forward Deployed Entrepreneurs that turn infrastructure into real industry solutions, starting in Sydney and expanding to Auckland.';
+const def = 'DNY’s deployment and delivery network, combining OPC nodes (Office + AI Agents) with Forward Deployed Entrepreneurs (FDE) to take AI and physical intelligence from proof of concept to real deployment.';
+const crumbs = [{ name: 'OPC + FDE', href: '/opc-fde' }];
+---
+<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('OPC + FDE: from infrastructure to real deployment', description, '/opc-fde', ['OPC', 'FDE', 'Incubation']), definedTerm('OPC + FDE Network', def, '/opc-fde')]}>
+<PageHero badge="Layer 4 · Deployment Network" title="OPC + FDE: from infrastructure to real deployment" {crumbs}
+  lead="Infrastructure only matters when it reaches real customers. The OPC + FDE network brings together talent, AI agents, industry experts, enterprise customers and incubation to turn DNY infrastructure into solutions that are actually deployed."
+  primary={{ label: 'Join the network', href: '/contact?type=partnership' }}
+  secondary={{ label: 'Visit us in Sydney', href: '/contact?type=visit' }}>
+  <Definition term="OPC + FDE Network" def={def} />
+</PageHero>
+
+<section class="section" aria-labelledby="two-h">
+  <div class="container">
+    <SectionHead kicker="Two Parts" id="two-h" title="Nodes and the people who deliver" />
+    <div class="grid-2 stagger reveal">
+      <div class="big-panel">
+        <span class="k">OPC = Office + AI Agents</span>
+        <h3>Local business nodes</h3>
+        <p>Each OPC node provides a local business base, collaboration space, AI agent capability and market connections — so small teams can deliver like larger organisations. It is not a conventional co-working space.</p>
+        <a href="/opc-fde/opc-network" class="project-link">OPC Network <Arrow /></a>
+      </div>
+      <div class="big-panel">
+        <span class="k">FDE = Forward Deployed Entrepreneur</span>
+        <h3>Delivery on real customer problems</h3>
+        <p>FDEs work directly with customers on real industry problems, pairing domain knowledge with DNY infrastructure to move from proof of concept to deployment — and, where a solution repeats, into a venture.</p>
+        <a href="/opc-fde/fde-model" class="project-link">FDE Model <Arrow /></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="flow-h">
+  <div class="container">
+    <SectionHead kicker="Role in the Group" id="flow-h" title="Where the network sits" lead="Between the infrastructure layers and the ventures — the bridge from capability to customer." />
+    <ol class="chain reveal" aria-label="Network flow">
+      <li><span>Trusted AI + Physical Intelligence</span></li><li><span>OPC node</span></li><li><span>FDE delivery</span></li><li><span>Pilot (PoC)</span></li><li><span>Deployment</span></li><li><span>Venture</span></li>
+    </ol>
+    <p class="src-note reveal" style="margin-top:14px;">Trusted AI + Physical Intelligence → OPC node → FDE delivery → Pilot (PoC) → Deployment → Venture.</p>
+    <div class="tiles t4 mt-28 stagger reveal">
+      <div class="tile"><span class="t-k">Talent</span><h3>Project talent pool</h3><p>Universities, developers, founders, suppliers and enterprises forming project teams.</p></div>
+      <div class="tile"><span class="t-k">Training</span><h3>Skills for deployment</h3><p>Practical training in agents, trusted data and physical AI deployment.</p></div>
+      <div class="tile"><span class="t-k">Physical AI</span><h3>From PoC to production</h3><p>Taking drones, robotics and industry AI projects from pilot to real deployment.</p></div>
+      <div class="tile"><span class="t-k">Delivery</span><h3>Industry solutions</h3><p>Repeatable solutions delivered across construction, logistics, trade and enterprise.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="incubation" aria-labelledby="inc-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Incubation</span>
+      <h2 id="inc-h">From a solved problem to a new venture</h2>
+      <div class="prose" style="margin-top:16px;">
+        <p>When an FDE engagement produces a solution that repeats across customers, it can be incubated inside the network and, where it makes sense, become an independent venture on DNY infrastructure.</p>
+        <p>This is how the group grows its <a href="/ventures" style="color:var(--gold-lt)">Applied Ventures</a> layer without redesigning its foundations each time.</p>
+      </div>
+    </div>
+    <div class="reveal-r" id="anz">
+      <span class="kicker">Australia &amp; New Zealand</span>
+      <h2 class="h2-sm">Sydney first, Auckland next</h2>
+      <ul class="check-cols" style="grid-template-columns:1fr;margin-top:18px;">
+        <li><strong>Sydney</strong> — the first node, alongside DNY’s headquarters.</li>
+        <li><strong>Auckland</strong> — the expansion direction for the New Zealand network.</li>
+        <li>Membership and partnership are established through documented agreements.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<FAQ groups={['opcfde']} title="OPC + FDE — common questions" dark />
+
+<CTABand title="Deliver real projects with the network"
+  primary={{ label: 'Join the network', href: '/contact?type=partnership' }}
+  secondary={{ label: 'Visit us in Sydney', href: '/contact?type=visit' }} />
+</Base>

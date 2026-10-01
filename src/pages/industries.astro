@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import IndustryMatrix from '../components/IndustryMatrix.astro';
+import CTABand from '../components/CTABand.astro';
+import Arrow from '../components/Arrow.astro';
+import { INDUSTRIES } from '../data/industries';
+import { VENTURES } from '../data/ventures';
+
+const title = 'Industries';
+const description = 'Where customers use DNY’s trusted AI and physical intelligence infrastructure: built environment, logistics and warehousing, cross-border trade, enterprise and professional services, and future verticals.';
+const crumbs = [{ name: 'Industries', href: '/industries' }];
+const current = INDUSTRIES.filter((i) => !i.future);
+const future = INDUSTRIES.find((i) => i.future)!;
+const vname = (s: string) => VENTURES.find((v) => v.slug === s)?.name ?? s;
+---
+<Base {title} {description} breadcrumbs={crumbs}>
+<PageHero badge="Industries" title="Industries: where the infrastructure is used" {crumbs}
+  lead="Not a list of DNY projects — a map of where customers can use DNY’s trusted AI and physical intelligence infrastructure. We start in the physical-economy sectors where Australian AI adoption is lowest and the value of trusted, deployable AI is highest."
+  primary={{ label: 'Discuss your industry', href: '/contact?type=enterprise' }}
+  secondary={{ label: 'See the ventures', href: '/ventures' }} />
+
+<section class="section" aria-labelledby="mx-h">
+  <div class="container">
+    <SectionHead kicker="Industry × Capability" id="mx-h" title="Which capabilities apply where"
+      lead="Core capabilities are central to the solution in that industry; supporting capabilities are used where relevant." />
+    <IndustryMatrix />
+  </div>
+</section>
+
+{current.map((ind, n) => (
+  <section class={`section${n % 2 === 0 ? ' dark' : ''}`} aria-labelledby={`i-${ind.slug}`}>
+    <div class="container split">
+      <div class="reveal-l">
+        <span class="kicker">Industry {String(n + 1).padStart(2, '0')}</span>
+        <h2 id={`i-${ind.slug}`}>{ind.name}</h2>
+        <p class="lead" style="margin-top:14px;">{ind.description}</p>
+        <a href={ind.href} class="btn btn-secondary" style="margin-top:22px;">Explore {ind.name}</a>
+      </div>
+      <div class="reveal-r">
+        <ul class="check-cols" style="grid-template-columns:1fr;">{ind.useCases.map((u) => <li>{u}</li>)}</ul>
+        <p class="src-note" style="margin-top:18px;">Related ventures: {ind.ventures.map((s, i) => <>{i > 0 && ' · '}<a href={`/ventures/${s}`} style="color:var(--gold-lt)">{vname(s)}</a></>)}</p>
+      </div>
+    </div>
+  </section>
+))}
+
+<section class="section" id="future" aria-labelledby="fut-h">
+  <div class="container">
+    <SectionHead kicker="Future Expansion" id="fut-h" title="Future verticals" lead={future.description} />
+    <div class="tiles t4 stagger reveal">
+      {future.useCases.map((u) => { const [k, d] = u.split(' — '); return <div class="tile"><span class="t-k">Future expansion</span><h3>{k}</h3><p>{d}</p></div>; })}
+    </div>
+    <p class="src-note reveal" style="margin-top:18px;">Future verticals describe intended expansion directions only, not current operations. An early example is the <a href="/ventures/livestock-data-rights" style="color:var(--gold-lt)">Livestock Data Rights Platform</a>.</p>
+    <div class="sep-box reveal mt-28">
+      <h3 class="h4">One repeatable method</h3>
+      <p>Turn one Australian industry after another into machine-readable, AI-callable, enterprise-connectable trusted infrastructure — starting with the built environment, then logistics, trade and enterprise, and extending to mining, agriculture, utilities and health over time.</p>
+    </div>
+    <div class="mt-28 reveal"><a href="/physical-intelligence" class="project-link">How physical intelligence supports these industries <Arrow /></a></div>
+  </div>
+</section>
+
+<CTABand title="Bring your industry to trusted, open AI"
+  primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }}
+  secondary={{ label: 'Industry partnership', href: '/contact?type=partnership' }} />
+</Base>

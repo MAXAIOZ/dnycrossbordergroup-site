@@ -1,0 +1,114 @@
+---
+// Data-driven canonical topic page.
+// GEO structure (brief §15): definition → capabilities → use cases → boundaries → evidence/sources.
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import SectionHead from './SectionHead.astro';
+import Definition from './Definition.astro';
+import VentureCard from './VentureCard.astro';
+import FAQ from './FAQ.astro';
+import CTABand from './CTABand.astro';
+import TrustDiagram from './TrustDiagram.astro';
+import PIFlow from './PIFlow.astro';
+import Arrow from './Arrow.astro';
+import { VENTURES } from '../data/ventures';
+import { techArticle, definedTerm } from '../data/schema';
+import type { Topic } from '../data/topics';
+
+export interface Props { t: Topic }
+const { t } = Astro.props;
+const path = `/${t.section}/${t.slug}`;
+const crumbs = [{ name: t.sectionName, href: `/${t.section}` }, { name: t.navTitle, href: path }];
+const ventures = (t.ventures ?? []).map((s) => VENTURES.find((v) => v.slug === s)!).filter(Boolean);
+let dark = false;
+const nextDark = () => (dark = !dark);
+---
+<Base title={t.title} description={t.description} breadcrumbs={crumbs}
+  schema={[techArticle(t.h1, t.description, path, t.about ?? [t.term]), definedTerm(t.term, t.def, path)]}>
+<PageHero badge={t.badge} title={t.h1} lead={t.lead} {crumbs} primary={t.primary} secondary={t.secondary}>
+  <Definition term={t.term} def={t.def} />
+</PageHero>
+
+{t.blocks.map((b, bi) => {
+  const isDark = nextDark();
+  const id = `${t.slug}-b${bi}`;
+  return (
+    <section class={`section${isDark ? ' dark' : ''}`} aria-labelledby={id} id={b.anchor}>
+      <div class="container">
+        <SectionHead kicker={b.kicker} id={id} title={b.title} lead={b.lead} />
+        {b.kind === 'tiles' && (
+          <div class={`tiles ${b.items!.length === 4 ? 't4' : b.items!.length === 3 ? 't3' : b.items!.length === 5 ? 't5' : ''} stagger reveal`}>
+            {b.items!.map((i) => i.href
+              ? <a href={i.href} class="tile"><span class="t-k">{i.k}</span><h3>{i.name}</h3><p>{i.d}</p><span class="project-link">Explore <Arrow /></span></a>
+              : <div class="tile"><span class="t-k">{i.k}</span><h3>{i.name}</h3><p>{i.d}</p></div>)}
+          </div>
+        )}
+        {b.kind === 'steps' && (
+          <div class="layers reveal">
+            {b.items!.map((i, n) => (
+              <div class="layer"><div class="layer-idx">{n + 1}</div><div class="layer-body"><h3>{i.name}</h3><p>{i.d}</p></div>{i.k && <div class="layer-tags"><span class="pill">{i.k}</span></div>}</div>
+            ))}
+          </div>
+        )}
+        {b.kind === 'roles' && (
+          <ul class="roles reveal">{b.items!.map((i) => <li><strong>{i.name}</strong><span>{i.d}</span></li>)}</ul>
+        )}
+        {b.kind === 'chain' && (
+          <>
+            <ol class="chain reveal" aria-label={b.title}>{b.chain!.map((c) => <li><span>{c}</span></li>)}</ol>
+            <p class="src-note reveal" style="margin-top:14px;">{b.chain!.join(' → ')}.</p>
+          </>
+        )}
+        {b.kind === 'prose' && (
+          <div class="prose reveal">{b.paras!.map((p) => <p set:html={p} />)}</div>
+        )}
+        {b.kind === 'list' && (
+          <ul class="check-cols reveal">{b.list!.map((l) => <li>{l}</li>)}</ul>
+        )}
+        {b.kind === 'trust' && <TrustDiagram />}
+        {b.kind === 'loop' && <PIFlow />}
+      </div>
+    </section>
+  );
+})}
+
+<section class={`section${nextDark() ? ' dark' : ''}`} aria-labelledby={`${t.slug}-uc`}>
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Use Cases</span>
+      <h2 id={`${t.slug}-uc`} class="h2-sm">Where it is used</h2>
+      <ul class="check-cols" style="grid-template-columns:1fr;margin-top:18px;">{t.useCases.map((u) => <li>{u}</li>)}</ul>
+    </div>
+    <div class="reveal-r">
+      <div class="bounds">
+        <h3>Boundaries</h3>
+        <ul>{t.bounds.map((u) => <li>{u}</li>)}</ul>
+      </div>
+      {t.evidence && (
+        <div class="bounds" style="margin-top:14px;">
+          <h3>Evidence &amp; sources</h3>
+          <ul>{t.evidence.map((e) => <li set:html={e} />)}</ul>
+        </div>
+      )}
+      {t.related && (
+        <p class="mt-28" style="display:flex;flex-wrap:wrap;gap:8px 20px;">
+          {t.related.map((r) => <a href={r.href} class="project-link">{r.label} <Arrow /></a>)}
+        </p>
+      )}
+    </div>
+  </div>
+</section>
+
+{ventures.length > 0 && (
+  <section class={`section${nextDark() ? ' dark' : ''}`} aria-labelledby={`${t.slug}-v`}>
+    <div class="container">
+      <SectionHead kicker="Related Ventures" id={`${t.slug}-v`} title={t.venturesTitle ?? 'Ventures building on this'} />
+      <div class="vgrid reveal">{ventures.map((v) => <VentureCard v={v} />)}</div>
+    </div>
+  </section>
+)}
+
+{t.faq && <FAQ groups={t.faq} dark={nextDark()} title={`${t.navTitle} — common questions`} />}
+
+<CTABand title={t.cta.title} lead={t.cta.lead} primary={t.cta.primary} secondary={t.cta.secondary} />
+</Base>

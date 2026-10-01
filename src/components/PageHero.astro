@@ -1,0 +1,38 @@
+---
+import type { Crumb } from '../layouts/Base.astro';
+export interface Props {
+  badge: string;
+  title: string;
+  lead: string;
+  crumbs?: Crumb[];
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+const { badge, title, lead, crumbs = [], primary, secondary } = Astro.props;
+---
+<section class="page-hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    {crumbs.length > 0 && (
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          {crumbs.map((c, i) => (
+            <li>{i === crumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href}>{c.name}</a>}</li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    <div class="hero-badge"><span class="hero-badge-dot"></span>{badge}</div>
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    <slot />
+    {(primary || secondary) && (
+      <div class="hero-actions">
+        {primary && <a href={primary.href} class="btn btn-primary">{primary.label}</a>}
+        {secondary && <a href={secondary.href} class="btn btn-secondary">{secondary.label}</a>}
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,10 @@
+---
+export interface Props { kicker: string; title: string; lead?: string; id: string; center?: boolean }
+const { kicker, title, lead, id, center = false } = Astro.props;
+---
+<div class={`section-head reveal${center ? ' center' : ''}`}>
+  <span class="kicker">{kicker}</span>
+  <h2 id={id}>{title}</h2>
+  {lead && <p class="lead">{lead}</p>}
+  <slot />
+</div>

@@ -1,0 +1,9 @@
+---
+// Plain-language definition block (brief §15 — extractable by search and AI systems)
+export interface Props { term: string; def: string }
+const { term, def } = Astro.props;
+---
+<aside class="definition reveal" aria-label={`Definition: ${term}`}>
+  <span class="def-k">In plain language</span>
+  <p><dfn>{term}</dfn> — {def}</p>
+</aside>
