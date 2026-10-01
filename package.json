@@ -6,7 +6,7 @@
   "description": "DNY Cross Border Group corporate website (Astro static build, deployed on Cloudflare Pages)",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/build-markdown.mjs",
     "preview": "astro preview",
     "check:links": "node scripts/check-links.mjs",
     "indexnow": "node scripts/indexnow.mjs"
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.3.5"
+    "astro": "^7.3.5",
+    "turndown": "^7.2.4"
   }
 }

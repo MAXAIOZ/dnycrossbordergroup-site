@@ -81,6 +81,8 @@ _legacy-static/ the previous hand-written HTML site, kept for reference only (no
 | AI crawlers explicitly allowed + content signals | `public/robots.txt` |
 | Entity data (alternate names, profiles, brands, contact point) | `SITE` in `src/data/site.ts` → Organization schema |
 | Freshness (`dateModified`, footer date) | `SITE.lastUpdated` — bump it whenever content changes |
+| Markdown for AI agents (`Accept: text/markdown`) | `scripts/build-markdown.mjs` (runs in `npm run build`) + `functions/_middleware.js` |
+| API catalog (RFC 9727) + OpenAPI + Link headers | `public/.well-known/api-catalog`, `public/openapi.json`, `public/_headers` |
 | Instant indexing for Bing / Copilot / ChatGPT search | `npm run build && npm run indexnow` after each deploy (key file in `public/`) |
 
 Add official profile URLs (LinkedIn, Crunchbase, X, GitHub…) to `SITE.sameAs` — it is the single strongest signal that ties those profiles and this site to one entity.

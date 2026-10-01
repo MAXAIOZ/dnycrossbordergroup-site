@@ -15,7 +15,7 @@ export interface Props {
 
 const { title, description, breadcrumbs = [], schema = [], noindex = false, bodyClass = '' } = Astro.props;
 
-const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
 const canonical = new URL(path === '/' ? '/' : path, SITE.url).href;
 const ogSlug = path === '/' ? 'home' : path.slice(1).replace(/\//g, '--');
 const ogImage = new URL(Astro.props.ogImage ?? `/og/${ogSlug}.jpg`, SITE.url).href;

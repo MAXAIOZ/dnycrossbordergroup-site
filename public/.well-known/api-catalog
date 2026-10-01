@@ -1,0 +1,21 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://dnycrossbordergroup.com/.well-known/api-catalog",
+      "item": [
+        { "href": "https://dnycrossbordergroup.com/llms.txt" },
+        { "href": "https://dnycrossbordergroup.com/llms-full.txt" },
+        { "href": "https://dnycrossbordergroup.com/sitemap-index.xml" }
+      ]
+    },
+    {
+      "anchor": "https://dnycrossbordergroup.com/",
+      "service-desc": [
+        { "href": "https://dnycrossbordergroup.com/openapi.json", "type": "application/vnd.oai.openapi+json" }
+      ],
+      "service-doc": [
+        { "href": "https://dnycrossbordergroup.com/llms.txt", "type": "text/plain" }
+      ]
+    }
+  ]
+}

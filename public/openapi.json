@@ -1,0 +1,25 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "DNY Cross Border Group — public content endpoints",
+    "version": "1.0.0",
+    "description": "Read-only endpoints that let AI agents and tools retrieve DNY Cross Border Group website content in machine-friendly formats. No authentication required. Enquiries are made by people via https://dnycrossbordergroup.com/contact.",
+    "contact": { "name": "DNY Cross Border Group", "email": "info@dnycrossbordergroup.com", "url": "https://dnycrossbordergroup.com/contact" }
+  },
+  "servers": [{ "url": "https://dnycrossbordergroup.com" }],
+  "paths": {
+    "/llms.txt": { "get": { "summary": "AI-readable site summary (llmstxt.org format)", "responses": { "200": { "description": "Markdown summary", "content": { "text/plain": {} } } } } },
+    "/llms-full.txt": { "get": { "summary": "Complete site content as one Markdown document", "responses": { "200": { "description": "Markdown", "content": { "text/plain": {} } } } } },
+    "/sitemap-index.xml": { "get": { "summary": "XML sitemap index of all pages", "responses": { "200": { "description": "Sitemap", "content": { "application/xml": {} } } } } },
+    "/{page}": {
+      "get": {
+        "summary": "Any page as HTML, or as Markdown when requested with Accept: text/markdown",
+        "parameters": [
+          { "name": "page", "in": "path", "required": true, "schema": { "type": "string" }, "example": "physical-intelligence/drones" },
+          { "name": "Accept", "in": "header", "required": false, "schema": { "type": "string", "enum": ["text/html", "text/markdown"] } }
+        ],
+        "responses": { "200": { "description": "Page content", "content": { "text/html": {}, "text/markdown": {} } } }
+      }
+    }
+  }
+}
