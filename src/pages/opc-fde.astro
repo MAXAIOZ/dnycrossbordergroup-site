@@ -5,83 +5,72 @@ import SectionHead from '../components/SectionHead.astro';
 import Definition from '../components/Definition.astro';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
-import Arrow from '../components/Arrow.astro';
+import { CTA } from '../data/site';
 import { techArticle, definedTerm } from '../data/schema';
 
 const title = 'OPC + FDE Network';
-const description = 'The OPC + FDE network is DNY’s deployment, incubation and delivery network: OPC (Office + AI Agents) nodes and Forward Deployed Entrepreneurs that turn infrastructure into real industry solutions, starting in Sydney and expanding to Auckland.';
-const def = 'DNY’s deployment and delivery network, combining OPC nodes (Office + AI Agents) with Forward Deployed Entrepreneurs (FDE) to take AI and physical intelligence from proof of concept to real deployment.';
+const description = 'The OPC + FDE network is how DNY turns infrastructure into deployed industry solutions: OPC (Office + AI Agents) nodes, Forward Deployed Entrepreneurs, and the ANZ OPC + FDE Alliance — starting in Sydney, expanding to Auckland.';
+const def = 'DNY’s deployment and delivery network: OPC nodes (Office + AI Agents) and Forward Deployed Entrepreneurs (FDE) that take AI and physical intelligence from proof of concept to real deployment.';
 const crumbs = [{ name: 'OPC + FDE', href: '/opc-fde' }];
+const fde = [
+  { k: 'Embed', d: 'Work alongside the customer to understand processes, data and constraints.' },
+  { k: 'Shape', d: 'Define a use case with measurable outcomes and a governance plan.' },
+  { k: 'Prove', d: 'Build a pilot on DNY infrastructure — AI, physical devices or both.' },
+  { k: 'Deploy', d: 'Harden for production with security, monitoring and support.' },
+  { k: 'Scale or spin out', d: 'Extend across sites, or incubate a repeatable solution as a new venture.' },
+];
 ---
-<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('OPC + FDE: from infrastructure to real deployment', description, '/opc-fde', ['OPC', 'FDE', 'Incubation']), definedTerm('OPC + FDE Network', def, '/opc-fde')]}>
-<PageHero badge="Layer 4 · Deployment Network" title="OPC + FDE: from infrastructure to real deployment" {crumbs}
-  lead="Infrastructure only matters when it reaches real customers. The OPC + FDE network brings together talent, AI agents, industry experts, enterprise customers and incubation to turn DNY infrastructure into solutions that are actually deployed."
-  primary={{ label: 'Join the network', href: '/contact?type=partnership' }}
-  secondary={{ label: 'Visit us in Sydney', href: '/contact?type=visit' }}>
+<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('OPC + FDE: from infrastructure to real deployment', description, '/opc-fde', ['OPC', 'FDE', 'ANZ OPC + FDE Alliance']), definedTerm('OPC (Office + AI Agents)', 'A local business node that combines a workspace, AI agent capabilities and market connections so small teams can deliver like larger organisations.', '/opc-fde#opc'), definedTerm('FDE (Forward Deployed Entrepreneur)', 'A delivery role that works directly on a real customer problem in the field, taking a solution from proof of concept to deployment.', '/opc-fde#fde')]}>
+<PageHero badge="OPC + FDE" title="OPC + FDE: from infrastructure to real deployment" {crumbs}
+  lead="Infrastructure only matters when it reaches real customers. The OPC + FDE network brings together small teams, AI agents, industry specialists and enterprise customers to turn DNY infrastructure into solutions that are actually deployed."
+  primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="OPC + FDE Network" def={def} />
 </PageHero>
 
-<section class="section" aria-labelledby="two-h">
+<section class="section" id="opc" aria-labelledby="opc-h">
   <div class="container">
-    <SectionHead kicker="Two Parts" id="two-h" title="Nodes and the people who deliver" />
-    <div class="grid-2 stagger reveal">
-      <div class="big-panel">
-        <span class="k">OPC = Office + AI Agents</span>
-        <h3>Local business nodes</h3>
-        <p>Each OPC node provides a local business base, collaboration space, AI agent capability and market connections — so small teams can deliver like larger organisations. It is not a conventional co-working space.</p>
-        <a href="/opc-fde/opc-network" class="project-link">OPC Network <Arrow /></a>
-      </div>
-      <div class="big-panel">
-        <span class="k">FDE = Forward Deployed Entrepreneur</span>
-        <h3>Delivery on real customer problems</h3>
-        <p>FDEs work directly with customers on real industry problems, pairing domain knowledge with DNY infrastructure to move from proof of concept to deployment — and, where a solution repeats, into a venture.</p>
-        <a href="/opc-fde/fde-model" class="project-link">FDE Model <Arrow /></a>
-      </div>
+    <SectionHead kicker="OPC = Office + AI Agents" id="opc-h" title="Local nodes where small teams deliver like large ones"
+      lead="An OPC is a local business node — not a conventional co-working space. It gives a small team four things in one place." />
+    <div class="tiles t4 stagger reveal">
+      <div class="tile"><span class="t-k">Space</span><h3>Business base</h3><p>A professional base and collaboration space.</p></div>
+      <div class="tile"><span class="t-k">Agents</span><h3>AI agent capability</h3><p>Access to DNY infrastructure and governed agents.</p></div>
+      <div class="tile"><span class="t-k">Market</span><h3>Market connections</h3><p>Enterprise customers, suppliers and partners.</p></div>
+      <div class="tile"><span class="t-k">Talent</span><h3>Project talent pool</h3><p>Universities, developers, founders and specialists.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section dark" aria-labelledby="flow-h">
+<section class="section dark" id="fde" aria-labelledby="fde-h">
   <div class="container">
-    <SectionHead kicker="Role in the Group" id="flow-h" title="Where the network sits" lead="Between the infrastructure layers and the ventures — the bridge from capability to customer." />
-    <ol class="chain reveal" aria-label="Network flow">
-      <li><span>Trusted AI + Physical Intelligence</span></li><li><span>OPC node</span></li><li><span>FDE delivery</span></li><li><span>Pilot (PoC)</span></li><li><span>Deployment</span></li><li><span>Venture</span></li>
-    </ol>
-    <p class="src-note reveal" style="margin-top:14px;">Trusted AI + Physical Intelligence → OPC node → FDE delivery → Pilot (PoC) → Deployment → Venture.</p>
-    <div class="tiles t4 mt-28 stagger reveal">
-      <div class="tile"><span class="t-k">Talent</span><h3>Project talent pool</h3><p>Universities, developers, founders, suppliers and enterprises forming project teams.</p></div>
-      <div class="tile"><span class="t-k">Training</span><h3>Skills for deployment</h3><p>Practical training in agents, trusted data and physical AI deployment.</p></div>
-      <div class="tile"><span class="t-k">Physical AI</span><h3>From PoC to production</h3><p>Taking drones, robotics and industry AI projects from pilot to real deployment.</p></div>
-      <div class="tile"><span class="t-k">Delivery</span><h3>Industry solutions</h3><p>Repeatable solutions delivered across construction, logistics, trade and enterprise.</p></div>
+    <SectionHead kicker="FDE = Forward Deployed Entrepreneur" id="fde-h" title="Delivery that starts with the customer’s problem"
+      lead="FDEs sit with real customers, understand real constraints, and use DNY infrastructure to deliver solutions that get deployed." />
+    <div class="layers reveal">
+      {fde.map((s, i) => <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>)}
     </div>
+    <p class="src-note reveal" id="incubation" style="margin-top:16px;">When a solution repeats across customers, it is incubated inside the network and can become an independent <a href="/ventures" style="color:var(--gold-lt)">venture</a> on DNY infrastructure.</p>
   </div>
 </section>
 
-<section class="section" id="incubation" aria-labelledby="inc-h">
+<section class="section" id="alliance" aria-labelledby="al-h">
   <div class="container split">
     <div class="reveal-l">
-      <span class="kicker">Incubation</span>
-      <h2 id="inc-h">From a solved problem to a new venture</h2>
+      <span class="kicker">ANZ OPC + FDE Alliance</span>
+      <h2 id="al-h" class="h2-sm">The membership organisation behind the network</h2>
       <div class="prose" style="margin-top:16px;">
-        <p>When an FDE engagement produces a solution that repeats across customers, it can be incubated inside the network and, where it makes sense, become an independent venture on DNY infrastructure.</p>
-        <p>This is how the group grows its <a href="/ventures" style="color:var(--gold-lt)">Applied Ventures</a> layer without redesigning its foundations each time.</p>
+        <p>The <strong>ANZ OPC + FDE Alliance</strong> organises OPC entrepreneurs across Australia and New Zealand into a membership network, with FDE delivery capability built into member benefits rather than offered as a separate tier.</p>
+        <p>Members get access to the network’s nodes, customers, training and DNY infrastructure; DNY gets a delivery capacity that scales with real demand.</p>
       </div>
     </div>
     <div class="reveal-r" id="anz">
-      <span class="kicker">Australia &amp; New Zealand</span>
-      <h2 class="h2-sm">Sydney first, Auckland next</h2>
-      <ul class="check-cols" style="grid-template-columns:1fr;margin-top:18px;">
-        <li><strong>Sydney</strong> — the first node, alongside DNY’s headquarters.</li>
-        <li><strong>Auckland</strong> — the expansion direction for the New Zealand network.</li>
-        <li>Membership and partnership are established through documented agreements.</li>
-      </ul>
+      <div class="sep-box">
+        <h3 class="h4">Sydney first, Auckland next</h3>
+        <p>Sydney is the first node, alongside DNY’s headquarters. Auckland is the expansion direction for New Zealand. Membership and partnership are established through documented agreements.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <FAQ groups={['opcfde']} title="OPC + FDE — common questions" dark />
 
-<CTABand title="Deliver real projects with the network"
-  primary={{ label: 'Join the network', href: '/contact?type=partnership' }}
-  secondary={{ label: 'Visit us in Sydney', href: '/contact?type=visit' }} />
+<CTABand title="Deliver real projects with the network" primary={CTA.partner} secondary={CTA.brief} />
 </Base>

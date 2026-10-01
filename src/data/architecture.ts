@@ -18,8 +18,8 @@ export const STACK: Layer[] = [
     name: 'Applied Ventures & Industry Solutions',
     role: 'Independent ventures and industry projects',
     summary:
-      'Focused ventures and industry projects — drones, robotics, logistics, construction, trade and media — each with its own customers and business model, built on shared group infrastructure.',
-    items: ['DNY Aerial Systems', 'DNY Robotic Systems', 'Logistics & warehousing', 'Built environment', 'Trade & media'],
+      'Nine focused ventures — from drones and robotics to trade, building materials and property AI — each with its own customers and business model, built on shared group infrastructure.',
+    items: ['Aerial Systems', 'Robotic Systems', 'Trusted AI Platform', 'Data Oracle', 'Facadia', 'Auralio'],
     href: '/ventures',
   },
   {
@@ -60,7 +60,7 @@ export const STACK: Layer[] = [
     summary:
       'A Trusted Data Space with provenance, permissions, versioning, identity and audit — so data, models, devices and decisions can be traced and verified.',
     items: ['Data provenance', 'Identity', 'Permissions', 'Audit logs', 'Data sovereignty'],
-    href: '/ai-infrastructure/data-space',
+    href: '/trusted-ai',
   },
 ];
 
@@ -70,7 +70,7 @@ export const HIERARCHY = [
   { level: 'Layers 1–2', name: 'Trusted & Open AI Infrastructure', role: 'Digital intelligence infrastructure', scope: 'Trusted Data Space, open models, identity, audit, APIs, agents and transaction readiness' },
   { level: 'Layer 3', name: 'Open Physical Intelligence Layer', role: 'Physical intelligence connecting AI to the real world', scope: 'Drones, robotics, edge devices, vision systems, autonomous systems and sensor networks' },
   { level: 'Layer 4', name: 'OPC + FDE Network', role: 'Talent, node and industry delivery network', scope: 'Office + AI Agents, Forward Deployed Entrepreneurs, training, incubation and solution delivery' },
-  { level: 'Layer 5', name: 'Applied Ventures & Industry Projects', role: 'Independent ventures and industry companies', scope: 'Drones, robotics, logistics and warehousing, construction, trade, media and future verticals' },
+  { level: 'Layer 5', name: 'Applied Ventures & Industry Projects', role: 'Independent ventures and industry companies', scope: 'Nine core ventures across trusted AI, physical intelligence and industry' },
 ];
 
 // Physical AI capability loop (brief §4.1)
@@ -106,25 +106,25 @@ export const PI_SUBLAYERS = [
     name: 'Edge Intelligence',
     direction: 'Edge AI & Sensors',
     line: 'Local inference, vision, sensing and control close to the physical asset.',
-    href: '/physical-intelligence/edge-ai',
+    href: '/physical-intelligence#edge',
   },
   {
     key: 'auto',
     name: 'Autonomous Operations',
     direction: 'Multi-device orchestration',
     line: 'AI agents coordinating drones, robots and industrial systems under governed workflows.',
-    href: '/physical-intelligence/autonomous-systems',
+    href: '/physical-intelligence#autonomous',
   },
 ];
 
 // AI Infrastructure modules (brief §7)
 export const INFRA_MODULES = [
-  { n: '01', name: 'Trusted Data Space', line: 'Data source, permission, version, authorisation, audit and data sovereignty.', href: '/ai-infrastructure/data-space' },
+  { n: '01', name: 'Trusted Data Space', line: 'Data source, permission, version, authorisation, audit and data sovereignty.', href: '/trusted-ai#data-space' },
   { n: '02', name: 'Open Model Layer', line: 'Clear distinction between open-source, open-weight and source-available models — multi-model and licence-aware.', href: '/open-source-ai' },
-  { n: '03', name: 'Deployment & Integration', line: 'APIs, private and hybrid deployment, identity and enterprise system integration.', href: '/ai-infrastructure/deployment' },
-  { n: '04', name: 'AI Agents & Automation', line: 'Agent orchestration, human oversight and governed workflow execution.', href: '/ai-infrastructure/agents' },
-  { n: '05', name: 'Trust, Identity & Audit', line: 'Trusted identity, action authorisation, model and data provenance, and audit.', href: '/ai-infrastructure/identity-audit' },
-  { n: '06', name: 'AI Transaction Readiness', line: 'Interfaces and architecture prepared for future AI-to-AI and machine-to-machine service settlement.', href: '/ai-infrastructure/transactions' },
+  { n: '03', name: 'Deployment & Integration', line: 'APIs, private and hybrid deployment, identity and enterprise system integration.', href: '/ai-infrastructure#deployment' },
+  { n: '04', name: 'AI Agents & Automation', line: 'Agent orchestration, human oversight and governed workflow execution.', href: '/ai-infrastructure#agents' },
+  { n: '05', name: 'Trust, Identity & Audit', line: 'Trusted identity, action authorisation, model and data provenance, and audit.', href: '/trusted-ai#identity-audit' },
+  { n: '06', name: 'AI Transaction Readiness', line: 'Interfaces and architecture prepared for future AI-to-AI and machine-to-machine service settlement.', href: '/ai-infrastructure#transactions' },
 ];
 
 // Trust diagram (brief §14)

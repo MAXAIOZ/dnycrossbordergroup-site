@@ -2,44 +2,53 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHead from '../components/SectionHead.astro';
-import VentureGrid from '../components/VentureGrid.astro';
+import VentureCard from '../components/VentureCard.astro';
 import CTABand from '../components/CTABand.astro';
-import { VENTURES, STATUS_DEFS, type Status } from '../data/ventures';
+import { VENTURES, ARCHIVED, CATEGORIES, CATEGORY_DEFS, STATUS_DEFS, type Status } from '../data/ventures';
+import { CTA } from '../data/site';
 
-const title = 'Applied Ventures';
-const description = `DNY Cross Border Group’s ${VENTURES.length} applied ventures — drones, robotics, logistics, construction, trade, data and media — each with its layer, industry, status and relationship to DNY infrastructure.`;
+const title = 'Ventures';
+const description = `DNY Cross Border Group’s ${VENTURES.length} core ventures across trusted & open AI, physical intelligence and industry — each with its status and its relationship to the group’s shared infrastructure.`;
 const crumbs = [{ name: 'Ventures', href: '/ventures' }];
 const list = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'DNY Applied Ventures',
+  name: 'DNY core ventures',
   numberOfItems: VENTURES.length,
   itemListElement: VENTURES.map((v, i) => ({ '@type': 'ListItem', position: i + 1, name: v.name, url: `https://dnycrossbordergroup.com/ventures/${v.slug}` })),
 };
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={[list]}>
-<PageHero badge="Layer 5 · Applied Ventures & Industry Projects" title="Applied Ventures: focused businesses on shared infrastructure" {crumbs}
-  lead="Ventures are independent projects and companies with their own products, customers and business models. Each one reuses the group’s trusted AI infrastructure, physical intelligence layer and delivery network — so new ventures can be added without redesigning the group."
-  primary={{ label: 'Partner on a venture', href: '/contact?type=partnership' }}
-  secondary={{ label: 'Investor briefing', href: '/contact?type=investment' }} />
+<PageHero badge="Ventures" title={`${VENTURES.length} ventures on shared infrastructure`} {crumbs}
+  lead="Each venture is a focused business with its own products, customers and model. All of them reuse the group’s trusted AI infrastructure, physical intelligence layer and delivery network — so new ventures can be added without rebuilding the foundations."
+  primary={CTA.brief} secondary={CTA.partner} />
 
-<section class="section" aria-labelledby="pf-h">
-  <div class="container">
-    <SectionHead kicker="Portfolio" id="pf-h" title="Filter by category, industry, technology or status" />
-    <VentureGrid />
-  </div>
-</section>
+{CATEGORIES.map((c, i) => (
+  <section class={`section${i % 2 === 1 ? ' dark' : ''}`} aria-labelledby={`cat-${i}`}>
+    <div class="container">
+      <SectionHead kicker="Category" id={`cat-${i}`} title={c} lead={CATEGORY_DEFS[c]} />
+      <div class="vgrid reveal">{VENTURES.filter((v) => v.category === c).map((v) => <VentureCard v={v} />)}</div>
+    </div>
+  </section>
+))}
 
 <section class="section dark" aria-labelledby="st-h">
-  <div class="container">
-    <SectionHead kicker="Status Labels" id="st-h" title="What each status means" lead="Every venture carries one status label so that stage is never overstated." />
-    <dl class="glossary reveal">
-      {(Object.keys(STATUS_DEFS) as Status[]).map((s) => <div><dt>{s}</dt><dd>{STATUS_DEFS[s]}</dd></div>)}
-    </dl>
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Status Labels</span>
+      <h2 id="st-h" class="h2-sm">What each status means</h2>
+      <dl class="glossary" style="margin-top:18px;">
+        {(Object.keys(STATUS_DEFS) as Status[]).map((s) => <div><dt>{s}</dt><dd>{STATUS_DEFS[s]}</dd></div>)}
+      </dl>
+    </div>
+    <div class="reveal-r">
+      <span class="kicker">Other Initiatives</span>
+      <h2 class="h2-sm">Earlier initiatives</h2>
+      <p class="src-note" style="margin:10px 0 16px;">These initiatives are not part of the group’s current core focus.</p>
+      <ul class="archived">{ARCHIVED.map((a) => <li><strong>{a.name}</strong> — {a.line}</li>)}</ul>
+    </div>
   </div>
 </section>
 
-<CTABand title="Want the brief on a single venture?"
-  primary={{ label: 'Request a venture briefing', href: '/contact?type=investment' }}
-  secondary={{ label: 'Partnership enquiry', href: '/contact?type=partnership' }} />
+<CTABand title="Want the brief on a venture?" primary={CTA.brief} secondary={CTA.partner} />
 </Base>

@@ -1,14 +1,110 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
 import CTABand from '../components/CTABand.astro';
-import body from '../legacy/investors.html?raw';
-import meta from '../legacy/meta.json';
-const m = meta['investors'];
+import { CTA } from '../data/site';
+import { VENTURES } from '../data/ventures';
+
+const title = 'Investors & Partners';
+const description = 'General information for investors, government and institutional partners about DNY Cross Border Group: the group structure, why the model is capital-efficient, how it makes money, and what it does not claim.';
 const crumbs = [{ name: 'Investors & Partners', href: '/investors' }];
+const highlights = [
+  { k: 'One foundation, many ventures', d: 'Trusted data, identity and audit are built once and reused by every venture, lowering the cost of each new business.' },
+  { k: 'Capital-efficient', d: 'No frontier-model training. Investment goes into deployment tooling, integrations, governance and customer delivery.' },
+  { k: 'Digital and physical', d: 'The same trusted AI reaches drones, robots and warehouses — sectors where Australian AI adoption is lowest.' },
+  { k: 'Vendor-neutral', d: 'Multi-model, multi-cloud and multi-hardware architecture reduces concentration risk.' },
+  { k: 'Delivery network', d: 'The OPC + FDE network turns pilots into deployments and repeatable solutions into new ventures.' },
+  { k: 'Policy-aligned', d: 'Consistent with national goals for domestic AI capability, adoption and responsible deployment.' },
+];
+const gtm = [
+  { k: 'Prove', d: 'A small number of high-value deployments with measurable outcomes, led by FDEs.' },
+  { k: 'Productise', d: 'Package repeatable agent workflows, deployment templates and connectors into ventures and services.' },
+  { k: 'Scale', d: 'Grow through direct sales, technology partnerships and industry channels across Australia and New Zealand.' },
+  { k: 'Gateway', d: 'A structured route for suitable international technology into Australia, and for Australian capability to reach global markets.' },
+];
 ---
-<Base title="Investors & Partners" description="General information for prospective investors and strategic partners in DNY Cross Border Group — the group architecture, business model, governance and what we do and do not claim." breadcrumbs={crumbs}>
-<PageHero badge="Investors & Partners" title={m.h1} lead={m.lead} {crumbs} primary={{ label: "Request the Group Brief", href: "/contact?type=investment" }} secondary={{ label: "Group Overview", href: "/about" }} />
-<Fragment set:html={body} />
-<CTABand title="Talk to DNY" primary={{ label: "Request the Group Brief", href: "/contact?type=investment" }} secondary={{ label: 'Contact', href: '/contact' }} />
+<Base {title} {description} breadcrumbs={crumbs}>
+<PageHero badge="Investors & Partners" title="Investors & Partners" {crumbs}
+  lead="DNY is building shared trusted-AI and physical-intelligence infrastructure and commercialising it through focused ventures. This page is a general overview for investors, government and institutional partners."
+  primary={CTA.brief} secondary={CTA.partner} />
+
+<section class="section" aria-label="Important notice">
+  <div class="container">
+    <div class="sep-box reveal">
+      <h2 class="h4">Important notice</h2>
+      <p>This page is general information for preliminary discussion only. It is not a prospectus, product disclosure statement, offer document, recommendation, financial product advice or an invitation to acquire securities or tokens. No investment terms are final. Any offering would be structured and documented in accordance with applicable Australian law, including the Corporations Act 2001 (Cth). Forward-looking statements are indicative only. Obtain independent legal, financial and tax advice before making any decision.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="hl-h">
+  <div class="container">
+    <SectionHead kicker="Why This Model" id="hl-h" title="Six reasons the structure works" />
+    <div class="tiles t3 stagger reveal">{highlights.map((h, i) => <div class="tile"><span class="t-k">{String(i + 1).padStart(2, '0')}</span><h3>{h.k}</h3><p>{h.d}</p></div>)}</div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="gtm-h">
+  <div class="container">
+    <SectionHead kicker="Go-to-Market" id="gtm-h" title="Prove, productise, scale, gateway" />
+    <div class="layers reveal">{gtm.map((g, i) => <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{g.k}</h3><p>{g.d}</p></div></div>)}</div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="bm-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Business Model</span>
+      <h2 id="bm-h" class="h2-sm">How the group makes money</h2>
+      <p class="lead" style="margin-top:14px;">Early revenue is weighted toward deployment and project work. The objective is to convert repeatable components into subscriptions, managed services and venture revenue.</p>
+    </div>
+    <ul class="check-cols reveal-r" style="grid-template-columns:1fr 1fr;">
+      <li>Managed deployment &amp; hosting</li><li>Platform subscriptions</li><li>Agent-as-a-service</li><li>Private &amp; hybrid deployment</li>
+      <li>Integration &amp; implementation</li><li>Support &amp; maintenance</li><li>Physical AI integration</li><li>Venture revenue</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="cl-h">
+  <div class="container">
+    <SectionHead kicker="Discipline" id="cl-h" title="What we seek — and what we do not claim" />
+    <div class="grid-2 stagger reveal">
+      <div class="big-panel">
+        <span class="k">Advantages we are building</span>
+        <ul class="check-cols" style="grid-template-columns:1fr;">
+          <li>Australian enterprise and industrial relationships</li>
+          <li>A reusable deployment and governance stack across models</li>
+          <li>Integrated software, agent, drone and robotics capability</li>
+          <li>Local support, accountability and implementation know-how</li>
+        </ul>
+      </div>
+      <div class="big-panel">
+        <span class="k">We do not claim</span>
+        <ul class="check-cols" style="grid-template-columns:1fr;">
+          <li>That we have no competitors</li>
+          <li>That all “open” AI is free of licensing or IP risk</li>
+          <li>That open models are always cheaper or safer</li>
+          <li>That any venture has revenue, contracts or approvals beyond its stated status</li>
+          <li>That AILH is owned or controlled by DNY unless formally documented</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="gv-h">
+  <div class="container">
+    <SectionHead kicker="Structure & Governance" id="gv-h" title="Before any raise" />
+    <div class="tiles t4 stagger reveal">
+      <div class="tile"><span class="t-k">Structure</span><h3>Clear entities</h3><p>Each investable business sits in an identified Australian company that owns or validly licenses its IP.</p></div>
+      <div class="tile"><span class="t-k">IP</span><h3>Chain of title</h3><p>Software, data, agent templates and brands are documented with written assignment or licence; open-source components are inventoried.</p></div>
+      <div class="tile"><span class="t-k">Data</span><h3>Data rights</h3><p>Contracts define ownership, processing, training permissions and cross-border transfer.</p></div>
+      <div class="tile"><span class="t-k">Governance</span><h3>Policies</h3><p>Conflicts and related-party policy, financial reporting, and cyber, privacy, AI-governance and licence policies.</p></div>
+    </div>
+    <p class="src-note reveal" style="margin-top:16px;">Venture information: {VENTURES.length} core ventures, each labelled with its current status on the <a href="/ventures" style="color:var(--gold-lt)">Ventures</a> page.</p>
+  </div>
+</section>
+
+<CTABand title="Request the group brief" lead="For investors, government and institutional partners." primary={CTA.brief} secondary={CTA.partner} />
 </Base>

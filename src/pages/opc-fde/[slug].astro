@@ -1,9 +1,0 @@
----
-import TopicPage from '../../components/TopicPage.astro';
-import { topicsFor, type Topic } from '../../data/topics';
-export function getStaticPaths() {
-  return topicsFor('opc-fde').map((t) => ({ params: { slug: t.slug }, props: { t } }));
-}
-const { t } = Astro.props as { t: Topic };
----
-<TopicPage {t} />

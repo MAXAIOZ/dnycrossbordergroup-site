@@ -8,11 +8,15 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     items: [
       {
         q: 'What is DNY Cross Border Group?',
-        a: 'DNY Cross Border Group is an Australia-led technology and commercialisation group, headquartered in Sydney, that builds trusted, open AI infrastructure and connects it with the physical economy through drones, robotics, edge systems and industry ventures.',
+        a: 'DNY Cross Border Group is a Sydney-headquartered technology group that grew from cross-border trade into building trusted, open AI and physical intelligence infrastructure for Australian industry, commercialised through nine focused ventures.',
+      },
+      {
+        q: 'Why is the group called "Cross Border"?',
+        a: 'DNY began in cross-border trade and supply chain between Australia and international markets. That experience — with product data, documents and systems that could not be verified or connected — is why the group now builds trusted AI infrastructure. Cross-border trade remains one of the industries where it is applied.',
       },
       {
         q: 'Is DNY a single AI platform or a group?',
-        a: 'A group. DNY is organised in layers: a group holding layer, Trusted & Open AI Infrastructure, the Open Physical Intelligence Layer, the OPC + FDE delivery network, and Applied Ventures that operate as focused businesses on that shared infrastructure.',
+        a: 'A group. DNY builds shared infrastructure — trusted, open AI and physical intelligence — delivers it through the OPC + FDE network, and commercialises it through nine focused ventures that each have their own customers and business model.',
       },
       {
         q: 'Does DNY train its own foundation model?',
@@ -71,7 +75,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'Is DNY a drone company or a robotics company?',
-        a: 'Neither on its own. Drones and robotics are directions within the Physical Intelligence Layer. Specific drone and robotics businesses, such as DNY Aerial Systems and DNY Robotic Systems, are separate ventures that reuse the group’s infrastructure.',
+        a: 'Neither on its own. Drones and robotics are directions within the Physical Intelligence Layer. Specific drone and robotics businesses — DNY Aerial Systems and DNY Robotic Systems — are separate ventures that reuse the group’s infrastructure.',
       },
       {
         q: 'How are physical AI actions kept safe and accountable?',
@@ -89,6 +93,10 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       {
         q: 'What is an FDE?',
         a: 'FDE stands for Forward Deployed Entrepreneur: a delivery role that works directly on a real customer problem in the field, combining industry knowledge with DNY infrastructure to move a solution from proof of concept to deployment.',
+      },
+      {
+        q: 'What is the ANZ OPC + FDE Alliance?',
+        a: 'The ANZ OPC + FDE Alliance is the membership organisation behind the network. It brings OPC entrepreneurs in Australia and New Zealand together, with Forward Deployed Entrepreneur delivery capability built into member benefits.',
       },
       {
         q: 'Where does the OPC + FDE network operate?',
@@ -118,7 +126,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'What is DNY Robotic Systems?',
-        a: 'DNY Robotic Systems is DNY’s embodied intelligence venture, currently in development, focused on robots for Australian industrial, logistics and service environments. Specific products are not yet announced.',
+        a: 'DNY Robotic Systems is DNY’s embodied intelligence venture, currently in development, focused on robots for Australian industrial, logistics and service environments. It includes the Robotics Experience & Innovation Centre for demonstration, validation and market entry. Specific products are not yet announced.',
       },
     ],
   },

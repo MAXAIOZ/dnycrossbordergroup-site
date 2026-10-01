@@ -1,0 +1,11 @@
+---
+import type { Venture } from '../data/ventures';
+import StatusBadge from './StatusBadge.astro';
+export interface Props { v: Venture }
+const { v } = Astro.props;
+---
+<a href={`/ventures/${v.slug}`} class="vmini">
+  <span class="vmini-top"><span class="vcard-cat">{v.category}</span><StatusBadge status={v.status} /></span>
+  <span class="vmini-name">{v.name}</span>
+  <span class="vmini-short">{v.short}</span>
+</a>

@@ -18,7 +18,7 @@ export const SITE = {
     display: '1 Sussex St, Barangaroo NSW 2000, Australia',
   },
   positioning:
-    'DNY Cross Border Group is an Australia-led technology and commercialisation group building trusted, open AI infrastructure and connecting it with the physical economy.',
+    'DNY Cross Border Group is a Sydney-headquartered technology group that grew from cross-border trade into building trusted, open AI and physical intelligence infrastructure for Australian industry, commercialised through focused ventures.',
   shortPositioning:
     'Australia-led trusted, open AI and physical intelligence infrastructure group.',
   defaultOg: '/og/default.png',
@@ -46,79 +46,39 @@ export const NAV: NavItem[] = [
     href: '/about',
     children: [
       { label: 'Group Overview', href: '/about', desc: 'Who DNY is and how the group is structured' },
-      { label: 'Australia & Global', href: '/about#australia-global', desc: 'Sydney-led, globally connected' },
-      { label: 'Open Source AI Alliance', href: '/alliance', desc: 'Proposed independent ecosystem body' },
+      { label: 'From Cross-border to AI', href: '/about#story', desc: 'How the group evolved' },
+      { label: 'Investors & Partners', href: '/investors', desc: 'For capital and institutional partners' },
+      { label: 'Contact', href: '/contact', desc: 'Sydney headquarters' },
     ],
   },
   {
     label: 'AI Infrastructure',
     href: '/ai-infrastructure',
     children: [
-      { label: 'Overview', href: '/ai-infrastructure', desc: 'The digital intelligence layer' },
-      { label: 'Trusted AI', href: '/trusted-ai', desc: 'Verifiable data, models and actions' },
+      { label: 'Overview', href: '/ai-infrastructure', desc: 'Models, agents, deployment and data' },
+      { label: 'Trusted AI', href: '/trusted-ai', desc: 'Provenance, identity, permission and audit' },
       { label: 'Open Source AI', href: '/open-source-ai', desc: 'Open-source, open-weight, source-available' },
-      { label: 'Trusted Data Space', href: '/ai-infrastructure/data-space', desc: 'Provenance, permission and sovereignty' },
-      { label: 'AI Agents & Automation', href: '/ai-infrastructure/agents', desc: 'Governed agent workflows' },
-      { label: 'Deployment & API', href: '/ai-infrastructure/deployment', desc: 'Private, hybrid and API-first' },
-      { label: 'Identity & Audit', href: '/ai-infrastructure/identity-audit', desc: 'Who did what, with which authority' },
-      { label: 'AI Transaction Readiness', href: '/ai-infrastructure/transactions', desc: 'Machine-to-machine settlement' },
     ],
   },
   {
     label: 'Physical Intelligence',
     href: '/physical-intelligence',
     children: [
-      { label: 'Overview', href: '/physical-intelligence', desc: 'The Open Physical Intelligence Layer' },
+      { label: 'Overview', href: '/physical-intelligence', desc: 'Trusted AI for drones, robots and edge systems' },
       { label: 'Drones', href: '/physical-intelligence/drones', desc: 'Air Intelligence' },
       { label: 'Robotics', href: '/physical-intelligence/robotics', desc: 'Embodied Intelligence' },
-      { label: 'Edge AI', href: '/physical-intelligence/edge-ai', desc: 'Edge Intelligence' },
-      { label: 'Autonomous Systems', href: '/physical-intelligence/autonomous-systems', desc: 'Autonomous Operations' },
     ],
   },
-  {
-    label: 'OPC + FDE',
-    href: '/opc-fde',
-    children: [
-      { label: 'Overview', href: '/opc-fde', desc: 'The deployment and delivery network' },
-      { label: 'OPC Network', href: '/opc-fde/opc-network', desc: 'Office + AI Agents nodes' },
-      { label: 'FDE Model', href: '/opc-fde/fde-model', desc: 'Forward-deployed delivery' },
-      { label: 'Incubation', href: '/opc-fde#incubation', desc: 'From pilot to venture' },
-      { label: 'Australia & New Zealand', href: '/opc-fde#anz', desc: 'Sydney and Auckland' },
-    ],
-  },
-  {
-    label: 'Industries',
-    href: '/industries',
-    children: [
-      { label: 'Overview', href: '/industries', desc: 'Where the infrastructure is used' },
-      { label: 'Built Environment', href: '/industries/built-environment' },
-      { label: 'Logistics & Warehousing', href: '/industries/logistics-warehousing' },
-      { label: 'Cross-border Trade', href: '/industries/cross-border-trade' },
-      { label: 'Enterprise & Professional Services', href: '/industries/enterprise' },
-      { label: 'Future Verticals', href: '/industries#future' },
-    ],
-  },
-  {
-    label: 'Ventures',
-    href: '/ventures',
-    children: [
-      { label: 'Portfolio', href: '/ventures', desc: 'All applied ventures, filterable' },
-      { label: 'DNY Aerial Systems', href: '/ventures/dny-aerial-systems', desc: 'Commercial drone systems' },
-      { label: 'DNY Robotic Systems', href: '/ventures/dny-robotic-systems', desc: 'Embodied and autonomous robots' },
-    ],
-  },
+  { label: 'OPC + FDE', href: '/opc-fde' },
+  { label: 'Industries', href: '/industries' },
+  { label: 'Ventures', href: '/ventures' },
 ];
 
-export const CONTACT_NAV: NavItem = {
-  label: 'Contact',
-  href: '/contact',
-  children: [
-    { label: 'Partnership', href: '/contact?type=partnership' },
-    { label: 'Investment', href: '/contact?type=investment' },
-    { label: 'Enterprise', href: '/contact?type=enterprise' },
-    { label: 'Developer', href: '/contact?type=developer' },
-    { label: 'Visit', href: '/contact?type=visit' },
-  ],
+// The only three calls to action used across the site.
+export const CTA = {
+  brief: { label: 'Request the Group Brief', href: '/contact?type=investment' },
+  partner: { label: 'Partner with DNY', href: '/contact?type=partnership' },
+  contact: { label: 'Contact us', href: '/contact' },
 };
 
 // Form enquiry types (brief §19: every form is tagged by type)
@@ -136,30 +96,27 @@ export const FOOTER = [
     title: 'Group',
     links: [
       { label: 'Group Overview', href: '/about' },
-      { label: 'Group Architecture', href: '/#architecture' },
       { label: 'Investors & Partners', href: '/investors' },
       { label: 'Careers', href: '/careers' },
-      { label: 'Open Source AI Alliance', href: '/alliance' },
+      { label: 'Contact', href: '/contact' },
     ],
   },
   {
-    title: 'Infrastructure',
+    title: 'Capabilities',
     links: [
       { label: 'AI Infrastructure', href: '/ai-infrastructure' },
       { label: 'Trusted AI', href: '/trusted-ai' },
       { label: 'Open Source AI', href: '/open-source-ai' },
       { label: 'Physical Intelligence', href: '/physical-intelligence' },
-      { label: 'Glossary', href: '/glossary' },
     ],
   },
   {
     title: 'Deployment',
     links: [
-      { label: 'OPC + FDE Network', href: '/opc-fde' },
+      { label: 'OPC + FDE', href: '/opc-fde' },
       { label: 'Industries', href: '/industries' },
       { label: 'Ventures', href: '/ventures' },
       { label: 'FAQ', href: '/faq' },
-      { label: 'Contact', href: '/contact' },
     ],
   },
 ];

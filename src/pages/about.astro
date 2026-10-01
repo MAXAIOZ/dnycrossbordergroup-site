@@ -3,67 +3,60 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Definition from '../components/Definition.astro';
-import GroupStack from '../components/GroupStack.astro';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
-import { HIERARCHY } from '../data/architecture';
-import { SITE } from '../data/site';
+import Arrow from '../components/Arrow.astro';
+import { SITE, CTA } from '../data/site';
+import { STACK } from '../data/architecture';
 
-const title = 'About — Group Overview';
-const description = 'About DNY Cross Border Group: an Australia-led technology and commercialisation group building trusted, open AI infrastructure and connecting it with the physical economy. Group structure, principles and global reach.';
+const title = 'About the Group';
+const description = 'About DNY Cross Border Group: a Sydney-headquartered technology group that grew from cross-border trade into building trusted, open AI and physical intelligence infrastructure for Australian industry.';
 const crumbs = [{ name: 'About', href: '/about' }];
 const principles = [
-  { k: 'Australian-led', d: 'Governance, data rules, standards adaptation and industry application grounded in Australian law, market and industry needs.' },
-  { k: 'Open collaboration', d: 'Open to quality technology, models, data and research worldwide — not dependent on a single country, supplier or technology route.' },
-  { k: 'Trust first', d: 'Verifiable, traceable and auditable mechanisms for data source, version, permission, update and use.' },
-  { k: 'Industry first', d: 'Start from real industry projects with clear data foundations and practical value.' },
-  { k: 'Standardised interfaces', d: 'APIs, data dictionaries, unified identifiers and standard structures connect platforms, systems and devices.' },
-  { k: 'Clear IP', d: 'Each party keeps existing IP; new data, derived results and joint work are assigned by specific agreement.' },
+  { k: 'Australian-led', d: 'Governance, data rules, standards and industry application grounded in Australian law and market needs.' },
+  { k: 'Open by default', d: 'Open to quality models, hardware and research from anywhere — never dependent on one supplier or country.' },
+  { k: 'Trust first', d: 'Data sources, permissions and AI actions are recorded so they can be verified later.' },
+  { k: 'Industry first', d: 'We start from real industry workflows with clear data foundations and practical value.' },
+  { k: 'Shared infrastructure', d: 'Ventures reuse one foundation instead of each rebuilding data, identity and audit.' },
+  { k: 'Clear IP', d: 'Each party keeps existing IP; new data and joint work are assigned by specific agreement.' },
 ];
 ---
 <Base {title} {description} breadcrumbs={crumbs}>
 <PageHero badge="Group Overview" title="About DNY Cross Border Group" {crumbs}
-  lead="An Australia-led technology and commercialisation group, headquartered in Sydney, building trusted, open AI infrastructure and connecting it with the physical economy."
-  primary={{ label: 'Request the Group Brief', href: '/contact?type=investment' }}
-  secondary={{ label: 'Investors & Partners', href: '/investors' }}>
+  lead="A Sydney-headquartered technology group that grew from cross-border trade into building trusted, open AI and physical intelligence infrastructure for Australian industry — and commercialises it through focused ventures."
+  primary={CTA.brief} secondary={CTA.partner}>
   <Definition term="DNY Cross Border Group" def={SITE.positioning} />
 </PageHero>
 
-<section class="section" aria-labelledby="who-h">
+<section class="section" id="story" aria-labelledby="story-h">
   <div class="container split">
     <div class="reveal-l">
-      <span class="kicker">Who We Are</span>
-      <h2 id="who-h">From AI platform to infrastructure group</h2>
-      <div class="prose" style="margin-top:16px;">
-        <p>DNY began by building the commercial layer between global open-source AI and Australian enterprise. As commercial drones, embodied robotics, OPC + FDE delivery, trusted data spaces and industry projects were added, a single-platform description no longer fitted.</p>
-        <p>DNY is now organised as a <strong>group</strong>: one holding layer, two infrastructure layers — digital and physical — a delivery network, and independent ventures that build on all of them.</p>
-        <p>We create value at the commercialisation layer — localisation, security, integration, operations and support — rather than by training a new foundation model.</p>
-      </div>
+      <span class="kicker">Our Story</span>
+      <h2 id="story-h">From cross-border trade to trusted AI</h2>
     </div>
-    <div class="reveal-r">
-      <GroupStack compact />
+    <div class="prose reveal-r">
+      <p>DNY began in <strong>cross-border trade and supply chain</strong> — moving products, documents and data between Australia and international markets. That work showed us where industry breaks down: product data that cannot be verified, documents that cannot be traced, and systems that cannot talk to each other.</p>
+      <p>AI makes those gaps more expensive, not less. A model is only as reliable as the data and permissions behind it, and once AI starts driving drones, robots and warehouses, every action needs to be accountable.</p>
+      <p>So the group now builds <strong>trusted, open AI infrastructure</strong> and connects it to the physical economy. Our cross-border roots remain in the portfolio — trade services, building supply and logistics are where we apply the infrastructure first.</p>
     </div>
   </div>
 </section>
 
-<section class="section dark" aria-labelledby="h-h">
+<section class="section dark" aria-labelledby="org-h">
   <div class="container">
-    <SectionHead kicker="Group Structure" id="h-h" title="Group → infrastructure → physical intelligence → network → ventures" />
-    <div class="reveal" style="overflow-x:auto;">
-      <table class="htable">
-        <thead><tr><th scope="col">Level</th><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Scope</th></tr></thead>
-        <tbody>
-          {HIERARCHY.map((h) => <tr><th scope="row">{h.level}</th><td><strong>{h.name}</strong></td><td>{h.role}</td><td>{h.scope}</td></tr>)}
-        </tbody>
-      </table>
+    <SectionHead kicker="How the Group Is Organised" id="org-h" title="A holding group with shared infrastructure" />
+    <div class="tiles stagger reveal">
+      {[...STACK].reverse().map((l) => (
+        <a href={l.href} class="tile"><span class="t-k">{l.role}</span><h3>{l.name}</h3><p>{l.summary}</p></a>
+      ))}
     </div>
-    <p class="src-note reveal" style="margin-top:14px;">The structure is designed so that new independent brands — such as drone, robotics, warehousing or construction-technology companies — can be added at Layer 5 without redesigning the group.</p>
+    <p class="src-note reveal" style="margin-top:16px;">New independent ventures can be added without redesigning the group. <a href="/#architecture" style="color:var(--gold-lt)">See the group structure</a>.</p>
   </div>
 </section>
 
 <section class="section" aria-labelledby="pr-h">
   <div class="container">
-    <SectionHead kicker="Build Principles" id="pr-h" title="How we build" />
+    <SectionHead kicker="Principles" id="pr-h" title="How we build" />
     <div class="tiles t3 stagger reveal">
       {principles.map((p) => <div class="tile"><span class="t-k">Principle</span><h3>{p.k}</h3><p>{p.d}</p></div>)}
     </div>
@@ -76,9 +69,10 @@ const principles = [
       <span class="kicker">Australia &amp; Global</span>
       <h2 id="ag-h">Led from Sydney, connected to the world</h2>
       <div class="prose" style="margin-top:16px;">
-        <p>DNY is headquartered in Barangaroo, Sydney. The OPC + FDE network starts in Sydney, with Auckland as the expansion direction for New Zealand.</p>
-        <p>Technology, models and hardware are selected on a global, multi-origin basis. Australia serves as a gateway in both directions: a structured route for suitable international technology into Australian industry, and a platform for Australian capability to reach global markets.</p>
+        <p>DNY is headquartered in Barangaroo, Sydney. The OPC + FDE network starts in Sydney, with Auckland as the next node for New Zealand.</p>
+        <p>Technology, models and hardware are selected on a global, multi-origin basis. Australia works as a gateway in both directions: a structured route for suitable international technology into Australian industry, and a platform for Australian capability to reach global markets.</p>
       </div>
+      <a href="/opc-fde" class="project-link" style="margin-top:12px;">OPC + FDE network <Arrow /></a>
     </div>
     <div class="reveal-r">
       <div class="sep-box">
@@ -92,7 +86,5 @@ const principles = [
 
 <FAQ groups={['group']} title="About DNY — common questions" />
 
-<CTABand title="Work with an accountable Australian AI group"
-  primary={{ label: 'Request the Group Brief', href: '/contact?type=investment' }}
-  secondary={{ label: 'Partner with DNY', href: '/contact?type=partnership' }} />
+<CTABand title="Get the group brief" lead="Strategy, structure and ventures in one briefing." primary={CTA.brief} secondary={CTA.partner} />
 </Base>

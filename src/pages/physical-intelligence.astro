@@ -4,8 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Definition from '../components/Definition.astro';
 import PIFlow from '../components/PIFlow.astro';
-import TrustDiagram from '../components/TrustDiagram.astro';
-import VentureCard from '../components/VentureCard.astro';
+import VentureMini from '../components/VentureMini.astro';
+import { CTA } from '../data/site';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
 import Arrow from '../components/Arrow.astro';
@@ -21,10 +21,9 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
 ---
 <Base {title} {description} breadcrumbs={crumbs}
   schema={[techArticle('The Open Physical Intelligence Layer', description, '/physical-intelligence', ['Physical AI', 'Robotics', 'Drones', 'Edge AI']), definedTerm('Open Physical Intelligence Layer', def, '/physical-intelligence')]}>
-<PageHero badge="Open Physical Intelligence Layer" title="Physical Intelligence: trusted AI that acts in the real world" {crumbs}
+<PageHero badge="Physical Intelligence" title="Physical Intelligence: trusted AI that acts in the real world" {crumbs}
   lead="AI’s next stage is not only generating content. It is perceiving real environments, making decisions and carrying out actions. The Open Physical Intelligence Layer is how DNY extends trusted, open AI infrastructure into the physical economy."
-  primary={{ label: 'Partner on a deployment', href: '/contact?type=enterprise' }}
-  secondary={{ label: 'See the ventures', href: '/ventures?category=Physical%20Intelligence' }}>
+  primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="Open Physical Intelligence Layer" def={def} />
 </PageHero>
 
@@ -78,7 +77,7 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
         <span class="k">Industrial Intelligence</span>
         <h3>Warehousing, automation and digital twins</h3>
         <p>Warehouse robots, automation, computer vision and digital twins integrated with WMS, ERP and sensor data — moving from pilots with defined KPIs to autonomous operations.</p>
-        <a href="/industries/logistics-warehousing" class="project-link">Logistics &amp; Warehousing <Arrow /></a>
+        <a href="/industries#logistics-warehousing" class="project-link">Logistics &amp; Warehousing <Arrow /></a>
       </div>
       <div class="big-panel">
         <span class="k">Open Hardware Integration</span>
@@ -90,15 +89,40 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
   </div>
 </section>
 
-<section class="section dark" aria-labelledby="ts-h">
-  <div class="container">
-    <SectionHead kicker="Trust & Safety" id="ts-h" title="Identity, permission, logging and human escalation"
-      lead="Physical actions carry physical consequences. Every device, model and agent operates under a verified identity and explicit permissions; key decisions are logged; humans stay in the loop where full autonomy is inappropriate; anomalies escalate to people; and operations follow applicable Australian regulation." />
-    <TrustDiagram />
+<section class="section dark" id="edge" aria-labelledby="edge-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Edge Intelligence</span>
+      <h2 id="edge-h" class="h2-sm">Edge AI and computer vision</h2>
+      <p class="lead" style="margin-top:14px;">Edge AI runs inference on or near the device, rather than in a distant cloud — for lower latency, resilience and keeping sensitive video on site.</p>
+    </div>
+    <ul class="check-cols reveal-r" style="grid-template-columns:1fr;">
+      <li><strong>Computer vision</strong> — detection, counting, defect and safety analytics from cameras and drones.</li>
+      <li><strong>Sensor fusion</strong> — vision, thermal, lidar and IoT signals combined into one picture.</li>
+      <li><strong>Local inference</strong> — open models optimised for edge hardware.</li>
+      <li><strong>Trusted sync</strong> — results are hashed and synced to trusted data records for audit.</li>
+    </ul>
   </div>
 </section>
 
-<section class="section" id="ailh" aria-labelledby="ailh-h">
+<section class="section" id="autonomous" aria-labelledby="auto-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Autonomous Operations</span>
+      <h2 id="auto-h" class="h2-sm">Many devices, one governed workflow</h2>
+      <p class="lead" style="margin-top:14px;">AI agents coordinate drones, robots and industrial systems — with people in control of the decisions that matter.</p>
+    </div>
+    <ol class="check-cols reveal-r" style="grid-template-columns:1fr;">
+      <li><strong>Task intake</strong> — a business event or schedule creates a task with a defined scope.</li>
+      <li><strong>Agent planning</strong> — an agent plans which devices do what, within its permissions.</li>
+      <li><strong>Device execution</strong> — drones, robots and systems act through standard interfaces.</li>
+      <li><strong>Human checkpoint</strong> — safety-critical steps wait for approval; anomalies escalate.</li>
+      <li><strong>Verified close-out</strong> — results and decisions are written to the audit record. <a href="/trusted-ai#identity-audit" style="color:var(--gold-lt)">How audit works</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section dark" id="ailh" aria-labelledby="ailh-h">
   <div class="container split">
     <div class="reveal-l">
       <span class="kicker">Industrial Deployment Environment</span>
@@ -124,18 +148,15 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
   </div>
 </section>
 
-<section class="section dark" aria-labelledby="pv-h">
+<section class="section" aria-labelledby="pv-h">
   <div class="container">
     <SectionHead kicker="Ventures on the Layer" id="pv-h" title="Physical intelligence ventures"
       lead="Programmes and ventures that build on the layer. Each keeps its own brand, company and business model." />
-    <div class="vgrid reveal">{ventures.map((v) => <VentureCard v={v} />)}</div>
+    <div class="vmini-grid reveal">{ventures.map((v) => <VentureMini v={v} />)}</div>
   </div>
 </section>
 
-<FAQ groups={['physical']} title="Physical Intelligence — common questions" />
+<FAQ groups={['physical']} title="Physical Intelligence — common questions" dark />
 
-<CTABand title="Bring trusted AI to your physical operations"
-  lead="Inspection, warehousing, robotics or multi-device operations — talk to us about a governed pilot."
-  primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }}
-  secondary={{ label: 'Partner as a hardware provider', href: '/contact?type=partnership' }} />
+<CTABand title="Bring trusted AI to physical operations" primary={CTA.brief} secondary={CTA.partner} />
 </Base>

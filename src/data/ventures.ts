@@ -1,30 +1,26 @@
 // ─────────────────────────────────────────────────────────────
-// Applied Ventures portfolio (brief §6.7, §13, §14).
-// Every venture card and venture page header is generated from this file.
+// Ventures portfolio. Every venture card, venture page header, llms.txt entry and
+// schema.org item is generated from this file.
 // To rename a venture (e.g. once a standalone brand is registered), change `name` only.
 // ─────────────────────────────────────────────────────────────
 
 export type Status = 'Operating' | 'In Development' | 'Proposed' | 'Research' | 'Partnership Opportunity';
 
-export type Category =
-  | 'Physical Intelligence'
-  | 'Trusted Data & AI Services'
-  | 'Agents & Automation'
-  | 'Industry Platforms';
+export type Category = 'Trusted & Open AI' | 'Physical Intelligence' | 'Industry Ventures';
 
 export type Venture = {
   slug: string;
   name: string;
   short: string;
   category: Category;
-  layer: string; // which DNY architecture layer it sits closest to
+  builtOn: string; // which part of the group it builds on
   industries: string[];
   status: Status;
   capabilities: string[];
   tech: string[];
   relation: string; // relationship to DNY infrastructure
   featured?: boolean;
-  legacy?: string; // old URL, for redirects
+  body?: string; // legacy/long-form body file in src/legacy (defaults to slug)
 };
 
 export const STATUS_DEFS: Record<Status, string> = {
@@ -35,187 +31,149 @@ export const STATUS_DEFS: Record<Status, string> = {
   'Partnership Opportunity': 'Open to a partner to lead or co-develop.',
 };
 
+export const CATEGORY_DEFS: Record<Category, string> = {
+  'Trusted & Open AI': 'Ventures that productise the group’s trusted, open AI infrastructure.',
+  'Physical Intelligence': 'Ventures that bring trusted AI to drones, robots and physical operations.',
+  'Industry Ventures': 'Industry businesses that apply the infrastructure in a specific market.',
+};
+
+// Core ventures — shown in navigation, cards and venture pages.
 export const VENTURES: Venture[] = [
+  {
+    slug: 'trusted-ai-open-source-platform',
+    name: 'Australian Trusted AI Open Source Platform',
+    short:
+      'An open-core AI platform — model-agnostic, security-isolated and private-deployment capable — paired with an application discovery engine that turns verified news into audited open-source application directions.',
+    category: 'Trusted & Open AI',
+    builtOn: 'Trusted & Open AI Infrastructure',
+    industries: ['Enterprise', 'Government', 'Cross-border Trade'],
+    status: 'In Development',
+    capabilities: ['Open-core platform', 'Skills & workflows', 'Agent-as-a-service', 'Application discovery engine', 'Audit trail'],
+    tech: ['Open models', 'AI agents', 'Trusted data'],
+    relation:
+      'The platform is the product form of the group’s Trusted & Open AI Infrastructure; every application direction is recorded with its sources, reasoning and decisions.',
+    featured: true,
+  },
+  {
+    slug: 'trusted-data-oracle',
+    name: 'Australian Trusted Data Oracle DAO',
+    short:
+      'A not-for-profit, rights-verified data service giving AI agents reliable access to Australian pricing, index and trade data — every figure traceable to its source, governed by an oracle council.',
+    category: 'Trusted & Open AI',
+    builtOn: 'Trusted Data, Identity & Verification Foundation',
+    industries: ['Cross-border Trade', 'Agriculture', 'Enterprise'],
+    status: 'In Development',
+    capabilities: ['Multi-source verification', 'Cryptographic proof of origin', 'Data APIs for agents', 'Public accountability'],
+    tech: ['Trusted data', 'APIs'],
+    relation: 'A public-interest data service built directly on the group’s trusted data and verification foundation.',
+    body: 'australia-ai-oracle',
+  },
   {
     slug: 'dny-aerial-systems',
     name: 'DNY Aerial Systems',
     short:
       'Commercial drone systems for government, infrastructure and enterprise — aircraft and component supply, Australian systems integration and lifecycle support.',
     category: 'Physical Intelligence',
-    layer: 'Open Physical Intelligence Layer — Air Intelligence',
+    builtOn: 'Physical Intelligence — Air',
     industries: ['Built Environment', 'Infrastructure & Utilities', 'Enterprise'],
     status: 'In Development',
     capabilities: ['Aerial inspection', 'Mapping & survey', 'Industrial data capture', 'Systems integration', 'Lifecycle support'],
     tech: ['Drones', 'Computer vision', 'Edge AI'],
     relation:
-      'Inspection, vision and sensor data flows into the Trusted Data Space; computer vision and AI agents produce analysis, tasks and reports; device identity, mission permissions and key decisions are recorded for audit.',
+      'Inspection and sensor data flows into trusted data records; computer vision and AI agents produce analysis and reports; device identity, mission permissions and key decisions are recorded for audit.',
     featured: true,
   },
   {
     slug: 'dny-robotic-systems',
     name: 'DNY Robotic Systems',
     short:
-      'Embodied and autonomous systems for Australian industrial, logistics and service environments, built on DNY’s trusted open AI and physical intelligence infrastructure.',
+      'Embodied and autonomous systems for Australian industrial, logistics and service environments — including the Robotics Experience & Innovation Centre for demonstration, validation and market entry.',
     category: 'Physical Intelligence',
-    layer: 'Open Physical Intelligence Layer — Embodied Intelligence',
-    industries: ['Logistics & Warehousing', 'Enterprise', 'Built Environment'],
+    builtOn: 'Physical Intelligence — Embodied',
+    industries: ['Logistics & Warehousing', 'Enterprise', 'Hospitality & Care'],
     status: 'In Development',
-    capabilities: ['Embodied AI', 'Autonomous navigation', 'Manipulation', 'Human–robot collaboration', 'Fleet operations'],
+    capabilities: ['Embodied AI', 'Autonomous navigation', 'Human–robot collaboration', 'Experience & Innovation Centre', 'Market entry for global robotics'],
     tech: ['Robotics', 'Edge AI', 'AI agents'],
     relation:
-      'Robots connect through the Physical Intelligence Layer: models and agents decide, robots act, and every action is bound to an identity, a permission and an audit record.',
+      'Robots connect through the physical intelligence layer: models and agents decide, robots act, and every action is bound to an identity, a permission and an audit record.',
     featured: true,
-  },
-  {
-    slug: 'robotics-experience-centre',
-    name: 'Robotics Experience & Innovation Centre',
-    short:
-      'A physical showcase, testing ground and Australian market-entry environment for advanced global robotics and AI hardware — demonstration, validation, B2B and education.',
-    category: 'Physical Intelligence',
-    layer: 'Open Physical Intelligence Layer — Embodied Intelligence',
-    industries: ['Enterprise', 'Education', 'Hospitality & Care'],
-    status: 'In Development',
-    capabilities: ['Live robot demonstration', 'Product validation', 'Market entry for global brands', 'B2B pilots', 'STEM education'],
-    tech: ['Robotics', 'Open models'],
-    relation:
-      'A physical validation environment where global robots and AI hardware are integrated with DNY’s open model layer and tested before Australian deployment.',
-    legacy: 'project-robotics-centre',
   },
   {
     slug: 'robotic-logistics-warehouse',
     name: 'AI Robotic Logistics Warehouse',
     short:
-      'A smart, robotics-driven fulfilment warehouse for cross-border small-goods e-commerce — WMS, OMS and TMS with AI vision quality checks and robotics-assisted picking.',
+      'A robotics-driven fulfilment warehouse for cross-border small-goods e-commerce — WMS, OMS and TMS with AI vision quality checks and robotics-assisted picking.',
     category: 'Physical Intelligence',
-    layer: 'Open Physical Intelligence Layer — Industrial Intelligence',
+    builtOn: 'Physical Intelligence — Industrial',
     industries: ['Logistics & Warehousing', 'Cross-border Trade'],
     status: 'In Development',
     capabilities: ['Robotics-assisted picking', 'AI vision quality checks', 'WMS / OMS / TMS', 'Fulfilment-as-a-Service'],
     tech: ['Robotics', 'Computer vision', 'AI agents'],
-    relation:
-      'Combines the Physical Intelligence Layer with enterprise integration and agents; operational data is governed in the Trusted Data Space.',
-    legacy: 'project-robotic-warehouse',
+    relation: 'Combines warehouse robotics and vision with enterprise integration and agents; operational data is governed as trusted records.',
   },
   {
     slug: 'ai-trade-services',
     name: 'AI Trade Services Platform',
     short:
-      'AI agents for import and export businesses — content, quoting, customer service, translation and trade data — for trade across Asia-Pacific, ASEAN and Oceania.',
-    category: 'Industry Platforms',
-    layer: 'Applied on Trusted & Open AI Infrastructure',
+      'AI agents for import and export businesses — content, quoting, customer service, translation and trade data — across Australia, New Zealand, ASEAN and Oceania.',
+    category: 'Industry Ventures',
+    builtOn: 'Trusted & Open AI Infrastructure',
     industries: ['Cross-border Trade'],
     status: 'In Development',
     capabilities: ['Cross-border marketing content', 'Quoting & customer service', 'Translation', 'Trade data & insight'],
     tech: ['AI agents', 'Open models'],
-    relation: 'Runs trade agents on the open model layer, with product, document and trade records verified in the Trusted Data Space.',
-    legacy: 'project-ai-trade-services',
-  },
-  {
-    slug: 'ai-media-hub',
-    name: 'DNY AI Media Hub',
-    short:
-      'AI-driven media operations for cross-border sellers — product video, social content, digital humans and multilingual production.',
-    category: 'Agents & Automation',
-    layer: 'Applied on Trusted & Open AI Infrastructure',
-    industries: ['Media', 'Cross-border Trade'],
-    status: 'In Development',
-    capabilities: ['AI product videos', 'Social media content', 'AI digital humans', 'Multilingual content'],
-    tech: ['Open models', 'AI agents'],
-    relation: 'Runs media agents on the open model layer, with content provenance and approvals recorded for audit.',
-    legacy: 'project-ai-media-hub',
-  },
-  {
-    slug: 'australia-ai-oracle',
-    name: 'Australia AI Oracle',
-    short:
-      'A not-for-profit, rights-verified data platform giving AI agents reliable access to Australian pricing, index and trade data — every figure traceable to its source.',
-    category: 'Trusted Data & AI Services',
-    layer: 'Trusted Data, Identity & Verification Foundation',
-    industries: ['Cross-border Trade', 'Agriculture', 'Enterprise'],
-    status: 'In Development',
-    capabilities: ['Multi-source verification', 'Cryptographic proof of origin', 'Data APIs for agents', 'Public accountability'],
-    tech: ['Trusted data', 'APIs'],
-    relation: 'A public-interest data service built directly on the Trusted Data Space and its verification mechanisms.',
-    legacy: 'project-ai-oracle',
-  },
-  {
-    slug: 'ai-agent-marketplace',
-    name: 'Australia AI Agent Marketplace',
-    short:
-      'An industry-specialised marketplace where enterprises, SMEs and government can find AI agents suited to Australian rules and workflows.',
-    category: 'Agents & Automation',
-    layer: 'Trusted & Open AI Infrastructure — Agents',
-    industries: ['Enterprise', 'Government'],
-    status: 'In Development',
-    capabilities: ['Industry-specialised agents', 'Agent evaluation', 'Enterprise, SME and government channels'],
-    tech: ['AI agents', 'APIs'],
-    relation: 'Lists agents that pass DNY evaluation and licence review; prepared for AI-to-AI service settlement.',
-    legacy: 'project-ai-agent-marketplace',
+    relation: 'Runs trade agents on the open model layer, with product, document and trade records kept verifiable.',
   },
   {
     slug: 'building-supply',
     name: 'DNY Building Supply',
     short:
-      'A building-materials and supply-chain venture connecting suppliers, manufacturers, builders and trade partners, with a showroom and warehouse in Sydney.',
-    category: 'Industry Platforms',
-    layer: 'Applied on Trusted & Open AI Infrastructure',
+      'A building-materials and supply-chain business connecting suppliers, manufacturers, builders and trade partners, with a showroom and warehouse in Sydney.',
+    category: 'Industry Ventures',
+    builtOn: 'Industry deployment — Built Environment',
     industries: ['Built Environment', 'Cross-border Trade'],
     status: 'In Development',
     capabilities: ['Full-category building materials', 'Showroom & warehouse', 'Supply-chain coordination', 'Product data'],
     tech: ['Trusted data'],
-    relation: 'Product records, certifications and test reports feed the open built-environment data model in the Trusted Data Space.',
-    legacy: 'project-building-supply',
+    relation: 'Product records, certifications and test reports feed the group’s open built-environment data model.',
   },
   {
     slug: 'facadia',
-    name: 'Facadia — AI Materials Valuation',
+    name: 'Facadia',
     short:
-      'Residential facade intelligence — a photo of a home’s exterior returns a materials report and budget estimate instead of a manual quantity take-off.',
-    category: 'Industry Platforms',
-    layer: 'Applied on Trusted & Open AI Infrastructure',
-    industries: ['Built Environment'],
+      'AI facade intelligence for residential property — a photo of a home’s exterior returns a materials report and a budget estimate instead of a manual quantity take-off.',
+    category: 'Industry Ventures',
+    builtOn: 'Industry deployment — Built Environment',
+    industries: ['Built Environment', 'Property'],
     status: 'In Development',
-    capabilities: ['AI photo analysis', 'Budget estimation', 'Privacy by design'],
+    capabilities: ['AI photo analysis', 'Materials identification', 'Budget estimation', 'Privacy by design'],
     tech: ['Computer vision', 'Trusted data'],
     relation: 'Estimates draw on verified product and standards data, so every figure can be traced to its sources.',
-    legacy: 'project-facadia',
   },
   {
-    slug: 'hr-hub',
-    name: 'DNY HR Hub',
+    slug: 'auralio',
+    name: 'Auralio',
     short:
-      'A people-focused venture connecting entrepreneurs, professionals and business delegations with real cross-border projects through exchange, industry visits and networking.',
-    category: 'Industry Platforms',
-    layer: 'Connected to the OPC + FDE Network',
-    industries: ['Enterprise', 'Cross-border Trade'],
+      'AI room restyling — upload one photo of a room and receive a professionally restyled interior concept with category-level “shop this look” suggestions.',
+    category: 'Industry Ventures',
+    builtOn: 'Industry deployment — Built Environment',
+    industries: ['Property', 'Built Environment', 'Retail'],
     status: 'In Development',
-    capabilities: ['Professional exchange', 'Industry visits', 'Business delegations', 'Networking'],
-    tech: ['AI agents'],
-    relation: 'Feeds people and projects into the OPC + FDE network; programmes use DNY agents for coordination.',
-    legacy: 'project-hr-hub',
-  },
-  {
-    slug: 'livestock-data-rights',
-    name: 'Livestock Data Rights Platform',
-    short:
-      'Digital notary infrastructure for Australia’s livestock export industries — turning existing records into tamper-proof credentials that buyers, banks and regulators can trust.',
-    category: 'Trusted Data & AI Services',
-    layer: 'Trusted Data, Identity & Verification Foundation',
-    industries: ['Agriculture'],
-    status: 'In Development',
-    capabilities: ['Show animal passport', 'Batch verification', 'Producer trust profile'],
-    tech: ['Trusted data'],
-    relation: 'Applies Trusted Data Space provenance and permission controls to agricultural records — an early future-vertical use case.',
-    legacy: 'project-livestock',
+    capabilities: ['Room validation', 'Room reset', 'Style-consistent restyling', 'Shop-this-look links'],
+    tech: ['Computer vision', 'Open models'],
+    relation: 'Uses a model-agnostic AI layer with provider adapters and privacy-first image handling, consistent with the group’s open, vendor-neutral approach.',
   },
 ];
 
-export const CATEGORIES: Category[] = [
-  'Physical Intelligence',
-  'Trusted Data & AI Services',
-  'Agents & Automation',
-  'Industry Platforms',
+// Archived initiatives — listed once, without their own pages.
+export const ARCHIVED = [
+  { name: 'DNY HR Hub', line: 'Professional exchange, industry visits and business delegations.' },
+  { name: 'DNY AI Media Hub', line: 'AI-assisted media production for cross-border sellers.' },
+  { name: 'Australia AI Agent Marketplace', line: 'An industry-specialised marketplace for evaluated AI agents.' },
+  { name: 'Livestock Data Rights Platform', line: 'Verifiable credentials for livestock export records.' },
 ];
+
+export const CATEGORIES: Category[] = ['Trusted & Open AI', 'Physical Intelligence', 'Industry Ventures'];
 
 export const getVenture = (slug: string) => {
   const v = VENTURES.find((x) => x.slug === slug);

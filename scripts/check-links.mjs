@@ -35,6 +35,12 @@ for (const f of files) {
   if (cjk) err(`${rel}: non-English characters ${[...new Set(cjk)].join('')}`);
   const h1 = (text.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) err(`${rel}: ${h1} <h1> elements`);
+  // Only the three standard calls to action may appear as buttons (careers apply links excepted).
+  const allowed = new Set(['Request the Group Brief', 'Partner with DNY', 'Contact us', 'Email your application', 'Apply for this role', 'Back to all roles', 'Send enquiry', 'Go to the homepage']);
+  for (const [, label] of text.matchAll(/<a[^>]*class="btn[^"]*"[^>]*>([^<]+)<\/a>/g)) {
+    if (!allowed.has(label.trim().replace(/&amp;/g, '&'))) err(`${rel}: non-standard button "${label.trim()}"`);
+  }
+  if (/\bLayer [0-9]/.test(text) && rel !== '/index.html') err(`${rel}: layer numbering outside the homepage`);
   if (!/<link rel="canonical"/.test(html) && !rel.includes('404')) err(`${rel}: no canonical`);
 }
 console.log(`${files.length} pages checked, ${errors} problem(s).`);

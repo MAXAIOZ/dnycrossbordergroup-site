@@ -12,6 +12,7 @@ import TrustDiagram from './TrustDiagram.astro';
 import PIFlow from './PIFlow.astro';
 import Arrow from './Arrow.astro';
 import { VENTURES } from '../data/ventures';
+import { CTA } from '../data/site';
 import { techArticle, definedTerm } from '../data/schema';
 import type { Topic } from '../data/topics';
 
@@ -25,7 +26,7 @@ const nextDark = () => (dark = !dark);
 ---
 <Base title={t.title} description={t.description} breadcrumbs={crumbs}
   schema={[techArticle(t.h1, t.description, path, t.about ?? [t.term]), definedTerm(t.term, t.def, path)]}>
-<PageHero badge={t.badge} title={t.h1} lead={t.lead} {crumbs} primary={t.primary} secondary={t.secondary}>
+<PageHero badge={t.badge} title={t.h1} lead={t.lead} {crumbs} primary={CTA.partner} secondary={CTA.brief}>
   <Definition term={t.term} def={t.def} />
 </PageHero>
 
@@ -110,5 +111,5 @@ const nextDark = () => (dark = !dark);
 
 {t.faq && <FAQ groups={t.faq} dark={nextDark()} title={`${t.navTitle} — common questions`} />}
 
-<CTABand title={t.cta.title} lead={t.cta.lead} primary={t.cta.primary} secondary={t.cta.secondary} />
+<CTABand title={t.cta.title} lead={t.cta.lead} primary={CTA.brief} secondary={CTA.partner} />
 </Base>

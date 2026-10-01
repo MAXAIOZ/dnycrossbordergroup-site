@@ -1,5 +1,5 @@
 ---
-import { SITE, NAV, CONTACT_NAV, FOOTER } from '../data/site';
+import { SITE, NAV, CTA, FOOTER } from '../data/site';
 import { VENTURES } from '../data/ventures';
 
 export interface Crumb { name: string; href: string }
@@ -158,16 +158,8 @@ const year = new Date().getFullYear();
           )}
         </div>
       ))}
-      <div class="nav-item has-sub nav-item-cta">
-        <a href={CONTACT_NAV.href} class="nav-cta">{CONTACT_NAV.label}</a>
-        <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show contact options">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="sub-menu sub-menu-right">
-          {CONTACT_NAV.children!.map((c) => (
-            <a href={c.href} class="sub-link"><span class="sub-label">{c.label}</span></a>
-          ))}
-        </div>
+      <div class="nav-item nav-item-cta">
+        <a href={CTA.brief.href} class="nav-cta">{CTA.brief.label}</a>
       </div>
     </nav>
   </div>
@@ -201,8 +193,8 @@ const year = new Date().getFullYear();
         <a href="/contact">Contact</a>
         <a href="/investors">Investors</a>
         <a href="/careers">Careers</a>
-        <a href="/glossary">Glossary</a>
         <a href="/facts">Company facts</a>
+        <a href="/glossary">Glossary</a>
         <a href="/llms.txt">llms.txt</a>
       </div>
     </div>

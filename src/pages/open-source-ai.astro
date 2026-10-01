@@ -6,6 +6,7 @@ import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
 import body from '../legacy/open-source-ai.html?raw';
 import { techArticle, definedTerm } from '../data/schema';
+import { CTA } from '../data/site';
 const title = 'Open Source AI';
 const description = 'How DNY uses open-source, open-weight and source-available AI: multi-model, multi-cloud, vendor-neutral and licence-aware, with every model evaluated and licence-checked before production.';
 const def = 'AI released with the freedom to use, study, modify and share it, including access to the preferred form for modification. It differs from open-weight and source-available models, which carry more restrictions.';
@@ -14,10 +15,10 @@ const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }, { nam
 <Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Open Source AI: open technology, commercial infrastructure', description, '/open-source-ai', ['Open Source AI', 'Open-weight models', 'Model licensing']), definedTerm('Open Source AI', def, '/open-source-ai')]}>
 <PageHero badge="Open Source · The Route" title="Open Source AI: open technology, commercial infrastructure" {crumbs}
   lead="Open source is already deeply embedded in enterprise technology. DNY does not compete by owning every underlying model — it builds the commercial operating layer around open AI, concentrating investment on deployment tooling, integrations, governance and support."
-  primary={{ label: 'Developer enquiry', href: '/contact?type=developer' }} secondary={{ label: 'Trusted AI', href: '/trusted-ai' }}>
+  primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="Open Source AI" def={def} />
 </PageHero>
 <Fragment set:html={body} />
 <FAQ groups={['open']} title="Open Source AI — common questions" dark />
-<CTABand title="Use open AI with confidence" primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }} secondary={{ label: 'Developer enquiry', href: '/contact?type=developer' }} />
+<CTABand title="Use open AI with confidence" primary={CTA.brief} secondary={CTA.partner} />
 </Base>

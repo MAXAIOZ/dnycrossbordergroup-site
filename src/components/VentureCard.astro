@@ -20,7 +20,7 @@ const H = headingLevel;
   <H class="vcard-name"><a href={`/ventures/${v.slug}`}>{v.name}</a></H>
   <p class="vcard-short">{v.short}</p>
   <dl class="vcard-meta">
-    <div><dt>Layer</dt><dd>{v.layer}</dd></div>
+    <div><dt>Builds on</dt><dd>{v.builtOn}</dd></div>
     <div><dt>Industry</dt><dd>{v.industries.join(', ')}</dd></div>
     <div><dt>Core capabilities</dt><dd>{v.capabilities.slice(0, 4).join(' · ')}</dd></div>
   </dl>

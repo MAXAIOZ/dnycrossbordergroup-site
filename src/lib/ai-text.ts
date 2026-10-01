@@ -18,10 +18,11 @@ export const KEY_FACTS: [string, string][] = [
   ['Group structure', 'Group holding layer → Trusted & Open AI Infrastructure → Open Physical Intelligence Layer → OPC + FDE delivery network → Applied Ventures'],
   ['Core focus', 'Trusted AI, open-source and open-weight AI, AI agents, physical AI (commercial drones, embodied robotics, edge AI, autonomous systems), industry deployment'],
   ['Industries', 'Built environment; logistics and warehousing; cross-border trade; enterprise and professional services; future verticals (mining, agriculture, utilities, health and ageing)'],
-  ['Drone venture', 'DNY Aerial Systems — commercial drone systems, In Development'],
-  ['Robotics venture', 'DNY Robotic Systems — embodied and autonomous systems, In Development'],
+  ['Origin', 'Began in cross-border trade and supply chain between Australia and international markets'],
+  ['Core ventures', VENTURES.map((v) => v.name).join('; ')],
   ['Number of ventures', `${VENTURES.length}` + (new Set(VENTURES.map((v) => v.status)).size === 1 ? `, all currently ${VENTURES[0].status}` : '')],
   ['What DNY does not do', 'DNY does not train its own frontier foundation model, does not manufacture aircraft, and is not a co-working operator'],
+  ['Delivery network', 'OPC + FDE network and the ANZ OPC + FDE Alliance — Sydney first, Auckland next'],
   ['Vendor stance', 'Multi-model, multi-cloud and multi-hardware; no dependency on a single supplier or country of origin'],
   ['Contact', `${SITE.email} · ${U('/contact')}`],
   ['Website', SITE.url],
@@ -30,7 +31,7 @@ export const KEY_FACTS: [string, string][] = [
 export function llmsTxt(): string {
   const L: string[] = [];
   L.push(`# ${SITE.name}`, '', `> ${SITE.positioning}`, '');
-  L.push(`${SITE.name} is headquartered in Barangaroo, Sydney, Australia. It is organised as a group of five layers: a Trusted Data, Identity & Verification Foundation; Trusted & Open AI Infrastructure; the Open Physical Intelligence Layer (drones, robotics, edge AI, autonomous systems); the OPC + FDE delivery network; and Applied Ventures. Ventures are labelled Operating, In Development, Proposed, Research or Partnership Opportunity. Last updated ${SITE.lastUpdated}.`, '');
+  L.push(`${SITE.name} is headquartered in Barangaroo, Sydney, Australia, and grew from cross-border trade. It is organised as a group of five layers: a Trusted Data, Identity & Verification Foundation; Trusted & Open AI Infrastructure; the Open Physical Intelligence Layer (drones, robotics, edge AI, autonomous systems); the OPC + FDE delivery network; and Applied Ventures. Ventures are labelled Operating, In Development, Proposed, Research or Partnership Opportunity. Last updated ${SITE.lastUpdated}.`, '');
   L.push('## Key facts', '');
   KEY_FACTS.forEach(([k, v]) => L.push(`- ${k}: ${v}`));
   L.push('', '## Full text', '', `- [Complete site content for AI systems](${U('/llms-full.txt')}): every page's key content in one Markdown file`, `- [Company facts](${U('/facts')}): canonical facts about the group`, '');
@@ -111,7 +112,7 @@ export function llmsFullTxt(): string {
   }
 
   h(2, 'OPC + FDE network');
-  L.push(`Page: ${U('/opc-fde')}`, '', 'OPC = Office + AI Agents: local business nodes that combine workspace, AI agent capability and market connections — not a conventional co-working space. FDE = Forward Deployed Entrepreneur: a delivery role working directly on real customer problems to take solutions from proof of concept to deployment. Sydney is the first node; Auckland is the expansion direction for New Zealand.');
+  L.push(`Page: ${U('/opc-fde')}`, '', 'OPC = Office + AI Agents: local business nodes that combine workspace, AI agent capability and market connections — not a conventional co-working space. FDE = Forward Deployed Entrepreneur: a delivery role working directly on real customer problems to take solutions from proof of concept to deployment. Sydney is the first node; Auckland is the expansion direction for New Zealand. The ANZ OPC + FDE Alliance is the membership organisation behind the network, with FDE delivery capability built into member benefits.');
 
   h(2, 'Frequently asked questions');
   for (const g of Object.values(FAQS)) {

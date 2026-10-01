@@ -6,26 +6,37 @@ import TrustDiagram from '../components/TrustDiagram.astro';
 import SectionHead from '../components/SectionHead.astro';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
-import body from '../legacy/trusted-ai.html?raw';
+import partA from '../legacy/trusted-ai-a.html?raw';
+import partB from '../legacy/trusted-ai-b.html?raw';
+import { CTA } from '../data/site';
 import { techArticle, definedTerm } from '../data/schema';
 const title = 'Trusted AI';
-const description = 'Trusted AI at DNY: a Trusted Data Space and verifiable infrastructure so that data sources, versions, permissions, model provenance and AI actions are verifiable, traceable and auditable.';
+const description = 'Trusted AI at DNY: a Trusted Data Space plus identity, permission and audit, so that data sources, model versions and AI actions — including those of drones and robots — can be verified and traced.';
 const def = 'AI whose data sources, model versions, permissions and actions can be verified, traced and audited.';
 const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }, { name: 'Trusted AI', href: '/trusted-ai' }];
 ---
-<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Trusted AI: trust is the foundation, not a feature', description, '/trusted-ai', ['Trusted AI', 'Data provenance', 'AI governance']), definedTerm('Trusted AI', def, '/trusted-ai')]}>
-<PageHero badge="Trusted AI · The Principle" title="Trusted AI: trust is the foundation, not a feature" {crumbs}
-  lead="Access to a model is not the same as safe deployment. DNY builds a Trusted Data Space and verifiable infrastructure so that data sources, versions, permissions and model provenance are verifiable, traceable and auditable — the base for trusted retrieval, reasoning, industry automation and physical AI."
-  primary={{ label: 'Discuss trusted AI', href: '/contact?type=enterprise' }} secondary={{ label: 'Open Source AI', href: '/open-source-ai' }}>
+<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Trusted AI: trust is the foundation, not a feature', description, '/trusted-ai', ['Trusted AI', 'Trusted Data Space', 'Data provenance', 'AI audit']), definedTerm('Trusted AI', def, '/trusted-ai'), definedTerm('Trusted Data Space', 'A governed environment where data is shared under recorded provenance, versions, licences and permissions, so parties can collaborate without losing control of their data.', '/trusted-ai#data-space')]}>
+<PageHero badge="Trusted AI" title="Trusted AI: trust is the foundation, not a feature" {crumbs}
+  lead="Access to a model is not the same as safe deployment. DNY records where data came from, who may use it, which model produced an answer and which agent or device acted — so AI can be verified, not just believed."
+  primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="Trusted AI" def={def} />
 </PageHero>
-<Fragment set:html={body} />
-<section class="section dark" aria-labelledby="td-h">
+<Fragment set:html={partA} />
+<section class="section dark" id="identity-audit" aria-labelledby="ia-h">
   <div class="container">
-    <SectionHead kicker="Into the Physical World" id="td-h" title="The same trust model governs devices" lead="When AI drives drones and robots, the same four checks apply to every action." />
+    <SectionHead kicker="Identity, Permission & Audit" id="ia-h" title="Who did what, on whose authority"
+      lead="Every person, AI agent, model and device gets a verifiable identity and explicit permissions — and every significant action leaves an audit record. The same model governs drones and robots in the physical world." />
     <TrustDiagram />
+    <div class="tiles t4 mt-28 stagger reveal">
+      <div class="tile"><span class="t-k">People</span><h3>Users &amp; approvers</h3><p>Role-based access and approval rights.</p></div>
+      <div class="tile"><span class="t-k">Software</span><h3>Models &amp; agents</h3><p>Versioned models and agents with scoped permissions.</p></div>
+      <div class="tile"><span class="t-k">Hardware</span><h3>Devices</h3><p>Drones, robots and edge devices bound to an identity.</p></div>
+      <div class="tile"><span class="t-k">Data</span><h3>Datasets</h3><p>Records with provenance, licence and version.</p></div>
+    </div>
+    <p class="src-note reveal" style="margin-top:16px;">Audit records support accountability; they do not by themselves guarantee that an output is correct.</p>
   </div>
 </section>
-<FAQ groups={['trusted']} title="Trusted AI — common questions" />
-<CTABand title="Make AI verifiable by design" primary={{ label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }} secondary={{ label: 'Trusted Data Space', href: '/ai-infrastructure/data-space' }} />
+<Fragment set:html={partB} />
+<FAQ groups={['trusted']} title="Trusted AI — common questions" dark />
+<CTABand title="Make AI verifiable by design" primary={CTA.brief} secondary={CTA.partner} />
 </Base>
