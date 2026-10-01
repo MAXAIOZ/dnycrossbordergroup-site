@@ -1,5 +1,6 @@
 ---
 import { SITE, NAV, CONTACT_NAV, FOOTER } from '../data/site';
+import { VENTURES } from '../data/ventures';
 
 export interface Crumb { name: string; href: string }
 export interface Props {
@@ -36,7 +37,7 @@ const orgSchema = {
   name: SITE.name,
   legalName: SITE.legalName,
   url: SITE.url,
-  logo: `${SITE.url}/assets/img/logo.svg`,
+  logo: `${SITE.url}/assets/img/logo-512.png`,
   email: SITE.email,
   description: SITE.positioning,
   address: {
@@ -47,6 +48,12 @@ const orgSchema = {
     postalCode: SITE.address.postcode,
     addressCountry: SITE.address.country,
   },
+  alternateName: SITE.alternateNames,
+  slogan: 'Trusted Open AI. Connected to the Physical World.',
+  ...(SITE.sameAs.length ? { sameAs: SITE.sameAs } : {}),
+  location: { '@type': 'Place', name: 'Barangaroo, Sydney', address: { '@type': 'PostalAddress', addressLocality: 'Sydney', addressRegion: 'NSW', addressCountry: 'AU' } },
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer enquiries', email: SITE.email, areaServed: ['AU', 'NZ'], availableLanguage: 'English', url: `${SITE.url}/contact` },
+  brand: VENTURES.map((v) => ({ '@type': 'Brand', name: v.name, url: `${SITE.url}/ventures/${v.slug}` })),
   areaServed: ['AU', 'NZ'],
   knowsAbout: ['Trusted AI', 'Open Source AI', 'Physical AI', 'AI Agents', 'Commercial drones', 'Embodied AI', 'Edge AI', 'Trusted Data Space'],
 };
@@ -71,7 +78,20 @@ const crumbSchema = breadcrumbs.length
       })),
     }
   : null;
-const allSchema = [orgSchema, siteSchema, ...(crumbSchema ? [crumbSchema] : []), ...schema];
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${canonical}#webpage`,
+  url: canonical,
+  name: fullTitle,
+  description,
+  inLanguage: 'en-AU',
+  dateModified: SITE.lastUpdated,
+  isPartOf: { '@id': `${SITE.url}/#website` },
+  about: { '@id': `${SITE.url}/#organization` },
+  primaryImageOfPage: ogImage,
+};
+const allSchema = [orgSchema, siteSchema, pageSchema, ...(crumbSchema ? [crumbSchema] : []), ...schema];
 const year = new Date().getFullYear();
 ---
 <!doctype html>
@@ -97,6 +117,7 @@ const year = new Date().getFullYear();
   <meta name="theme-color" content="#04201A">
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="sitemap" href="/sitemap-index.xml">
+  <link rel="alternate" type="text/plain" title="AI-readable site summary (llms.txt)" href="/llms.txt">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -175,12 +196,14 @@ const year = new Date().getFullYear();
       ))}
     </div>
     <div class="footer-bottom">
-      <span>© {year} {SITE.name}. All rights reserved.</span>
+      <span>© {year} {SITE.name}. All rights reserved. · Content last updated <time datetime={SITE.lastUpdated}>{new Date(SITE.lastUpdated).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}</time></span>
       <div class="footer-sub-links">
         <a href="/contact">Contact</a>
         <a href="/investors">Investors</a>
         <a href="/careers">Careers</a>
         <a href="/glossary">Glossary</a>
+        <a href="/facts">Company facts</a>
+        <a href="/llms.txt">llms.txt</a>
       </div>
     </div>
     <div class="footer-disclaimer">

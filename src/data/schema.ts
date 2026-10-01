@@ -10,7 +10,7 @@ export const techArticle = (headline: string, description: string, path: string,
   inLanguage: 'en-AU',
   author: { '@id': `${SITE.url}/#organization` },
   publisher: { '@id': `${SITE.url}/#organization` },
-  dateModified: '2026-10-01',
+  dateModified: SITE.lastUpdated,
   about: about.map((name) => ({ '@type': 'Thing', name })),
 });
 

@@ -70,3 +70,17 @@ public/
   _redirects, _headers, robots.txt
 _legacy-static/ the previous hand-written HTML site, kept for reference only (not deployed)
 ```
+
+## GEO — being read and cited by AI search
+
+| What | Where |
+|---|---|
+| AI-readable summary (llmstxt.org) | `/llms.txt` — generated from `src/lib/ai-text.ts` |
+| Full site text for AI systems | `/llms-full.txt` |
+| Canonical company facts page | `/facts` |
+| AI crawlers explicitly allowed + content signals | `public/robots.txt` |
+| Entity data (alternate names, profiles, brands, contact point) | `SITE` in `src/data/site.ts` → Organization schema |
+| Freshness (`dateModified`, footer date) | `SITE.lastUpdated` — bump it whenever content changes |
+| Instant indexing for Bing / Copilot / ChatGPT search | `npm run build && npm run indexnow` after each deploy (key file in `public/`) |
+
+Add official profile URLs (LinkedIn, Crunchbase, X, GitHub…) to `SITE.sameAs` — it is the single strongest signal that ties those profiles and this site to one entity.

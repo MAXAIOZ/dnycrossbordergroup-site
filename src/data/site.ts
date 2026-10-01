@@ -22,6 +22,14 @@ export const SITE = {
   shortPositioning:
     'Australia-led trusted, open AI and physical intelligence infrastructure group.',
   defaultOg: '/og/default.png',
+  alternateNames: ['DNY', 'DNY Group', 'DNY Cross Border'],
+  // Official profiles (LinkedIn, Crunchbase, X, GitHub…). Each one strengthens entity recognition
+  // by search engines and AI assistants. Add full URLs here; they are output as schema.org sameAs.
+  sameAs: [] as string[],
+  // Shown as "Last updated" and used as dateModified in structured data. Bump on content changes.
+  lastUpdated: '2026-10-01',
+  // IndexNow key — the matching key file is public/fc7fd0c2dde75c0336dc49f152b48547.txt
+  indexNowKey: 'fc7fd0c2dde75c0336dc49f152b48547',
   // Cloudflare Web Analytics token (Cloudflare dashboard → Analytics → Web Analytics). Leave empty to disable.
   cfAnalyticsToken: '',
   // Form endpoint (FormSubmit free tier). The first submission triggers a one-time

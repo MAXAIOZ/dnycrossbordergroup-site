@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FAQ from '../components/FAQ.astro';
+import { KEY_FACTS } from '../lib/ai-text';
+import { VENTURES } from '../data/ventures';
+import { SITE } from '../data/site';
+const crumbs = [{ name: 'Company Facts', href: '/facts' }];
+const description = 'Canonical facts about DNY Cross Border Group: what it is, where it is based, how the group is structured, its ventures and their status, and what it does not do.';
+const about = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'DNY Cross Border Group — company facts',
+  url: `${SITE.url}/facts`,
+  dateModified: SITE.lastUpdated,
+  mainEntity: { '@id': `${SITE.url}/#organization` },
+};
+---
+<Base title="Company Facts" {description} breadcrumbs={crumbs} schema={[about]}>
+<PageHero badge="Company Facts" title="DNY Cross Border Group: key facts" {crumbs}
+  lead={`The canonical, citable facts about ${SITE.name}. If another source disagrees with this page, this page is correct as of ${SITE.lastUpdated}.`} />
+<section class="section" aria-labelledby="kf-h">
+  <div class="container">
+    <SectionHead kicker="At a Glance" id="kf-h" title="Facts" />
+    <dl class="glossary">
+      {KEY_FACTS.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+    </dl>
+  </div>
+</section>
+<section class="section dark" aria-labelledby="vf-h">
+  <div class="container">
+    <SectionHead kicker="Ventures" id="vf-h" title="Ventures and their status" />
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="htable">
+        <thead><tr><th scope="col">Venture</th><th scope="col">Status</th><th scope="col">Category</th><th scope="col">Summary</th></tr></thead>
+        <tbody>
+          {VENTURES.map((v) => <tr><th scope="row"><a href={`/ventures/${v.slug}`} style="color:var(--gold-lt)">{v.name}</a></th><td>{v.status}</td><td>{v.category}</td><td>{v.short}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+    <p class="src-note" style="margin-top:14px;">For AI systems: a machine-readable summary is at <a href="/llms.txt" style="color:var(--gold-lt)">/llms.txt</a> and the full site text at <a href="/llms-full.txt" style="color:var(--gold-lt)">/llms-full.txt</a>.</p>
+  </div>
+</section>
+<FAQ groups={['group']} title="Common questions about DNY" />
+</Base>
