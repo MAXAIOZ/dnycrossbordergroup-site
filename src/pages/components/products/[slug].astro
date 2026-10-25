@@ -12,9 +12,16 @@ const { p } = Astro.props as { p: Product };
 const c = category(p.category);
 const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: APP_LABEL[p.application], href: APP_PATH[p.application] }, { name: p.name, href: `/components/products/${p.slug}` }];
 const brand = p.brand ? BRANDS[p.brand] : null;
+const modelSchema = p.models ? [{
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `${p.brand} ${p.series} models`,
+  numberOfItems: p.models.length,
+  itemListElement: p.models.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: `${p.brand} ${m}` })),
+}] : [];
 const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 3);
 ---
-<Base title={`${p.name} — ${APP_LABEL[p.application]}`} description={`${p.description} Request a quote from DNY Cross Border Group with your model, part number and quantity.`} breadcrumbs={crumbs}>
+<Base title={`${p.name} — ${APP_LABEL[p.application]}`} description={`${p.description} Quoted on request by DNY, Sydney.`} breadcrumbs={crumbs} schema={modelSchema}>
 <PageHero badge={c.name} title={p.name} {crumbs} lead={p.description}>
   <div class="hero-actions"><button type="button" class="btn btn-primary btn-add" data-add={p.id}>Add to Enquiry</button><a href="/components/enquiry" class="btn btn-secondary">Request a Quote</a></div>
 </PageHero>

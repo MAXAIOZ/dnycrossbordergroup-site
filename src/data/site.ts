@@ -27,7 +27,7 @@ export const SITE = {
   // by search engines and AI assistants. Add full URLs here; they are output as schema.org sameAs.
   sameAs: [] as string[],
   // Shown as "Last updated" and used as dateModified in structured data. Bump on content changes.
-  lastUpdated: '2026-10-01',
+  lastUpdated: '2026-10-25',
   // IndexNow key — the matching key file is public/fc7fd0c2dde75c0336dc49f152b48547.txt
   indexNowKey: 'fc7fd0c2dde75c0336dc49f152b48547',
   // Cloudflare Web Analytics token (Cloudflare dashboard → Analytics → Web Analytics). Leave empty to disable.
@@ -74,8 +74,8 @@ export const NAV: NavItem[] = [
     href: '/components',
     children: [
       { label: 'Overview', href: '/components', desc: 'Drone & Robotics Components' },
-      { label: 'Drone Components', href: '/components/drones', desc: 'Propellers, airframe parts, mounts, cases' },
-      { label: 'Robotics Components', href: '/components/robotics', desc: 'Cleaning, warehouse and gripper parts' },
+      { label: 'Drone Components', href: '/components/drones', desc: 'Propellers, airframe parts, mounts, cases, KST servos' },
+      { label: 'Robotics Components', href: '/components/robotics', desc: 'Cleaning, warehouse, gripper parts and KST servos' },
       { label: 'Request a Quote', href: '/components/enquiry', desc: 'Model, part number and quantity' },
     ],
   },

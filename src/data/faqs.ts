@@ -1,6 +1,6 @@
 // Structured FAQ (brief §14, §15). Each group renders with FAQPage schema.
 
-import { VENTURE_COUNT_WORD } from './ventures';
+import { VENTURE_COUNT_WORD, EV_BRAND } from './ventures';
 
 export type QA = { q: string; a: string };
 
@@ -142,6 +142,56 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       {
         q: 'How does DNY govern AI agents?',
         a: 'Agents run under defined identities and permissions, with human oversight and escalation for decisions where full autonomy is inappropriate, and with their actions recorded for audit.',
+      },
+    ],
+  },
+  components: {
+    title: 'Drone & robotics components',
+    items: [
+      {
+        q: 'What drone and robotics components does DNY supply?',
+        a: 'Passive mechanical parts for drones (propellers and fasteners, airframe parts, mechanical mounts, cases and manual tools), accessories and consumables for robots (commercial cleaning, warehouse and logistics, and industrial gripper parts), and KST servos listed by series and model. Everything is sourced and quoted on request.',
+      },
+      {
+        q: 'Does DNY sell complete drones?',
+        a: 'No. DNY supplies parts and components only; the equipment model you give us is used to identify the right part.',
+      },
+      {
+        q: 'How do I get a price for a component?',
+        a: 'Add product types to an enquiry at https://dnycrossbordergroup.com/components/enquiry with the equipment model, part number and quantity, or email info@dnycrossbordergroup.com. You receive an enquiry reference straight away. Fit, price, stock and lead time are confirmed in a written quote; no prices are published on the website.',
+      },
+      {
+        q: 'Which KST servos can DNY supply, and are datasheets available?',
+        a: 'Fifteen KST series are listed with their official model names: Aircraft, Wing, Micro, Mini, Standard, Ultra Giant, 4 Pole Brushless, Clubman and FZ for drones and aircraft, and HP, HA, SV, HS, HLS and Underwater for robotics. Full datasheets for every listed model are available on request from info@dnycrossbordergroup.com.',
+      },
+      {
+        q: 'Can an AI agent submit a quote request for a buyer?',
+        a: 'Yes. An agent acting with the buyer’s knowledge can send a JSON request to POST /api/enquiries, described at https://dnycrossbordergroup.com/openapi.json, using product ids from https://dnycrossbordergroup.com/components/catalogue.json. The response contains the enquiry reference; DNY replies to the buyer by email.',
+      },
+    ],
+  },
+  'ev-accessories': {
+    title: `${EV_BRAND} EV accessories`,
+    items: [
+      {
+        q: `What is ${EV_BRAND}?`,
+        a: `${EV_BRAND} is DNY Cross Border Group’s electric-vehicle accessories business, currently in development. It supplies fitted floor mats, cargo liners, sunshades and personalised interiors cut for specific Australian EV models, through a retail store and a trade channel. The retail store has not opened yet.`,
+      },
+      {
+        q: `Which vehicles do ${EV_BRAND} products fit?`,
+        a: 'Australian-delivered right-hand-drive Tesla Model Y (2022–2025 and 2025+ Juniper) and Model 3 (2019–2023 and 2024+ Highland); BYD Atto 3, Seal, Sealion 7, Dolphin and Shark 6; MG4; Kia EV5; Hyundai IONIQ 5; Polestar 2; XPENG G6; and Zeekr 7X. Coverage varies by product.',
+      },
+      {
+        q: 'What is in the launch range?',
+        a: '3D all-weather floor mats, personalised stitched mats, boot cargo liners, frunk liners, centre console organisers, magnetic side-window sunshades, glass roof sunshades, seat-back kick protectors, a pet rear-seat hammock and a BYD Shark 6 ute tub mat. All launch products are non-electrical.',
+      },
+      {
+        q: 'Can dealers, detailers and fleets buy wholesale?',
+        a: 'Yes. Trade and fleet enquiries — volume pricing, fleet packs, private label and OEM/ODM development — go through https://dnycrossbordergroup.com/contact?type=trade or info@dnycrossbordergroup.com.',
+      },
+      {
+        q: 'Are electronic or battery-powered EV accessories available?',
+        a: 'Not yet. Electronic accessories will be released only after compliance and compatibility assessment for Australia, and lithium-battery products only after battery testing, transport and insurance requirements are confirmed.',
       },
     ],
   },

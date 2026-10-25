@@ -7,6 +7,10 @@
   Access-Control-Allow-Origin: *
 /openapi.json
   Access-Control-Allow-Origin: *
+/components/catalogue.json
+  Access-Control-Allow-Origin: *
+/ventures.json
+  Access-Control-Allow-Origin: *
 /llms.txt
   Access-Control-Allow-Origin: *
 /llms-full.txt

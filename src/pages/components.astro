@@ -5,6 +5,7 @@ import SectionHead from '../components/SectionHead.astro';
 import Definition from '../components/Definition.astro';
 import BasketPill from '../components/parts/BasketPill.astro';
 import Arrow from '../components/Arrow.astro';
+import FAQ from '../components/FAQ.astro';
 import { catsFor, byApp, COMPONENTS_CTA, APP_PATH, BRANDS } from '../data/components';
 
 const title = 'Drone & Robotics Components';
@@ -78,5 +79,6 @@ const schema = {
     <div class="hero-actions mt-28 reveal"><a href={COMPONENTS_CTA.quote.href} class="btn btn-primary">{COMPONENTS_CTA.quote.label}</a></div>
   </div>
 </section>
+<FAQ groups={['components']} title="Questions about components" />
 <BasketPill />
 </Base>

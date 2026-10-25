@@ -7,5 +7,5 @@ export default defineConfig({
   site: 'https://dnycrossbordergroup.com',
   trailingSlash: 'never',
   build: { format: 'file' },
-  integrations: [sitemap()],
+  integrations: [sitemap({ lastmod: new Date('2026-10-25') })],
 });

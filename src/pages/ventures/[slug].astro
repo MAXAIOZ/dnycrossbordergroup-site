@@ -5,6 +5,8 @@ import StatusBadge from '../../components/StatusBadge.astro';
 import VentureCard from '../../components/VentureCard.astro';
 import SectionHead from '../../components/SectionHead.astro';
 import CTABand from '../../components/CTABand.astro';
+import FAQ from '../../components/FAQ.astro';
+import { FAQS } from '../../data/faqs';
 import { VENTURES, STATUS_DEFS, type Venture } from '../../data/ventures';
 import { CTA } from '../../data/site';
 import meta from '../../legacy/meta.json';
@@ -45,6 +47,8 @@ const schema = {
 </PageHero>
 
 <Fragment set:html={body} />
+
+{FAQS[v.slug] && <FAQ groups={[v.slug]} title={FAQS[v.slug].title} />}
 
 {related.length > 0 && (
   <section class="section dark" aria-labelledby="rel-h">

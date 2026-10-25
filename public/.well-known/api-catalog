@@ -3,18 +3,53 @@
     {
       "anchor": "https://dnycrossbordergroup.com/.well-known/api-catalog",
       "item": [
-        { "href": "https://dnycrossbordergroup.com/llms.txt" },
-        { "href": "https://dnycrossbordergroup.com/llms-full.txt" },
-        { "href": "https://dnycrossbordergroup.com/sitemap-index.xml" }
+        {
+          "href": "https://dnycrossbordergroup.com/llms.txt"
+        },
+        {
+          "href": "https://dnycrossbordergroup.com/llms-full.txt"
+        },
+        {
+          "href": "https://dnycrossbordergroup.com/sitemap-index.xml"
+        },
+        {
+          "href": "https://dnycrossbordergroup.com/components/catalogue.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://dnycrossbordergroup.com/ventures.json",
+          "type": "application/json"
+        }
       ]
     },
     {
       "anchor": "https://dnycrossbordergroup.com/",
       "service-desc": [
-        { "href": "https://dnycrossbordergroup.com/openapi.json", "type": "application/vnd.oai.openapi+json" }
+        {
+          "href": "https://dnycrossbordergroup.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
       ],
       "service-doc": [
-        { "href": "https://dnycrossbordergroup.com/llms.txt", "type": "text/plain" }
+        {
+          "href": "https://dnycrossbordergroup.com/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://dnycrossbordergroup.com/api/enquiries",
+      "service-desc": [
+        {
+          "href": "https://dnycrossbordergroup.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://dnycrossbordergroup.com/components/enquiry",
+          "type": "text/html"
+        }
       ]
     }
   ]

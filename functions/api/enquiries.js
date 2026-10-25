@@ -1,4 +1,6 @@
 // POST /api/enquiries — saves a parts enquiry, then notifies the business inbox.
+// Accepts multipart/form-data (website form, with optional attachments) or application/json
+// (AI agents and integrations acting for a buyer; no attachments). Described in /openapi.json.
 // The enquiry is stored before any notification is attempted; the reference is only
 // returned once the database write has succeeded.
 import catalogue from '../../src/data/components-catalogue.json';
@@ -38,7 +40,8 @@ async function hashIp(ip) {
 export async function onRequestPost({ request, env, waitUntil }) {
   if (!env.DB || !env.FILES) return json({ error: 'Enquiries are temporarily unavailable. Please email info@dnycrossbordergroup.com.' }, 503);
   const ct = request.headers.get('Content-Type') || '';
-  if (!ct.includes('multipart/form-data')) return json({ error: 'Unsupported request.' }, 415);
+  const isJson = ct.includes('application/json');
+  if (!isJson && !ct.includes('multipart/form-data')) return json({ error: 'Send multipart/form-data or application/json. See https://dnycrossbordergroup.com/openapi.json' }, 415);
 
   // Basic rate limit: 5 submissions per IP per 10 minutes.
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
@@ -47,23 +50,30 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const used = parseInt((await env.FILES.get(rlKey)) || '0', 10);
   if (used >= 5) return json({ error: 'Too many enquiries from this connection. Please wait a few minutes and try again.' }, 429);
 
-  let form;
-  try { form = await request.formData(); } catch { return json({ error: 'The form could not be read.' }, 400); }
-  if (clean(form.get('_hp'), 10)) return json({ error: 'Rejected.' }, 400);
+  let form, body = null;
+  try {
+    if (isJson) {
+      if (Number(request.headers.get('Content-Length') || 0) > 100000) return json({ error: 'Request too large.' }, 413);
+      body = await request.json();
+      if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('not an object');
+    } else form = await request.formData();
+  } catch { return json({ error: isJson ? 'The JSON body could not be read.' : 'The form could not be read.' }, 400); }
+  const get = (k) => (isJson ? body[k] : form.get(k));
+  if (clean(get('_hp'), 10)) return json({ error: 'Rejected.' }, 400);
 
   const f = {
-    name: clean(form.get('name'), 120), email: clean(form.get('email'), 200), country: clean(form.get('country'), 80),
-    company: clean(form.get('company'), 160), phone: clean(form.get('phone'), 40), postcode: clean(form.get('postcode'), 20),
-    needed_by: clean(form.get('needed_by'), 10), notes: clean(form.get('notes'), 4000),
-    marketing: form.get('marketing') === 'yes' ? 1 : 0,
-    source_page: clean(form.get('source_page'), 300), landing_page: clean(form.get('landing_page'), 300),
+    name: clean(get('name'), 120), email: clean(get('email'), 200), country: clean(get('country'), 80),
+    company: clean(get('company'), 160), phone: clean(get('phone'), 40), postcode: clean(get('postcode'), 20),
+    needed_by: clean(get('needed_by'), 10), notes: clean(get('notes'), 4000),
+    marketing: get('marketing') === 'yes' || get('marketing') === true ? 1 : 0,
+    source_page: clean(get('source_page'), 300), landing_page: clean(get('landing_page'), 300),
   };
   if (!f.name || !f.email || !f.country) return json({ error: 'Please enter your name, email and country or region.' }, 400);
   if (!EMAIL.test(f.email)) return json({ error: 'Please enter a valid email address.' }, 400);
   if (f.needed_by && !/^\d{4}-\d{2}-\d{2}$/.test(f.needed_by)) f.needed_by = '';
 
   let raw;
-  try { raw = JSON.parse(String(form.get('items') || '[]')); } catch { return json({ error: 'The parts list could not be read.' }, 400); }
+  try { raw = isJson ? body.items : JSON.parse(String(form.get('items') || '[]')); } catch { return json({ error: 'The parts list could not be read.' }, 400); }
   if (!Array.isArray(raw) || raw.length === 0) return json({ error: 'Please add at least one part, or describe a part that is not listed.' }, 400);
   if (raw.length > MAX_ITEMS) return json({ error: `Please limit an enquiry to ${MAX_ITEMS} lines.` }, 400);
 
@@ -81,7 +91,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
     items.push({ pid, name: pid ? PUBLISHED.get(pid).name : null, model: clean(r.model, 160), part: clean(r.part_number, 120), qty, description });
   }
 
-  const files = form.getAll('files').filter((x) => x && typeof x === 'object' && x.size > 0);
+  if (isJson) {
+    const via = clean(body.submitted_via, 80);
+    f.source_page = `API${via ? ` (via ${via})` : ''}${f.source_page ? ` — ${f.source_page}` : ''}`.slice(0, 300);
+  }
+  const files = isJson ? [] : form.getAll('files').filter((x) => x && typeof x === 'object' && x.size > 0);
   if (files.length > MAX_FILES) return json({ error: `Please attach no more than ${MAX_FILES} files.` }, 400);
   const prepared = [];
   for (const file of files) {

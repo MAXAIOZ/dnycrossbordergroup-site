@@ -3,10 +3,10 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Catalogue from '../../components/parts/Catalogue.astro';
 import BasketPill from '../../components/parts/BasketPill.astro';
-import { COMPONENTS_CTA } from '../../data/components';
+import { COMPONENTS_CTA, byApp, itemListSchema } from '../../data/components';
 const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: 'Drone Components', href: '/components/drones' }];
 ---
-<Base title="Drone Components" description="Replacement propellers, fasteners, airframe parts, passive mounts, cases, hand tools and KST servos for drones — matched to the model, generation and part number you specify." breadcrumbs={crumbs}>
+<Base title="Drone Components" description="Replacement propellers, fasteners, airframe parts, passive mounts, cases, hand tools and KST servos for drones — matched to the model, generation and part number you specify." breadcrumbs={crumbs} schema={[itemListSchema('DNY Drone Components', byApp('drone'))]}>
 <PageHero badge="Parts & Components" title="Drone Components" {crumbs} lead="Replacement propellers, fasteners, airframe parts, passive mounts, cases, hand tools and KST servos for drones — matched to the model, generation and part number you specify." primary={COMPONENTS_CTA.quote} />
 <section class="section" aria-label="Catalogue">
   <div class="container">

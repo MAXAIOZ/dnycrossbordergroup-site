@@ -8,7 +8,9 @@ import TurndownService from 'turndown';
 const DIST = new URL('../dist/', import.meta.url).pathname;
 const SITE = 'https://dnycrossbordergroup.com';
 const td = new TurndownService({ headingStyle: 'atx', bulletListMarker: '-', codeBlockStyle: 'fenced' });
-td.remove(['script', 'style', 'svg', 'form', 'button', 'select', 'noscript', 'canvas']);
+td.remove(['script', 'style', 'svg', 'form', 'select', 'noscript', 'canvas']);
+// Buttons: keep model chips as their model name; drop interface-only buttons (add, remove, toggles).
+td.addRule('buttons', { filter: 'button', replacement: (c, n) => (n.classList?.contains('model-chip') ? `\`${(n.getAttribute('data-part') || c).trim()}\`` : '') });
 td.addRule('dropHidden', { filter: (n) => n.getAttribute && (n.getAttribute('aria-hidden') === 'true' || n.classList?.contains('crumbs') || n.classList?.contains('gstack-panel') || n.classList?.contains('imatrix-mobile') || n.classList?.contains('hp-field')), replacement: () => '' });
 td.addRule('strongSpace', { filter: ['strong', 'b'], replacement: (c) => (c.trim() ? `**${c.trim()}** ` : '') });
 td.addRule('summaryAsHeading', { filter: 'summary', replacement: (c) => `\n\n${c.trim()}\n\n` });

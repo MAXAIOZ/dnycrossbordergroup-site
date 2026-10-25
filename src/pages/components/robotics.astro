@@ -3,10 +3,10 @@ import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Catalogue from '../../components/parts/Catalogue.astro';
 import BasketPill from '../../components/parts/BasketPill.astro';
-import { COMPONENTS_CTA } from '../../data/components';
+import { COMPONENTS_CTA, byApp, itemListSchema } from '../../data/components';
 const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: 'Robotics Components', href: '/components/robotics' }];
 ---
-<Base title="Robotics Components" description="Cleaning consumables, non-powered wheels and tyres, gripper fingers and pads, and KST servos for commercial and industrial robots — matched to the model and part number you specify." breadcrumbs={crumbs}>
+<Base title="Robotics Components" description="Cleaning consumables, non-powered wheels and tyres, gripper fingers and pads, and KST servos for commercial and industrial robots — matched to the model and part number you specify." breadcrumbs={crumbs} schema={[itemListSchema('DNY Robotics Components', byApp('robotics'))]}>
 <PageHero badge="Parts & Components" title="Robotics Components" {crumbs} lead="Cleaning consumables, non-powered wheels and tyres, gripper fingers and pads, and KST servos for commercial and industrial robots — matched to the model and part number you specify." primary={COMPONENTS_CTA.quote} />
 <section class="section" aria-label="Catalogue">
   <div class="container">

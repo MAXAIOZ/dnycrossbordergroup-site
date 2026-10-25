@@ -6,7 +6,8 @@ import { INDUSTRIES } from '../data/industries';
 import { TOPICS } from '../data/topics';
 import { FAQS } from '../data/faqs';
 import { GLOSSARY } from '../data/glossary';
-import { PRODUCTS, CATEGORIES as PCATS } from '../data/components';
+import { PRODUCTS, CATEGORIES as PCATS, APP_PATH } from '../data/components';
+import { EV_BRAND } from '../data/ventures';
 
 const U = (p: string) => new URL(p, SITE.url).href;
 const strip = (s: string) => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
@@ -21,6 +22,7 @@ export const KEY_FACTS: [string, string][] = [
   ['Industries', 'Built environment; logistics and warehousing; cross-border trade; enterprise and professional services; future verticals (mining, agriculture, utilities, health and ageing)'],
   ['Origin', 'Began in cross-border trade and supply chain between Australia and international markets'],
   ['Core ventures', VENTURES.map((v) => v.name).join('; ')],
+  ['Trading lines', `Drone & Robotics Components — passive drone and robot parts plus KST servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND} — fitted accessories for Australian EVs, retail and trade (${U('/ventures/ev-accessories')})`],
   ['Number of ventures', `${VENTURES.length}` + (new Set(VENTURES.map((v) => v.status)).size === 1 ? `, all currently ${VENTURES[0].status}` : '')],
   ['What DNY does not do', 'DNY does not train its own frontier foundation model, does not manufacture aircraft, and is not a co-working operator'],
   ['Delivery network', 'OPC + FDE network and the ANZ OPC + FDE Alliance — Sydney first, Auckland next'],
@@ -36,7 +38,15 @@ export function llmsTxt(): string {
   L.push('## Key facts', '');
   KEY_FACTS.forEach(([k, v]) => L.push(`- ${k}: ${v}`));
   L.push('', '## Full text', '', `- [Complete site content for AI systems](${U('/llms-full.txt')}): every page's key content in one Markdown file`, `- [Company facts](${U('/facts')}): canonical facts about the group`, '');
+  L.push('## For AI agents', '',
+    '- Any page is available as Markdown: request it with `Accept: text/markdown`, or append `.md` to the path (e.g. ' + U('/components.md') + ').',
+    `- [Components catalogue (JSON)](${U('/components/catalogue.json')}): every published product id, category, KST servo series and model name. No prices.`,
+    `- [Ventures (JSON)](${U('/ventures.json')}): ventures with status, category and summary`,
+    `- [OpenAPI description](${U('/openapi.json')}): read endpoints plus \`POST /api/enquiries\`, which lets an agent submit a component quote request on a buyer's behalf and returns an enquiry reference`,
+    `- [API catalog](${U('/.well-known/api-catalog')}) (RFC 9727)`,
+    `- Quotes, KST datasheets and trade enquiries: ${SITE.email}`, '');
   for (const item of NAV) {
+    if (item.href === '/components' || item.href === '/ventures') continue; // covered by the dedicated sections below
     L.push(`## ${item.label}`, '');
     const kids = item.children ?? [{ label: item.label, href: item.href }];
     const seen = new Set<string>();
@@ -51,7 +61,12 @@ export function llmsTxt(): string {
     }
     L.push('');
   }
-  L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems — sourced and quoted on request; no complete drones are sold`, `- [Drone Components](${U('/components/drones')})`, `- [Robotics Components](${U('/components/robotics')})`, `- [Request a Quote](${U('/components/enquiry')})`, '');
+  L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems — sourced and quoted on request; no complete drones are sold; no prices published`);
+  for (const app of ['drone', 'robotics'] as const) {
+    L.push(`- [${app === 'drone' ? 'Drone' : 'Robotics'} Components](${U(APP_PATH[app])}): ${PCATS.filter((c) => c.application === app).map((c) => `${c.name} (${PRODUCTS.filter((p) => p.category === c.id).length})`).join(', ')}`);
+    PRODUCTS.filter((p) => p.brand && p.application === app).forEach((p) => L.push(`  - [${p.name}](${U('/components/products/' + p.slug)}): ${p.models!.length} model${p.models!.length === 1 ? '' : 's'}; datasheets on request`));
+  }
+  L.push(`- [Request a Quote](${U('/components/enquiry')}): add product types, model, part number and quantity; an enquiry reference is issued on submission`, '');
   L.push('## Ventures', '');
   VENTURES.forEach((v) => L.push(`- [${v.name}](${U('/ventures/' + v.slug)}): ${v.short} Status: ${v.status}.`));
   L.push('', '## Optional', '', `- [Glossary](${U('/glossary')}): plain-language definitions`, `- [FAQ](${U('/faq')})`, `- [Investors & Partners](${U('/investors')})`, `- [Careers](${U('/careers')})`, `- [Contact](${U('/contact')})`, '');
@@ -110,7 +125,7 @@ export function llmsFullTxt(): string {
   (Object.keys(STATUS_DEFS) as Status[]).forEach((s) => L.push(`- ${s}: ${STATUS_DEFS[s]}`));
   for (const v of VENTURES) {
     h(3, v.name);
-    L.push(`- URL: ${U('/ventures/' + v.slug)}`, `- Status: ${v.status}`, `- Category: ${v.category}`, `- Layer: ${v.layer}`, `- Industries: ${v.industries.join(', ')}`, `- Capabilities: ${v.capabilities.join(', ')}`, `- Technology: ${v.tech.join(', ')}`, `- Summary: ${v.short}`, `- Relationship to DNY infrastructure: ${v.relation}`);
+    L.push(`- URL: ${U('/ventures/' + v.slug)} (full page as Markdown: ${U('/ventures/' + v.slug + '.md')})`, `- Status: ${v.status}`, `- Category: ${v.category}`, `- Layer: ${v.layer}`, `- Industries: ${v.industries.join(', ')}`, `- Capabilities: ${v.capabilities.join(', ')}`, `- Technology: ${v.tech.join(', ')}`, `- Summary: ${v.short}`, `- Relationship to DNY infrastructure: ${v.relation}`);
   }
 
   h(2, 'Drone & Robotics Components');

@@ -36,6 +36,15 @@ export const APP_PATH: Record<Application, string> = { drone: '/components/drone
 // Minimal public record used by the browser basket (no internal fields).
 export const PUBLIC_INDEX = PRODUCTS.map((p) => ({ id: p.id, name: p.name, slug: p.slug, app: p.application }));
 
+// schema.org ItemList of product types for a catalogue page.
+export const itemListSchema = (name: string, items: Product[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name,
+  numberOfItems: items.length,
+  itemListElement: items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.name, url: `https://dnycrossbordergroup.com/components/products/${p.slug}` })),
+});
+
 export const COMPONENTS_CTA = {
   drones: { label: 'Browse Drone Components', href: '/components/drones' },
   robotics: { label: 'Explore Robotics Components', href: '/components/robotics' },
