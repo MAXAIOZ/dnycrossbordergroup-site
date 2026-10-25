@@ -37,6 +37,10 @@ export const CATEGORY_DEFS: Record<Category, string> = {
   'Industry Ventures': 'Industry businesses that apply the infrastructure in a specific market.',
 };
 
+// Consumer brand for the EV accessories venture. Working name pending trademark and
+// domain checks — change it here only and every page, card and llms.txt entry follows.
+export const EV_BRAND = 'DNY VoltGear';
+
 // Core ventures — shown in navigation, cards and venture pages.
 export const VENTURES: Venture[] = [
   {
@@ -163,7 +167,25 @@ export const VENTURES: Venture[] = [
     tech: ['Computer vision', 'Open models'],
     relation: 'Uses a model-agnostic AI layer with provider adapters and privacy-first image handling, consistent with the group’s open, vendor-neutral approach.',
   },
+  {
+    slug: 'ev-accessories',
+    name: EV_BRAND,
+    short:
+      'Fitted accessories for Australian EVs — floor mats, cargo liners, sunshades and personalised interiors cut to the exact model you drive.',
+    category: 'Industry Ventures',
+    builtOn: 'Industry deployment — Cross-border Trade',
+    industries: ['Automotive', 'Retail', 'Cross-border Trade'],
+    status: 'In Development',
+    capabilities: ['Model-specific fitment', 'Personalised interiors', 'B2C retail + B2B trade', 'Australian Consumer Law support'],
+    tech: ['Trusted data'],
+    relation:
+      'One shared vehicle-fitment and product data set drives both the retail and trade channels; products are developed and customised with manufacturing partners through the OPC + FDE network.',
+  },
 ];
+
+const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+export const VENTURE_COUNT_WORD = NUMBER_WORDS[VENTURES.length] ?? String(VENTURES.length);
+export const VENTURE_COUNT_TITLE = VENTURE_COUNT_WORD.charAt(0).toUpperCase() + VENTURE_COUNT_WORD.slice(1);
 
 // Archived initiatives — listed once, without their own pages.
 export const ARCHIVED = [

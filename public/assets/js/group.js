@@ -113,6 +113,9 @@
     var typeSel = form.querySelector('[name="enquiry_type"]');
     var qType = new URLSearchParams(location.search).get('type');
     if (qType && typeSel && typeSel.querySelector('option[value="' + qType + '"]')) typeSel.value = qType;
+    var qVenture = new URLSearchParams(location.search).get('venture');
+    var ventureOpt = qVenture && /^[a-z0-9-]+$/.test(qVenture) && form.querySelector('[name="interest"] option[data-venture="' + qVenture + '"]');
+    if (ventureOpt) ventureOpt.selected = true;
 
     var status = form.querySelector('.form-status');
     function say(msg, ok) {

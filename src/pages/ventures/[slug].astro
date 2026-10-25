@@ -17,7 +17,7 @@ export function getStaticPaths() {
 const { v } = Astro.props as { v: Venture };
 const key = v.body ?? v.slug;
 const m = (meta as Record<string, { h1?: string; lead?: string; description?: string }>)[key] ?? {};
-const body = bodies[`../../legacy/${key}.html`] ?? '';
+const body = (bodies[`../../legacy/${key}.html`] ?? '').replaceAll('{{name}}', v.name);
 const crumbs = [{ name: 'Ventures', href: '/ventures' }, { name: v.name, href: `/ventures/${v.slug}` }];
 const description = `${v.name} — ${v.short} Status: ${v.status}.`;
 const related = VENTURES.filter((x) => x.slug !== v.slug && x.category === v.category).slice(0, 3);

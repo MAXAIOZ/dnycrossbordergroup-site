@@ -1,5 +1,7 @@
 // Structured FAQ (brief §14, §15). Each group renders with FAQPage schema.
 
+import { VENTURE_COUNT_WORD } from './ventures';
+
 export type QA = { q: string; a: string };
 
 export const FAQS: Record<string, { title: string; items: QA[] }> = {
@@ -8,7 +10,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     items: [
       {
         q: 'What is DNY Cross Border Group?',
-        a: 'DNY Cross Border Group is a Sydney-headquartered technology group that grew from cross-border trade into building trusted, open AI and physical intelligence infrastructure for Australian industry, commercialised through nine focused ventures.',
+        a: `DNY Cross Border Group is a Sydney-headquartered technology group that grew from cross-border trade into building trusted, open AI and physical intelligence infrastructure for Australian industry, commercialised through ${VENTURE_COUNT_WORD} focused ventures.`,
       },
       {
         q: 'Why is the group called "Cross Border"?',
@@ -16,7 +18,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'Is DNY a single AI platform or a group?',
-        a: 'A group. DNY builds shared infrastructure — trusted, open AI and physical intelligence — delivers it through the OPC + FDE network, and commercialises it through nine focused ventures that each have their own customers and business model.',
+        a: `A group. DNY builds shared infrastructure — trusted, open AI and physical intelligence — delivers it through the OPC + FDE network, and commercialises it through ${VENTURE_COUNT_WORD} focused ventures that each have their own customers and business model.`,
       },
       {
         q: 'Does DNY train its own foundation model?',

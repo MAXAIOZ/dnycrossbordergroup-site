@@ -7,7 +7,7 @@ import { VENTURES } from '../data/ventures';
 const title = 'Contact';
 const description = 'Contact DNY Cross Border Group in Sydney — enterprise, partnership, investment, developer and visit enquiries, each routed to the right team.';
 const crumbs = [{ name: 'Contact', href: '/contact' }];
-const interests = ['Group overview', 'Trusted AI & data', 'Open source AI', 'AI agents', 'Physical intelligence', 'Drones', 'Robotics', 'OPC + FDE network', 'Industry deployment', ...VENTURES.map((v) => `Venture: ${v.name}`)];
+const interests: { label: string; slug?: string }[] = [...['Group overview', 'Trusted AI & data', 'Open source AI', 'AI agents', 'Physical intelligence', 'Drones', 'Robotics', 'OPC + FDE network', 'Industry deployment'].map((label) => ({ label })), ...VENTURES.map((v) => ({ label: `Venture: ${v.name}`, slug: v.slug }))];
 const contactSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
@@ -59,7 +59,7 @@ const contactSchema = {
           <div class="form-group"><label for="interest">Area of interest</label>
             <select id="interest" name="interest">
               <option value="">Select (optional)</option>
-              {interests.map((i) => <option>{i}</option>)}
+              {interests.map((i) => <option data-venture={i.slug}>{i.label}</option>)}
             </select>
           </div>
         </div>

@@ -5,12 +5,12 @@ import GroupStack from '../components/GroupStack.astro';
 import VentureMini from '../components/VentureMini.astro';
 import CTABand from '../components/CTABand.astro';
 import Arrow from '../components/Arrow.astro';
-import { VENTURES, CATEGORIES } from '../data/ventures';
+import { VENTURES, CATEGORIES, VENTURE_COUNT_WORD, VENTURE_COUNT_TITLE } from '../data/ventures';
 import { CTA } from '../data/site';
 ---
 <Base
   title="DNY Cross Border Group | Trusted Open AI, Connected to the Physical World"
-  description="DNY Cross Border Group is a Sydney-headquartered technology group, grown from cross-border trade, building trusted, open AI and physical intelligence infrastructure for Australian industry and commercialising it through nine focused ventures."
+  description={`DNY Cross Border Group is a Sydney-headquartered technology group, grown from cross-border trade, building trusted, open AI and physical intelligence infrastructure for Australian industry and commercialising it through ${VENTURE_COUNT_WORD} focused ventures.`}
 >
 <section id="home" class="hero" aria-labelledby="hero-heading">
   <div class="hero-bg" aria-hidden="true"></div>
@@ -20,14 +20,14 @@ import { CTA } from '../data/site';
       <div class="hero-content">
         <div class="hero-badge" aria-hidden="true"><span class="hero-badge-dot"></span>Sydney-headquartered technology group</div>
         <h1 id="hero-heading">Trusted Open AI.<br><em class="grad-text">Connected to the Physical World.</em></h1>
-        <p class="hero-subtitle">DNY Cross Border Group grew from cross-border trade into a technology group that builds trusted, open AI and physical intelligence infrastructure for Australian industry — and commercialises it through nine focused ventures.</p>
+        <p class="hero-subtitle">DNY Cross Border Group grew from cross-border trade into a technology group that builds trusted, open AI and physical intelligence infrastructure for Australian industry — and commercialises it through {VENTURE_COUNT_WORD} focused ventures.</p>
         <div class="hero-actions">
           <a href={CTA.brief.href} class="btn btn-primary">{CTA.brief.label}</a>
           <a href={CTA.partner.href} class="btn btn-secondary">{CTA.partner.label}</a>
         </div>
         <div class="hero-stats">
           <div class="stat-item"><div class="stat-num">Sydney</div><div class="stat-label">Headquarters</div></div>
-          <div class="stat-item"><div class="stat-num" data-count="9">9</div><div class="stat-label">Core ventures</div></div>
+          <div class="stat-item"><div class="stat-num" data-count={VENTURES.length}>{VENTURES.length}</div><div class="stat-label">Core ventures</div></div>
           <div class="stat-item"><div class="stat-num">Multi</div><div class="stat-label">Model, cloud &amp; hardware</div></div>
         </div>
       </div>
@@ -75,7 +75,7 @@ import { CTA } from '../data/site';
 <!-- 3 · Ventures -->
 <section class="section" aria-labelledby="ven-h">
   <div class="container">
-    <SectionHead kicker="Ventures" id="ven-h" title="Nine ventures on shared infrastructure"
+    <SectionHead kicker="Ventures" id="ven-h" title={`${VENTURE_COUNT_TITLE} ventures on shared infrastructure`}
       lead="Each venture keeps its own customers and business model while reusing the group’s trusted AI and physical intelligence infrastructure." />
     {CATEGORIES.map((c) => (
       <div class="reveal cat-block">

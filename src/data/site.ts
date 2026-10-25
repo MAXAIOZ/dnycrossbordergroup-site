@@ -98,6 +98,7 @@ export const ENQUIRY_TYPES = [
   { value: 'investment', label: 'Investment — group or venture materials' },
   { value: 'developer', label: 'Developer — APIs, integration, open source' },
   { value: 'visit', label: 'Visit — meet the team in Sydney' },
+  { value: 'trade', label: 'Trade & fleet — EV accessories for dealers, detailers and fleets' },
   { value: 'general', label: 'General enquiry' },
 ] as const;
 

@@ -1,3 +1,4 @@
+import { VENTURE_COUNT_TITLE } from './ventures';
 // The DNY Group architecture (brief §3, §6.2) and Physical Intelligence sub-layers (§4).
 
 export type Layer = {
@@ -18,7 +19,7 @@ export const STACK: Layer[] = [
     name: 'Applied Ventures & Industry Solutions',
     role: 'Independent ventures and industry projects',
     summary:
-      'Nine focused ventures — from drones and robotics to trade, building materials and property AI — each with its own customers and business model, built on shared group infrastructure.',
+      `${VENTURE_COUNT_TITLE} focused ventures — from drones and robotics to trade, building materials, EV accessories and property AI — each with its own customers and business model, built on shared group infrastructure.`,
     items: ['Aerial Systems', 'Robotic Systems', 'Trusted AI Platform', 'Data Oracle', 'Facadia', 'Auralio'],
     href: '/ventures',
   },
@@ -70,7 +71,7 @@ export const HIERARCHY = [
   { level: 'Layers 1–2', name: 'Trusted & Open AI Infrastructure', role: 'Digital intelligence infrastructure', scope: 'Trusted Data Space, open models, identity, audit, APIs, agents and transaction readiness' },
   { level: 'Layer 3', name: 'Open Physical Intelligence Layer', role: 'Physical intelligence connecting AI to the real world', scope: 'Drones, robotics, edge devices, vision systems, autonomous systems and sensor networks' },
   { level: 'Layer 4', name: 'OPC + FDE Network', role: 'Talent, node and industry delivery network', scope: 'Office + AI Agents, Forward Deployed Entrepreneurs, training, incubation and solution delivery' },
-  { level: 'Layer 5', name: 'Applied Ventures & Industry Projects', role: 'Independent ventures and industry companies', scope: 'Nine core ventures across trusted AI, physical intelligence and industry' },
+  { level: 'Layer 5', name: 'Applied Ventures & Industry Projects', role: 'Independent ventures and industry companies', scope: `${VENTURE_COUNT_TITLE} core ventures across trusted AI, physical intelligence and industry` },
 ];
 
 // Physical AI capability loop (brief §4.1)
