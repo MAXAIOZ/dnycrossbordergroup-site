@@ -373,7 +373,7 @@
         "A20-3813",
         "A20-4515"
       ],
-      "description": "KST's Aircraft Servo series for aircraft control surfaces, sourced on request for UAV builders, operators and service teams.",
+      "description": "Servos for aircraft control surfaces, including KST’s A-series coreless and brushless models.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -422,7 +422,7 @@
         "DS135MG",
         "DS145MG"
       ],
-      "description": "KST's Wing Servo series of slim servos intended for installation inside wings.",
+      "description": "Slim servos designed to fit inside wings.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -463,7 +463,7 @@
         "MS320 v2.0",
         "MS325v6.0"
       ],
-      "description": "KST's Micro servo size class.",
+      "description": "Small-frame servos for compact airframes and mechanisms.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -504,7 +504,7 @@
         "DS589MG",
         "DS565X"
       ],
-      "description": "KST's Mini Servo size class.",
+      "description": "Mid-size servos between KST’s micro and standard frames.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -555,7 +555,7 @@
         "DS725MG",
         "DS1509MG"
       ],
-      "description": "KST's Standard Servo size class.",
+      "description": "Standard-frame servos across KST’s BLS, MS, DS and X20 lines.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -592,7 +592,7 @@
         "X50-28-350 V8.0",
         "X50-28-625 V8.0"
       ],
-      "description": "KST's Ultra Giant Servo size class, the largest in its range.",
+      "description": "KST’s largest servos, for heavy control surfaces and mechanisms.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -627,7 +627,7 @@
         "X20-3005",
         "X20-4208"
       ],
-      "description": "KST's 4 Pole Brushless Servo series.",
+      "description": "Servos driven by 4-pole brushless motors, including a low-profile model.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -667,7 +667,7 @@
         "CM3510MG",
         "CM653"
       ],
-      "description": "KST's Clubman servo series.",
+      "description": "General-purpose CM-series servos.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -701,7 +701,7 @@
         "FZ320",
         "FZ10"
       ],
-      "description": "KST's FZ series servos.",
+      "description": "Servos KST lists for unmanned systems.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -982,7 +982,7 @@
         "HP826-24-x",
         "D42HP-30"
       ],
-      "description": "KST's HP Series servos, offered for robotics and industrial mechanism enquiries.",
+      "description": "HP-series servos for robotic joints and mechanisms.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -1017,7 +1017,7 @@
         "HA20-7512",
         "HA20-4515"
       ],
-      "description": "KST's HA Series servos, offered for robotics and industrial mechanism enquiries.",
+      "description": "KST’s high-efficiency HA servos.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -1064,7 +1064,7 @@
         "SV6010-12",
         "SV7012-12"
       ],
-      "description": "KST's SV Series servos, offered for robotics and industrial mechanism enquiries.",
+      "description": "SV-series servos in coreless and brushless versions.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -1112,7 +1112,7 @@
         "HS50-30-M-8060-x",
         "HS50-30-M-8090-x"
       ],
-      "description": "KST's HS series servos, offered for robotics and industrial mechanism enquiries.",
+      "description": "Brushless HS-series servos for industrial mechanisms.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -1153,7 +1153,7 @@
         "X20-xx-M-850-x",
         "X22-xx-M-860-x"
       ],
-      "description": "KST's HLS servo series, offered for robotics and industrial mechanism enquiries.",
+      "description": "Long-service-life servos with KST’s HLS gearbox.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",
@@ -1185,7 +1185,7 @@
       "models": [
         "D42HP-30"
       ],
-      "description": "KST's underwater servo, for submerged mechanisms such as those on underwater robots.",
+      "description": "A servo built for submerged mechanisms, such as on underwater robots.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",

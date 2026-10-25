@@ -4,4 +4,4 @@ import { PUBLIC_INDEX } from '../../data/components';
 <a href="/components/enquiry" class="basket-pill" data-basket-pill hidden aria-live="polite">Enquiry list <span data-basket-count>0</span></a>
 <div class="toast" data-toast role="status" aria-live="polite" hidden></div>
 <script type="application/json" id="dny-published" set:html={JSON.stringify(PUBLIC_INDEX)} />
-<script src="/assets/js/components.js" defer></script>
+<script src={`/assets/js/components.js?v=${Date.now().toString(36)}`} defer></script>

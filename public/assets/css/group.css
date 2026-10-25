@@ -463,3 +463,9 @@ html, body { overflow-x: clip; }
 .sec-watermark, .glow-cursor, .glow-cursor-dot, .cursor-spark { display: none !important }
 body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button, body.has-glow-cursor .btn { cursor: auto }
 #fx-canvas { contain: strict }
+
+/* Catalogue: status shown once, cards kept lean */
+.pchips-once { flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; gap: 6px; margin: 0 }
+.pcard .pcard-name { margin-top: 0 }
+.pcard-models { margin: -2px 0 6px }
+.pcard-actions { margin-top: auto }

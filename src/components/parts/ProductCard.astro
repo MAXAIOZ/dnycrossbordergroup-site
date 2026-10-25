@@ -11,15 +11,9 @@ const img = seriesImage(p, true);
       {img ? <img src={img} alt="" width="240" height="240" loading="lazy" decoding="async" /> : <span class="img-na">Image on request</span>}
     </a>
   )}
-  <div class="pcard-top"><span class="vcard-cat">{c.name}</span><span class="pcard-id">{p.id}</span></div>
   <h3 class="pcard-name"><a href={`/components/products/${p.slug}`}>{p.name}</a></h3>
   <p class="pcard-desc">{p.description}</p>
-  {p.models && <p class="pcard-models">{p.models.length} {p.models.length === 1 ? 'model' : 'models'} · {p.brand} {p.series}</p>}
-  <ul class="pchips" aria-label="Status">
-    <li title="Specifications are confirmed against your model and part number.">Information: general</li>
-    <li title="Fit is confirmed for the specific model and part number you provide.">Fit: confirmed per model</li>
-    <li title="Sourced and quoted on request. No stock, price or lead time is implied.">Supply: quoted on request</li>
-  </ul>
+  {p.models && <p class="pcard-models">{p.models.length} {p.models.length === 1 ? 'model' : 'models'}</p>}
   <div class="pcard-actions">
     <button type="button" class="btn-add" data-add={p.id}>Add to Enquiry</button>
     <a href={`/components/products/${p.slug}`} class="project-link">Details</a>
