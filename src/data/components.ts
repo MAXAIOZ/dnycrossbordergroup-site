@@ -2,6 +2,7 @@
 // Only products with publication_status === 'published' are ever exported to pages,
 // search, sitemap, llms.txt or the enquiry allowlist. Drafts stay in the JSON only.
 import data from './components-catalogue.json';
+import kstImages from './kst-images.json';
 
 export type Application = 'drone' | 'robotics';
 export type Product = {
@@ -35,6 +36,18 @@ export const APP_PATH: Record<Application, string> = { drone: '/components/drone
 
 // Minimal public record used by the browser basket (no internal fields).
 export const PUBLIC_INDEX = PRODUCTS.map((p) => ({ id: p.id, name: p.name, slug: p.slug, app: p.application }));
+
+// Product images (KST, used with permission; extracted from KST's Feb 2025 product spec).
+const IMG = (slug: string) => `/assets/img/kst/${slug}.webp`;
+export const modelImage = (model: string): string | null => {
+  const s = (kstImages.images as Record<string, string>)[model];
+  return s ? IMG(s) : null;
+};
+export const seriesImage = (p: Product): string | null => {
+  const s = (kstImages.series as Record<string, string>)[p.id];
+  return s ? IMG(s) : null;
+};
+export const IMAGE_CREDIT = 'Product images: KST, used with permission.';
 
 // schema.org ItemList of product types for a catalogue page.
 export const itemListSchema = (name: string, items: Product[]) => ({

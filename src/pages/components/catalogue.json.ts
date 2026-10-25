@@ -2,7 +2,7 @@
 // Published products only — the same allowlist the enquiry API enforces. No prices or stock.
 import type { APIRoute } from 'astro';
 import data from '../../data/components-catalogue.json';
-import { PRODUCTS, CATEGORIES, BRANDS, APP_PATH } from '../../data/components';
+import { PRODUCTS, CATEGORIES, BRANDS, APP_PATH, modelImage, seriesImage, IMAGE_CREDIT } from '../../data/components';
 import { SITE } from '../../data/site';
 
 export const GET: APIRoute = () => {
@@ -14,6 +14,7 @@ export const GET: APIRoute = () => {
     url: U('/components'),
     scope: data.scope,
     pricing: 'No prices, stock or lead times are published. Every line is quoted on request.',
+    imageCredit: IMAGE_CREDIT,
     howToEnquire: {
       page: U('/components/enquiry'),
       api: { method: 'POST', url: U('/api/enquiries'), contentType: 'application/json', spec: U('/openapi.json') },
@@ -33,7 +34,11 @@ export const GET: APIRoute = () => {
         name: p.name,
         url: U(`/components/products/${p.slug}`),
         description: p.description,
-        ...(p.brand ? { brand: p.brand, series: p.series, models: p.models } : {}),
+        ...(p.brand ? {
+          brand: p.brand, series: p.series, models: p.models,
+          image: seriesImage(p) ? U(seriesImage(p)!) : null,
+          modelImages: Object.fromEntries(p.models!.filter((m) => modelImage(m)).map((m) => [m, U(modelImage(m)!)])),
+        } : {}),
         send: p.send,
         limits: p.limits,
       })),

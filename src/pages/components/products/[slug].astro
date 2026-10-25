@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import PageHero from '../../../components/PageHero.astro';
 import ProductCard from '../../../components/parts/ProductCard.astro';
 import BasketPill from '../../../components/parts/BasketPill.astro';
-import { PRODUCTS, BRANDS, category, APP_LABEL, APP_PATH, STATUS, type Product } from '../../../data/components';
+import { PRODUCTS, BRANDS, modelImage, seriesImage, IMAGE_CREDIT, category, APP_LABEL, APP_PATH, STATUS, type Product } from '../../../data/components';
 
 export function getStaticPaths() {
   return PRODUCTS.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -17,12 +17,13 @@ const modelSchema = p.models ? [{
   '@type': 'ItemList',
   name: `${p.brand} ${p.series} models`,
   numberOfItems: p.models.length,
-  itemListElement: p.models.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: `${p.brand} ${m}` })),
+  itemListElement: p.models.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: `${p.brand} ${m}`, ...(modelImage(m) ? { image: `https://dnycrossbordergroup.com${modelImage(m)}` } : {}) })),
 }] : [];
 const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 3);
 ---
 <Base title={`${p.name} — ${APP_LABEL[p.application]}`} description={`${p.description} Quoted on request by DNY, Sydney.`} breadcrumbs={crumbs} schema={modelSchema}>
 <PageHero badge={c.name} title={p.name} {crumbs} lead={p.description}>
+  {seriesImage(p) && <img class="phero-img" src={seriesImage(p)} alt={`${p.name} — representative model`} width="480" height="480" />}
   <div class="hero-actions"><button type="button" class="btn btn-primary btn-add" data-add={p.id}>Add to Enquiry</button><a href="/components/enquiry" class="btn btn-secondary">Request a Quote</a></div>
 </PageHero>
 {p.models && (
@@ -34,7 +35,15 @@ const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.i
         <strong>Need the full datasheet?</strong>
         <span>Datasheets are available for every {p.brand} model on this page. Email <a href={`mailto:info@dnycrossbordergroup.com?subject=${encodeURIComponent(`${p.brand} ${p.series} datasheet request`)}`}>info@dnycrossbordergroup.com</a> with the model numbers you need and we will send them to you.</span>
       </div>
-      <ul class="model-list" role="list">{p.models.map((m) => <li><button type="button" class="model-chip" data-add={p.id} data-part={m} aria-label={`Add ${p.brand} ${m} to enquiry`}><span>{m}</span><span class="model-plus" aria-hidden="true">+</span></button></li>)}</ul>
+      <ul class="mgrid" role="list">{p.models.map((m) => {
+        const src = modelImage(m);
+        return <li><button type="button" class="model-chip mcard" data-add={p.id} data-part={m} aria-label={`Add ${p.brand} ${m} to enquiry`}>
+          <span class="mcard-img">{src ? <img src={src} alt={`${p.brand} ${m} servo`} width="480" height="480" loading="lazy" decoding="async" /> : <span class="img-na">Image on request</span>}</span>
+          <span class="mcard-name">{m}</span>
+          <span class="mcard-add" aria-hidden="true">+ Add</span>
+        </button></li>;
+      })}</ul>
+      <p class="src-note" style="margin-top:14px;">{IMAGE_CREDIT}{p.models.some((m) => !modelImage(m)) && ' Images for the remaining models are available on request.'}</p>
     </div>
   </section>
 )}

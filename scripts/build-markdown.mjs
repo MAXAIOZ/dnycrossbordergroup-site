@@ -12,6 +12,10 @@ td.remove(['script', 'style', 'svg', 'form', 'select', 'noscript', 'canvas']);
 // Buttons: keep model chips as their model name; drop interface-only buttons (add, remove, toggles).
 td.addRule('buttons', { filter: 'button', replacement: (c, n) => (n.classList?.contains('model-chip') ? `\`${(n.getAttribute('data-part') || c).trim()}\`` : '') });
 td.addRule('dropHidden', { filter: (n) => n.getAttribute && (n.getAttribute('aria-hidden') === 'true' || n.classList?.contains('crumbs') || n.classList?.contains('gstack-panel') || n.classList?.contains('imatrix-mobile') || n.classList?.contains('hp-field')), replacement: () => '' });
+td.addRule('absImages', {
+  filter: 'img',
+  replacement: (c, n) => { let s = n.getAttribute('src') || ''; if (!s || n.closest?.('.mcard,.pcard-img')) return ''; if (s.startsWith('/')) s = SITE + s; return `![${n.getAttribute('alt') || ''}](${s})`; },
+});
 td.addRule('strongSpace', { filter: ['strong', 'b'], replacement: (c) => (c.trim() ? `**${c.trim()}** ` : '') });
 td.addRule('summaryAsHeading', { filter: 'summary', replacement: (c) => `\n\n${c.trim()}\n\n` });
 td.addRule('absLinks', {
