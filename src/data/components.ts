@@ -14,6 +14,9 @@ export type Product = {
   send: string[];
   limits: string[];
   keywords: string[];
+  brand?: string;
+  series?: string;
+  models?: string[];
   publication_status: 'published' | 'draft';
 };
 export type Category = { id: string; application: Application; name: string; summary: string };
@@ -22,6 +25,7 @@ export const CATEGORIES = data.categories as Category[];
 export const PRODUCTS = (data.products as Product[]).filter((p) => p.publication_status === 'published');
 export const STATUS = data.statusDefinitions;
 export const SCOPE = data.scope;
+export const BRANDS = data.brands as Record<string, { name: string; owner: string; note: string }>;
 
 export const byApp = (a: Application) => PRODUCTS.filter((p) => p.application === a);
 export const catsFor = (a: Application) => CATEGORIES.filter((c) => c.application === a);

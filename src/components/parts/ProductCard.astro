@@ -4,10 +4,11 @@ export interface Props { p: Product }
 const { p } = Astro.props;
 const c = category(p.category);
 ---
-<article class="pcard" data-pid={p.id} data-cat={p.category} data-search={[p.name, p.description, c.name, ...p.keywords].join(' ').toLowerCase()}>
+<article class="pcard" data-pid={p.id} data-cat={p.category} data-search={[p.name, p.description, c.name, ...p.keywords, ...(p.models ?? [])].join(' ').toLowerCase()}>
   <div class="pcard-top"><span class="vcard-cat">{c.name}</span><span class="pcard-id">{p.id}</span></div>
   <h3 class="pcard-name"><a href={`/components/products/${p.slug}`}>{p.name}</a></h3>
   <p class="pcard-desc">{p.description}</p>
+  {p.models && <p class="pcard-models">{p.models.length} {p.models.length === 1 ? 'model' : 'models'} · {p.brand} {p.series}</p>}
   <ul class="pchips" aria-label="Status">
     <li title="Specifications are confirmed against your model and part number.">Information: general</li>
     <li title="Fit is confirmed for the specific model and part number you provide.">Fit: confirmed per model</li>

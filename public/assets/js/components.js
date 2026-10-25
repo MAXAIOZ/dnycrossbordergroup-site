@@ -44,9 +44,10 @@
     var id = b.getAttribute('data-add');
     var p = published[id];
     if (!p) return;
-    lines.push({ lid: uid(), pid: id, name: p.name, model: '', part: '', qty: '1', desc: '' });
+    var part = (b.getAttribute('data-part') || '').slice(0, 120);
+    lines.push({ lid: uid(), pid: id, name: p.name, model: '', part: part, qty: '1', desc: '' });
     save();
-    toast(p.name + ' added to your enquiry list.');
+    toast((part ? p.name + ' ' + part : p.name) + ' added to your enquiry list.');
   });
   refreshPill();
 

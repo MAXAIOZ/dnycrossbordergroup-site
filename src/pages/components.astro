@@ -5,7 +5,7 @@ import SectionHead from '../components/SectionHead.astro';
 import Definition from '../components/Definition.astro';
 import BasketPill from '../components/parts/BasketPill.astro';
 import Arrow from '../components/Arrow.astro';
-import { catsFor, byApp, COMPONENTS_CTA, APP_PATH } from '../data/components';
+import { catsFor, byApp, COMPONENTS_CTA, APP_PATH, BRANDS } from '../data/components';
 
 const title = 'Drone & Robotics Components';
 const description = 'Components for drones, industrial robots and commercial autonomous systems from DNY Cross Border Group, Sydney. Submit your model, part number and quantity for sourcing and quotation.';
@@ -41,14 +41,14 @@ const schema = {
 
 <section class="section" aria-labelledby="dr-h">
   <div class="container">
-    <SectionHead kicker="Drone Components" id="dr-h" title="Mechanical parts for commercial drones"
-      lead="Replacement and structural parts matched to the model and generation you specify. We do not sell complete drones; models are used only to identify the right part." />
+    <SectionHead kicker="Drone Components" id="dr-h" title="Parts and servos for drones"
+      lead="Replacement and structural parts matched to the model and generation you specify, and KST servos by series. We do not sell complete drones; models are used only to identify the right part." />
     <form class="psearch reveal" action={APP_PATH.drone} method="get" role="search">
       <label class="sr-only" for="dq">Search drone components</label>
-      <input id="dq" type="search" name="q" placeholder="Search drone components, e.g. propeller, landing gear">
+      <input id="dq" type="search" name="q" placeholder="Search drone components, e.g. propeller, landing gear, servo">
       <button type="submit" class="btn btn-secondary">Search</button>
     </form>
-    <div class="tiles t4 mt-28 stagger reveal">
+    <div class="tiles t3 mt-28 stagger reveal">
       {catsFor('drone').map((c) => <a href={`${APP_PATH.drone}?cat=${c.id}`} class="tile"><span class="t-k">{byApp('drone').filter((p) => p.category === c.id).length} product types</span><h3>{c.name}</h3><p>{c.summary}</p></a>)}
     </div>
   </div>
@@ -56,8 +56,8 @@ const schema = {
 
 <section class="section dark" aria-labelledby="rb-h">
   <div class="container">
-    <SectionHead kicker="Robotics Components" id="rb-h" title="Accessories and consumables for industrial and commercial robots" />
-    <div class="tiles t3 stagger reveal">
+    <SectionHead kicker="Robotics Components" id="rb-h" title="Accessories, consumables and servos for robots" />
+    <div class="tiles t4 stagger reveal">
       {catsFor('robotics').map((c) => <a href={`${APP_PATH.robotics}?cat=${c.id}`} class="tile cyan"><span class="t-k">{byApp('robotics').filter((p) => p.category === c.id).length} product types</span><h3>{c.name}</h3><p>{c.summary}</p></a>)}
     </div>
   </div>
@@ -67,7 +67,7 @@ const schema = {
   <div class="container">
     <SectionHead kicker="Services" id="sv-h" title="Sourcing, supply and fit review" />
     <div class="tiles t4 stagger reveal">{services.map((s) => <div class="tile"><span class="t-k">Service</span><h3>{s.k}</h3><p>{s.d}</p></div>)}</div>
-    <p class="src-note reveal" style="margin-top:16px;">Prices, stock, lead times and supplier authorisation are confirmed only in a written quote. Nothing on these pages is an offer to supply at a stated price.</p>
+    <p class="src-note reveal" style="margin-top:16px;">Prices, stock, lead times and supplier authorisation are confirmed only in a written quote. Nothing on these pages is an offer to supply at a stated price. {BRANDS.KST.note}</p>
   </div>
 </section>
 

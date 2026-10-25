@@ -114,8 +114,9 @@ export function llmsFullTxt(): string {
   }
 
   h(2, 'Drone & Robotics Components');
-  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. Phase 1 covers passive mechanical drone parts and robotics mechanical accessories and cleaning consumables. Complete drones are not sold; equipment models are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
+  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. The catalogue covers passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos listed by series and model (KST is a trademark of KST Meizhou Company Limited; listing does not imply authorised-distributor status). Complete drones are not sold; equipment models are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
   PCATS.forEach((c) => L.push(`- **${c.name}** (${c.application}): ${c.summary} Product types: ${PRODUCTS.filter((p) => p.category === c.id).map((p) => p.name).join(', ')}.`));
+  PRODUCTS.filter((p) => p.models).forEach((p) => L.push(`- ${p.name} (${U('/components/products/' + p.slug)}): ${p.models!.join(', ')}.`));
 
   h(2, 'OPC + FDE network');
   L.push(`Page: ${U('/opc-fde')}`, '', 'OPC = Office + AI Agents: local business nodes that combine workspace, AI agent capability and market connections — not a conventional co-working space. FDE = Forward Deployed Entrepreneur: a delivery role working directly on real customer problems to take solutions from proof of concept to deployment. Sydney is the first node; Auckland is the expansion direction for New Zealand. The ANZ OPC + FDE Alliance is the membership organisation behind the network, with FDE delivery capability built into member benefits.');

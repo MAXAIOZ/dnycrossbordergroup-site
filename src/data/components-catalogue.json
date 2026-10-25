@@ -1,42 +1,1218 @@
 {
   "version": "2026-10-25",
-  "scope": "Phase 1: passive mechanical drone parts, robotics mechanical accessories and cleaning consumables only. No complete drones, and no electrical, electronic, powered or moving assemblies.",
+  "scope": "Passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos by series. No complete drones are sold.",
   "statusDefinitions": {
-    "information": { "general": "General product description. Specifications are confirmed against your model and part number." },
-    "fit": { "per-enquiry": "Fit is confirmed for the specific model, generation and part number you provide. No universal or cross-generation fit is implied." },
-    "supply": { "on-request": "Sourced and quoted on request. No stock, authorised-supplier status, price or lead time is implied until quoted." }
+    "information": {
+      "general": "General product description. Specifications are confirmed against your model and part number."
+    },
+    "fit": {
+      "per-enquiry": "Fit is confirmed for the specific model, generation and part number you provide. No universal or cross-generation fit is implied."
+    },
+    "supply": {
+      "on-request": "Sourced and quoted on request. No stock, authorised-supplier status, price or lead time is implied until quoted."
+    }
   },
   "categories": [
-    { "id": "propellers-fasteners", "application": "drone", "name": "Propellers & Fasteners", "summary": "Replacement propellers, screws and other plain mechanical fasteners." },
-    { "id": "airframe-parts", "application": "drone", "name": "Airframe Parts", "summary": "Arms, hinges, landing gear, shells and protective cages — structural parts only." },
-    { "id": "mechanical-mounts", "application": "drone", "name": "Mechanical Mounts", "summary": "Passive payload brackets and vibration-damping mounts with no electrical interface." },
-    { "id": "cases-manual-tools", "application": "drone", "name": "Cases & Manual Tools", "summary": "Empty transport cases and hand tools for routine maintenance." },
-    { "id": "commercial-cleaning", "application": "robotics", "name": "Commercial Cleaning", "summary": "Brush discs, squeegee blades, filters and non-powered castors for cleaning robots." },
-    { "id": "warehouse-logistics", "application": "robotics", "name": "Warehouse & Logistics", "summary": "Non-powered tyres, hubs and passive wheel sets for warehouse robots." },
-    { "id": "industrial-robotics", "application": "robotics", "name": "Industrial Robotics", "summary": "Gripper fingers, gripper pads and non-powered mechanical accessories." }
+    {
+      "id": "propellers-fasteners",
+      "application": "drone",
+      "name": "Propellers & Fasteners",
+      "summary": "Replacement propellers, screws and other plain mechanical fasteners."
+    },
+    {
+      "id": "airframe-parts",
+      "application": "drone",
+      "name": "Airframe Parts",
+      "summary": "Arms, hinges, landing gear, shells and protective cages — structural parts only."
+    },
+    {
+      "id": "mechanical-mounts",
+      "application": "drone",
+      "name": "Mechanical Mounts",
+      "summary": "Passive payload brackets and vibration-damping mounts with no electrical interface."
+    },
+    {
+      "id": "cases-manual-tools",
+      "application": "drone",
+      "name": "Cases & Manual Tools",
+      "summary": "Empty transport cases and hand tools for routine maintenance."
+    },
+    {
+      "id": "drone-servos",
+      "application": "drone",
+      "name": "Servos",
+      "summary": "KST servo series for aircraft control surfaces and mechanisms, listed by series with official model names."
+    },
+    {
+      "id": "commercial-cleaning",
+      "application": "robotics",
+      "name": "Commercial Cleaning",
+      "summary": "Brush discs, squeegee blades, filters and non-powered castors for cleaning robots."
+    },
+    {
+      "id": "warehouse-logistics",
+      "application": "robotics",
+      "name": "Warehouse & Logistics",
+      "summary": "Non-powered tyres, hubs and passive wheel sets for warehouse robots."
+    },
+    {
+      "id": "industrial-robotics",
+      "application": "robotics",
+      "name": "Industrial Robotics",
+      "summary": "Gripper fingers, gripper pads and non-powered mechanical accessories."
+    },
+    {
+      "id": "robotics-servos",
+      "application": "robotics",
+      "name": "Servos & Actuators",
+      "summary": "KST HP, HA, SV, HS and HLS servo series and an underwater servo, for robotic mechanisms."
+    }
   ],
   "products": [
-    { "id": "DP-PROP", "slug": "replacement-propellers", "application": "drone", "category": "propellers-fasteners", "name": "Replacement Propellers", "description": "Replacement propeller blades for commercial and enterprise drones, sourced to match the exact model and generation you specify.", "send": ["Drone brand, model and generation", "Propeller part number, if known", "Quantity (pairs or sets)"], "limits": ["Propellers are model- and generation-specific; no cross-generation fit is offered.", "Propeller blades and passive hardware only; no electrical or powered parts."], "keywords": ["propeller", "prop", "blade", "rotor blade"], "publication_status": "published" },
-    { "id": "DP-PSCR", "slug": "propeller-screws-washers", "application": "drone", "category": "propellers-fasteners", "name": "Propeller Screws & Washers", "description": "Plain mechanical screws, washers and retaining hardware used to fit propellers.", "send": ["Drone model or propeller part number", "Thread size and length, if known", "Quantity"], "limits": ["Supplied as individual items or itemised packs only."], "keywords": ["screw", "washer", "fastener", "propeller hardware"], "publication_status": "published" },
-    { "id": "DP-AFAS", "slug": "airframe-screws-standoffs", "application": "drone", "category": "propellers-fasteners", "name": "Airframe Screws & Standoffs", "description": "Screws, standoffs and spacers used to assemble airframe structures and covers.", "send": ["Drone model or airframe part number", "Size, thread and finish, if known", "Quantity"], "limits": ["Itemised quantities only; no unitemised assortment kits."], "keywords": ["screw", "standoff", "spacer", "airframe fastener"], "publication_status": "published" },
-    { "id": "DP-ARM", "slug": "structural-arm-sections", "application": "drone", "category": "airframe-parts", "name": "Structural Arm Sections", "description": "Bare structural arm tubes and arm shells for multirotor airframes.", "send": ["Drone brand, model and generation", "Arm position or part number", "Quantity"], "limits": ["Bare structural parts only, with no electrical or powered parts fitted."], "keywords": ["arm", "boom", "arm tube", "arm shell"], "publication_status": "published" },
-    { "id": "DP-HING", "slug": "folding-arm-hinges", "application": "drone", "category": "airframe-parts", "name": "Folding Arm Hinges", "description": "Mechanical hinge and locking components for folding arm designs.", "send": ["Drone model and generation", "Hinge part number, if known", "Quantity"], "limits": ["Purely mechanical hinges; no integrated sensors or wiring."], "keywords": ["hinge", "folding", "arm lock"], "publication_status": "published" },
-    { "id": "DP-LGR", "slug": "landing-gear-skids", "application": "drone", "category": "airframe-parts", "name": "Landing Gear & Skids", "description": "Fixed landing legs, skids and feet for commercial drone airframes.", "send": ["Drone model and generation", "Landing gear part number, if known", "Quantity"], "limits": ["Fixed, non-powered landing gear only."], "keywords": ["landing gear", "skid", "leg", "foot"], "publication_status": "published" },
-    { "id": "DP-SHEL", "slug": "body-shells-covers", "application": "drone", "category": "airframe-parts", "name": "Body Shells & Covers", "description": "Top shells, bottom covers and panels for drone bodies, supplied as bare mechanical parts.", "send": ["Drone model and generation", "Shell or cover part number", "Quantity"], "limits": ["Shells are supplied without antennas, lights, boards or wiring."], "keywords": ["shell", "cover", "housing", "panel", "body"], "publication_status": "published" },
-    { "id": "DP-CAGE", "slug": "propeller-guards-cages", "application": "drone", "category": "airframe-parts", "name": "Propeller Guards & Protective Cages", "description": "Propeller guards and protective cage parts for inspection and close-proximity work.", "send": ["Drone model and generation", "Guard or cage part number, if known", "Quantity"], "limits": ["Guards change flight characteristics; follow the manufacturer's guidance and applicable CASA rules when fitting them."], "keywords": ["guard", "cage", "protector", "prop guard"], "publication_status": "published" },
-    { "id": "DP-PBRK", "slug": "passive-payload-brackets", "application": "drone", "category": "mechanical-mounts", "name": "Passive Payload Brackets", "description": "Fixed mechanical brackets for mounting passive accessories to a drone airframe.", "send": ["Drone model and mounting point", "Accessory to be mounted and its weight", "Quantity"], "limits": ["Fixed, passive brackets only, with no electrical, data or moving parts.", "Not rated as a load-bearing or safety-critical attachment."], "keywords": ["bracket", "mount", "payload mount", "holder"], "publication_status": "published" },
-    { "id": "DP-DAMP", "slug": "vibration-damping-mounts", "application": "drone", "category": "mechanical-mounts", "name": "Vibration-Damping Mounts", "description": "Rubber and elastomer dampers, damping balls and isolator plates.", "send": ["Drone model and mounting position", "Damper part number or dimensions", "Quantity"], "limits": ["Passive mechanical damping parts only; no electrical parts."], "keywords": ["damper", "damping ball", "isolator", "vibration"], "publication_status": "published" },
-    { "id": "DP-CASE", "slug": "transport-cases", "application": "drone", "category": "cases-manual-tools", "name": "Transport Cases", "description": "Empty hard and soft cases for transporting drones and accessories.", "send": ["Drone model or required internal dimensions", "Hard or soft case", "Quantity"], "limits": ["Cases are supplied empty; no contents are included."], "keywords": ["case", "carry case", "hard case", "backpack"], "publication_status": "published" },
-    { "id": "DP-TOOL", "slug": "manual-maintenance-tools", "application": "drone", "category": "cases-manual-tools", "name": "Manual Maintenance Tools", "description": "Hand tools for routine maintenance, such as hex and screw drivers and propeller wrenches.", "send": ["Tool type and size", "Drone model, if the tool is model-specific", "Quantity"], "limits": ["Hand tools only. No powered tools, chemicals or unitemised maintenance kits."], "keywords": ["tool", "screwdriver", "hex driver", "wrench"], "publication_status": "published" },
-    { "id": "RC-BRSH", "slug": "brush-discs", "application": "robotics", "category": "commercial-cleaning", "name": "Brush Discs", "description": "Replacement brush discs and side brushes for commercial floor-cleaning robots.", "send": ["Robot brand and model", "Brush part number or diameter", "Quantity"], "limits": ["Brush discs only; no powered or drive assemblies."], "keywords": ["brush", "brush disc", "side brush", "scrubber brush"], "publication_status": "published" },
-    { "id": "RC-SQGE", "slug": "squeegee-blades", "application": "robotics", "category": "commercial-cleaning", "name": "Squeegee Blades", "description": "Replacement squeegee blades and rubber strips for scrubber robots.", "send": ["Robot brand and model", "Blade part number or length", "Quantity"], "limits": ["Blades and strips only; no squeegee lift actuators."], "keywords": ["squeegee", "blade", "wiper", "rubber strip"], "publication_status": "published" },
-    { "id": "RC-FILT", "slug": "cleaning-robot-filters", "application": "robotics", "category": "commercial-cleaning", "name": "Filters", "description": "Replacement dust, debris and water filters for cleaning robots.", "send": ["Robot brand and model", "Filter part number", "Quantity"], "limits": ["Filter elements only."], "keywords": ["filter", "hepa", "dust filter", "water filter"], "publication_status": "published" },
-    { "id": "RC-CAST", "slug": "non-powered-castors", "application": "robotics", "category": "commercial-cleaning", "name": "Non-Powered Castor Wheels", "description": "Free-rolling castor wheels for cleaning and service robots.", "send": ["Robot brand and model", "Castor part number or wheel diameter", "Quantity"], "limits": ["Non-driven castors only; no powered or electrical parts."], "keywords": ["castor", "caster", "wheel", "swivel wheel"], "publication_status": "published" },
-    { "id": "RW-TYRE", "slug": "non-powered-tyres-treads", "application": "robotics", "category": "warehouse-logistics", "name": "Tyres & Treads", "description": "Replacement tyres, treads and wheel covers for warehouse robots.", "send": ["Robot brand and model", "Tyre part number or dimensions", "Quantity"], "limits": ["Tyres and treads only; no powered or electrical parts."], "keywords": ["tyre", "tire", "tread", "wheel cover"], "publication_status": "published" },
-    { "id": "RW-HUB", "slug": "wheel-hubs", "application": "robotics", "category": "warehouse-logistics", "name": "Wheel Hubs", "description": "Mechanical wheel hubs for non-driven wheel positions.", "send": ["Robot brand and model", "Hub part number or dimensions", "Quantity"], "limits": ["For non-driven wheel positions only; no powered or electrical parts."], "keywords": ["hub", "wheel hub", "rim"], "publication_status": "published" },
-    { "id": "RW-WSET", "slug": "passive-wheel-sets", "application": "robotics", "category": "warehouse-logistics", "name": "Passive Wheel Sets", "description": "Free-rolling mechanical wheel sets for support positions on warehouse robots.", "send": ["Robot brand and model", "Wheel set part number", "Quantity"], "limits": ["Passive, non-driven wheel sets only; no powered or electrical parts."], "keywords": ["wheel set", "support wheel", "idler wheel"], "publication_status": "published" },
-    { "id": "RI-FING", "slug": "gripper-fingers", "application": "robotics", "category": "industrial-robotics", "name": "Gripper Fingers", "description": "Replacement and custom-profile fingers for mechanical grippers.", "send": ["Gripper brand and model", "Finger part number or drawing", "Quantity"], "limits": ["Fingers only. Complete grippers, tool changers and safety components are not supplied."], "keywords": ["gripper finger", "jaw", "finger"], "publication_status": "published" },
-    { "id": "RI-PADS", "slug": "gripper-pads", "application": "robotics", "category": "industrial-robotics", "name": "Gripper Pads", "description": "Replacement contact pads and inserts for gripper fingers.", "send": ["Gripper brand and model", "Pad part number, material or dimensions", "Quantity"], "limits": ["Pads and inserts only."], "keywords": ["gripper pad", "insert", "contact pad"], "publication_status": "published" },
-    { "id": "RI-BRKT", "slug": "mechanical-robot-brackets", "application": "robotics", "category": "industrial-robotics", "name": "Mechanical Mounting Brackets", "description": "Non-powered brackets and adapter plates for mounting passive accessories on industrial robots.", "send": ["Robot or gripper model", "Bracket drawing or part number", "Quantity"], "limits": ["Non-powered parts only; no quick-change interfaces, tool changers or safety components."], "keywords": ["bracket", "adapter plate", "mounting plate"], "publication_status": "published" }
-  ]
+    {
+      "id": "DP-PROP",
+      "slug": "replacement-propellers",
+      "application": "drone",
+      "category": "propellers-fasteners",
+      "name": "Replacement Propellers",
+      "description": "Replacement propeller blades for commercial and enterprise drones, sourced to match the exact model and generation you specify.",
+      "send": [
+        "Drone brand, model and generation",
+        "Propeller part number, if known",
+        "Quantity (pairs or sets)"
+      ],
+      "limits": [
+        "Propellers are model- and generation-specific; no cross-generation fit is offered.",
+        "Propeller blades and passive hardware only; no electrical or powered parts."
+      ],
+      "keywords": [
+        "propeller",
+        "prop",
+        "blade",
+        "rotor blade"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-PSCR",
+      "slug": "propeller-screws-washers",
+      "application": "drone",
+      "category": "propellers-fasteners",
+      "name": "Propeller Screws & Washers",
+      "description": "Plain mechanical screws, washers and retaining hardware used to fit propellers.",
+      "send": [
+        "Drone model or propeller part number",
+        "Thread size and length, if known",
+        "Quantity"
+      ],
+      "limits": [
+        "Supplied as individual items or itemised packs only."
+      ],
+      "keywords": [
+        "screw",
+        "washer",
+        "fastener",
+        "propeller hardware"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-AFAS",
+      "slug": "airframe-screws-standoffs",
+      "application": "drone",
+      "category": "propellers-fasteners",
+      "name": "Airframe Screws & Standoffs",
+      "description": "Screws, standoffs and spacers used to assemble airframe structures and covers.",
+      "send": [
+        "Drone model or airframe part number",
+        "Size, thread and finish, if known",
+        "Quantity"
+      ],
+      "limits": [
+        "Itemised quantities only; no unitemised assortment kits."
+      ],
+      "keywords": [
+        "screw",
+        "standoff",
+        "spacer",
+        "airframe fastener"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-ARM",
+      "slug": "structural-arm-sections",
+      "application": "drone",
+      "category": "airframe-parts",
+      "name": "Structural Arm Sections",
+      "description": "Bare structural arm tubes and arm shells for multirotor airframes.",
+      "send": [
+        "Drone brand, model and generation",
+        "Arm position or part number",
+        "Quantity"
+      ],
+      "limits": [
+        "Bare structural parts only, with no electrical or powered parts fitted."
+      ],
+      "keywords": [
+        "arm",
+        "boom",
+        "arm tube",
+        "arm shell"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-HING",
+      "slug": "folding-arm-hinges",
+      "application": "drone",
+      "category": "airframe-parts",
+      "name": "Folding Arm Hinges",
+      "description": "Mechanical hinge and locking components for folding arm designs.",
+      "send": [
+        "Drone model and generation",
+        "Hinge part number, if known",
+        "Quantity"
+      ],
+      "limits": [
+        "Purely mechanical hinges; no integrated sensors or wiring."
+      ],
+      "keywords": [
+        "hinge",
+        "folding",
+        "arm lock"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-LGR",
+      "slug": "landing-gear-skids",
+      "application": "drone",
+      "category": "airframe-parts",
+      "name": "Landing Gear & Skids",
+      "description": "Fixed landing legs, skids and feet for commercial drone airframes.",
+      "send": [
+        "Drone model and generation",
+        "Landing gear part number, if known",
+        "Quantity"
+      ],
+      "limits": [
+        "Fixed, non-powered landing gear only."
+      ],
+      "keywords": [
+        "landing gear",
+        "skid",
+        "leg",
+        "foot"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-SHEL",
+      "slug": "body-shells-covers",
+      "application": "drone",
+      "category": "airframe-parts",
+      "name": "Body Shells & Covers",
+      "description": "Top shells, bottom covers and panels for drone bodies, supplied as bare mechanical parts.",
+      "send": [
+        "Drone model and generation",
+        "Shell or cover part number",
+        "Quantity"
+      ],
+      "limits": [
+        "Shells are supplied without antennas, lights, boards or wiring."
+      ],
+      "keywords": [
+        "shell",
+        "cover",
+        "housing",
+        "panel",
+        "body"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-CAGE",
+      "slug": "propeller-guards-cages",
+      "application": "drone",
+      "category": "airframe-parts",
+      "name": "Propeller Guards & Protective Cages",
+      "description": "Propeller guards and protective cage parts for inspection and close-proximity work.",
+      "send": [
+        "Drone model and generation",
+        "Guard or cage part number, if known",
+        "Quantity"
+      ],
+      "limits": [
+        "Guards change flight characteristics; follow the manufacturer's guidance and applicable CASA rules when fitting them."
+      ],
+      "keywords": [
+        "guard",
+        "cage",
+        "protector",
+        "prop guard"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-PBRK",
+      "slug": "passive-payload-brackets",
+      "application": "drone",
+      "category": "mechanical-mounts",
+      "name": "Passive Payload Brackets",
+      "description": "Fixed mechanical brackets for mounting passive accessories to a drone airframe.",
+      "send": [
+        "Drone model and mounting point",
+        "Accessory to be mounted and its weight",
+        "Quantity"
+      ],
+      "limits": [
+        "Fixed, passive brackets only, with no electrical, data or moving parts.",
+        "Not rated as a load-bearing or safety-critical attachment."
+      ],
+      "keywords": [
+        "bracket",
+        "mount",
+        "payload mount",
+        "holder"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-DAMP",
+      "slug": "vibration-damping-mounts",
+      "application": "drone",
+      "category": "mechanical-mounts",
+      "name": "Vibration-Damping Mounts",
+      "description": "Rubber and elastomer dampers, damping balls and isolator plates.",
+      "send": [
+        "Drone model and mounting position",
+        "Damper part number or dimensions",
+        "Quantity"
+      ],
+      "limits": [
+        "Passive mechanical damping parts only; no electrical parts."
+      ],
+      "keywords": [
+        "damper",
+        "damping ball",
+        "isolator",
+        "vibration"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-CASE",
+      "slug": "transport-cases",
+      "application": "drone",
+      "category": "cases-manual-tools",
+      "name": "Transport Cases",
+      "description": "Empty hard and soft cases for transporting drones and accessories.",
+      "send": [
+        "Drone model or required internal dimensions",
+        "Hard or soft case",
+        "Quantity"
+      ],
+      "limits": [
+        "Cases are supplied empty; no contents are included."
+      ],
+      "keywords": [
+        "case",
+        "carry case",
+        "hard case",
+        "backpack"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DP-TOOL",
+      "slug": "manual-maintenance-tools",
+      "application": "drone",
+      "category": "cases-manual-tools",
+      "name": "Manual Maintenance Tools",
+      "description": "Hand tools for routine maintenance, such as hex and screw drivers and propeller wrenches.",
+      "send": [
+        "Tool type and size",
+        "Drone model, if the tool is model-specific",
+        "Quantity"
+      ],
+      "limits": [
+        "Hand tools only. No powered tools, chemicals or unitemised maintenance kits."
+      ],
+      "keywords": [
+        "tool",
+        "screwdriver",
+        "hex driver",
+        "wrench"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KAIR",
+      "slug": "kst-aircraft-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Aircraft Servos",
+      "brand": "KST",
+      "series": "Aircraft Servo",
+      "models": [
+        "A13-812",
+        "A06/N/H",
+        "A08 LV / A08H LV / A08N LV",
+        "A08",
+        "A08H",
+        "A08N",
+        "A12-T",
+        "A12-S",
+        "A12-610",
+        "A13-610",
+        "A15-1810",
+        "A15-1812",
+        "A15-1812-3",
+        "A15-2212",
+        "A20-3813",
+        "A20-4515"
+      ],
+      "description": "KST's Aircraft Servo series for aircraft control surfaces, sourced on request for UAV builders, operators and service teams.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "aircraft servo",
+        "control surface",
+        "uav servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KWNG",
+      "slug": "kst-wing-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Wing Servos",
+      "brand": "KST",
+      "series": "Wing Servo",
+      "models": [
+        "X15-1809A",
+        "X10 Mini Pro-A/B",
+        "X10 Pro-A/B",
+        "X06",
+        "X06N",
+        "X06H",
+        "HS08A&B V6.0",
+        "X08 Plus",
+        "X08H Plus",
+        "X08v6.0",
+        "X08Nv6.0",
+        "X08Hv6.0",
+        "X10-710",
+        "X10",
+        "X10 mini",
+        "DS125MG",
+        "DS135MG",
+        "DS145MG"
+      ],
+      "description": "KST's Wing Servo series of slim servos intended for installation inside wings.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "wing servo",
+        "slim servo",
+        "thin servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KMIC",
+      "slug": "kst-micro-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Micro Servos",
+      "brand": "KST",
+      "series": "Micro servo",
+      "models": [
+        "BLS88WP",
+        "X12-708",
+        "X12-508",
+        "DS215MG v8.0",
+        "DS315MG",
+        "DS213MG",
+        "DS113MG",
+        "MR320",
+        "MS320 v2.0",
+        "MS325v6.0"
+      ],
+      "description": "KST's Micro servo size class.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "micro servo",
+        "small servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KMIN",
+      "slug": "kst-mini-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Mini Servos",
+      "brand": "KST",
+      "series": "Mini Servo",
+      "models": [
+        "X15-855X",
+        "X15-1809 V8.0",
+        "X15-908",
+        "X15-1208",
+        "X15-755X",
+        "MS565",
+        "MS589",
+        "BLS505",
+        "BLS505X",
+        "DS589MG",
+        "DS565X"
+      ],
+      "description": "KST's Mini Servo size class.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "mini servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KSTD",
+      "slug": "kst-standard-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Standard Servos",
+      "brand": "KST",
+      "series": "Standard Servo",
+      "models": [
+        "BLS835",
+        "BLS815",
+        "BLS825",
+        "BLS915",
+        "BLS805X",
+        "BLS905Xv2.0",
+        "BLS159 v8.0",
+        "BLS661WP",
+        "BLS662WP",
+        "X20-8.4-50-180F",
+        "X20-8.4-50",
+        "X20-2208 V8.0",
+        "X20-1035",
+        "X20-3012",
+        "X20-3612",
+        "MS725 V8.0",
+        "MS805",
+        "MS815",
+        "MS825",
+        "MS4512",
+        "DS725MG",
+        "DS1509MG"
+      ],
+      "description": "KST's Standard Servo size class.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "standard servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KUGT",
+      "slug": "kst-ultra-giant-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Ultra Giant Servos",
+      "brand": "KST",
+      "series": "Ultra Giant Servo",
+      "models": [
+        "SV30-12",
+        "X25-xx-65-x",
+        "X30-12-150 V8.0",
+        "X30-12-165 V8.0",
+        "X30-12-200 V8.0",
+        "X30-28-180v8.0",
+        "X50-28-350 V8.0",
+        "X50-28-625 V8.0"
+      ],
+      "description": "KST's Ultra Giant Servo size class, the largest in its range.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "giant servo",
+        "large servo",
+        "high torque servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KBL4",
+      "slug": "kst-4-pole-brushless-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST 4 Pole Brushless Servos",
+      "brand": "KST",
+      "series": "4 Pole Brushless Servo",
+      "models": [
+        "X20-7512",
+        "X20-1806 Low Profile",
+        "X20-3005",
+        "X20-4208"
+      ],
+      "description": "KST's 4 Pole Brushless Servo series.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "brushless servo",
+        "low profile servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KCLB",
+      "slug": "kst-clubman-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST Clubman Servos",
+      "brand": "KST",
+      "series": "Clubman servo",
+      "models": [
+        "CM12",
+        "CM07",
+        "CM1610",
+        "CM712",
+        "CM4315MG",
+        "CM633",
+        "CM509MG",
+        "CM5018WP",
+        "CM3510MG",
+        "CM653"
+      ],
+      "description": "KST's Clubman servo series.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "clubman servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "DS-KFZ",
+      "slug": "kst-fz-series-servos",
+      "application": "drone",
+      "category": "drone-servos",
+      "name": "KST FZ Series Servos",
+      "brand": "KST",
+      "series": "FZ series",
+      "models": [
+        "FZ835",
+        "FZ825",
+        "FZ589",
+        "FZ320",
+        "FZ10"
+      ],
+      "description": "KST's FZ series servos.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific aircraft, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "fz servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RC-BRSH",
+      "slug": "brush-discs",
+      "application": "robotics",
+      "category": "commercial-cleaning",
+      "name": "Brush Discs",
+      "description": "Replacement brush discs and side brushes for commercial floor-cleaning robots.",
+      "send": [
+        "Robot brand and model",
+        "Brush part number or diameter",
+        "Quantity"
+      ],
+      "limits": [
+        "Brush discs only; no powered or drive assemblies."
+      ],
+      "keywords": [
+        "brush",
+        "brush disc",
+        "side brush",
+        "scrubber brush"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RC-SQGE",
+      "slug": "squeegee-blades",
+      "application": "robotics",
+      "category": "commercial-cleaning",
+      "name": "Squeegee Blades",
+      "description": "Replacement squeegee blades and rubber strips for scrubber robots.",
+      "send": [
+        "Robot brand and model",
+        "Blade part number or length",
+        "Quantity"
+      ],
+      "limits": [
+        "Blades and strips only; no squeegee lift actuators."
+      ],
+      "keywords": [
+        "squeegee",
+        "blade",
+        "wiper",
+        "rubber strip"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RC-FILT",
+      "slug": "cleaning-robot-filters",
+      "application": "robotics",
+      "category": "commercial-cleaning",
+      "name": "Filters",
+      "description": "Replacement dust, debris and water filters for cleaning robots.",
+      "send": [
+        "Robot brand and model",
+        "Filter part number",
+        "Quantity"
+      ],
+      "limits": [
+        "Filter elements only."
+      ],
+      "keywords": [
+        "filter",
+        "hepa",
+        "dust filter",
+        "water filter"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RC-CAST",
+      "slug": "non-powered-castors",
+      "application": "robotics",
+      "category": "commercial-cleaning",
+      "name": "Non-Powered Castor Wheels",
+      "description": "Free-rolling castor wheels for cleaning and service robots.",
+      "send": [
+        "Robot brand and model",
+        "Castor part number or wheel diameter",
+        "Quantity"
+      ],
+      "limits": [
+        "Non-driven castors only; no powered or electrical parts."
+      ],
+      "keywords": [
+        "castor",
+        "caster",
+        "wheel",
+        "swivel wheel"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RW-TYRE",
+      "slug": "non-powered-tyres-treads",
+      "application": "robotics",
+      "category": "warehouse-logistics",
+      "name": "Tyres & Treads",
+      "description": "Replacement tyres, treads and wheel covers for warehouse robots.",
+      "send": [
+        "Robot brand and model",
+        "Tyre part number or dimensions",
+        "Quantity"
+      ],
+      "limits": [
+        "Tyres and treads only; no powered or electrical parts."
+      ],
+      "keywords": [
+        "tyre",
+        "tire",
+        "tread",
+        "wheel cover"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RW-HUB",
+      "slug": "wheel-hubs",
+      "application": "robotics",
+      "category": "warehouse-logistics",
+      "name": "Wheel Hubs",
+      "description": "Mechanical wheel hubs for non-driven wheel positions.",
+      "send": [
+        "Robot brand and model",
+        "Hub part number or dimensions",
+        "Quantity"
+      ],
+      "limits": [
+        "For non-driven wheel positions only; no powered or electrical parts."
+      ],
+      "keywords": [
+        "hub",
+        "wheel hub",
+        "rim"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RW-WSET",
+      "slug": "passive-wheel-sets",
+      "application": "robotics",
+      "category": "warehouse-logistics",
+      "name": "Passive Wheel Sets",
+      "description": "Free-rolling mechanical wheel sets for support positions on warehouse robots.",
+      "send": [
+        "Robot brand and model",
+        "Wheel set part number",
+        "Quantity"
+      ],
+      "limits": [
+        "Passive, non-driven wheel sets only; no powered or electrical parts."
+      ],
+      "keywords": [
+        "wheel set",
+        "support wheel",
+        "idler wheel"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RI-FING",
+      "slug": "gripper-fingers",
+      "application": "robotics",
+      "category": "industrial-robotics",
+      "name": "Gripper Fingers",
+      "description": "Replacement and custom-profile fingers for mechanical grippers.",
+      "send": [
+        "Gripper brand and model",
+        "Finger part number or drawing",
+        "Quantity"
+      ],
+      "limits": [
+        "Fingers only. Complete grippers, tool changers and safety components are not supplied."
+      ],
+      "keywords": [
+        "gripper finger",
+        "jaw",
+        "finger"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RI-PADS",
+      "slug": "gripper-pads",
+      "application": "robotics",
+      "category": "industrial-robotics",
+      "name": "Gripper Pads",
+      "description": "Replacement contact pads and inserts for gripper fingers.",
+      "send": [
+        "Gripper brand and model",
+        "Pad part number, material or dimensions",
+        "Quantity"
+      ],
+      "limits": [
+        "Pads and inserts only."
+      ],
+      "keywords": [
+        "gripper pad",
+        "insert",
+        "contact pad"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RI-BRKT",
+      "slug": "mechanical-robot-brackets",
+      "application": "robotics",
+      "category": "industrial-robotics",
+      "name": "Mechanical Mounting Brackets",
+      "description": "Non-powered brackets and adapter plates for mounting passive accessories on industrial robots.",
+      "send": [
+        "Robot or gripper model",
+        "Bracket drawing or part number",
+        "Quantity"
+      ],
+      "limits": [
+        "Non-powered parts only; no quick-change interfaces, tool changers or safety components."
+      ],
+      "keywords": [
+        "bracket",
+        "adapter plate",
+        "mounting plate"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RS-KHP",
+      "slug": "kst-hp-series-servos",
+      "application": "robotics",
+      "category": "robotics-servos",
+      "name": "KST HP Series Servos",
+      "brand": "KST",
+      "series": "HP Series",
+      "models": [
+        "HP15T-12-x",
+        "HP20T-12-x",
+        "HP20LP-12-x",
+        "HP20LP-28-x",
+        "HP20WP-830-24-x",
+        "HP20-830",
+        "HP20-830-12-x",
+        "HP20-830-24-x",
+        "HP20-830-30-x",
+        "HP20-835",
+        "HP20-835-12-x",
+        "HP20-835-24-x",
+        "HP20-835-30-x",
+        "HP22C",
+        "HP22-5020-12-x",
+        "HP22-5020-24-x",
+        "HP22-5020-30-x",
+        "HP25-5030-12",
+        "HP25-5030-30",
+        "HP30-6050-30",
+        "HP35-8050-30",
+        "HP50-6550-30",
+        "HP50-8060-30",
+        "HP826",
+        "HP826-12-x",
+        "HP826-24-x",
+        "D42HP-30"
+      ],
+      "description": "KST's HP Series servos, offered for robotics and industrial mechanism enquiries.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific robot, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "hp servo",
+        "industrial servo",
+        "robot servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RS-KHA",
+      "slug": "kst-ha-series-servos",
+      "application": "robotics",
+      "category": "robotics-servos",
+      "name": "KST HA Series Servos",
+      "brand": "KST",
+      "series": "HA Series",
+      "models": [
+        "HA20-9015",
+        "HA20-8016",
+        "HA20-7512",
+        "HA20-4515"
+      ],
+      "description": "KST's HA Series servos, offered for robotics and industrial mechanism enquiries.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific robot, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "ha servo",
+        "industrial servo",
+        "robot servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RS-KSV",
+      "slug": "kst-sv-series-servos",
+      "application": "robotics",
+      "category": "robotics-servos",
+      "name": "KST SV Series Servos",
+      "brand": "KST",
+      "series": "SV Series",
+      "models": [
+        "SV08-12",
+        "SV10-12A/B",
+        "SV10M-12A/B",
+        "SV12-12",
+        "SV12S-12",
+        "SV12T-12",
+        "SV15-12",
+        "SV15X-12",
+        "SV30-12",
+        "SV905-12",
+        "SV915-12",
+        "SV3312-12",
+        "SV4012-12",
+        "SV5006-12",
+        "SV6010-12",
+        "SV7012-12"
+      ],
+      "description": "KST's SV Series servos, offered for robotics and industrial mechanism enquiries.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific robot, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "sv servo",
+        "industrial servo",
+        "robot servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RS-KHS",
+      "slug": "kst-hs-series-servos",
+      "application": "robotics",
+      "category": "robotics-servos",
+      "name": "KST HS Series Servos",
+      "brand": "KST",
+      "series": "HS series",
+      "models": [
+        "HS08S",
+        "HS08-6.0-P",
+        "HS10-12-M-0423-x",
+        "HS10-12-M-0513-x",
+        "HS15-12-M-0615-*",
+        "HS15-12-M-1220-*",
+        "HS17-XX-P-5020-X",
+        "HS20-12-M-5518-X",
+        "HS20-12-M-5525-*",
+        "HS20-30-M-5525-x",
+        "HS22-XX-M-5535-x",
+        "HS25-30-M-5545-x",
+        "HS30-30-M-6050-x",
+        "HS35-30-M-6055-x",
+        "HS50-30-M-6550-x",
+        "HS50-30-M-8060-x",
+        "HS50-30-M-8090-x"
+      ],
+      "description": "KST's HS series servos, offered for robotics and industrial mechanism enquiries.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific robot, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "hs servo",
+        "industrial servo",
+        "robot servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RS-KHLS",
+      "slug": "kst-hls-servos",
+      "application": "robotics",
+      "category": "robotics-servos",
+      "name": "KST HLS Servos",
+      "brand": "KST",
+      "series": "HLS servo",
+      "models": [
+        "HLS1535-12",
+        "HLS3008-12",
+        "HLS6513",
+        "X15-7.4-M-1812-x",
+        "X20-xx-M-805-1",
+        "X20-xx-M-820-x",
+        "X20-xx-M-830-x",
+        "X20-xx-M-835-x",
+        "X20-xx-M-850-x",
+        "X22-xx-M-860-x"
+      ],
+      "description": "KST's HLS servo series, offered for robotics and industrial mechanism enquiries.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific robot, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "hls servo",
+        "industrial servo",
+        "robot servo",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    },
+    {
+      "id": "RS-KUW",
+      "slug": "kst-underwater-servo",
+      "application": "robotics",
+      "category": "robotics-servos",
+      "name": "KST Underwater Servo",
+      "brand": "KST",
+      "series": "Underwater Servo",
+      "models": [
+        "D42HP-30"
+      ],
+      "description": "KST's underwater servo, for submerged mechanisms such as those on underwater robots.",
+      "send": [
+        "KST model from the list on this page, or the torque, speed, voltage and size you need",
+        "What the servo will drive and how it is installed",
+        "Quantity"
+      ],
+      "limits": [
+        "Specifications come from KST's current datasheet and are confirmed with your quote; they are not listed here.",
+        "Suitability for a specific robot, load and duty cycle is confirmed per enquiry.",
+        "Supplied as individual servo units; no other electronics are included."
+      ],
+      "keywords": [
+        "underwater servo",
+        "waterproof servo",
+        "marine servo",
+        "rov",
+        "servo",
+        "kst",
+        "actuator"
+      ],
+      "publication_status": "published"
+    }
+  ],
+  "brands": {
+    "KST": {
+      "name": "KST",
+      "owner": "KST Meizhou Company Limited",
+      "note": "KST is a trademark of KST Meizhou Company Limited. Series and model names are as published by the manufacturer. DNY sources KST servos through its working relationship with the manufacturer; listing a brand does not mean DNY is its authorised distributor unless a quote states so."
+    }
+  }
 }
