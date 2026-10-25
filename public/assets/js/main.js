@@ -240,6 +240,7 @@
 
   /* ---------- 3D tilt + cursor sheen on cards ---------- */
   (function () {
+    return; // 3D tilt disabled: it required every card to be its own GPU layer
     if (reduceMotion || window.matchMedia('(hover: none)').matches) return;
     const tiltables = document.querySelectorAll('.card, .svc-card, .corridor-card, .vis-card');
     tiltables.forEach(card => {

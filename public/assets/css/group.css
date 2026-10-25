@@ -457,3 +457,9 @@ html, body { overflow-x: clip; }
 .hero-grid, .grad-text { animation: none }
 .scroll-meter { width: 100% !important; transform: scaleX(0); transform-origin: 0 50%; transition: none; will-change: transform }
 .site-header { backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%) }
+
+/* Performance: fewer compositor layers while scrolling */
+.card, .corridor-card, .vis-card, .svc-card { transform-style: flat; will-change: auto }
+.sec-watermark, .glow-cursor, .glow-cursor-dot, .cursor-spark { display: none !important }
+body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button, body.has-glow-cursor .btn { cursor: auto }
+#fx-canvas { contain: strict }

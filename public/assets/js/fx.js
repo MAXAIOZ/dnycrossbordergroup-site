@@ -281,6 +281,7 @@
      2) GLOW CURSOR + TRAILING SPARKS
   ======================================================== */
   (function () {
+    return; // custom cursor disabled: its blend-mode overlay forced full-page compositing on scroll
     if (reduce || !fine) return;
     document.body.classList.add('has-glow-cursor');
 
@@ -392,6 +393,7 @@
 
   // 3c) Section number watermarks + parallax
   (function () {
+    return; // section watermarks disabled (large per-section GPU layers, repositioned on every scroll)
     if (reduce) return;
     var labels = {
       about: '01', desk: '02', services: '03', pillars: '04',
