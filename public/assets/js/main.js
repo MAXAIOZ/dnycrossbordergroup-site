@@ -177,6 +177,21 @@
   const reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Shared motion budget: background animations pause while the page scrolls,
+  // while the tab is hidden, and run at most 30 fps otherwise.
+  const MOTION = window.DNY_MOTION = window.DNY_MOTION || (function () {
+    const m = { scrolling: false, hidden: document.hidden, listeners: [] };
+    let t;
+    window.addEventListener('scroll', () => {
+      if (!m.scrolling) m.scrolling = true;
+      clearTimeout(t);
+      t = setTimeout(() => { m.scrolling = false; m.listeners.forEach((f) => f()); }, 160);
+    }, { passive: true });
+    document.addEventListener('visibilitychange', () => { m.hidden = document.hidden; if (!m.hidden) m.listeners.forEach((f) => f()); });
+    m.paused = () => m.scrolling || m.hidden;
+    return m;
+  })();
+
   /* ---------- Scroll progress meter ---------- */
   (function () {
     const meter = document.createElement('div');
@@ -186,7 +201,7 @@
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
       const p = max > 0 ? (h.scrollTop / max) * 100 : 0;
-      meter.style.width = p + '%';
+      meter.style.transform = 'scaleX(' + (p / 100).toFixed(4) + ')';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -292,7 +307,7 @@
       h = canvas.height = innerHeight * dpr;
       canvas.style.width = innerWidth + 'px';
       canvas.style.height = innerHeight + 'px';
-      const count = Math.min(Math.floor((innerWidth * innerHeight) / 18000), 90);
+      const count = Math.min(Math.floor((innerWidth * innerHeight) / 26000), 48);
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push({
@@ -313,7 +328,12 @@
     window.addEventListener('mouseout', () => { mouse.x = -9999; mouse.y = -9999; });
 
     const LINK = 130;
-    function frame() {
+    let running = false, last = 0;
+    function frame(now) {
+      if (MOTION.paused()) { running = false; return; }
+      requestAnimationFrame(frame);
+      if (now - last < 33) return; // ~30 fps
+      last = now;
       ctx.clearRect(0, 0, w, h);
       const link = LINK * dpr;
       for (let i = 0; i < particles.length; i++) {
@@ -346,11 +366,12 @@
           }
         }
       }
-      requestAnimationFrame(frame);
     }
+    const start = () => { if (!running && !MOTION.paused()) { running = true; requestAnimationFrame(frame); } };
     resize();
     window.addEventListener('resize', resize);
-    requestAnimationFrame(frame);
+    MOTION.listeners.push(start);
+    start();
   })();
 
 })();

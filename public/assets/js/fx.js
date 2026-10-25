@@ -74,7 +74,7 @@
       // No landmasses. One marker point near Sydney is flagged (kind:2)
       // as the broadcast origin highlight.
       dots = [];
-      var n = innerWidth < 1000 ? 900 : 1500;
+      var n = innerWidth < 1000 ? 650 : 1000;
       var off = 2 / n, inc = Math.PI * (3 - Math.sqrt(5));
       var origin = toVec(ORIGIN.lat, ORIGIN.lng);
       var best = -1, bestDot = -2;
@@ -148,8 +148,14 @@
       };
     }
 
-    var lastSpawn = 0;
+    var lastSpawn = 0, lastDraw = 0, running = false, onScreen = true;
+    var M = window.DNY_MOTION;
+    function paused() { return !onScreen || (M && M.paused()); }
     function frame(now) {
+      if (paused()) { running = false; return; }
+      requestAnimationFrame(frame);
+      if (now - lastDraw < 33) return; // ~30 fps
+      lastDraw = now;
       ctx.clearRect(0, 0, W, H);
       mouseX += (targetMouseX - mouseX) * 0.05;
       rot += 0.0011;
@@ -211,7 +217,7 @@
       }
 
       // spawn arcs over time — fire several beams together for a busier network
-      if (now - lastSpawn > 260 && arcs.length < 48) {
+      if (now - lastSpawn > 320 && arcs.length < 28) {
         var burst = 3 + Math.floor(Math.random() * 2); // 3-4 beams per burst
         for (var bi = 0; bi < burst; bi++) spawnArc();
         lastSpawn = now;
@@ -235,11 +241,8 @@
           else ctx.lineTo(px, py);
         }
         ctx.strokeStyle = 'rgba(' + arc.color + ',' + (0.65 * (1 - arc.t * 0.3)) + ')';
-        ctx.lineWidth = 1.4 * dpr;
-        ctx.shadowBlur = 8 * dpr;
-        ctx.shadowColor = 'rgba(' + arc.color + ',0.8)';
+        ctx.lineWidth = 1.6 * dpr;
         ctx.stroke();
-        ctx.shadowBlur = 0;
 
         // comet head
         var head = slerp(arc.a, arc.b, arc.t);
@@ -252,12 +255,16 @@
         }
       }
 
-      requestAnimationFrame(frame);
     }
+    function start() { if (!running && !paused()) { running = true; requestAnimationFrame(frame); } }
 
     window.addEventListener('mousemove', function (e) {
       targetMouseX = (e.clientX / innerWidth - 0.5);
     }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { onScreen = en[0].isIntersecting; start(); }).observe(host);
+    }
+    if (M) M.listeners.push(start);
 
     resize();
     // re-measure after layout/CSS settles (canvas is CSS-scaled to 130%)
@@ -266,8 +273,8 @@
     window.addEventListener('load', resize);
     window.addEventListener('resize', resize);
     // seed a busier starting network
-    for (var z = 0; z < 16; z++) spawnArc();
-    requestAnimationFrame(frame);
+    for (var z = 0; z < 10; z++) spawnArc();
+    start();
   })();
 
   /* ========================================================
@@ -288,8 +295,9 @@
     window.addEventListener('mousemove', function (e) {
       tx = e.clientX; ty = e.clientY;
       dx = e.clientX; dy = e.clientY;
+      kick();
       var now = performance.now();
-      if (now - lastSpark > 28) {
+      if (false && now - lastSpark > 28) {
         lastSpark = now;
         var sp = document.createElement('div');
         sp.className = 'cursor-spark';
@@ -303,14 +311,16 @@
       }
     }, { passive: true });
 
+    var looping = false;
     function loop() {
       rx += (tx - rx) * 0.18;
       ry += (ty - ry) * 0.18;
       ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
       dot.style.transform  = 'translate(' + dx + 'px,' + dy + 'px) translate(-50%,-50%)';
-      requestAnimationFrame(loop);
+      if (Math.abs(tx - rx) + Math.abs(ty - ry) > 0.5) requestAnimationFrame(loop);
+      else looping = false;
     }
-    loop();
+    function kick() { if (!looping) { looping = true; requestAnimationFrame(loop); } }
 
     // enlarge over interactive elements
     var hot = 'a, button, .btn, .card, .svc-card, .corridor-card, input, select, textarea, .pill';

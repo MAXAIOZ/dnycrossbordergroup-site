@@ -3,12 +3,12 @@ import { category, seriesImage, type Product } from '../../data/components';
 export interface Props { p: Product }
 const { p } = Astro.props;
 const c = category(p.category);
-const img = seriesImage(p);
+const img = seriesImage(p, true);
 ---
 <article class="pcard" data-pid={p.id} data-cat={p.category} data-search={[p.name, p.description, c.name, ...p.keywords, ...(p.models ?? [])].join(' ').toLowerCase()}>
   {p.brand && (
     <a class="pcard-img" href={`/components/products/${p.slug}`} tabindex="-1" aria-hidden="true">
-      {img ? <img src={img} alt="" width="480" height="480" loading="lazy" decoding="async" /> : <span class="img-na">Image on request</span>}
+      {img ? <img src={img} alt="" width="240" height="240" loading="lazy" decoding="async" /> : <span class="img-na">Image on request</span>}
     </a>
   )}
   <div class="pcard-top"><span class="vcard-cat">{c.name}</span><span class="pcard-id">{p.id}</span></div>

@@ -39,13 +39,14 @@ export const PUBLIC_INDEX = PRODUCTS.map((p) => ({ id: p.id, name: p.name, slug:
 
 // Product images (KST, used with permission; extracted from KST's Feb 2025 product spec).
 const IMG = (slug: string) => `/assets/img/kst/${slug}.webp`;
-export const modelImage = (model: string): string | null => {
+const THUMB = (slug: string) => `/assets/img/kst/sm/${slug}.webp`;
+export const modelImage = (model: string, small = false): string | null => {
   const s = (kstImages.images as Record<string, string>)[model];
-  return s ? IMG(s) : null;
+  return s ? (small ? THUMB(s) : IMG(s)) : null;
 };
-export const seriesImage = (p: Product): string | null => {
+export const seriesImage = (p: Product, small = false): string | null => {
   const s = (kstImages.series as Record<string, string>)[p.id];
-  return s ? IMG(s) : null;
+  return s ? (small ? THUMB(s) : IMG(s)) : null;
 };
 export const IMAGE_CREDIT = 'Product images: KST, used with permission.';
 

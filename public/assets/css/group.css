@@ -433,16 +433,27 @@ html, body { overflow-x: clip; }
 .ds-callout strong { color: var(--t1, #fff) }
 .ds-callout a { color: var(--sand); text-decoration: underline; text-underline-offset: 2px }
 
-/* KST product imagery */
-.pcard-img { display: block; margin: -4px -4px 14px; border-radius: 14px; background: #fff; aspect-ratio: 4 / 3; overflow: hidden; display: flex; align-items: center; justify-content: center }
-.pcard-img img { width: 72%; height: auto; object-fit: contain }
-.img-na { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 96px; color: #7a8794; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; background: repeating-linear-gradient(45deg, #f4f6f8 0 10px, #eef1f4 10px 20px) }
-.mgrid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px }
-.mcard { width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: 8px 8px 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.03); color: var(--t1); cursor: pointer; text-align: left; transition: border-color .15s, transform .15s }
-.mcard:hover, .mcard:focus-visible { border-color: var(--sand); transform: translateY(-2px) }
-.mcard-img { display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: 10px; background: #fff; overflow: hidden }
-.mcard-img img { width: 88%; height: auto }
-.mcard-name { font: 600 13px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 0 4px; word-break: break-word }
-.mcard-add { font-size: 12px; font-weight: 700; color: var(--sand); padding: 0 4px }
-.phero-img { width: 220px; height: 220px; border-radius: 18px; background: #fff; object-fit: contain; padding: 12px; margin-top: 24px }
-@media (min-width: 1000px) { .phero-img { position: absolute; right: max(24px, calc((100vw - 1220px) / 2)); top: 50%; transform: translateY(-40%); width: 300px; height: 300px; margin: 0 } }
+/* KST product imagery — compact */
+.pcard-img { display: flex; align-items: center; justify-content: center; height: 120px; margin: -6px -6px 14px; border-radius: 12px; background: #fff; overflow: hidden }
+.pcard-img img { max-height: 100px; width: auto; max-width: 70%; object-fit: contain }
+.img-na { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 72px; color: #7a8794; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: 6px; background: repeating-linear-gradient(45deg, #f4f6f8 0 10px, #eef1f4 10px 20px) }
+.mgrid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 10px }
+.mgrid > li { content-visibility: auto; contain-intrinsic-size: auto 170px }
+.mcard { width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 6px; padding: 6px 6px 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); background: #0d2a24; color: var(--t1); cursor: pointer; text-align: left; transition: border-color .15s }
+.mcard:hover, .mcard:focus-visible { border-color: var(--sand) }
+.mcard-img { display: flex; align-items: center; justify-content: center; height: 92px; border-radius: 8px; background: #fff; overflow: hidden }
+.mcard-img img { max-height: 80px; width: auto; max-width: 80% }
+.mcard-name { font: 600 12px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 0 4px; word-break: break-word }
+.mcard-add { font-size: 11.5px; font-weight: 700; color: var(--sand); padding: 0 4px }
+.phero-img { width: 150px; height: 150px; border-radius: 16px; background: #fff; object-fit: contain; padding: 10px; margin-top: 22px }
+@media (min-width: 1000px) { .phero-img { position: absolute; right: max(24px, calc((100vw - 1220px) / 2)); top: 50%; transform: translateY(-35%); width: 190px; height: 190px; margin: 0 } }
+
+/* Performance: frosted glass only on fixed chrome (header, menus).
+   Content cards use solid fills so the animated background never forces re-blurring. */
+.btn-secondary, .vis-card, .card, .panel, .project-item, .corridor-card, .desk-vis, .svc-card, .globe-tag { backdrop-filter: none; -webkit-backdrop-filter: none }
+.card, .panel, .project-item, .corridor-card, .svc-card, .vis-card, .desk-vis { background-color: rgba(10, 34, 29, .92) }
+
+/* Performance: no full-area repaint animations */
+.hero-grid, .grad-text { animation: none }
+.scroll-meter { width: 100% !important; transform: scaleX(0); transform-origin: 0 50%; transition: none; will-change: transform }
+.site-header { backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%) }
