@@ -69,6 +69,16 @@ export const NAV: NavItem[] = [
       { label: 'Robotics', href: '/physical-intelligence/robotics', desc: 'Embodied Intelligence' },
     ],
   },
+  {
+    label: 'Parts & Components',
+    href: '/components',
+    children: [
+      { label: 'Overview', href: '/components', desc: 'Drone & Robotics Components' },
+      { label: 'Drone Components', href: '/components/drones', desc: 'Propellers, airframe parts, mounts, cases' },
+      { label: 'Robotics Components', href: '/components/robotics', desc: 'Cleaning, warehouse and gripper parts' },
+      { label: 'Request a Quote', href: '/components/enquiry', desc: 'Model, part number and quantity' },
+    ],
+  },
   { label: 'OPC + FDE', href: '/opc-fde' },
   { label: 'Industries', href: '/industries' },
   { label: 'Ventures', href: '/ventures' },
@@ -113,6 +123,7 @@ export const FOOTER = [
   {
     title: 'Deployment',
     links: [
+      { label: 'Drone & Robotics Components', href: '/components' },
       { label: 'OPC + FDE', href: '/opc-fde' },
       { label: 'Industries', href: '/industries' },
       { label: 'Ventures', href: '/ventures' },

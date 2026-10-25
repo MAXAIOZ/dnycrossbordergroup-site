@@ -7,6 +7,8 @@
 User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # Search engines
 User-agent: Googlebot
@@ -15,6 +17,8 @@ User-agent: Applebot
 User-agent: DuckDuckBot
 User-agent: YandexBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # AI search and answer engines
 User-agent: OAI-SearchBot
@@ -26,6 +30,8 @@ User-agent: Perplexity-User
 User-agent: DuckAssistBot
 User-agent: MistralAI-User
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # AI model crawlers (lets assistants learn accurate facts about DNY)
 User-agent: GPTBot
@@ -37,5 +43,7 @@ User-agent: Amazonbot
 User-agent: meta-externalagent
 User-agent: cohere-ai
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 Sitemap: https://dnycrossbordergroup.com/sitemap-index.xml

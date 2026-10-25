@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Definition from '../components/Definition.astro';
+import BasketPill from '../components/parts/BasketPill.astro';
+import Arrow from '../components/Arrow.astro';
+import { catsFor, byApp, COMPONENTS_CTA, APP_PATH } from '../data/components';
+
+const title = 'Drone & Robotics Components';
+const description = 'Components for drones, industrial robots and commercial autonomous systems from DNY Cross Border Group, Sydney. Submit your model, part number and quantity for sourcing and quotation.';
+const crumbs = [{ name: 'Parts & Components', href: '/components' }];
+const services = [
+  { k: 'Component Sourcing', d: 'Tell us the model, generation and part number. We source the matching part and confirm it with you before quoting.' },
+  { k: 'Bulk Supply Enquiries', d: 'Quantities for fleets, service teams and resellers, quoted per enquiry.' },
+  { k: 'Compatibility Review', d: 'We check the part against the exact model, generation and part number you provide before any quote.' },
+  { k: 'Custom Module Enquiries', d: 'Brackets, mounts and mechanical parts made to your drawing or sample, assessed case by case.' },
+];
+const steps = [
+  { k: 'Add parts', d: 'Add product types to your enquiry list, or describe a part that is not listed.' },
+  { k: 'Add details', d: 'Enter the equipment model, part number and quantity for each line.' },
+  { k: 'Submit', d: 'You receive an enquiry reference immediately. Photos or drawings can be attached.' },
+  { k: 'Review & quote', d: 'We confirm fit and availability, then reply with a quote or questions.' },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Drone & Robotics Components sourcing and quotation',
+  provider: { '@id': 'https://dnycrossbordergroup.com/#organization' },
+  areaServed: ['AU', 'NZ'],
+  serviceType: 'Component sourcing and quotation',
+  description,
+};
+---
+<Base {title} {description} breadcrumbs={crumbs} schema={[schema]}>
+<PageHero badge="Parts & Components" title="Drone & Robotics Components" {crumbs}
+  lead="Explore components for drones, industrial robots and commercial autonomous systems. Submit your model, part number and quantity for sourcing and quotation."
+  primary={COMPONENTS_CTA.drones} secondary={COMPONENTS_CTA.robotics}>
+  <p class="hero-links"><a href={COMPONENTS_CTA.quote.href}>{COMPONENTS_CTA.quote.label} <Arrow /></a></p>
+</PageHero>
+
+<section class="section" aria-labelledby="dr-h">
+  <div class="container">
+    <SectionHead kicker="Drone Components" id="dr-h" title="Mechanical parts for commercial drones"
+      lead="Replacement and structural parts matched to the model and generation you specify. We do not sell complete drones; models are used only to identify the right part." />
+    <form class="psearch reveal" action={APP_PATH.drone} method="get" role="search">
+      <label class="sr-only" for="dq">Search drone components</label>
+      <input id="dq" type="search" name="q" placeholder="Search drone components, e.g. propeller, landing gear">
+      <button type="submit" class="btn btn-secondary">Search</button>
+    </form>
+    <div class="tiles t4 mt-28 stagger reveal">
+      {catsFor('drone').map((c) => <a href={`${APP_PATH.drone}?cat=${c.id}`} class="tile"><span class="t-k">{byApp('drone').filter((p) => p.category === c.id).length} product types</span><h3>{c.name}</h3><p>{c.summary}</p></a>)}
+    </div>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="rb-h">
+  <div class="container">
+    <SectionHead kicker="Robotics Components" id="rb-h" title="Accessories and consumables for industrial and commercial robots" />
+    <div class="tiles t3 stagger reveal">
+      {catsFor('robotics').map((c) => <a href={`${APP_PATH.robotics}?cat=${c.id}`} class="tile cyan"><span class="t-k">{byApp('robotics').filter((p) => p.category === c.id).length} product types</span><h3>{c.name}</h3><p>{c.summary}</p></a>)}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="sv-h">
+  <div class="container">
+    <SectionHead kicker="Services" id="sv-h" title="Sourcing, supply and fit review" />
+    <div class="tiles t4 stagger reveal">{services.map((s) => <div class="tile"><span class="t-k">Service</span><h3>{s.k}</h3><p>{s.d}</p></div>)}</div>
+    <p class="src-note reveal" style="margin-top:16px;">Prices, stock, lead times and supplier authorisation are confirmed only in a written quote. Nothing on these pages is an offer to supply at a stated price.</p>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="hw-h">
+  <div class="container">
+    <SectionHead kicker="How Enquiries Work" id="hw-h" title="From part number to quote" />
+    <div class="layers reveal">{steps.map((s, i) => <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>)}</div>
+    <div class="hero-actions mt-28 reveal"><a href={COMPONENTS_CTA.quote.href} class="btn btn-primary">{COMPONENTS_CTA.quote.label}</a></div>
+  </div>
+</section>
+<BasketPill />
+</Base>

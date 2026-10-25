@@ -1,0 +1,30 @@
+---
+import ProductCard from './ProductCard.astro';
+import { byApp, catsFor, type Application } from '../../data/components';
+export interface Props { app: Application }
+const { app } = Astro.props;
+const items = byApp(app);
+const cats = catsFor(app);
+---
+<div class="pcat" data-catalogue>
+  <form class="vfilters" role="search" aria-label="Filter components" onsubmit="return false;">
+    <label style="flex:2 1 260px;">Search
+      <input type="search" name="q" placeholder="Name, part type or keyword" autocomplete="off">
+    </label>
+    <label>{app === 'drone' ? 'Category' : 'Application'}
+      <select name="cat"><option value="">All</option>{cats.map((c) => <option value={c.id}>{c.name}</option>)}</select>
+    </label>
+    <button type="reset" class="vf-reset">Clear filters</button>
+    <p class="vf-count" aria-live="polite"><span data-pcount>{items.length}</span> of {items.length} product types</p>
+  </form>
+  {cats.map((c) => (
+    <section class="pgroup" data-group={c.id} aria-labelledby={`g-${c.id}`}>
+      <div class="cat-head"><h2 id={`g-${c.id}`} class="h2-sm">{c.name}</h2><p>{c.summary}</p></div>
+      <div class="pgrid">{items.filter((p) => p.category === c.id).map((p) => <ProductCard p={p} />)}</div>
+    </section>
+  ))}
+  <div class="vf-empty" hidden>
+    <p>No matching product types. You can still request a part that is not listed.</p>
+    <a href="/components/enquiry#custom" class="btn btn-secondary" style="margin-top:12px;">Request a Quote</a>
+  </div>
+</div>

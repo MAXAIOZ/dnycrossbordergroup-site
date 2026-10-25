@@ -1,0 +1,48 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ProductCard from '../../../components/parts/ProductCard.astro';
+import BasketPill from '../../../components/parts/BasketPill.astro';
+import { PRODUCTS, category, APP_LABEL, APP_PATH, STATUS, type Product } from '../../../data/components';
+
+export function getStaticPaths() {
+  return PRODUCTS.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props as { p: Product };
+const c = category(p.category);
+const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: APP_LABEL[p.application], href: APP_PATH[p.application] }, { name: p.name, href: `/components/products/${p.slug}` }];
+const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 3);
+---
+<Base title={`${p.name} — ${APP_LABEL[p.application]}`} description={`${p.description} Request a quote from DNY Cross Border Group with your model, part number and quantity.`} breadcrumbs={crumbs}>
+<PageHero badge={c.name} title={p.name} {crumbs} lead={p.description}>
+  <div class="hero-actions"><button type="button" class="btn btn-primary btn-add" data-add={p.id}>Add to Enquiry</button><a href="/components/enquiry" class="btn btn-secondary">Request a Quote</a></div>
+</PageHero>
+<section class="section" aria-label="Product details">
+  <div class="container split">
+    <div class="reveal-l">
+      <h2 class="h2-sm">What to send us</h2>
+      <ul class="check-cols" style="grid-template-columns:1fr;margin-top:16px;">{p.send.map((s) => <li>{s}</li>)}</ul>
+      <h2 class="h2-sm" style="margin-top:32px;">Limitations</h2>
+      <ul class="check-cols" style="grid-template-columns:1fr;margin-top:16px;">{p.limits.map((s) => <li>{s}</li>)}</ul>
+    </div>
+    <div class="reveal-r">
+      <dl class="vfacts" style="grid-template-columns:1fr;margin-top:0;">
+        <div class="vfact"><dt>Reference</dt><dd>{p.id}</dd></div>
+        <div class="vfact"><dt>Category</dt><dd>{c.name}</dd></div>
+        <div class="vfact"><dt>Information status</dt><dd>{STATUS.information.general}</dd></div>
+        <div class="vfact"><dt>Fit status</dt><dd>{STATUS.fit['per-enquiry']}</dd></div>
+        <div class="vfact"><dt>Supply status</dt><dd>{STATUS.supply['on-request']}</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+{related.length > 0 && (
+  <section class="section dark" aria-labelledby="rel-h">
+    <div class="container">
+      <h2 id="rel-h" class="h2-sm" style="margin-bottom:20px;">More in {c.name}</h2>
+      <div class="pgrid">{related.map((r) => <ProductCard p={r} />)}</div>
+    </div>
+  </section>
+)}
+<BasketPill />
+</Base>

@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import BasketPill from '../../components/parts/BasketPill.astro';
+import { COMPONENTS_CTA } from '../../data/components';
+const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: 'Request a Quote', href: '/components/enquiry' }];
+const countries = ['Australia', 'New Zealand', 'Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Vietnam', 'Philippines', 'Japan', 'South Korea', 'Hong Kong', 'Taiwan', 'China', 'India', 'United Kingdom', 'Ireland', 'Germany', 'France', 'Netherlands', 'United States', 'Canada', 'United Arab Emirates', 'Other'];
+---
+<Base title="Request a Quote — Drone & Robotics Components" description="Submit a component enquiry to DNY Cross Border Group with your equipment model, part numbers and quantities. You receive an enquiry reference immediately." breadcrumbs={crumbs}>
+<PageHero badge="Parts & Components" title="Request a Quote" {crumbs}
+  lead="Add the parts you need, tell us the equipment model, part number and quantity, and submit. You will receive an enquiry reference straight away." />
+
+<section class="section" aria-label="Enquiry form">
+  <div class="container">
+    <form id="parts-enquiry" class="contact-form enq" novalidate>
+      <fieldset class="enq-block">
+        <legend class="h2-sm">1. Parts</legend>
+        <p class="src-note" data-empty-note>Your enquiry list is empty. <a href={COMPONENTS_CTA.drones.href} style="color:var(--gold-lt)">Browse drone components</a>, <a href={COMPONENTS_CTA.robotics.href} style="color:var(--gold-lt)">robotics components</a>, or describe a part below.</p>
+        <div class="enq-lines" data-lines></div>
+        <button type="button" class="vf-reset" id="custom" data-add-custom>+ Describe a part that is not listed</button>
+      </fieldset>
+
+      <fieldset class="enq-block">
+        <legend class="h2-sm">2. Your details</legend>
+        <div class="form-row">
+          <div class="form-group"><label for="e-name">Name *</label><input id="e-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+          <div class="form-group"><label for="e-email">Email *</label><input id="e-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="e-country">Country / region *</label>
+            <select id="e-country" name="country" required><option value="">Select</option>{countries.map((c) => <option>{c}</option>)}</select></div>
+          <div class="form-group"><label for="e-company">Company</label><input id="e-company" name="company" type="text" autocomplete="organization" maxlength="160"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="e-phone">Phone</label><input id="e-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+          <div class="form-group"><label for="e-postcode">Delivery postcode</label><input id="e-postcode" name="postcode" type="text" autocomplete="postal-code" maxlength="20"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="e-date">Needed by</label><input id="e-date" name="needed_by" type="date"></div>
+          <div class="form-group"><label for="e-files">Photos or documents</label><input id="e-files" name="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.pdf"><span class="form-note">Up to 5 files, 5 MB each. JPG, PNG, WebP or PDF.</span></div>
+        </div>
+        <div class="form-group"><label for="e-notes">Notes</label><textarea id="e-notes" name="notes" maxlength="4000" placeholder="Anything else we should know, such as delivery or packaging requirements."></textarea></div>
+        <label class="enq-check"><input type="checkbox" name="marketing" value="yes"> Send me occasional product and service updates. (Optional.)</label>
+        <p class="form-note">We use the information you provide to process your enquiry, as described in our <a href="/privacy" style="color:var(--gold-lt)">Privacy Policy</a>.</p>
+        <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </fieldset>
+
+      <div class="form-submit"><button type="submit" class="btn btn-primary" data-submit>Submit Enquiry</button></div>
+      <p class="form-status" role="status" aria-live="polite" hidden></p>
+    </form>
+    <div class="enq-done" hidden data-done>
+      <h2 class="h2-sm">Enquiry received</h2>
+      <p class="lead" style="margin-top:12px;">Your reference is <strong data-ref></strong>. We have saved your enquiry and will reply to <span data-email></span>. Please quote the reference in any follow-up.</p>
+      <div class="hero-actions" style="margin-top:20px;"><a href="/components" class="btn btn-secondary">Back to Components</a></div>
+    </div>
+  </div>
+</section>
+<BasketPill />
+</Base>

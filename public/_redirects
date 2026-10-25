@@ -77,3 +77,7 @@
 /opc /opc-fde 301
 /fde /opc-fde#fde 301
 /infrastructure /ai-infrastructure 301
+/admin /admin/enquiries 302
+/admin/ /admin/enquiries 302
+/parts /components 301
+/components/index /components 301

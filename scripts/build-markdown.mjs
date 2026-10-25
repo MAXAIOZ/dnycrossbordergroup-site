@@ -31,7 +31,7 @@ walk(DIST);
 let n = 0;
 for (const f of files) {
   const rel = f.slice(DIST.length);
-  if (rel === '404.html') continue;
+  if (rel === '404.html' || rel.startsWith('admin/')) continue;
   const html = readFileSync(f, 'utf8');
   const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? '';
   const title = (html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '').replace(/&amp;/g, '&').replace(/&#39;/g, "'").trim();

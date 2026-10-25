@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Component Enquiries — DNY Admin</title>
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/group.css">
+<style>
+  body { background: var(--bg); }
+  .adm { width: min(1280px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 60px; }
+  .adm-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  .adm-top h1 { font-size: 24px; }
+  .adm-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .adm-bar select, .adm-bar input, .adm-panel select, .adm-panel input, .adm-panel textarea { padding: 9px 12px; border-radius: 8px; border: 1px solid var(--b2); background: var(--bg-1); color: var(--t1); font: inherit; font-size: 14px; }
+  .adm-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+  @media (max-width: 960px) { .adm-grid { grid-template-columns: 1fr; } }
+  table.adm-t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .adm-t th, .adm-t td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--b0); color: var(--t2); vertical-align: top; }
+  .adm-t th { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--t3); }
+  .adm-t tr[data-ref] { cursor: pointer; }
+  .adm-t tr[data-ref]:hover td, .adm-t tr.on td { background: var(--glass-hover); color: var(--t1); }
+  .adm-panel { border: 1px solid var(--b1); border-radius: 14px; background: var(--glass); padding: 20px; }
+  .adm-panel h2 { font-size: 20px; margin-bottom: 4px; }
+  .adm-panel h3 { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--t3); margin: 20px 0 8px; }
+  .adm-kv { display: grid; grid-template-columns: 150px 1fr; gap: 6px 12px; font-size: 14px; color: var(--t2); }
+  .adm-kv b { color: var(--t3); font-weight: 600; }
+  .adm-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .adm-btn { font: inherit; font-size: 13px; font-weight: 700; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--bw); background: var(--gold-dim); color: var(--gold-lt); cursor: pointer; }
+  .adm-note { border-top: 1px solid var(--b0); padding: 8px 0; font-size: 13.5px; color: var(--t2); }
+  .adm-note small { color: var(--t3); display: block; }
+  .adm-msg { font-size: 13px; color: var(--t3); min-height: 18px; }
+  .pill-s { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--b2); color: var(--t2); white-space: nowrap; }
+  .pill-s.New { border-color: var(--bw); color: var(--gold-lt); }
+  .pill-s.failed { border-color: rgba(200,80,64,.5); color: #f3b2a6; }
+</style>
+</head>
+<body>
+<div class="adm">
+  <div class="adm-top">
+    <h1>Component Enquiries</h1>
+    <span class="adm-msg" id="who"></span>
+  </div>
+  <div class="adm-bar">
+    <select id="f-status"><option value="">All statuses</option></select>
+    <input id="f-q" type="search" placeholder="Search reference, name, email, company">
+    <button class="adm-btn" id="reload" type="button">Refresh</button>
+  </div>
+  <div class="adm-grid">
+    <div class="adm-panel" style="padding:8px 12px;overflow-x:auto;">
+      <table class="adm-t"><thead><tr><th>Reference</th><th>Received</th><th>Contact</th><th>Lines</th><th>Status</th><th>Notify</th></tr></thead><tbody id="rows"><tr><td colspan="6">Loading…</td></tr></tbody></table>
+    </div>
+    <div class="adm-panel" id="detail"><p class="adm-msg">Select an enquiry.</p></div>
+  </div>
+</div>
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var fmt = function (iso) { try { return new Date(iso).toLocaleString('en-AU', { dateStyle: 'medium', timeStyle: 'short' }); } catch (e) { return iso; } };
+  var current = null, statuses = [];
+  function api(path, opts) {
+    return fetch(path, Object.assign({ headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, credentials: 'same-origin' }, opts || {}))
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status)); return j; }); });
+  }
+  function list() {
+    var qs = new URLSearchParams({ status: $('#f-status').value, q: $('#f-q').value.trim() });
+    api('/api/admin/enquiries?' + qs).then(function (d) {
+      statuses = d.statuses;
+      var sel = $('#f-status');
+      if (sel.options.length === 1) d.statuses.forEach(function (s) { var o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
+      var counts = {}; d.counts.forEach(function (c) { counts[c.status] = c.n; });
+      Array.prototype.forEach.call(sel.options, function (o) { if (o.value) o.textContent = o.value + ' (' + (counts[o.value] || 0) + ')'; });
+      $('#rows').innerHTML = d.rows.length ? d.rows.map(function (r) {
+        return '<tr data-ref="' + esc(r.ref) + '"' + (r.ref === current ? ' class="on"' : '') + '><td><b>' + esc(r.ref) + '</b></td><td>' + esc(fmt(r.created_at)) + '</td><td>' + esc(r.name) + '<br><small>' + esc(r.company || r.email) + '</small></td><td>' + r.items + '</td><td><span class="pill-s ' + esc(r.status) + '">' + esc(r.status) + '</span></td><td><span class="pill-s ' + esc(r.notify_status) + '">' + esc(r.notify_status) + '</span></td></tr>';
+      }).join('') : '<tr><td colspan="6">No enquiries.</td></tr>';
+    }).catch(function (e) { $('#rows').innerHTML = '<tr><td colspan="6">' + esc(e.message) + '</td></tr>'; });
+  }
+  function show(ref) {
+    current = ref; location.hash = ref;
+    document.querySelectorAll('tr[data-ref]').forEach(function (tr) { tr.classList.toggle('on', tr.getAttribute('data-ref') === ref); });
+    $('#detail').innerHTML = '<p class="adm-msg">Loading…</p>';
+    api('/api/admin/enquiries/' + encodeURIComponent(ref)).then(function (d) {
+      var e = d.enquiry;
+      $('#detail').innerHTML =
+        '<h2>' + esc(e.ref) + '</h2><p class="adm-msg">Received ' + esc(fmt(e.created_at)) + ' · updated ' + esc(fmt(e.updated_at)) + '</p>' +
+        '<div class="adm-row" style="margin-top:14px;"><select id="d-status">' + d.statuses.map(function (s) { return '<option' + (s === e.status ? ' selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select>' +
+        '<input id="d-owner" placeholder="Owner" value="' + esc(e.owner || '') + '"><button class="adm-btn" id="d-save" type="button">Save</button></div>' +
+        '<h3>Contact</h3><div class="adm-kv"><b>Name</b><span>' + esc(e.name) + '</span><b>Email</b><span><a href="mailto:' + esc(e.email) + '?subject=' + encodeURIComponent('Re: ' + e.ref) + '" style="color:var(--gold-lt)">' + esc(e.email) + '</a></span><b>Company</b><span>' + esc(e.company || '—') + '</span><b>Phone</b><span>' + esc(e.phone || '—') + '</span><b>Country</b><span>' + esc(e.country) + '</span><b>Postcode</b><span>' + esc(e.postcode || '—') + '</span><b>Needed by</b><span>' + esc(e.needed_by || '—') + '</span><b>Marketing opt-in</b><span>' + (e.marketing ? 'Yes' : 'No') + '</span><b>Source page</b><span>' + esc(e.source_page || '—') + '</span></div>' +
+        '<h3>Lines</h3><table class="adm-t"><thead><tr><th>Part</th><th>Model</th><th>Part no.</th><th>Qty</th></tr></thead><tbody>' + d.items.map(function (i) { return '<tr><td>' + (i.product_id ? esc(i.product_name) + '<br><small>' + esc(i.product_id) + '</small>' : '<i>Not listed</i>') + (i.description ? '<br><small>' + esc(i.description) + '</small>' : '') + '</td><td>' + esc(i.model || '—') + '</td><td>' + esc(i.part_number || '—') + '</td><td>' + (i.quantity == null ? '—' : i.quantity) + '</td></tr>'; }).join('') + '</tbody></table>' +
+        (e.notes ? '<h3>Customer notes</h3><p style="color:var(--t2);font-size:14px;white-space:pre-wrap;">' + esc(e.notes) + '</p>' : '') +
+        '<h3>Attachments</h3>' + (d.attachments.length ? d.attachments.map(function (a) { return '<div><a style="color:var(--gold-lt)" href="/api/admin/attachments/' + esc(a.id) + '">' + esc(a.filename) + '</a> <small class="adm-msg">' + Math.round(a.size / 1024) + ' KB</small></div>'; }).join('') : '<p class="adm-msg">None</p>') +
+        '<h3>Notification</h3><div class="adm-row"><span class="pill-s ' + esc(e.notify_status) + '">' + esc(e.notify_status) + '</span>' + (e.notify_error ? '<small class="adm-msg">' + esc(e.notify_error) + '</small>' : '') + '<button class="adm-btn" id="d-notify" type="button">Re-send notification</button></div>' +
+        '<h3>Internal notes</h3><textarea id="d-note" rows="3" style="width:100%;" placeholder="Add an internal note"></textarea><div class="adm-row" style="margin-top:8px;"><button class="adm-btn" id="d-addnote" type="button">Add note</button><span class="adm-msg" id="d-msg"></span></div>' +
+        d.notes.map(function (n) { return '<div class="adm-note"><small>' + esc(n.author) + ' · ' + esc(fmt(n.created_at)) + '</small>' + esc(n.body) + '</div>'; }).join('');
+      $('#d-save').onclick = function () { api('/api/admin/enquiries/' + encodeURIComponent(ref), { method: 'PATCH', body: JSON.stringify({ status: $('#d-status').value, owner: $('#d-owner').value }) }).then(function () { show(ref); list(); }).catch(function (er) { $('#d-msg').textContent = er.message; }); };
+      $('#d-notify').onclick = function () { $('#d-msg').textContent = 'Sending…'; api('/api/admin/enquiries/' + encodeURIComponent(ref) + '/notify', { method: 'POST' }).then(function () { show(ref); list(); }).catch(function (er) { show(ref); list(); alertMsg(er.message); }); };
+      $('#d-addnote').onclick = function () { var b = $('#d-note').value.trim(); if (!b) return; api('/api/admin/enquiries/' + encodeURIComponent(ref) + '/notes', { method: 'POST', body: JSON.stringify({ body: b }) }).then(function () { show(ref); }).catch(function (er) { $('#d-msg').textContent = er.message; }); };
+    }).catch(function (er) { $('#detail').innerHTML = '<p class="adm-msg">' + esc(er.message) + '</p>'; });
+  }
+  function alertMsg(m) { var el = document.getElementById('d-msg'); if (el) el.textContent = m; }
+  $('#rows').addEventListener('click', function (e) { var tr = e.target.closest('tr[data-ref]'); if (tr) show(tr.getAttribute('data-ref')); });
+  $('#f-status').addEventListener('change', list);
+  $('#reload').addEventListener('click', list);
+  var t; $('#f-q').addEventListener('input', function () { clearTimeout(t); t = setTimeout(list, 300); });
+  list();
+  if (location.hash.length > 1) show(decodeURIComponent(location.hash.slice(1)));
+})();
+</script>
+</body>
+</html>

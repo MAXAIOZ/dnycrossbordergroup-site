@@ -6,6 +6,7 @@ import { INDUSTRIES } from '../data/industries';
 import { TOPICS } from '../data/topics';
 import { FAQS } from '../data/faqs';
 import { GLOSSARY } from '../data/glossary';
+import { PRODUCTS, CATEGORIES as PCATS } from '../data/components';
 
 const U = (p: string) => new URL(p, SITE.url).href;
 const strip = (s: string) => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
@@ -50,6 +51,7 @@ export function llmsTxt(): string {
     }
     L.push('');
   }
+  L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems — sourced and quoted on request; no complete drones are sold`, `- [Drone Components](${U('/components/drones')})`, `- [Robotics Components](${U('/components/robotics')})`, `- [Request a Quote](${U('/components/enquiry')})`, '');
   L.push('## Ventures', '');
   VENTURES.forEach((v) => L.push(`- [${v.name}](${U('/ventures/' + v.slug)}): ${v.short} Status: ${v.status}.`));
   L.push('', '## Optional', '', `- [Glossary](${U('/glossary')}): plain-language definitions`, `- [FAQ](${U('/faq')})`, `- [Investors & Partners](${U('/investors')})`, `- [Careers](${U('/careers')})`, `- [Contact](${U('/contact')})`, '');
@@ -110,6 +112,10 @@ export function llmsFullTxt(): string {
     h(3, v.name);
     L.push(`- URL: ${U('/ventures/' + v.slug)}`, `- Status: ${v.status}`, `- Category: ${v.category}`, `- Layer: ${v.layer}`, `- Industries: ${v.industries.join(', ')}`, `- Capabilities: ${v.capabilities.join(', ')}`, `- Technology: ${v.tech.join(', ')}`, `- Summary: ${v.short}`, `- Relationship to DNY infrastructure: ${v.relation}`);
   }
+
+  h(2, 'Drone & Robotics Components');
+  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. Phase 1 covers passive mechanical drone parts and robotics mechanical accessories and cleaning consumables. Complete drones are not sold; equipment models are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
+  PCATS.forEach((c) => L.push(`- **${c.name}** (${c.application}): ${c.summary} Product types: ${PRODUCTS.filter((p) => p.category === c.id).map((p) => p.name).join(', ')}.`));
 
   h(2, 'OPC + FDE network');
   L.push(`Page: ${U('/opc-fde')}`, '', 'OPC = Office + AI Agents: local business nodes that combine workspace, AI agent capability and market connections — not a conventional co-working space. FDE = Forward Deployed Entrepreneur: a delivery role working directly on real customer problems to take solutions from proof of concept to deployment. Sydney is the first node; Auckland is the expansion direction for New Zealand. The ANZ OPC + FDE Alliance is the membership organisation behind the network, with FDE delivery capability built into member benefits.');

@@ -1,0 +1,20 @@
+---
+import { category, type Product } from '../../data/components';
+export interface Props { p: Product }
+const { p } = Astro.props;
+const c = category(p.category);
+---
+<article class="pcard" data-pid={p.id} data-cat={p.category} data-search={[p.name, p.description, c.name, ...p.keywords].join(' ').toLowerCase()}>
+  <div class="pcard-top"><span class="vcard-cat">{c.name}</span><span class="pcard-id">{p.id}</span></div>
+  <h3 class="pcard-name"><a href={`/components/products/${p.slug}`}>{p.name}</a></h3>
+  <p class="pcard-desc">{p.description}</p>
+  <ul class="pchips" aria-label="Status">
+    <li title="Specifications are confirmed against your model and part number.">Information: general</li>
+    <li title="Fit is confirmed for the specific model and part number you provide.">Fit: confirmed per model</li>
+    <li title="Sourced and quoted on request. No stock, price or lead time is implied.">Supply: quoted on request</li>
+  </ul>
+  <div class="pcard-actions">
+    <button type="button" class="btn-add" data-add={p.id}>Add to Enquiry</button>
+    <a href={`/components/products/${p.slug}`} class="project-link">Details</a>
+  </div>
+</article>

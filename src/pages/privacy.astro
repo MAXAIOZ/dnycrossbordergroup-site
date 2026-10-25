@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../data/site';
+const crumbs = [{ name: 'Privacy Policy', href: '/privacy' }];
+const effective = '25 October 2026';
+---
+<Base title="Privacy Policy" description="How DNY Cross Border Group collects, uses, stores and discloses personal information, and how to access, correct or complain about it, in line with the Australian Privacy Principles." breadcrumbs={crumbs}>
+<PageHero badge="Legal" title="Privacy Policy" {crumbs} lead={`Effective ${effective}. This policy explains how DNY Cross Border Group handles personal information.`} />
+<section class="section" aria-label="Privacy Policy">
+  <div class="container legal">
+    <h2>1. Who we are</h2>
+    <p>This policy applies to {SITE.legalName} and its related ventures (together, “DNY”, “we”, “us” or “our”), including when you use dnycrossbordergroup.com (the “website”), submit an enquiry, or otherwise deal with us. Our address is {SITE.address.display}. You can contact us about privacy at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    <p>We handle personal information in accordance with the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles (APPs). Where other privacy laws apply to our handling of your information, we also comply with those laws.</p>
+
+    <h2>2. What personal information we collect</h2>
+    <p>“Personal information” means information or an opinion about an identified individual, or an individual who is reasonably identifiable. Depending on how you deal with us, we may collect:</p>
+    <ul>
+      <li><strong>Contact details</strong> — your name, email address, phone number, company or organisation, and country or region.</li>
+      <li><strong>Enquiry details</strong> — the parts, equipment models, part numbers, quantities, delivery postcode, required dates and notes you provide, and any photos, drawings or documents you attach.</li>
+      <li><strong>Correspondence</strong> — the content of emails and messages you send us, and records of our responses.</li>
+      <li><strong>Business information</strong> — information about you in your capacity as a representative of a customer, supplier, partner, investor or job applicant.</li>
+      <li><strong>Technical information</strong> — the pages you visited before submitting a form, your browser type, and your IP address. For enquiry forms we store only a one-way hashed value derived from your IP address, used to prevent abuse.</li>
+      <li><strong>Marketing preferences</strong> — whether you have asked to receive updates from us.</li>
+    </ul>
+    <p>We do not ask for sensitive information (such as health information, racial or ethnic origin, or political opinions). Please do not include sensitive information in forms or attachments. We do not collect payment card details through the website.</p>
+
+    <h2>3. How we collect it</h2>
+    <p>We collect personal information directly from you when you complete a form on the website, email or call us, meet us, or do business with us. We may also collect it from your organisation, from publicly available sources such as company websites and business registers, or from people you have authorised to deal with us on your behalf. If we receive personal information we did not ask for, we will decide within a reasonable time whether we could have collected it, and destroy or de-identify it if we could not, where lawful and reasonable to do so.</p>
+    <p>You may deal with us anonymously or using a pseudonym where that is lawful and practicable. However, we need a name, a valid email address and your country or region to respond to an enquiry or prepare a quote.</p>
+
+    <h2>4. Why we collect, use and hold it</h2>
+    <ul>
+      <li>To respond to your enquiry, confirm the parts and fit you need, prepare quotations, and follow up with you.</li>
+      <li>To supply products and services, manage our relationship with you or your organisation, and keep business records.</li>
+      <li>To assess partnership, investment, supplier and employment enquiries.</li>
+      <li>To operate, secure and improve the website, including preventing spam, fraud and misuse.</li>
+      <li>To send you updates about our products and services, only if you have asked us to.</li>
+      <li>To comply with our legal and regulatory obligations and to establish, exercise or defend legal claims.</li>
+    </ul>
+    <p>We use and disclose personal information only for the purpose for which it was collected, for related purposes you would reasonably expect, with your consent, or where permitted or required by law.</p>
+
+    <h2>5. Who we disclose it to</h2>
+    <p>We do not sell personal information. We may disclose it to:</p>
+    <ul>
+      <li>our related ventures and staff who need it to handle your enquiry or relationship;</li>
+      <li>suppliers and manufacturers, where needed to source or confirm a part you have asked about — we share only the technical details required, such as model, part number and quantity, unless you agree otherwise;</li>
+      <li>service providers who operate our website and systems on our behalf, including website hosting, database, file storage and security services (Cloudflare, Inc.), the email relay used to deliver form notifications to our inbox (FormSubmit), and font delivery (Google LLC);</li>
+      <li>professional advisers such as lawyers, accountants and auditors; and</li>
+      <li>government agencies, regulators, courts or law enforcement where required or authorised by law.</li>
+    </ul>
+    <p>Our service providers are required to handle personal information only to provide their services to us and to protect it appropriately.</p>
+
+    <h2>6. Overseas disclosure</h2>
+    <p>Some of our service providers store or process information outside Australia. In particular, Cloudflare operates a global network and may process information in the United States and other countries where it operates; FormSubmit and Google may process information in the United States. Where we source parts internationally, we may share the technical details of your enquiry with suppliers in the countries where those parts are made or distributed, including countries in Asia, Europe and North America. We take reasonable steps to ensure overseas recipients handle personal information in a manner consistent with the APPs.</p>
+
+    <h2>7. Cookies and browser storage</h2>
+    <p>The website does not use advertising or cross-site tracking cookies. We use your browser’s local and session storage to remember the parts you add to an enquiry list and the page from which you started an enquiry; this information stays on your device until you submit a form, and you can clear it at any time through your browser settings. Cloudflare may set strictly necessary cookies to protect the website against automated attacks. If we enable Cloudflare Web Analytics, it measures aggregate website usage without using cookies to track individuals.</p>
+
+    <h2>8. How we protect and retain it</h2>
+    <p>We take reasonable steps to protect personal information from misuse, interference and loss, and from unauthorised access, modification or disclosure. These steps include encrypted connections (HTTPS), access to enquiry records limited to authorised staff through authenticated sign-in, private storage of attachments, and validation and rate limiting of form submissions. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>
+    <p>We keep personal information only for as long as we need it for the purposes described in this policy or as required by law. Enquiries that do not lead to a transaction are generally deleted or de-identified within 24 months of our last contact with you. Records relating to quotations, transactions and our legal obligations are generally kept for up to seven years.</p>
+    <p>If a data breach is likely to result in serious harm to you, we will notify you and the Office of the Australian Information Commissioner as required by the Notifiable Data Breaches scheme.</p>
+
+    <h2>9. Marketing</h2>
+    <p>We send marketing updates only if you have opted in. Every marketing email will include a way to unsubscribe, and you can also ask us to stop at any time by emailing <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Opting out of marketing does not affect how we handle an enquiry you have submitted.</p>
+
+    <h2>10. Accessing and correcting your information</h2>
+    <p>You may ask us for access to the personal information we hold about you, or ask us to correct it if it is inaccurate, out of date, incomplete, irrelevant or misleading. Please email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. We will need to verify your identity, and we will respond within 30 days. We do not charge for making a request; we may charge a reasonable fee for giving access where permitted by law. If we refuse a request, we will explain why in writing, unless it would be unreasonable to do so, and tell you how to complain.</p>
+
+    <h2>11. Complaints</h2>
+    <p>If you believe we have breached the APPs or this policy, please contact us in writing at <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with details of your concern. We will acknowledge your complaint promptly and aim to respond within 30 days. If you are not satisfied with our response, you may complain to the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" rel="noopener">www.oaic.gov.au</a> or on 1300 363 992.</p>
+
+    <h2>12. Third-party websites</h2>
+    <p>The website may link to websites operated by others. We are not responsible for their content or privacy practices, and we encourage you to read their privacy policies.</p>
+
+    <h2>13. Changes to this policy</h2>
+    <p>We may update this policy from time to time. The current version is always available on this page, with its effective date. If we make a material change to how we handle personal information already collected, we will take reasonable steps to tell you.</p>
+
+    <h2>14. Contact</h2>
+    <p>{SITE.legalName}<br>{SITE.address.display}<br><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+  </div>
+</section>
+</Base>

@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Catalogue from '../../components/parts/Catalogue.astro';
+import BasketPill from '../../components/parts/BasketPill.astro';
+import { COMPONENTS_CTA } from '../../data/components';
+const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: 'Robotics Components', href: '/components/robotics' }];
+---
+<Base title="Robotics Components" description="Cleaning consumables, non-powered wheels and tyres, and gripper fingers and pads for commercial and industrial robots — matched to the model and part number you specify." breadcrumbs={crumbs}>
+<PageHero badge="Parts & Components" title="Robotics Components" {crumbs} lead="Cleaning consumables, non-powered wheels and tyres, and gripper fingers and pads for commercial and industrial robots — matched to the model and part number you specify." primary={COMPONENTS_CTA.quote} />
+<section class="section" aria-label="Catalogue">
+  <div class="container">
+    <Catalogue app="robotics" />
+    <p class="src-note" style="margin-top:28px;">Fit is confirmed for the specific model and part number you provide. Prices, stock and lead times are confirmed only in a written quote.</p>
+  </div>
+</section>
+<BasketPill />
+</Base>

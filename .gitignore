@@ -6,3 +6,5 @@ dist/
 .fuse_hidden*
 *.bak
 testdelete*.txt
+.wrangler/
+.dev.vars
