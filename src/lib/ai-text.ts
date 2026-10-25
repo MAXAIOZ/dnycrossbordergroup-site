@@ -114,7 +114,7 @@ export function llmsFullTxt(): string {
   }
 
   h(2, 'Drone & Robotics Components');
-  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. The catalogue covers passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos listed by series and model (KST is a trademark of KST Meizhou Company Limited; listing does not imply authorised-distributor status). Complete drones are not sold; equipment models are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
+  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. The catalogue covers passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos listed by series and model (KST is a trademark of KST Meizhou Company Limited; listing does not imply authorised-distributor status). Full KST datasheets for every listed model are available on request from info@dnycrossbordergroup.com. Complete drones are not sold; equipment models are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
   PCATS.forEach((c) => L.push(`- **${c.name}** (${c.application}): ${c.summary} Product types: ${PRODUCTS.filter((p) => p.category === c.id).map((p) => p.name).join(', ')}.`));
   PRODUCTS.filter((p) => p.models).forEach((p) => L.push(`- ${p.name} (${U('/components/products/' + p.slug)}): ${p.models!.join(', ')}.`));
 

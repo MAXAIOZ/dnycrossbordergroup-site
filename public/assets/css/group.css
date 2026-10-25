@@ -428,3 +428,7 @@ html, body { overflow-x: clip; }
 .model-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03); color: var(--t1); font: 500 13px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; cursor: pointer; transition: border-color .15s, background .15s }
 .model-chip:hover, .model-chip:focus-visible { border-color: var(--sand); background: rgba(239,159,39,.08) }
 .model-plus { color: var(--sand); font-weight: 700 }
+
+.ds-callout { display: flex; flex-direction: column; gap: 4px; margin: 0 0 20px; padding: 14px 18px; border: 1px solid var(--line-warm); border-radius: 14px; background: rgba(239,159,39,.06); font-size: 14px; line-height: 1.55; color: var(--t2, #c8d2dc) }
+.ds-callout strong { color: var(--t1, #fff) }
+.ds-callout a { color: var(--sand); text-decoration: underline; text-underline-offset: 2px }

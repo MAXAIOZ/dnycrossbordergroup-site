@@ -22,7 +22,11 @@ const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.i
   <section class="section" aria-labelledby="models-h">
     <div class="container">
       <h2 id="models-h" class="h2-sm">{p.series} models</h2>
-      <p class="pcard-desc" style="margin:10px 0 18px;">Model names as published by {brand?.owner}. Select a model to add it to your enquiry list; the current datasheet is supplied with your quote.</p>
+      <p class="pcard-desc" style="margin:10px 0 18px;">Model names as published by {brand?.owner}. Select a model to add it to your enquiry list.</p>
+      <div class="ds-callout">
+        <strong>Need the full datasheet?</strong>
+        <span>Datasheets are available for every {p.brand} model on this page. Email <a href={`mailto:info@dnycrossbordergroup.com?subject=${encodeURIComponent(`${p.brand} ${p.series} datasheet request`)}`}>info@dnycrossbordergroup.com</a> with the model numbers you need and we will send them to you.</span>
+      </div>
       <ul class="model-list" role="list">{p.models.map((m) => <li><button type="button" class="model-chip" data-add={p.id} data-part={m} aria-label={`Add ${p.brand} ${m} to enquiry`}><span>{m}</span><span class="model-plus" aria-hidden="true">+</span></button></li>)}</ul>
     </div>
   </section>
