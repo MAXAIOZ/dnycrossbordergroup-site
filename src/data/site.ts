@@ -31,7 +31,7 @@ export const SITE = {
   // IndexNow key — the matching key file is public/fc7fd0c2dde75c0336dc49f152b48547.txt
   indexNowKey: 'fc7fd0c2dde75c0336dc49f152b48547',
   // Cloudflare Web Analytics token (Cloudflare dashboard → Analytics → Web Analytics). Leave empty to disable.
-  cfAnalyticsToken: '',
+  cfAnalyticsToken: 'a4e0537038b645c8b3f5977ee4815fb9',
   // Form endpoint (FormSubmit free tier). The first submission triggers a one-time
   // activation email to the inbox below; click "Activate" in that email once.
   formEndpoint: 'https://formsubmit.co/ajax/info@dnycrossbordergroup.com',
