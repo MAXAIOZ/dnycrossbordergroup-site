@@ -1,0 +1,21 @@
+# gitleaks configuration — DNY site
+# Values listed in docs/hermes/2026-10-26-open-source-secrets-policy.md §二 as
+# "designed to be public" are allowlisted here by exact pattern, so real
+# third-party keys still fail the scan.
+
+title = "DNY site gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Public-by-design values (IndexNow key, Web Analytics beacon token, localStorage key name)"
+regexTarget = "match"
+regexes = [
+  # IndexNow verification key — must be publicly served at /<key>.txt
+  '''indexNowKey:\s*'[0-9a-f]{32}'''',
+  # Cloudflare Web Analytics beacon token — shipped in page HTML by design
+  '''cfAnalyticsToken:\s*'[0-9a-f]{32}'''',
+  # Browser localStorage namespacing key, not a credential
+  '''dny_parts_enquiry_v1''',
+]

@@ -8,3 +8,19 @@ dist/
 testdelete*.txt
 .wrangler/
 .dev.vars
+
+# secrets & local config — never commit
+.env
+.env.*
+!.env.example
+.dev.vars*
+*.pem
+*.key
+*.p12
+id_rsa*
+.claude/
+.hermes/
+MAINTAINER.local.md
+*.secret.*
+backups/
+exports/
