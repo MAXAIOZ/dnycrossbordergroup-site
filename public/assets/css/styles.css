@@ -29,6 +29,8 @@
   --t1: #EEF4FF;
   --t2: #A0B4C8;
   --t3: #586878;
+  /* Nav text: readable on the deep-green header (11.2:1 vs #04201A) */
+  --nav-t: #C3D3E0;
 
   /* Borders */
   --b0: rgba(255,255,255,.055);
@@ -221,15 +223,18 @@ p + p { margin-top: 12px }
 .site-nav a {
   font-size: 13px;
   font-weight: 500;
-  color: var(--t3);
+  color: var(--nav-t);
   padding: 6px 12px;
   border-radius: var(--r-xs);
   transition: color var(--t), background var(--t);
   white-space: nowrap;
 }
 
-.site-nav a:hover,
-.site-nav a.active { color: var(--t1); background: var(--glass) }
+.site-nav a:hover { color: var(--t1); background: var(--glass) }
+
+.site-nav a.active { color: var(--gold-lt); background: var(--glass) }
+
+.site-nav a.active:hover { color: var(--gold-lt) }
 
 .nav-cta {
   margin-left: 10px;

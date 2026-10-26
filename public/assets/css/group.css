@@ -16,8 +16,9 @@
 .nav-item > a { display: inline-flex; align-items: center; }
 .sub-toggle {
   display: inline-grid; place-items: center; width: 22px; height: 26px; margin-left: -6px;
-  background: none; border: 0; color: var(--t3); cursor: pointer; border-radius: 6px;
+  background: none; border: 0; color: var(--nav-t); cursor: pointer; border-radius: 6px;
 }
+.sub-toggle:hover { color: var(--t1); }
 .sub-toggle svg { transition: transform var(--t); }
 .nav-item-cta .sub-toggle { margin-left: 2px; }
 .sub-menu {
@@ -33,7 +34,7 @@
 .sub-menu-right { left: auto; right: 0; min-width: 190px; }
 .site-nav .sub-link { display: grid; gap: 2px; padding: 9px 12px; white-space: normal; }
 .sub-label { color: var(--t1); font-size: 13.5px; font-weight: 600; }
-.sub-desc { color: var(--t3); font-size: 12px; line-height: 1.4; }
+.sub-desc { color: var(--t2); font-size: 12px; line-height: 1.4; }
 .site-nav .sub-link:hover .sub-label { color: var(--gold-lt); }
 @media (min-width: 1141px) {
   .nav-item.has-sub:hover > .sub-menu,
