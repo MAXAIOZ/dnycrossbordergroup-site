@@ -119,12 +119,12 @@ const year = new Date().getFullYear();
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <link rel="sitemap" href="/sitemap-index.xml">
   <link rel="alternate" type="text/plain" title="AI-readable site summary (llms.txt)" href="/llms.txt">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href={`/assets/css/styles.css?v=${ASSET_V}`}>
   <link rel="stylesheet" href={`/assets/css/group.css?v=${ASSET_V}`}>
   {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+
+
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body class={bodyClass}>
 <a class="skip-link" href="#main-content">Skip to content</a>
