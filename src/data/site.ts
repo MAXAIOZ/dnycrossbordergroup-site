@@ -38,8 +38,18 @@ export const SITE = {
   formEndpoint: '/api/enquiry',
 };
 
-export type NavChild = { label: string; href: string; desc?: string };
-export type NavItem = { label: string; href: string; shortLabel?: string; children?: NavChild[] };
+export type NavChild = { label: string; href: string; desc?: string; group?: string };
+export type NavGroup = { title: string; href?: string };
+export type NavItem = {
+  label: string;
+  href: string;
+  shortLabel?: string;
+  // Extra path prefixes that count as this section (e.g. Parts & Components under Physical SI).
+  match?: string[];
+  // Dropdown layout: group headings in order, each holding its children.
+  groups?: NavGroup[];
+  children?: NavChild[];
+};
 
 export const NAV: NavItem[] = [
   {
@@ -66,20 +76,16 @@ export const NAV: NavItem[] = [
     // Shown between 1280 and 1439px, where the full name would crowd the nav.
     shortLabel: 'Physical SI',
     href: '/physical-intelligence',
+    // Parts & Components sits under Physical SI in the navigation, but keeps its own URLs.
+    match: ['/physical-intelligence', '/components'],
+    groups: [{ title: 'Physical SI' }, { title: 'Parts & Components', href: '/components' }],
     children: [
-      { label: 'Overview', href: '/physical-intelligence', desc: 'Trusted AI for drones, robots and edge systems' },
-      { label: 'Drones', href: '/physical-intelligence/drones', desc: 'Air Intelligence' },
-      { label: 'Robotics', href: '/physical-intelligence/robotics', desc: 'Embodied Intelligence' },
-    ],
-  },
-  {
-    label: 'Parts & Components',
-    href: '/components',
-    children: [
-      { label: 'Overview', href: '/components', desc: 'Drone & Robotics Components' },
-      { label: 'Drone Components', href: '/components/drones', desc: 'Propellers, airframe parts, mounts, cases, KST servos' },
-      { label: 'Robotics Components', href: '/components/robotics', desc: 'Cleaning, warehouse, gripper parts and KST servos' },
-      { label: 'Request a Quote', href: '/components/enquiry', desc: 'Model, part number and quantity' },
+      { label: 'Overview', href: '/physical-intelligence', desc: 'Trusted AI for drones, robots and edge systems', group: 'Physical SI' },
+      { label: 'Drones', href: '/physical-intelligence/drones', desc: 'Air Intelligence', group: 'Physical SI' },
+      { label: 'Robotics', href: '/physical-intelligence/robotics', desc: 'Embodied Intelligence', group: 'Physical SI' },
+      { label: 'Drone Components', href: '/components/drones', desc: 'Propellers, airframe parts, mounts, cases, KST servos', group: 'Parts & Components' },
+      { label: 'Robotics Components', href: '/components/robotics', desc: 'Cleaning, warehouse, gripper parts and KST servos', group: 'Parts & Components' },
+      { label: 'Request a Quote', href: '/components/enquiry', desc: 'Model, part number and quantity', group: 'Parts & Components' },
     ],
   },
   {
@@ -141,7 +147,7 @@ export const FOOTER = [
   {
     title: 'Deployment',
     links: [
-      { label: 'Drone & Robotics Components', href: '/components' },
+      { label: 'Parts & Components', href: '/components' },
       { label: 'OPC + FDE', href: '/opc-fde' },
       { label: 'Industries', href: '/industries' },
       { label: 'Ventures', href: '/ventures' },

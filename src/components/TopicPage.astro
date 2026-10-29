@@ -111,5 +111,15 @@ const nextDark = () => (dark = !dark);
 
 {t.faq && <FAQ groups={t.faq} dark={nextDark()} title={`${t.navTitle}: common questions`} />}
 
+{t.parts && (
+  <section class="section" aria-labelledby={`${t.slug}-parts`}>
+    <div class="container">
+      <h2 id={`${t.slug}-parts`} class="h2-sm">{t.parts.title}</h2>
+      <p class="lead" style="margin-top:12px; max-width:760px;">{t.parts.text}</p>
+      <p class="mt-28"><a href={t.parts.href} class="project-link">{t.parts.label} <Arrow /></a></p>
+    </div>
+  </section>
+)}
+
 <CTABand title={t.cta.title} lead={t.cta.lead} primary={CTA.brief} secondary={CTA.partner} />
 </Base>

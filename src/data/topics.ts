@@ -40,6 +40,8 @@ export type Topic = {
   ventures?: string[];
   venturesTitle?: string;
   faq?: string[];
+  // Small block linking out to the parts catalogue that serves this topic.
+  parts?: { title: string; text: string; href: string; label: string };
   cta: { title: string; lead?: string; primary: Link; secondary?: Link };
 };
 
@@ -93,7 +95,13 @@ export const TOPICS: Topic[] = [
     related: [{ label: 'Edge AI & vision', href: '/physical-intelligence#edge' }, { label: 'Built Environment', href: '/industries#built-environment' }],
     ventures: ['dny-aerial-systems'],
     faq: ['drones'],
-    cta: { title: 'Plan a governed drone programme', lead: 'Inspection, mapping or data capture: tell us about your assets.', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a supplier', href: '/contact?type=partnership' } },
+    parts: {
+    title: 'Parts for drones',
+    text: 'Replacement propellers, airframe parts, mounts, cases and KST servos, matched to your model and part number.',
+    href: '/components/drones',
+    label: 'Browse Drone Components',
+  },
+  cta: { title: 'Plan a governed drone programme', lead: 'Inspection, mapping or data capture: tell us about your assets.', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a supplier', href: '/contact?type=partnership' } },
   },
   {
     ...PI,
@@ -125,7 +133,13 @@ export const TOPICS: Topic[] = [
     related: [{ label: 'Autonomous Systems', href: '/physical-intelligence#autonomous' }, { label: 'Logistics & Warehousing', href: '/industries#logistics-warehousing' }],
     ventures: ['dny-robotic-systems', 'robotic-logistics-warehouse'],
     faq: ['robotics'],
-    cta: { title: 'Explore embodied AI for your operations', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a robotics provider', href: '/contact?type=partnership' } },
+    parts: {
+    title: 'Parts for robots',
+    text: 'Cleaning consumables, wheels and tyres, gripper parts and KST servos for commercial and industrial robots.',
+    href: '/components/robotics',
+    label: 'Browse Robotics Components',
+  },
+  cta: { title: 'Explore embodied AI for your operations', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a robotics provider', href: '/contact?type=partnership' } },
   },
 ];
 

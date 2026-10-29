@@ -10,7 +10,7 @@ export function getStaticPaths() {
 }
 const { p } = Astro.props as { p: Product };
 const c = category(p.category);
-const crumbs = [{ name: 'Parts & Components', href: '/components' }, { name: APP_LABEL[p.application], href: APP_PATH[p.application] }, { name: p.name, href: `/components/products/${p.slug}` }];
+const crumbs = [{ name: 'Physical SI', href: '/physical-intelligence', schemaName: 'Physical Super Intelligence (SI)' }, { name: 'Parts & Components', href: '/components' }, { name: APP_LABEL[p.application], href: APP_PATH[p.application] }, { name: p.name, href: `/components/products/${p.slug}` }];
 const brand = p.brand ? BRANDS[p.brand] : null;
 const modelSchema = p.models ? [{
   '@context': 'https://schema.org',

@@ -48,11 +48,17 @@ export function llmsTxt(): string {
     `- [API catalog](${U('/.well-known/api-catalog')}) (RFC 9727)`,
     `- Quotes, KST datasheets and trade enquiries: ${SITE.email}`, '');
   for (const item of NAV) {
-    if (item.href === '/components' || item.href === '/ventures') continue; // covered by the dedicated sections below
+    if (item.href === '/ventures') continue; // covered by the dedicated section below
     L.push(`## ${item.label}`, '');
     const kids = item.children ?? [{ label: item.label, href: item.href }];
     const seen = new Set<string>();
+    let group: string | undefined;
     for (const c of kids) {
+      // Mirror the grouped dropdown: one sub-heading per group, emitted once.
+      if (item.groups && c.group !== group) {
+        group = c.group;
+        if (group) L.push('', `### ${group}`, '');
+      }
       const base = c.href.split('#')[0];
       if (seen.has(c.href)) continue;
       seen.add(c.href);

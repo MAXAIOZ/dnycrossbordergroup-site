@@ -10,7 +10,7 @@ import { catsFor, byApp, COMPONENTS_CTA, APP_PATH, BRANDS, SERVICES } from '../d
 
 const title = 'Drone & Robotics Components';
 const description = 'Components for drones, industrial robots and commercial autonomous systems from DNY Cross Border Group, Sydney. Submit your model, part number and quantity for sourcing and quotation.';
-const crumbs = [{ name: 'Parts & Components', href: '/components' }];
+const crumbs = [{ name: 'Physical SI', href: '/physical-intelligence', schemaName: 'Physical Super Intelligence (SI)' }, { name: 'Parts & Components', href: '/components' }];
 const steps = [
   { k: 'Add parts', d: 'Add product types to your enquiry list, or describe a part that is not listed.' },
   { k: 'Add details', d: 'Enter the equipment model, part number and quantity for each line.' },
@@ -32,6 +32,7 @@ const schema = {
   lead="Explore components for drones, industrial robots and commercial autonomous systems. Submit your model, part number and quantity for sourcing and quotation."
   primary={COMPONENTS_CTA.drones} secondary={COMPONENTS_CTA.robotics}>
   <p class="hero-links"><a href={COMPONENTS_CTA.quote.href}>{COMPONENTS_CTA.quote.label} <Arrow /></a></p>
+  <p class="src-note">Part of DNY's <a href="/physical-intelligence" style="color:var(--gold-lt)">Physical Super Intelligence (SI)</a> direction.</p>
 </PageHero>
 
 <section class="section" aria-labelledby="dr-h">
