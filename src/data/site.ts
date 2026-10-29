@@ -32,9 +32,10 @@ export const SITE = {
   indexNowKey: 'fc7fd0c2dde75c0336dc49f152b48547',
   // Cloudflare Web Analytics token (Cloudflare dashboard → Analytics → Web Analytics). Leave empty to disable.
   cfAnalyticsToken: 'a4e0537038b645c8b3f5977ee4815fb9',
-  // Form endpoint (FormSubmit free tier). The first submission triggers a one-time
-  // activation email to the inbox below; click "Activate" in that email once.
-  formEndpoint: 'https://formsubmit.co/ajax/info@dnycrossbordergroup.com',
+  // Form endpoint: a Cloudflare Pages Function that sends the enquiry through the company
+  // Gmail account (see functions/api/enquiry.js and server/mail.js). No third-party form
+  // service sits in the path, so an outside outage cannot swallow an enquiry.
+  formEndpoint: '/api/enquiry',
 };
 
 export type NavChild = { label: string; href: string; desc?: string };

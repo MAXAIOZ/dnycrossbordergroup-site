@@ -148,10 +148,7 @@
         utm_source: store.get('dny_utm_source') || '',
         utm_medium: store.get('dny_utm_medium') || '',
         utm_campaign: store.get('dny_utm_campaign') || '',
-        _subject: '[DNY website] ' + type.charAt(0).toUpperCase() + type.slice(1) + ' enquiry — ' + name,
-        _replyto: email,
-        _template: 'table',
-        _captcha: 'false'
+        kind: 'contact'
       };
 
       var btn = form.querySelector('[type="submit"]');
@@ -172,7 +169,8 @@
           if (window.dataLayer) window.dataLayer.push({ event: 'enquiry_submit', enquiry_type: type });
         })
         .catch(function () {
-          var mail = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(payload._subject) +
+          var subject = '[DNY website] ' + type.charAt(0).toUpperCase() + type.slice(1) + ' enquiry — ' + name;
+      var mail = 'mailto:' + form.dataset.email + '?subject=' + encodeURIComponent(subject) +
             '&body=' + encodeURIComponent(message + '\n\n' + name + '\n' + payload.organisation);
           say('We could not send the form just now. Please <a href="' + mail + '">email us directly</a> instead.', false);
         })
@@ -249,10 +247,7 @@
         marketing_opt_in: d.get('marketing_opt_in') ? 'Yes' : 'No',
         enquiry_type: 'opc-membership',
         source_page: location.pathname + location.search,
-        _subject: subject,
-        _replyto: email,
-        _template: 'table',
-        _captcha: 'false'
+        kind: 'membership'
       };
 
       var btn = jf.querySelector('[type="submit"]');
