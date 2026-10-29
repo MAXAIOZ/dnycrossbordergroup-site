@@ -86,23 +86,35 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     ],
   },
   opcfde: {
-    title: 'OPC + FDE',
+    title: 'ANZ OPC + FDE Alliance',
     items: [
       {
         q: 'What is an OPC?',
-        a: 'OPC stands for Office + AI Agents: a local business node that combines a physical workspace, AI agent capabilities and market connections, so small teams can deliver like larger organisations. It is not a conventional co-working space.',
+        a: 'An OPC is a one-person company: a business run by one person or a very small team that uses AI agents to deliver at the scale of a much larger firm.',
       },
       {
-        q: 'What is an FDE?',
-        a: 'FDE stands for Forward Deployed Entrepreneur: a delivery role that works directly on a real customer problem in the field, combining industry knowledge with DNY infrastructure to move a solution from proof of concept to deployment.',
+        q: 'Do I need to be in Australia or New Zealand?',
+        a: 'No. Members deliver remotely from anywhere. DNY provides the local presence: client meetings in local business hours, coordination of procurement steps and, where a client requires it, an Australian contracting party.',
       },
       {
-        q: 'What is the ANZ OPC + FDE Alliance?',
-        a: 'The ANZ OPC + FDE Alliance is the membership organisation behind the network. It brings OPC entrepreneurs in Australia and New Zealand together, with Forward Deployed Entrepreneur delivery capability built into member benefits.',
+        q: 'Who signs the contract with the client?',
+        a: 'It depends on the client. For government tenders and clients that require an Australian supplier, DNY contracts as prime and you deliver as a subcontractor. Other clients may contract with you directly. The model is shown on each need and agreed before work starts.',
       },
       {
-        q: 'Where does the OPC + FDE network operate?',
-        a: 'Sydney is the first node. Auckland is the expansion direction for the New Zealand network.',
+        q: 'Is membership free?',
+        a: 'Community membership is free. Professional and Premier memberships have an annual fee, shared on application.',
+      },
+      {
+        q: 'Where do the needs come from?',
+        a: "Today, from DNY's own ventures and business lines, which are being built in Australia now. Needs from other organisations in Australia and New Zealand will be added as DNY collects and verifies them.",
+      },
+      {
+        q: 'How do partners earn?',
+        a: 'Partners co-deliver projects with DNY and share project revenue under a project agreement. Partnership is open to Premier members only.',
+      },
+      {
+        q: 'How does the Alliance relate to DNY?',
+        a: "The Alliance is DNY's delivery network. Members and partners deliver on DNY's AI and physical-intelligence infrastructure, and solutions that repeat can be incubated as DNY ventures.",
       },
     ],
   },

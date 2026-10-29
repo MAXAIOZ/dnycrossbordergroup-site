@@ -15,9 +15,10 @@ export const GLOSSARY = [
   { term: 'Edge AI', def: 'Running AI inference on or near the device or asset, rather than in a distant cloud, for lower latency, resilience and data control.', href: '/physical-intelligence#edge' },
   { term: 'Autonomous operations', def: 'Multiple devices — drones, robots and industrial systems — coordinated by AI agents under governed workflows with human escalation.', href: '/physical-intelligence#autonomous' },
   { term: 'Digital twin', def: 'A live digital model of a physical asset, site or process, updated from real-world data and used to monitor, predict and plan.', href: '/industries#logistics-warehousing' },
-  { term: 'OPC (Office + AI Agents)', def: 'A local business node that combines a workspace, AI agent capabilities and market connections so small teams can deliver like larger organisations.', href: '/opc-fde#opc' },
-  { term: 'FDE (Forward Deployed Entrepreneur)', def: 'A delivery role that works directly on a real customer problem in the field, taking a solution from proof of concept to deployment.', href: '/opc-fde#fde' },
-  { term: 'ANZ OPC + FDE Alliance', def: 'A membership network of OPC entrepreneurs across Australia and New Zealand, with Forward Deployed Entrepreneur delivery capability built into member benefits.', href: '/opc-fde#alliance' },
+  { term: 'OPC (One Person Company)', def: 'A business run by one person or a very small team that uses AI agents to deliver at the scale of a much larger firm.', href: '/opc-fde' },
+  { term: 'OPC Hub', def: "DNY's local base in Australia or New Zealand, where DNY meets clients, hosts demonstrations and represents Alliance members in person.", href: '/opc-fde#hubs' },
+  { term: 'FDE (Forward Deployed Entrepreneur)', def: 'A founder who deploys a proven product or service into the Australian and New Zealand market from wherever they are, with DNY as the local partner.', href: '/opc-fde#fde' },
+  { term: 'ANZ OPC + FDE Alliance', def: 'A network connecting real needs from Australian and New Zealand organisations with one-person companies and Forward Deployed Entrepreneurs worldwide, with membership and partner tracks.', href: '/opc-fde' },
   { term: 'AI transaction readiness', def: 'Architecture and interfaces that prepare for AI agents and machines to request, verify and settle services with each other.', href: '/ai-infrastructure#transactions' },
   { term: 'AILH', def: 'A proposed large-scale industrial deployment environment in Sydney, used as a physical-economy proof point for trusted, open AI. It is a separate interest from DNY, not owned or controlled by DNY.', href: '/physical-intelligence#ailh' },
 ];

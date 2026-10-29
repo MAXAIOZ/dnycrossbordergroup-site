@@ -48,6 +48,26 @@ const schema = {
 
 <Fragment set:html={body} />
 
+<section class="section" aria-labelledby="help-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <span class="kicker">Work with us</span>
+      <h2 class="h2-sm" id="help-h">Help build {v.name}</h2>
+      <p class="lead" style="margin-top:10px;">One-person companies and Forward Deployed Entrepreneurs can work on {v.name} remotely through the ANZ OPC + FDE Alliance.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a href={`/opc-fde/join?venture=${v.slug}`} class="btn btn-primary">Express Interest</a>
+        <a href="/opc-fde#needs" class="btn btn-secondary">See Open Needs</a>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <div class="sep-box">
+        <h4>{v.category}</h4>
+        <p>Work areas: {v.capabilities.slice(0, 4).join(' · ')}. Specific work packages are scoped with shortlisted members and agreed in a project agreement with DNY.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 {FAQS[v.slug] && <FAQ groups={[v.slug]} title={FAQS[v.slug].title} />}
 
 {related.length > 0 && (

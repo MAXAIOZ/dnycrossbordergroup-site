@@ -27,7 +27,7 @@ export const SITE = {
   // by search engines and AI assistants. Add full URLs here; they are output as schema.org sameAs.
   sameAs: [] as string[],
   // Shown as "Last updated" and used as dateModified in structured data. Bump on content changes.
-  lastUpdated: '2026-10-25',
+  lastUpdated: '2026-10-29',
   // IndexNow key — the matching key file is public/fc7fd0c2dde75c0336dc49f152b48547.txt
   indexNowKey: 'fc7fd0c2dde75c0336dc49f152b48547',
   // Cloudflare Web Analytics token (Cloudflare dashboard → Analytics → Web Analytics). Leave empty to disable.
@@ -79,10 +79,24 @@ export const NAV: NavItem[] = [
       { label: 'Request a Quote', href: '/components/enquiry', desc: 'Model, part number and quantity' },
     ],
   },
-  { label: 'OPC + FDE', href: '/opc-fde' },
+  {
+    label: 'OPC + FDE',
+    href: '/opc-fde',
+    children: [
+      { label: 'Overview', href: '/opc-fde', desc: 'Deliver real projects in Australia and New Zealand' },
+      { label: 'Your local partner', href: '/opc-fde#local', desc: 'What DNY does on the ground' },
+      { label: 'Open Needs', href: '/opc-fde#needs', desc: 'Work across the DNY group' },
+      { label: 'Membership', href: '/opc-fde#membership', desc: 'Community, Professional and Premier' },
+      { label: 'Partners', href: '/opc-fde#partners', desc: 'Co-deliver with DNY' },
+      { label: 'Join for Free', href: '/opc-fde/join', desc: 'Apply to the Alliance' },
+    ],
+  },
   { label: 'Industries', href: '/industries' },
   { label: 'Ventures', href: '/ventures' },
 ];
+
+// Country list shared by the components enquiry form and the Alliance application.
+export const COUNTRIES = ['Australia', 'New Zealand', 'Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Vietnam', 'Philippines', 'Japan', 'South Korea', 'Hong Kong', 'Taiwan', 'China', 'India', 'United Kingdom', 'Ireland', 'Germany', 'France', 'Netherlands', 'United States', 'Canada', 'United Arab Emirates', 'Other'];
 
 // The only three calls to action used across the site.
 export const CTA = {

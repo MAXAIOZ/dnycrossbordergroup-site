@@ -6,17 +6,11 @@ import Definition from '../components/Definition.astro';
 import BasketPill from '../components/parts/BasketPill.astro';
 import Arrow from '../components/Arrow.astro';
 import FAQ from '../components/FAQ.astro';
-import { catsFor, byApp, COMPONENTS_CTA, APP_PATH, BRANDS } from '../data/components';
+import { catsFor, byApp, COMPONENTS_CTA, APP_PATH, BRANDS, SERVICES } from '../data/components';
 
 const title = 'Drone & Robotics Components';
 const description = 'Components for drones, industrial robots and commercial autonomous systems from DNY Cross Border Group, Sydney. Submit your model, part number and quantity for sourcing and quotation.';
 const crumbs = [{ name: 'Parts & Components', href: '/components' }];
-const services = [
-  { k: 'Component Sourcing', d: 'Tell us the model, generation and part number. We source the matching part and confirm it with you before quoting.' },
-  { k: 'Bulk Supply Enquiries', d: 'Quantities for fleets, service teams and resellers, quoted per enquiry.' },
-  { k: 'Compatibility Review', d: 'We check the part against the exact model, generation and part number you provide before any quote.' },
-  { k: 'Custom Module Enquiries', d: 'Brackets, mounts and mechanical parts made to your drawing or sample, assessed case by case.' },
-];
 const steps = [
   { k: 'Add parts', d: 'Add product types to your enquiry list, or describe a part that is not listed.' },
   { k: 'Add details', d: 'Enter the equipment model, part number and quantity for each line.' },
@@ -67,7 +61,8 @@ const schema = {
 <section class="section" aria-labelledby="sv-h">
   <div class="container">
     <SectionHead kicker="Services" id="sv-h" title="Sourcing, supply and fit review" />
-    <div class="tiles t4 stagger reveal">{services.map((s) => <div class="tile"><span class="t-k">Service</span><h3>{s.k}</h3><p>{s.d}</p></div>)}</div>
+    <div class="tiles t4 stagger reveal">{SERVICES.map((s) => <div class="tile"><span class="t-k">Service</span><h3>{s.k}</h3><p>{s.d}</p></div>)}</div>
+    <p class="reveal" style="margin-top:14px;"><a href="/opc-fde/join?venture=components" class="project-link">Work with us on components as an Alliance member</a></p>
     <p class="src-note reveal" style="margin-top:16px;">Prices, stock, lead times and supplier authorisation are confirmed only in a written quote. Nothing on these pages is an offer to supply at a stated price. {BRANDS.KST.note}</p>
   </div>
 </section>

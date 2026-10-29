@@ -1,0 +1,151 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { SITE, COUNTRIES } from '../../data/site';
+import { VENTURE_OPTIONS } from '../../data/opc-group';
+
+const title = 'Join the ANZ OPC + FDE Alliance';
+const description =
+  'Apply to join the ANZ OPC + FDE Alliance. Community membership is free; we review every application and reply within five business days.';
+const crumbs = [
+  { name: 'OPC + FDE', href: '/opc-fde' },
+  { name: 'Join', href: '/opc-fde/join' },
+];
+
+const capabilities = [
+  'AI agents and automation',
+  'Software and data',
+  'Drones',
+  'Robotics',
+  'Built environment',
+  'Logistics',
+  'Cross-border trade',
+  'Marketing and sales',
+  'Other',
+];
+
+const tiers = [
+  { value: 'community', label: 'Community (free)' },
+  { value: 'professional', label: 'Professional' },
+  { value: 'premier', label: 'Premier' },
+];
+
+const overlaps = ['Most of the day', 'A few hours a day', 'Little or none'];
+
+const contractingOptions = [
+  'Yes, my business can invoice Australian clients',
+  'No, I would work through DNY',
+  'Not sure',
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  isPartOf: { '@id': 'https://dnycrossbordergroup.com/#website' },
+};
+---
+<Base {title} {description} breadcrumbs={crumbs} schema={[schema]} noindex={false}>
+<PageHero badge="ANZ OPC + FDE Alliance" title="Join the ANZ OPC + FDE Alliance" {crumbs}
+  lead="Tell us who you are and what you do. Community membership is free; we review every application and reply within five business days." />
+
+<section class="section" aria-labelledby="form-h">
+  <div class="container split">
+    <div class="reveal-l">
+      <SectionHead kicker="Application" id="form-h" title="Your application"
+        lead="Every field marked with an asterisk is required. You can change your answers later by replying to our email." />
+      <div class="prose" style="margin-top:14px;">
+        <p>Membership is granted after a short review against the Alliance's published criteria. Community membership is free. Professional and Premier memberships carry an annual fee, which we share on application.</p>
+        <p>We do not publish member names, client names or budgets on this website.</p>
+      </div>
+    </div>
+
+    <div class="reveal-r">
+      <form id="join-form" class="contact-form" action={SITE.formEndpoint} method="POST" data-email={SITE.email} aria-label="Membership application" novalidate>
+        <div class="form-row">
+          <div class="form-group"><label for="j-name">Full name *</label><input id="j-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="form-group"><label for="j-email">Email *</label><input id="j-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group"><label for="j-country">Country *</label>
+            <select id="j-country" name="country" required>
+              {COUNTRIES.map((c) => <option value={c}>{c}</option>)}
+            </select>
+          </div>
+          <div class="form-group"><label for="j-role">You are joining as *</label>
+            <select id="j-role" name="joining_as" required>
+              <option value="Individual">Individual</option>
+              <option value="Small company">Small company</option>
+              <option value="Organisation">Organisation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group"><label for="j-company">Company or organisation name</label><input id="j-company" name="organisation" type="text" autocomplete="organization" placeholder="Optional if you are joining as an individual"></div>
+          <div class="form-group"><label for="j-url">Website or LinkedIn URL *</label><input id="j-url" name="profile_url" type="url" placeholder="https://" required></div>
+        </div>
+
+        <fieldset class="form-group">
+          <legend>Capabilities *</legend>
+          <div class="check-grid">
+            {capabilities.map((c) => (
+              <label class="check"><input type="checkbox" name="capabilities" value={c}> {c}</label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div class="form-row">
+          <div class="form-group"><label for="j-tier">Membership tier *</label>
+            <select id="j-tier" name="tier" required>
+              {tiers.map((t) => <option value={t.value}>{t.label}</option>)}
+            </select>
+          </div>
+          <div class="form-group"><label for="j-venture">Venture of interest</label>
+            <select id="j-venture" name="venture">
+              <option value="Not sure yet">Not sure yet</option>
+              {VENTURE_OPTIONS.map((v) => <option value={v.value}>{v.label}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" id="partner-track-wrap" hidden>
+          <label class="check"><input type="checkbox" name="partner_track" value="Yes"> I am interested in the Partner track</label>
+        </div>
+
+        <div class="form-group"><label for="j-need">Need reference</label><input id="j-need" name="need" type="text" readonly placeholder="Filled in automatically when you apply from a need"></div>
+
+        <div class="form-row">
+          <div class="form-group"><label for="j-overlap">Working-hours overlap with Australian business hours *</label>
+            <select id="j-overlap" name="overlap" required>
+              {overlaps.map((o) => <option value={o}>{o}</option>)}
+            </select>
+          </div>
+          <div class="form-group"><label for="j-contract">Can you contract directly with Australian clients? *</label>
+            <select id="j-contract" name="contracting" required>
+              {contractingOptions.map((o) => <option value={o}>{o}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group"><label for="j-more">Anything else we should know</label>
+          <textarea id="j-more" name="message" maxlength="2000" rows="4" placeholder="Up to 2000 characters"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="check"><input type="checkbox" name="privacy_consent" value="Yes" required> I agree to the handling of my information under the <a href="/privacy" style="color:var(--gold-lt)">Privacy Policy</a>. *</label>
+          <label class="check"><input type="checkbox" name="marketing_opt_in" value="Yes"> Send me the monthly Open Needs digest</label>
+        </div>
+
+        <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-submit"><button type="submit" class="btn btn-primary">Submit Application</button></div>
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
+        <p class="form-note">Your application is delivered to {SITE.email} and tagged with your chosen tier and venture. Information you send is handled under our <a href="/privacy" style="color:var(--gold-lt)">Privacy Policy</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</Base>

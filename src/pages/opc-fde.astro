@@ -5,72 +5,408 @@ import SectionHead from '../components/SectionHead.astro';
 import Definition from '../components/Definition.astro';
 import FAQ from '../components/FAQ.astro';
 import CTABand from '../components/CTABand.astro';
+import StatusBadge from '../components/StatusBadge.astro';
 import { CTA } from '../data/site';
-import { techArticle, definedTerm } from '../data/schema';
+import { FAQS } from '../data/faqs';
+import { GROUP_CARDS } from '../data/opc-group';
+import { listedNeeds } from '../data/opc-needs';
 
-const title = 'OPC + FDE Network';
-const description = 'The OPC + FDE network is how DNY turns infrastructure into deployed industry solutions: OPC (Office + AI Agents) nodes, Forward Deployed Entrepreneurs, and the ANZ OPC + FDE Alliance — starting in Sydney, expanding to Auckland.';
-const def = 'DNY’s deployment and delivery network: OPC nodes (Office + AI Agents) and Forward Deployed Entrepreneurs (FDE) that take AI and physical intelligence from proof of concept to real deployment.';
+const title = 'ANZ OPC + FDE Alliance';
+const description =
+  'Join the ANZ OPC + FDE Alliance: one-person companies and Forward Deployed Entrepreneurs worldwide connected to real, verified needs from Australian and New Zealand organisations. Free to join.';
 const crumbs = [{ name: 'OPC + FDE', href: '/opc-fde' }];
+
+const JOIN = '/opc-fde/join';
+
+const why = [
+  {
+    k: 'Time zones',
+    h: 'Work in real time with Asia',
+    d: 'Australian and New Zealand business hours overlap with much of Asia, so remote teams can work with clients in real time.',
+  },
+  {
+    k: 'Demand',
+    h: 'An early market for AI',
+    d: '12% of Australian businesses used AI in 2024–25 (Australian Bureau of Statistics). Many organisations are still looking for practical solutions.',
+  },
+  {
+    k: 'Access',
+    h: 'Stable, English-speaking markets',
+    d: 'Clear procurement rules and English as the working language.',
+  },
+];
+
+const how = [
+  { k: 'Curate', d: 'DNY sources and verifies real needs from organisations in Australia and New Zealand.' },
+  { k: 'Match', d: 'Members see open needs and express interest; DNY shortlists the best fit.' },
+  { k: 'Deploy', d: 'Members deliver remotely on DNY infrastructure; DNY handles local contracting where needed, client meetings and delivery oversight.' },
+  { k: 'Grow', d: 'Solutions that repeat become sector practices, or are incubated as new ventures.' },
+];
+
+const local = [
+  { k: 'Contracting', d: 'Where a client needs an Australian contracting party, DNY can contract as prime and engage you as a subcontractor, project by project.' },
+  { k: 'Client contact', d: 'DNY meets clients in local business hours and keeps them informed between your delivery cycles.' },
+  { k: 'Procurement steps', d: "DNY coordinates the supplier registration and paperwork a client's procurement process requires." },
+  { k: 'Delivery oversight', d: 'DNY tracks milestones and quality, so the client deals with one accountable team.' },
+];
+
+const contracting = [
+  {
+    k: 'Through DNY',
+    d: 'DNY is the contracting party and you deliver as a subcontractor. Typical for government tenders and clients that require an Australian supplier.',
+  },
+  {
+    k: 'Direct',
+    d: 'You contract with the client directly; DNY introduces and supports. Typical for companies that already work with overseas suppliers.',
+  },
+];
+
 const fde = [
-  { k: 'Embed', d: 'Work alongside the customer to understand processes, data and constraints.' },
-  { k: 'Shape', d: 'Define a use case with measurable outcomes and a governance plan.' },
-  { k: 'Prove', d: 'Build a pilot on DNY infrastructure — AI, physical devices or both.' },
-  { k: 'Deploy', d: 'Harden for production with security, monitoring and support.' },
-  { k: 'Scale or spin out', d: 'Extend across sites, or incubate a repeatable solution as a new venture.' },
+  { k: 'Understand', d: "Work with DNY to understand the client's problem, standards and constraints." },
+  { k: 'Adapt', d: 'Fit your product or service to the local market: integration, documentation and pricing.' },
+  { k: 'Prove', d: 'Run a pilot remotely, with DNY handling local meetings and client communication.' },
+  { k: 'Deploy', d: 'Move to production with monitoring and support across time zones.' },
+  { k: 'Scale or spin out', d: 'Extend to more clients, or incubate a repeatable solution as a new venture.' },
+];
+
+const membership = [
+  {
+    tier: 'Community',
+    price: 'Free',
+    btn: 'Join for Free',
+    href: `${JOIN}?tier=community`,
+    badge: '',
+    points: [
+      'A profile in the Alliance member directory, after review',
+      'Monthly Open Needs digest (summaries)',
+      'Online community sessions and general-information guides to working in Australia and New Zealand',
+    ],
+  },
+  {
+    tier: 'Professional',
+    price: 'Annual fee on application',
+    btn: 'Apply for Professional',
+    href: `${JOIN}?tier=professional`,
+    badge: '',
+    points: [
+      'Everything in Community',
+      'Full briefs for eligible needs, and the ability to express interest',
+      "Access to selected DNY AI tools, as available, under DNY's tool terms of use",
+      'Use of OPC Hub meeting and demo space when visiting, once a hub opens, subject to availability',
+      'Access to the Alliance directory of independent service providers',
+    ],
+  },
+  {
+    tier: 'Premier',
+    price: 'Annual fee on application',
+    btn: 'Apply for Premier',
+    href: `${JOIN}?tier=premier`,
+    badge: 'Eligible for partnership',
+    points: [
+      'Everything in Professional',
+      'Priority shortlisting for larger needs',
+      'A designated point of contact at DNY',
+      'Priority use of OPC Hub meeting and demo space when visiting, once a hub opens',
+      'Use of the “ANZ OPC + FDE Alliance Premier Member” mark in proposals, under the Alliance brand guidelines',
+      'Eligible to apply for the Partner track',
+    ],
+  },
+];
+
+const partners = [
+  {
+    tier: 'Delivery Partner',
+    role: 'Delivers defined work packages remotely within DNY-led projects',
+    revenue: 'Shares project revenue under a project agreement',
+    step: 'Successful delivery and customer feedback',
+  },
+  {
+    tier: 'Lead Partner',
+    role: 'Leads delivery end to end with the client, remotely, with DNY handling local presence',
+    revenue: 'Shares project revenue under a project agreement',
+    step: 'Track record as Lead Partner and DNY nomination',
+  },
+  {
+    tier: 'Principal Partner',
+    role: 'Co-leads a sector or region practice with DNY',
+    revenue: 'Shares practice revenue under a partner agreement, and may be invited to co-found ventures incubated from repeat solutions, by separate agreement',
+    step: 'By invitation',
+  },
+];
+
+const who = [
+  { k: 'Individuals', d: 'Solo founders, consultants, engineers and specialists running their own one-person company.' },
+  { k: 'Small companies', d: 'Teams of up to about ten people with a capability Australian and New Zealand organisations need.' },
+  { k: 'Organisations', d: 'Associations, incubators, universities and service providers that support OPCs and FDEs.' },
+];
+
+const hubs = [
+  {
+    name: 'Sydney',
+    d: "The first OPC Hub, alongside DNY's headquarters: where DNY meets clients, hosts demonstrations and represents members in person.",
+  },
+  {
+    name: 'Auckland',
+    d: "The next hub, extending the network's local presence to New Zealand.",
+  },
+];
+
+// External needs are paused (§17.1). Anything recorded in opc-needs.ts is shown
+// above the group cards; the array is empty today.
+const needs = listedNeeds();
+
+const faqItems = FAQS.opcfde.items;
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ANZ OPC + FDE Alliance',
+    url: 'https://dnycrossbordergroup.com/opc-fde',
+    description,
+    parentOrganization: { '@id': 'https://dnycrossbordergroup.com/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: 'OPC (One Person Company)',
+    description:
+      'A business run by one person or a very small team that uses AI agents to deliver at the scale of a much larger firm.',
+    inDefinedTermSet: 'https://dnycrossbordergroup.com/glossary',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: 'FDE (Forward Deployed Entrepreneur)',
+    description:
+      'A founder who deploys a proven product or service into the Australian and New Zealand market from wherever they are, with DNY as the local partner.',
+    inDefinedTermSet: 'https://dnycrossbordergroup.com/glossary',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: 'OPC Hub',
+    description:
+      "DNY's local base in Australia or New Zealand, where DNY meets clients, hosts demonstrations and represents members in person.",
+    inDefinedTermSet: 'https://dnycrossbordergroup.com/glossary',
+  },
 ];
 ---
-<Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('OPC + FDE: from infrastructure to real deployment', description, '/opc-fde', ['OPC', 'FDE', 'ANZ OPC + FDE Alliance']), definedTerm('OPC (Office + AI Agents)', 'A local business node that combines a workspace, AI agent capabilities and market connections so small teams can deliver like larger organisations.', '/opc-fde#opc'), definedTerm('FDE (Forward Deployed Entrepreneur)', 'A delivery role that works directly on a real customer problem in the field, taking a solution from proof of concept to deployment.', '/opc-fde#fde')]}>
-<PageHero badge="OPC + FDE" title="OPC + FDE: from infrastructure to real deployment" {crumbs}
-  lead="Infrastructure only matters when it reaches real customers. The OPC + FDE network brings together small teams, AI agents, industry specialists and enterprise customers to turn DNY infrastructure into solutions that are actually deployed."
-  primary={CTA.partner} secondary={CTA.brief}>
-  <Definition term="OPC + FDE Network" def={def} />
+<Base {title} {description} breadcrumbs={crumbs} schema={schema}>
+<PageHero badge="ANZ OPC + FDE Alliance" title="Deliver real projects in Australia and New Zealand" {crumbs}
+  lead="The ANZ OPC + FDE Alliance connects real needs from Australian and New Zealand organisations with one-person companies and Forward Deployed Entrepreneurs around the world. You deliver from wherever you are; DNY is your local partner in Sydney — contracting where a client needs it, meeting clients in local business hours and keeping delivery on track."
+  primary={{ label: 'Join for Free', href: `${JOIN}?tier=community` }}
+  secondary={{ label: 'See Open Needs', href: '#needs' }}>
+  <div class="def-stack">
+    <Definition term="OPC — One Person Company" def="A business run by one person or a very small team that uses AI agents to deliver at the scale of a much larger firm." />
+    <Definition term="FDE — Forward Deployed Entrepreneur" def="A founder who deploys a proven product or service into the Australian and New Zealand market from wherever they are, with DNY as the local partner." />
+    <Definition term="OPC Hub" def="DNY's local base in Australia or New Zealand, where DNY meets clients, hosts demonstrations and represents members in person." />
+  </div>
 </PageHero>
 
-<section class="section" id="opc" aria-labelledby="opc-h">
+<section class="section" id="why" aria-labelledby="why-h">
   <div class="container">
-    <SectionHead kicker="OPC = Office + AI Agents" id="opc-h" title="Local nodes where small teams deliver like large ones"
-      lead="An OPC is a local business node — not a conventional co-working space. It gives a small team four things in one place." />
+    <SectionHead kicker="Why here" id="why-h" title="Why Australia and New Zealand"
+      lead="Two markets that buy in English, follow predictable procurement rules and share working hours with much of Asia." />
+    <div class="tiles t3 stagger reveal">
+      {why.map((w) => (
+        <div class="tile"><span class="t-k">{w.k}</span><h3>{w.h}</h3><p>{w.d}</p></div>
+      ))}
+    </div>
+    <p class="src-note reveal" style="margin-top:14px;">AI adoption figure: Australian Bureau of Statistics, business use of AI, 2024–25.</p>
+  </div>
+</section>
+
+<section class="section dark" id="how" aria-labelledby="how-h">
+  <div class="container">
+    <SectionHead kicker="How it works" id="how-h" title="How the Alliance works" />
+    <div class="layers reveal">
+      {how.map((s, i) => (
+        <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="local" aria-labelledby="local-h">
+  <div class="container">
+    <SectionHead kicker="Local presence" id="local-h" title="Your local partner in Australia"
+      lead="You deliver from where you are. DNY gives you the local presence Australian and New Zealand clients expect." />
     <div class="tiles t4 stagger reveal">
-      <div class="tile"><span class="t-k">Space</span><h3>Business base</h3><p>A professional base and collaboration space.</p></div>
-      <div class="tile"><span class="t-k">Agents</span><h3>AI agent capability</h3><p>Access to DNY infrastructure and governed agents.</p></div>
-      <div class="tile"><span class="t-k">Market</span><h3>Market connections</h3><p>Enterprise customers, suppliers and partners.</p></div>
-      <div class="tile"><span class="t-k">Talent</span><h3>Project talent pool</h3><p>Universities, developers, founders and specialists.</p></div>
+      {local.map((l) => (
+        <div class="tile"><span class="t-k">Local support</span><h3>{l.k}</h3><p>{l.d}</p></div>
+      ))}
+    </div>
+    <p class="src-note reveal" style="margin-top:14px;">What DNY provides on each project is set out in the project agreement. DNY does not provide legal, tax or immigration advice.</p>
+  </div>
+</section>
+
+<section class="section dark" id="contracting" aria-labelledby="ct-h">
+  <div class="container">
+    <SectionHead kicker="Contracting" id="ct-h" title="Two ways to work with a client"
+      lead="The client's own procurement rules decide which model applies. Both are agreed before work starts." />
+    <div class="tiles t2 stagger reveal">
+      {contracting.map((c) => (
+        <div class="tile"><span class="t-k">Model</span><h3>{c.k}</h3><p>{c.d}</p></div>
+      ))}
+    </div>
+    <p class="reveal" style="margin-top:18px;font-size:14.5px;color:var(--t2);">For work on DNY's own ventures, you contract with DNY directly.</p>
+    <p class="src-note reveal" style="margin-top:10px;">The model for each need is shown on its card and agreed before work starts.</p>
+  </div>
+</section>
+
+<section class="section" id="needs" aria-labelledby="needs-h">
+  <div class="container">
+    <SectionHead kicker="Open Needs" id="needs-h" title="Open Needs across the DNY group"
+      lead="DNY's own ventures and business lines are the first source of work for Alliance members. Each is being built in Australia now — tell us where you can help." />
+
+    {needs.length > 0 && (
+      <div class="vgrid reveal" style="margin-bottom:26px;">
+        {needs.map((n) => (
+          <article class="vcard" data-closes={n.closes}>
+            <div class="vcard-top"><span class="vcard-cat">{n.sector}</span><span class="status-badge s-in-development"><span class="sb-dot" aria-hidden="true"></span>{n.status}</span></div>
+            <h3 class="vcard-name">{n.title}</h3>
+            <p class="vcard-short">{n.summary}</p>
+            <dl class="vcard-meta">
+              <div><dt>Location</dt><dd>{n.location}</dd></div>
+              <div><dt>Delivery</dt><dd>{n.delivery}</dd></div>
+              <div><dt>Contracting</dt><dd>{n.contracting}</dd></div>
+            </dl>
+            <a href={`${JOIN}?need=${n.id}&tier=${n.minTier.toLowerCase()}`} class="btn btn-primary vcard-cta">Express Interest</a>
+          </article>
+        ))}
+      </div>
+    )}
+
+    <div class="vgrid reveal">
+      {GROUP_CARDS.map((c) => (
+        <article class="vcard need-card" id={`venture-${c.key}`}>
+          <div class="vcard-top"><span class="vcard-cat">{c.category}</span><StatusBadge status={c.status} /></div>
+          <h3 class="vcard-name">{c.name}</h3>
+          <p class="vcard-short">{c.short}</p>
+          <dl class="vcard-meta">
+            <div><dt>Work areas</dt><dd>{c.workAreas.join(' · ')}</dd></div>
+          </dl>
+          <div class="vcard-tags">{c.workAreas.slice(0, 4).map((w) => <span class="pill">{w}</span>)}</div>
+          <div class="need-actions">
+            <a href={`${JOIN}?venture=${c.key}`} class="btn btn-primary">Express Interest</a>
+            <a href={c.href} class="project-link">About {c.name}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="src-note reveal" style="margin-top:16px;">Specific work packages are scoped with shortlisted members and agreed in a project agreement with DNY. Ventures are at the stage shown by their status label.</p>
+  </div>
+</section>
+
+<section class="section dark" id="membership" aria-labelledby="mem-h">
+  <div class="container">
+    <SectionHead kicker="Membership" id="mem-h" title="Membership: get connected to real demand"
+      lead="Members get access to verified needs and the people who can help deliver them. Start free; upgrade when you want deeper access." />
+    <div class="tiles t3 stagger reveal">
+      {membership.map((m) => (
+        <div class={`tile mem-card${m.tier === 'Premier' ? ' gold' : ''}`}>
+          {m.badge && <span class="tier-badge">{m.badge}</span>}
+          <span class="t-k">{m.tier}</span>
+          <p class="mem-price">{m.price}</p>
+          <ul class="mem-list">{m.points.map((p) => <li>{p}</li>)}</ul>
+          <a href={m.href} class={`btn ${m.tier === 'Community' ? 'btn-primary' : 'btn-secondary'} mem-btn`}>{m.btn}</a>
+        </div>
+      ))}
+    </div>
+    <div class="reveal" style="margin-top:22px;display:grid;gap:10px;font-size:12.5px;color:var(--t3);line-height:1.7;max-width:900px;">
+      <p>Membership is granted after a short review against the Alliance's published criteria. All memberships are subject to the Membership Terms. We will give members at least 30 days' notice of any material change to benefits.</p>
+      <p>OPC Hubs are in development. Hub benefits apply only once a hub opens; no opening date is promised.</p>
+      <p>The service provider directory lists independent firms that members contact directly. DNY does not endorse, supervise or guarantee their services, does not receive referral fees from them, and is not responsible for their advice. Nothing provided through the Alliance — including guides, sessions and directory listings — is legal, tax, financial, insurance or immigration advice.</p>
+      <p>Members and partners are independent businesses. They are not employees, agents or representatives of DNY and cannot commit DNY to any obligation.</p>
+      <p>The ANZ OPC + FDE Alliance is operated by DNY Cross Border Group Pty Ltd.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="partners" aria-labelledby="pt-h">
+  <div class="container">
+    <SectionHead kicker="Partnership" id="pt-h" title="Partnership: deliver the work together"
+      lead="Partners co-deliver projects with DNY and share project revenue under a project agreement. Partnership is open to Premier members only." />
+    <div class="tier-row reveal">
+      {partners.map((p, i) => (
+        <div class="tile tier-card">
+          <span class="t-k">{`Partner tier ${i + 1}`}</span>
+          <h3>{p.tier}</h3>
+          <p>{p.role}</p>
+          <p class="tier-meta"><strong>Revenue</strong> {p.revenue}</p>
+          <p class="tier-meta"><strong>Progression</strong> {p.step}</p>
+        </div>
+      ))}
+    </div>
+    <div class="split" style="margin-top:26px;">
+      <div class="reveal-l">
+        <h3 class="h4">How to become a partner</h3>
+        <ol class="prose" style="margin-top:10px;">
+          <li>Hold Premier membership.</li>
+          <li>Apply and complete a capability and reference review.</li>
+          <li>Sign a partner agreement before taking on client work.</li>
+        </ol>
+      </div>
+      <div class="reveal-r">
+        <p class="src-note">Partner work is governed by a written partner agreement and a project agreement for each engagement, covering scope, revenue share, confidentiality, intellectual property, insurance and liability. Partners maintain insurance appropriate to their work, as set out in each project agreement.</p>
+        <p class="src-note" style="margin-top:10px;">You do not need to be in Australia or New Zealand. Partners deliver remotely; DNY provides the local presence.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section dark" id="fde" aria-labelledby="fde-h">
   <div class="container">
-    <SectionHead kicker="FDE = Forward Deployed Entrepreneur" id="fde-h" title="Delivery that starts with the customer’s problem"
-      lead="FDEs sit with real customers, understand real constraints, and use DNY infrastructure to deliver solutions that get deployed." />
+    <SectionHead kicker="The FDE model" id="fde-h" title="How an FDE deploys into Australia and New Zealand"
+      lead="An FDE takes a proven product or service into a new market — from wherever they are, with DNY as the local partner." />
     <div class="layers reveal">
-      {fde.map((s, i) => <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>)}
+      {fde.map((s, i) => (
+        <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>
+      ))}
     </div>
-    <p class="src-note reveal" id="incubation" style="margin-top:16px;">When a solution repeats across customers, it is incubated inside the network and can become an independent <a href="/ventures" style="color:var(--gold-lt)">venture</a> on DNY infrastructure.</p>
+    <p class="src-note reveal" style="margin-top:16px;">When a solution repeats across customers, it is incubated inside the network and can become an independent <a href="/ventures" style="color:var(--gold-lt)">venture</a> on DNY infrastructure.</p>
   </div>
 </section>
 
-<section class="section" id="alliance" aria-labelledby="al-h">
-  <div class="container split">
-    <div class="reveal-l">
-      <span class="kicker">ANZ OPC + FDE Alliance</span>
-      <h2 id="al-h" class="h2-sm">The membership organisation behind the network</h2>
-      <div class="prose" style="margin-top:16px;">
-        <p>The <strong>ANZ OPC + FDE Alliance</strong> organises OPC entrepreneurs across Australia and New Zealand into a membership network, with FDE delivery capability built into member benefits rather than offered as a separate tier.</p>
-        <p>Members get access to the network’s nodes, customers, training and DNY infrastructure; DNY gets a delivery capacity that scales with real demand.</p>
-      </div>
+<section class="section" id="hubs" aria-labelledby="hub-h">
+  <div class="container">
+    <SectionHead kicker="OPC Hubs" id="hub-h" title="Two hubs, Sydney first"
+      lead="A local base for client meetings, demonstrations and delivery support." />
+    <div class="tiles t2 stagger reveal">
+      {hubs.map((h) => (
+        <div class="tile">
+          <div class="vcard-top"><span class="t-k">OPC Hub</span><StatusBadge status="In Development" /></div>
+          <h3>{h.name}</h3>
+          <p>{h.d}</p>
+        </div>
+      ))}
     </div>
-    <div class="reveal-r" id="anz">
-      <div class="sep-box">
-        <h3 class="h4">Sydney first, Auckland next</h3>
-        <p>Sydney is the first node, alongside DNY’s headquarters. Auckland is the expansion direction for New Zealand. Membership and partnership are established through documented agreements.</p>
-      </div>
-    </div>
+    <p class="src-note reveal" style="margin-top:14px;">You don't need to be in Australia or New Zealand. Members deliver remotely; hubs give the network a local presence.</p>
   </div>
 </section>
 
-<FAQ groups={['opcfde']} title="OPC + FDE — common questions" dark />
+<section class="section dark" id="who" aria-labelledby="who-h">
+  <div class="container">
+    <SectionHead kicker="Who can join" id="who-h" title="Who the Alliance is for" />
+    <div class="tiles t3 stagger reveal">
+      {who.map((w) => (
+        <div class="tile"><span class="t-k">Membership</span><h3>{w.k}</h3><p>{w.d}</p></div>
+      ))}
+    </div>
+    <p class="src-note reveal" style="margin-top:14px;">Members can be based anywhere in the world. All Alliance activity is conducted in English.</p>
+  </div>
+</section>
 
-<CTABand title="Deliver real projects with the network" primary={CTA.partner} secondary={CTA.brief} />
+<FAQ groups={['opcfde']} title="ANZ OPC + FDE Alliance — common questions" />
+
+<CTABand title="Join the network that delivers" primary={{ label: 'Join for Free', href: `${JOIN}?tier=community` }} secondary={CTA.partner} />
 </Base>

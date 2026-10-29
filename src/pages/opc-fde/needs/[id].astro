@@ -1,0 +1,66 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHead from '../../../components/SectionHead.astro';
+import { NEEDS, effectiveStatus, daysUntil, type Need } from '../../../data/opc-needs';
+
+export function getStaticPaths() {
+  return NEEDS.map((n) => ({ params: { id: n.id }, props: { n } }));
+}
+
+const { n } = Astro.props as { n: Need };
+const state = effectiveStatus(n);
+const closed = state === 'Closed';
+const crumbs = [
+  { name: 'OPC + FDE', href: '/opc-fde' },
+  { name: 'Open Needs', href: '/opc-fde#needs' },
+  { name: n.title, href: `/opc-fde/needs/${n.id}` },
+];
+const description = `${n.title} — ${n.sector}, ${n.location}. ${n.summary}`.slice(0, 300);
+const joinHref = `/opc-fde/join?need=${n.id}&tier=${n.minTier.toLowerCase()}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: n.title,
+  description: n.summary,
+  isPartOf: { '@id': 'https://dnycrossbordergroup.com/#website' },
+};
+---
+<Base title={`${n.title} — Open Need`} {description} breadcrumbs={crumbs} schema={[schema]} noindex={closed}>
+<PageHero badge={closed ? 'Open Need · Closed' : `Open Need · ${n.sector}`} title={n.title} {crumbs}
+  lead={n.summary}
+  primary={closed ? undefined : { label: 'Express Interest', href: joinHref }}
+  secondary={{ label: 'Back to Open Needs', href: '/opc-fde#needs' }} />
+
+<section class="section" aria-labelledby="need-h">
+  <div class="container">
+    {closed && <p class="src-note" style="margin-bottom:18px;">This need is closed.</p>}
+    <SectionHead kicker="About this need" id="need-h" title="What the work involves"
+      lead={closed ? 'This need is closed and kept for reference.' : undefined} />
+
+    <dl class="vfacts">
+      <div class="vfact"><dt>Sector</dt><dd>{n.sector}</dd></div>
+      <div class="vfact"><dt>Location</dt><dd>{n.location}</dd></div>
+      <div class="vfact"><dt>Delivery</dt><dd>{n.delivery}</dd></div>
+      <div class="vfact"><dt>Contracting</dt><dd>{n.contracting}</dd></div>
+      <div class="vfact"><dt>Type</dt><dd>{n.type}</dd></div>
+      <div class="vfact"><dt>Status</dt><dd>{state}</dd></div>
+      <div class="vfact"><dt>Posted</dt><dd>{n.posted}</dd></div>
+      {n.closes && <div class="vfact"><dt>Closes</dt><dd>{n.closes}{!closed && ` · ${daysUntil(n.closes)} days`}</dd></div>}
+    </dl>
+
+    <div class="split" style="margin-top:26px;">
+      <div class="reveal-l">
+        <h3 class="h4">Skills needed</h3>
+        <div class="vcard-tags" style="margin-top:10px;">{n.skills.map((s) => <span class="pill">{s}</span>)}</div>
+        <h3 class="h4" style="margin-top:24px;">Who can express interest</h3>
+        <p class="prose" style="margin-top:8px;">Open to {n.minTier} members and above. Not a member yet? Joining is free.</p>
+      </div>
+      <div class="reveal-r">
+        {!closed && <a href={joinHref} class="btn btn-primary">Express Interest</a>}
+        <p class="src-note" style="margin-top:14px;">The full brief, including the client's name, is shared with shortlisted members under a confidentiality agreement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</Base>

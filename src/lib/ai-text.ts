@@ -8,6 +8,8 @@ import { FAQS } from '../data/faqs';
 import { GLOSSARY } from '../data/glossary';
 import { PRODUCTS, CATEGORIES as PCATS, APP_PATH } from '../data/components';
 import { EV_BRAND } from '../data/ventures';
+import { listedNeeds, effectiveStatus } from '../data/opc-needs';
+import { GROUP_CARDS } from '../data/opc-group';
 
 const U = (p: string) => new URL(p, SITE.url).href;
 const strip = (s: string) => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
@@ -59,6 +61,12 @@ export function llmsTxt(): string {
       const desc = t?.def ?? v?.short ?? ('desc' in c ? (c as { desc?: string }).desc : '') ?? '';
       L.push(`- [${c.label}](${U(c.href)})${desc ? `: ${desc}` : ''}`);
     }
+    L.push('');
+  }
+  const open = listedNeeds();
+  if (open.length) {
+    L.push('## Open Needs', '');
+    open.forEach((n) => L.push(`- [${n.title}](${U('/opc-fde/needs/' + n.id)}): ${n.sector}; ${n.location}; ${n.delivery}; closes ${n.closes ?? 'open-ended'}.`));
     L.push('');
   }
   L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems — sourced and quoted on request; no complete drones are sold; no prices published`);
@@ -134,7 +142,12 @@ export function llmsFullTxt(): string {
   PRODUCTS.filter((p) => p.models).forEach((p) => L.push(`- ${p.name} (${U('/components/products/' + p.slug)}): ${p.models!.join(', ')}.`));
 
   h(2, 'OPC + FDE network');
-  L.push(`Page: ${U('/opc-fde')}`, '', 'OPC = Office + AI Agents: local business nodes that combine workspace, AI agent capability and market connections — not a conventional co-working space. FDE = Forward Deployed Entrepreneur: a delivery role working directly on real customer problems to take solutions from proof of concept to deployment. Sydney is the first node; Auckland is the expansion direction for New Zealand. The ANZ OPC + FDE Alliance is the membership organisation behind the network, with FDE delivery capability built into member benefits.');
+  L.push(`Page: ${U('/opc-fde')}`, '', 'OPC = One Person Company: a business run by one person or a very small team that uses AI agents to deliver at the scale of a much larger firm. FDE = Forward Deployed Entrepreneur: a founder who deploys a proven product or service into the Australian and New Zealand market from wherever they are, with DNY as the local partner. OPC Hub = DNY\'s local base in Australia or New Zealand. Sydney is the first hub; Auckland is next. The ANZ OPC + FDE Alliance is the membership organisation behind the network: Community membership is free, Professional and Premier carry an annual fee on application, and partnership (Delivery Partner, Lead Partner, Principal Partner) is open to Premier members only. Members deliver remotely; DNY provides the local presence, contracting where a client needs it.');
+
+  h(2, 'Open Needs');
+  L.push(`Page: ${U('/opc-fde#needs')}`, `How to express interest: ${U('/opc-fde/join')}`, '', 'Open Needs are curated by DNY from DNY group ventures and business lines, and from verified needs of organisations in Australia and New Zealand. Client names, budgets and contract terms are not published on this website.');
+  GROUP_CARDS.forEach((c) => L.push(`- **${c.name}** (${c.category}, ${c.status}): ${c.short} Work areas: ${c.workAreas.join(', ')}. More: ${U(c.href)}. Express interest: ${U('/opc-fde/join?venture=' + c.key)}`));
+  listedNeeds().forEach((n) => L.push('', `- **${n.title}** — ${n.sector}; ${n.location}; delivery ${n.delivery}; contracting ${n.contracting}; ${n.type}; status ${effectiveStatus(n)}${n.closes ? '; closes ' + n.closes : ''}. ${n.summary} Skills: ${n.skills.join(', ')}. Details: ${U('/opc-fde/needs/' + n.id)}`));
 
   h(2, 'Frequently asked questions');
   for (const g of Object.values(FAQS)) {

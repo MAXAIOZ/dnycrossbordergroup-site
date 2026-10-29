@@ -59,6 +59,18 @@ export const itemListSchema = (name: string, items: Product[]) => ({
   itemListElement: items.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.name, url: `https://dnycrossbordergroup.com/components/products/${p.slug}` })),
 });
 
+// Services offered on /components. Also used as the work areas on the
+// Drone & Robotics Components card in Open Needs, so the copy lives once.
+export const SERVICES = [
+  { k: 'Component Sourcing', d: 'Tell us the model, generation and part number. We source the matching part and confirm it with you before quoting.' },
+  { k: 'Bulk Supply Enquiries', d: 'Quantities for fleets, service teams and resellers, quoted per enquiry.' },
+  { k: 'Compatibility Review', d: 'We check the part against the exact model, generation and part number you provide before any quote.' },
+  { k: 'Custom Module Enquiries', d: 'Brackets, mounts and mechanical parts made to your drawing or sample, assessed case by case.' },
+];
+
+export const COMPONENTS_LEAD =
+  'Explore components for drones, industrial robots and commercial autonomous systems. Submit your model, part number and quantity for sourcing and quotation.';
+
 export const COMPONENTS_CTA = {
   drones: { label: 'Browse Drone Components', href: '/components/drones' },
   robotics: { label: 'Explore Robotics Components', href: '/components/robotics' },

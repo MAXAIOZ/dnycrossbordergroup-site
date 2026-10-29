@@ -470,3 +470,39 @@ body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button, body.
 .pcard .pcard-name { margin-top: 0 }
 .pcard-models { margin: -2px 0 6px }
 .pcard-actions { margin-top: auto }
+
+
+/* ---------- ANZ OPC + FDE Alliance (2026-10-29) ---------- */
+.def-stack { display: grid; gap: 10px; margin-top: 18px; }
+.def-stack .definition { margin: 0; }
+
+.tiles.t2 { grid-template-columns: 1fr; }
+@media (min-width: 860px) { .tiles.t2 { grid-template-columns: repeat(2, 1fr); } }
+
+.mem-card { position: relative; display: flex; flex-direction: column; gap: 10px; }
+.mem-card.gold { border-color: var(--gold); }
+.tier-badge {
+  position: absolute; top: 12px; right: 12px; font-size: 9.5px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(239,159,39,.45); border-radius: 999px; padding: 4px 8px; background: rgba(239,159,39,.08);
+}
+.mem-price { font-size: 15px; color: var(--t1); font-weight: 600; margin: 0; }
+.mem-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 13.5px; color: var(--t2); line-height: 1.55; }
+.mem-list li { position: relative; padding-left: 15px; }
+.mem-list li::before { content: ''; position: absolute; left: 0; top: .6em; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: .8; }
+.mem-btn { margin-top: auto; align-self: flex-start; }
+
+.tier-row { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .tier-row { grid-template-columns: repeat(3, 1fr); } }
+.tier-card { gap: 8px; }
+.tier-meta { font-size: 13px; color: var(--t3); line-height: 1.6; }
+.tier-meta strong { color: var(--t1); font-weight: 600; }
+
+.need-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: auto; padding-top: 12px; }
+.need-actions .project-link { font-size: 13.5px; }
+
+.check-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 8px; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--t2); line-height: 1.5; }
+.check input { margin-top: 3px; flex: 0 0 auto; }
+fieldset.form-group { border: 0; padding: 0; margin: 0 0 14px; }
+fieldset.form-group legend { font-size: 12.5px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }

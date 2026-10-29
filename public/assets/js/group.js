@@ -179,4 +179,106 @@
         .then(function () { btn.disabled = false; btn.textContent = 'Send enquiry'; });
     });
   }
+
+  /* ---------- Alliance application form (opc-membership) ---------- */
+  var jf = document.getElementById('join-form');
+  if (jf) {
+    var qs = new URLSearchParams(location.search);
+    var tierSel = jf.querySelector('[name="tier"]');
+    var needInput = jf.querySelector('[name="need"]');
+    var ventureSel = jf.querySelector('[name="venture"]');
+    var partnerWrap = document.getElementById('partner-track-wrap');
+
+    var qTier = (qs.get('tier') || '').toLowerCase();
+    if (qTier && tierSel && tierSel.querySelector('option[value="' + qTier + '"]')) tierSel.value = qTier;
+    var qNeed = qs.get('need');
+    if (qNeed && /^N-[0-9]{4}-[0-9]{3}$/.test(qNeed) && needInput) needInput.value = qNeed;
+    var qVenture = qs.get('venture');
+    if (qVenture && /^[a-z0-9-]+$/.test(qVenture) && ventureSel && ventureSel.querySelector('option[value="' + qVenture + '"]')) ventureSel.value = qVenture;
+
+    function syncTier() {
+      if (!partnerWrap || !tierSel) return;
+      var isPremier = tierSel.value === 'premier';
+      partnerWrap.hidden = !isPremier;
+      if (!isPremier) {
+        var cb = partnerWrap.querySelector('input[type="checkbox"]');
+        if (cb) cb.checked = false;
+      }
+    }
+    if (tierSel) { tierSel.addEventListener('change', syncTier); syncTier(); }
+
+    var jstatus = jf.querySelector('.form-status');
+    function jsay(msg, ok) {
+      jstatus.hidden = false;
+      jstatus.className = 'form-status ' + (ok ? 'ok' : 'err');
+      jstatus.innerHTML = msg;
+    }
+    jf.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = new FormData(jf);
+      if (d.get('_honey')) return;
+      var name = String(d.get('name') || '').trim();
+      var email = String(d.get('email') || '').trim();
+      if (!name || !email) { jsay('Please fill in your name and email.', false); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { jsay('Please enter a valid email address.', false); return; }
+      var caps = d.getAll('capabilities');
+      if (!caps.length) { jsay('Please choose at least one capability.', false); return; }
+      if (!d.get('privacy_consent')) { jsay('Please confirm that you agree to the privacy policy.', false); return; }
+
+      var tier = String(d.get('tier') || 'community');
+      var tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
+      var venture = String(d.get('venture') || '');
+      var subject = '[DNY OPC] Membership application — ' + tierLabel + ' — ' + name +
+        (venture && venture !== 'Not sure yet' ? ' — ' + venture : '');
+
+      var payload = {
+        name: name,
+        email: email,
+        country: String(d.get('country') || ''),
+        joining_as: String(d.get('joining_as') || ''),
+        organisation: String(d.get('organisation') || ''),
+        profile_url: String(d.get('profile_url') || ''),
+        capabilities: caps.join('; '),
+        tier: tierLabel,
+        venture: venture,
+        partner_track: d.get('partner_track') ? 'Yes' : 'No',
+        need: String(d.get('need') || ''),
+        overlap: String(d.get('overlap') || ''),
+        contracting: String(d.get('contracting') || ''),
+        message: String(d.get('message') || ''),
+        marketing_opt_in: d.get('marketing_opt_in') ? 'Yes' : 'No',
+        enquiry_type: 'opc-membership',
+        source_page: location.pathname + location.search,
+        _subject: subject,
+        _replyto: email,
+        _template: 'table',
+        _captcha: 'false'
+      };
+
+      var btn = jf.querySelector('[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch(jf.getAttribute('action'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok || String(res.j.success) === 'false') throw new Error('send failed');
+          jf.reset();
+          if (tierSel) tierSel.value = tier;
+          syncTier();
+          jsay('Thank you. We have received your application and will reply within five business days.', true);
+        })
+        .catch(function () {
+          var mail = 'mailto:' + jf.dataset.email + '?subject=' + encodeURIComponent(subject) +
+            '&body=' + encodeURIComponent('Membership application: ' + tierLabel + '\n' + name + '\n' + email);
+          jsay('We could not send the form just now. Please <a href="' + mail + '">email us directly</a> instead.', false);
+        })
+        .then(function () { btn.disabled = false; btn.textContent = 'Submit Application'; });
+    });
+  }
+
 })();

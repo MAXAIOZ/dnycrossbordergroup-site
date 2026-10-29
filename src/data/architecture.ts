@@ -29,7 +29,7 @@ export const STACK: Layer[] = [
     name: 'OPC + FDE Network',
     role: 'Talent, nodes and industry delivery',
     summary:
-      'Local OPC nodes (Office + AI Agents) and Forward Deployed Entrepreneurs that turn infrastructure into real industry solutions — from proof of concept to deployment.',
+      'Hubs and members — one-person companies and FDEs — matched to real demand and delivering remotely, with DNY as the local partner.',
     items: ['OPC nodes', 'FDE delivery', 'Training', 'Incubation', 'Solution delivery'],
     href: '/opc-fde',
   },
@@ -70,7 +70,7 @@ export const HIERARCHY = [
   { level: 'Group', name: 'DNY Cross Border Group', role: 'Group strategy and holding layer', scope: 'Strategy, capital, brand, partnerships, governance and international markets' },
   { level: 'Layers 1–2', name: 'Trusted & Open AI Infrastructure', role: 'Digital intelligence infrastructure', scope: 'Trusted Data Space, open models, identity, audit, APIs, agents and transaction readiness' },
   { level: 'Layer 3', name: 'Open Physical Intelligence Layer', role: 'Physical intelligence connecting AI to the real world', scope: 'Drones, robotics, edge devices, vision systems, autonomous systems and sensor networks' },
-  { level: 'Layer 4', name: 'OPC + FDE Network', role: 'Talent, node and industry delivery network', scope: 'Office + AI Agents, Forward Deployed Entrepreneurs, training, incubation and solution delivery' },
+  { level: 'Layer 4', name: 'OPC + FDE Network', role: 'Talent, node and industry delivery network', scope: 'One person companies, Forward Deployed Entrepreneurs, member and partner tracks, remote delivery with DNY local support' },
   { level: 'Layer 5', name: 'Applied Ventures & Industry Projects', role: 'Independent ventures and industry companies', scope: `${VENTURE_COUNT_TITLE} core ventures across trusted AI, physical intelligence and industry` },
 ];
 
