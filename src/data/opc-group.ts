@@ -2,12 +2,11 @@
 // Open Needs cards for the first release (design doc §17.2).
 //
 // The cards are DNY's own work, not external tenders: one card per core
-// venture, plus one for Drone & Robotics Components. Everything is derived
-// from existing sources — `ventures.ts` and the components copy — so nothing
-// is re-written, invented or maintained twice. No tasks, budgets or timelines.
+// venture, plus one for Drone & Robotics Components. Venture content is
+// derived from `ventures.ts`, so nothing is re-written or maintained twice.
+// No tasks, budgets or timelines.
 // ─────────────────────────────────────────────────────────────
 import { VENTURES, CATEGORIES, type Category, type Status } from './ventures';
-import { SERVICES, COMPONENTS_LEAD } from './components';
 
 export type GroupNeedCard = {
   key: string; // venture slug, or 'components'
@@ -18,17 +17,20 @@ export type GroupNeedCard = {
   href: string;
   category: Category;
   isComponents?: boolean;
+  /** Shown instead of the status badge when the card is a business line, not a venture. */
+  badge?: string;
 };
 
 export const COMPONENTS_CARD: GroupNeedCard = {
   key: 'components',
   name: 'Drone & Robotics Components',
-  short: COMPONENTS_LEAD,
+  short: "DNY's sourcing and quotation service for drone and robotics components.",
   status: 'In Development',
-  workAreas: SERVICES.map((s) => s.k),
+  workAreas: ['Component Sourcing', 'Bulk Supply Enquiries', 'Compatibility Review', 'Custom Module Enquiries'],
   href: '/components',
   category: 'Physical Intelligence',
   isComponents: true,
+  badge: 'Business line',
 };
 
 const ventureCard = (v: (typeof VENTURES)[number]): GroupNeedCard => ({

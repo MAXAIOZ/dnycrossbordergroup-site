@@ -506,3 +506,37 @@ body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button, body.
 .check input { margin-top: 3px; flex: 0 0 auto; }
 fieldset.form-group { border: 0; padding: 0; margin: 0 0 14px; }
 fieldset.form-group legend { font-size: 12.5px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
+
+
+/* ---------- /opc-fde round 1 (2026-10-29) ---------- */
+h1, h2 { text-wrap: balance; }
+
+.def-strip-wrap { padding: 0 0 8px; border-bottom: 1px solid var(--b0); background: transparent; }
+.def-strip {
+  display: grid; gap: 16px; grid-template-columns: 1fr;
+  padding: 22px 0 26px;
+}
+@media (min-width: 900px) { .def-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; } }
+.def-item .def-term { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--gold); margin-bottom: 6px; }
+.def-item p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--t2); }
+
+.line-badge {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cyan); border: 1px solid var(--bc); background: var(--cyan-dim);
+  border-radius: 999px; padding: 3px 9px;
+}
+
+.need-card { gap: 10px; }
+.need-short {
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden; margin-bottom: 2px;
+}
+
+.contract-row { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--b0); }
+.contract-row .tiles { margin-top: 12px; }
+.contract-line { margin: 16px 0 8px; font-size: 14.5px; color: var(--t1); }
+
+.mem-notes { margin-top: 24px; max-width: 940px; }
+.mem-notes ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 9px; }
+.mem-notes li { position: relative; padding-left: 14px; font-size: 12.5px; line-height: 1.7; color: var(--t3); }
+.mem-notes li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; border-radius: 50%; background: var(--t3); opacity: .7; }
