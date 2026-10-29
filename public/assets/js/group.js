@@ -107,7 +107,7 @@
     apply();
   });
 
-  /* ---------- Enquiry form (typed, attributed, submitted via FormSubmit) ---------- */
+  /* ---------- Enquiry form (typed, attributed, posted to /api/enquiry) ---------- */
   var form = document.getElementById('enquiry-form');
   if (form) {
     var typeSel = form.querySelector('[name="enquiry_type"]');

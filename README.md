@@ -44,7 +44,8 @@ python3 scripts/generate-og.py   # after build: regenerates Open Graph images in
 
 ## Contact form
 
-`/contact` posts JSON to FormSubmit (`SITE.formEndpoint`) and tags each enquiry with
+`/contact` posts JSON to the site's own `/api/enquiry` function (`SITE.formEndpoint`), which sends
+the enquiry through the company Gmail mailbox, and tags each enquiry with
 `enquiry_type` (enterprise / partnership / investment / developer / visit / general), the source page,
 landing page, referrer and UTM parameters. **The first submission sends a one-time activation email to
 info@dnycrossbordergroup.com — click "Activate Form" in that email once.** CTAs link to
