@@ -21,7 +21,7 @@ const key = v.body ?? v.slug;
 const m = (meta as Record<string, { h1?: string; lead?: string; description?: string }>)[key] ?? {};
 const body = (bodies[`../../legacy/${key}.html`] ?? '').replaceAll('{{name}}', v.name);
 const crumbs = [{ name: 'Ventures', href: '/ventures' }, { name: v.name, href: `/ventures/${v.slug}` }];
-const description = `${v.name} — ${v.short} Status: ${v.status}.`;
+const description = `${v.name}: ${v.short} Status: ${v.status}.`;
 const related = VENTURES.filter((x) => x.slug !== v.slug && x.category === v.category).slice(0, 3);
 const schema = {
   '@context': 'https://schema.org',
@@ -38,7 +38,7 @@ const schema = {
 <PageHero badge={`Venture · ${v.category}`} title={v.name} lead={m.lead || v.short} {crumbs}
   primary={CTA.partner} secondary={CTA.brief}>
   <dl class="vfacts">
-    <div class="vfact"><dt>Status</dt><dd><StatusBadge status={v.status} /><span class="sr-only"> — {STATUS_DEFS[v.status]}</span></dd></div>
+    <div class="vfact"><dt>Status</dt><dd><StatusBadge status={v.status} /><span class="sr-only">: {STATUS_DEFS[v.status]}</span></dd></div>
     <div class="vfact"><dt>Builds on</dt><dd>{v.builtOn}</dd></div>
     <div class="vfact"><dt>Industry</dt><dd>{v.industries.join(', ')}</dd></div>
     <div class="vfact"><dt>Core capabilities</dt><dd>{v.capabilities.join(' · ')}</dd></div>

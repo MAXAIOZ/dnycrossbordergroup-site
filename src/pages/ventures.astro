@@ -8,7 +8,7 @@ import { VENTURES, ARCHIVED, CATEGORIES, CATEGORY_DEFS, STATUS_DEFS, type Status
 import { CTA } from '../data/site';
 
 const title = 'Ventures';
-const description = `DNY Cross Border Group’s ${VENTURES.length} core ventures across trusted & open AI, physical intelligence and industry — each with its status and its relationship to the group’s shared infrastructure.`;
+const description = `DNY Cross Border Group’s ${VENTURES.length} core ventures across trusted & open AI, Physical SI and industry, each with its status and its relationship to the group’s shared infrastructure.`;
 const crumbs = [{ name: 'Ventures', href: '/ventures' }];
 const list = {
   '@context': 'https://schema.org',
@@ -20,7 +20,7 @@ const list = {
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={[list]}>
 <PageHero badge="Ventures" title={`${VENTURES.length} ventures on shared infrastructure`} {crumbs}
-  lead="Each venture is a focused business with its own products, customers and model. All of them reuse the group’s trusted AI infrastructure, physical intelligence layer and delivery network — so new ventures can be added without rebuilding the foundations."
+  lead="Each venture is a focused business with its own products, customers and model. All of them reuse the group’s trusted AI infrastructure, Physical SI layer and delivery network, so new ventures can be added without rebuilding the foundations."
   primary={CTA.brief} secondary={CTA.partner} />
 
 {CATEGORIES.map((c, i) => (
@@ -45,7 +45,7 @@ const list = {
       <span class="kicker">Other Initiatives</span>
       <h2 class="h2-sm">Earlier initiatives</h2>
       <p class="src-note" style="margin:10px 0 16px;">These initiatives are not part of the group’s current core focus.</p>
-      <ul class="archived">{ARCHIVED.map((a) => <li><strong>{a.name}</strong> — {a.line}</li>)}</ul>
+      <ul class="archived">{ARCHIVED.map((a) => <li><strong>{a.name}</strong>: {a.line}</li>)}</ul>
     </div>
   </div>
 </section>

@@ -29,7 +29,7 @@ const evidence: Record<string, string> = {
 ---
 <Base {title} {description} breadcrumbs={crumbs}>
 <PageHero badge="Industries" title="Industries: where the infrastructure is applied" {crumbs}
-  lead="We start in the physical-economy sectors where Australian AI adoption is lowest and the value of trusted, deployable AI is highest — and where the group’s cross-border roots give us real operating knowledge."
+  lead="We start in the physical-economy sectors where Australian AI adoption is lowest and the value of trusted, deployable AI is highest, and where the group’s cross-border roots give us real operating knowledge."
   primary={CTA.partner} secondary={CTA.brief} />
 
 <section class="section" aria-labelledby="mx-h">
@@ -66,7 +66,7 @@ const evidence: Record<string, string> = {
   <div class="container">
     <SectionHead kicker="Future Expansion" id="fut-h" title="Future verticals" lead={future.description} />
     <div class="tiles t4 stagger reveal">
-      {future.useCases.map((u) => { const [k, d] = u.split(' — '); return <div class="tile"><span class="t-k">Future expansion</span><h3>{k}</h3><p>{d}</p></div>; })}
+      {future.useCases.map((u) => { const [k, d] = u.split(': '); return <div class="tile"><span class="t-k">Future expansion</span><h3>{k}</h3><p>{d}</p></div>; })}
     </div>
     <p class="src-note reveal" style="margin-top:18px;">Future verticals describe intended expansion directions only, not current operations.</p>
   </div>

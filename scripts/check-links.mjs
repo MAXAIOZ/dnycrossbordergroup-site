@@ -44,5 +44,56 @@ for (const f of files) {
   if (/\bLayer [0-9]/.test(text) && rel !== '/index.html') err(`${rel}: layer numbering outside the homepage`);
   if (!/<link rel="canonical"/.test(html) && !rel.includes('404')) err(`${rel}: no canonical`);
 }
+// ---- Em dash check (design decision 2026-10-30): visible copy must not use "—".
+// Exceptions: elements marked data-dash-ok, /admin/, <script>, <style>, HTML comments,
+// and Markdown table cells whose only content is the dash.
+const DASH = '\u2014';
+const keepLines = (s) => s.replace(/[^\n]/g, '');
+const stripBlocks = (s) =>
+  s
+    .replace(/<script[\s\S]*?<\/script>/gi, keepLines)
+    .replace(/<style[\s\S]*?<\/style>/gi, keepLines)
+    .replace(/<!--[\s\S]*?-->/g, keepLines)
+    .replace(/<(\w+)(?=[^>]*\bdata-dash-ok\b)[^>]*>[\s\S]*?<\/\1>/gi, keepLines);
+
+function scanDashes(label, text, { markdown = false } = {}) {
+  text.split('\n').forEach((line, i) => {
+    if (!line.includes(DASH)) return;
+    let segment = line;
+    // Markdown twins flatten table cells onto their own lines, so a line made only of
+    // the dash (plus pipes and spaces) is an empty table value, not copy.
+    if (markdown && line.replace(/[\s|\u2014]/g, '') === '') return;
+    if (markdown && line.trim().startsWith('|')) {
+      // A table cell that holds nothing but the dash is an intentional empty value.
+      const offending = line.split('|').filter((c) => c.includes(DASH) && c.replace(/[\s\u2014]/g, '') !== '');
+      if (!offending.length) return;
+      segment = offending.join('|');
+    }
+    const at = segment.indexOf(DASH);
+    const from = Math.max(0, at - 40);
+    const to = Math.min(segment.length, at + 41);
+    err(`${label}: em dash at line ${i + 1}: …${segment.slice(from, to).trim()}…`);
+  });
+}
+
+for (const f of files) {
+  const rel = f.replace(DIST, '/');
+  if (rel.startsWith('/admin/')) continue;
+  scanDashes(rel, stripBlocks(readFileSync(f, 'utf8')));
+}
+
+const textFiles = [];
+const walkText = (d) => readdirSync(d).forEach((f) => {
+  const p = join(d, f);
+  if (statSync(p).isDirectory()) walkText(p);
+  else if (/\.(md|txt)$/.test(p)) textFiles.push(p);
+});
+walkText(DIST);
+for (const f of textFiles) {
+  const rel = f.replace(DIST, '/');
+  if (rel.startsWith('/admin/') || rel.endsWith('/CREDITS.md')) continue;
+  scanDashes(rel, readFileSync(f, 'utf8'), { markdown: rel.endsWith('.md') });
+}
+
 console.log(`${files.length} pages checked, ${errors} problem(s).`);
 process.exit(errors ? 1 : 0);

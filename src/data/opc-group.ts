@@ -28,7 +28,7 @@ export const COMPONENTS_CARD: GroupNeedCard = {
   status: 'In Development',
   workAreas: ['Component Sourcing', 'Bulk Supply Enquiries', 'Compatibility Review', 'Custom Module Enquiries'],
   href: '/components',
-  category: 'Physical Intelligence',
+  category: 'Physical SI',
   isComponents: true,
   badge: 'Business line',
 };
@@ -43,10 +43,10 @@ const ventureCard = (v: (typeof VENTURES)[number]): GroupNeedCard => ({
   category: v.category,
 });
 
-/** Ventures in category order, with Components after Physical Intelligence. */
+/** Ventures in category order, with Components after Physical SI. */
 export const GROUP_CARDS: GroupNeedCard[] = CATEGORIES.flatMap((cat) => {
   const cards = VENTURES.filter((v) => v.category === cat).map(ventureCard);
-  return cat === 'Physical Intelligence' ? [...cards, COMPONENTS_CARD] : cards;
+  return cat === 'Physical SI' ? [...cards, COMPONENTS_CARD] : cards;
 });
 
 /** Options for the "Venture of interest" field on the join form. */

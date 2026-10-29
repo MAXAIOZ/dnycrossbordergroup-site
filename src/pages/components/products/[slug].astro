@@ -21,9 +21,9 @@ const modelSchema = p.models ? [{
 }] : [];
 const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, 3);
 ---
-<Base title={`${p.name} — ${APP_LABEL[p.application]}`} description={`${p.description} Quoted on request by DNY, Sydney.`} breadcrumbs={crumbs} schema={modelSchema}>
+<Base title={`${p.name}`} description={`${p.description} Quoted on request by DNY, Sydney.`} breadcrumbs={crumbs} schema={modelSchema}>
 <PageHero badge={c.name} title={p.name} {crumbs} lead={p.description}>
-  {seriesImage(p) && <img class="phero-img" src={seriesImage(p, true)} srcset={`${seriesImage(p, true)} 240w, ${seriesImage(p)} 480w`} sizes="190px" alt={`${p.name} — representative model`} width="240" height="240" fetchpriority="high" />}
+  {seriesImage(p) && <img class="phero-img" src={seriesImage(p, true)} srcset={`${seriesImage(p, true)} 240w, ${seriesImage(p)} 480w`} sizes="190px" alt={`${p.name}, representative model`} width="240" height="240" fetchpriority="high" />}
   <div class="hero-actions"><button type="button" class="btn btn-primary btn-add" data-add={p.id}>Add to Enquiry</button><a href="/components/enquiry" class="btn btn-secondary">Request a Quote</a></div>
 </PageHero>
 {p.models && (

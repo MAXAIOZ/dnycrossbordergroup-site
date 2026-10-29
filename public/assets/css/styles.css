@@ -241,6 +241,13 @@ p + p { margin-top: 12px }
   white-space: nowrap;
 }
 
+.nav-short { display: none }
+/* 1280–1439px: the full Physical Super Intelligence (SI) label crowds the nav. */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .nav-item.has-short .nav-full { display: none }
+  .nav-item.has-short .nav-short { display: inline }
+}
+
 .site-nav a:hover { color: var(--t1); background: var(--glass) }
 
 .site-nav a.active { color: var(--gold-lt); background: var(--glass) }

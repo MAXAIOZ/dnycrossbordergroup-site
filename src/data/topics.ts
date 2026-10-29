@@ -43,18 +43,18 @@ export type Topic = {
   cta: { title: string; lead?: string; primary: Link; secondary?: Link };
 };
 
-const PI = { section: 'physical-intelligence' as const, sectionName: 'Physical Intelligence' };
+const PI = { section: 'physical-intelligence' as const, sectionName: 'Physical SI' };
 
 export const TOPICS: Topic[] = [
   {
     ...PI,
     slug: 'drones',
     navTitle: 'Drones',
-    title: 'Commercial Drones — Air Intelligence',
-    description: 'Air Intelligence on the DNY Physical Intelligence Layer: commercial drone systems for autonomous aerial inspection, sensing, mapping and industrial data capture, with trusted data and audit built in.',
+    title: 'Commercial Drones: Air Intelligence',
+    description: 'Air Intelligence on the DNY Physical SI Layer: commercial drone systems for autonomous aerial inspection, sensing, mapping and industrial data capture, with trusted data and audit built in.',
     badge: 'Air Intelligence',
     h1: 'Commercial drones: Air Intelligence',
-    lead: 'Autonomous aerial inspection, sensing, mapping and industrial data capture — connected to trusted AI so that what a drone sees becomes verified, actionable information.',
+    lead: 'Autonomous aerial inspection, sensing, mapping and industrial data capture, connected to trusted AI so that what a drone sees becomes verified, actionable information.',
     term: 'Commercial drone systems',
     def: 'Uncrewed aircraft, sensors and software used for inspection, mapping, sensing and industrial data capture in commercial and government operations.',
     about: ['Commercial drones', 'Aerial inspection', 'Computer vision'],
@@ -62,12 +62,12 @@ export const TOPICS: Topic[] = [
     secondary: { label: 'DNY Aerial Systems', href: '/ventures/dny-aerial-systems' },
     blocks: [
       {
-        kind: 'roles', kicker: 'How It Fits', title: 'DNY is not a drone company — drones are one direction of the layer',
-        lead: 'The commercial drone programme is the first industry programme under Physical Intelligence. It can operate as an independent brand and company while reusing group infrastructure.',
+        kind: 'roles', kicker: 'How It Fits', title: 'DNY is not a drone company: drones are one direction of the layer',
+        lead: 'The commercial drone programme is the first industry programme under Physical SI. It can operate as an independent brand and company while reusing group infrastructure.',
         items: [
           { name: 'DNY Group', d: 'Strategy, platform, trusted infrastructure, ecosystem and capital.' },
-          { name: 'Physical Intelligence Layer', d: 'The unified connection between devices and AI.' },
-          { name: 'Drone venture', d: 'Products, services, customers, operations and revenue — DNY Aerial Systems.' },
+          { name: 'Physical SI Layer', d: 'The unified connection between devices and AI.' },
+          { name: 'Drone venture', d: 'Products, services, customers, operations and revenue: DNY Aerial Systems.' },
         ],
       },
       {
@@ -93,17 +93,17 @@ export const TOPICS: Topic[] = [
     related: [{ label: 'Edge AI & vision', href: '/physical-intelligence#edge' }, { label: 'Built Environment', href: '/industries#built-environment' }],
     ventures: ['dny-aerial-systems'],
     faq: ['drones'],
-    cta: { title: 'Plan a governed drone programme', lead: 'Inspection, mapping or data capture — tell us about your assets.', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a supplier', href: '/contact?type=partnership' } },
+    cta: { title: 'Plan a governed drone programme', lead: 'Inspection, mapping or data capture: tell us about your assets.', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a supplier', href: '/contact?type=partnership' } },
   },
   {
     ...PI,
     slug: 'robotics',
     navTitle: 'Robotics',
-    title: 'Embodied Robotics — Embodied Intelligence',
-    description: 'Embodied Intelligence on the DNY Physical Intelligence Layer: robots that perceive, reason and act in Australian industrial, logistics and service environments, governed by trusted AI.',
+    title: 'Embodied Robotics: Embodied Intelligence',
+    description: 'Embodied Intelligence on the DNY Physical SI Layer: robots that perceive, reason and act in Australian industrial, logistics and service environments, governed by trusted AI.',
     badge: 'Embodied Intelligence',
     h1: 'Embodied robotics: Embodied Intelligence',
-    lead: 'Robots that perceive, reason and act in Australian industrial, logistics and service environments — built on DNY’s trusted open AI and physical intelligence infrastructure.',
+    lead: 'Robots that perceive, reason and act in Australian industrial, logistics and service environments, built on DNY’s trusted, open AI and Physical SI infrastructure.',
     term: 'Embodied AI',
     def: 'AI that operates through a physical body, such as a robot, so it can perceive, reason and act in its surroundings.',
     about: ['Embodied AI', 'Robotics', 'Autonomous systems'],

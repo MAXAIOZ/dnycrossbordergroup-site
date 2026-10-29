@@ -16,7 +16,7 @@ const crumbs = [
   { name: 'Open Needs', href: '/opc-fde#needs' },
   { name: n.title, href: `/opc-fde/needs/${n.id}` },
 ];
-const description = `${n.title} — ${n.sector}, ${n.location}. ${n.summary}`.slice(0, 300);
+const description = `${n.title}: ${n.sector}, ${n.location}. ${n.summary}`.slice(0, 300);
 const joinHref = `/opc-fde/join?need=${n.id}&tier=${n.minTier.toLowerCase()}`;
 const schema = {
   '@context': 'https://schema.org',
@@ -26,7 +26,7 @@ const schema = {
   isPartOf: { '@id': 'https://dnycrossbordergroup.com/#website' },
 };
 ---
-<Base title={`${n.title} — Open Need`} {description} breadcrumbs={crumbs} schema={[schema]} noindex={closed}>
+<Base title={`${n.title}`} {description} breadcrumbs={crumbs} schema={[schema]} noindex={closed}>
 <PageHero badge={closed ? 'Open Need · Closed' : `Open Need · ${n.sector}`} title={n.title} {crumbs}
   lead={n.summary}
   primary={closed ? undefined : { label: 'Express Interest', href: joinHref }}

@@ -23,7 +23,7 @@
       "id": "airframe-parts",
       "application": "drone",
       "name": "Airframe Parts",
-      "summary": "Arms, hinges, landing gear, shells and protective cages — structural parts only."
+      "summary": "Arms, hinges, landing gear, shells and protective cages: structural parts only."
     },
     {
       "id": "mechanical-mounts",

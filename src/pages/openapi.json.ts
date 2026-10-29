@@ -9,7 +9,7 @@ export const GET: APIRoute = () => {
   const spec = {
     openapi: '3.1.0',
     info: {
-      title: 'DNY Cross Border Group — public API',
+      title: 'DNY Cross Border Group public API',
       version: '2.0.0',
       description:
         'Endpoints that let AI agents and tools read DNY Cross Border Group content and, acting for a buyer, submit a component quote request. No authentication is required. Every page is also available as Markdown with Accept: text/markdown. Personal information sent to the enquiry endpoint is handled under ' + SITE.url + '/privacy.',
@@ -37,7 +37,7 @@ export const GET: APIRoute = () => {
           operationId: 'submitComponentEnquiry',
           summary: 'Submit a component quote request on behalf of a buyer',
           description:
-            'Creates a quote request for drone or robotics components. Only submit with the buyer’s knowledge and their real contact details. Each line needs a product_id from /components/catalogue.json and a quantity, or a free-text description for a part that is not listed. Fit, price, stock and lead time are confirmed by DNY by email after review — nothing is ordered or charged. Rate limited to 5 requests per 10 minutes per IP address. Photos and drawings can only be attached through the website form.',
+            'Creates a quote request for drone or robotics components. Only submit with the buyer’s knowledge and their real contact details. Each line needs a product_id from /components/catalogue.json and a quantity, or a free-text description for a part that is not listed. Fit, price, stock and lead time are confirmed by DNY by email after review, and nothing is ordered or charged. Rate limited to 5 requests per 10 minutes per IP address. Photos and drawings can only be attached through the website form.',
           requestBody: {
             required: true,
             content: {
@@ -82,8 +82,8 @@ export const GET: APIRoute = () => {
             '201': { description: 'Saved. Returns the enquiry reference to give to the buyer.', content: { 'application/json': { schema: { type: 'object', properties: { reference: { type: 'string', example: 'DNY-Q-261025-ABC234' } } } } } },
             '400': { description: 'Validation error with a readable message in `error`' },
             '422': { description: 'A product_id is not in the published catalogue' },
-            '429': { description: 'Rate limited — retry later' },
-            '503': { description: 'Enquiries temporarily unavailable — email ' + SITE.email },
+            '429': { description: 'Rate limited, retry later' },
+            '503': { description: 'Enquiries temporarily unavailable. Email ' + SITE.email },
           },
         },
       },

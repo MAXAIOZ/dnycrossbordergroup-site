@@ -165,7 +165,7 @@
           if (!res.ok || String(res.j.success) === 'false') throw new Error(res.j.message || 'Send failed');
           form.reset();
           if (typeSel) typeSel.value = type;
-          say('Thank you — your ' + type + ' enquiry has been sent. We will reply to ' + email.replace(/</g, '') + '.', true);
+          say('Thank you, your ' + type + ' enquiry has been sent. We will reply to ' + email.replace(/</g, '') + '.', true);
           if (window.dataLayer) window.dataLayer.push({ event: 'enquiry_submit', enquiry_type: type });
         })
         .catch(function () {
@@ -287,7 +287,7 @@
           ];
           var mail = 'mailto:' + jf.dataset.email + '?subject=' + encodeURIComponent(subject) +
             '&body=' + encodeURIComponent(lines.join('\n'));
-          jsay('We could not send the form just now. Please <a href="' + mail + '">email us directly</a> instead — your answers are already filled in.', false);
+          jsay('We could not send the form just now. Please <a href="' + mail + '">email us directly</a> instead. Your answers are already filled in.', false);
         })
         .then(function () { btn.disabled = false; btn.textContent = 'Submit Application'; });
     });

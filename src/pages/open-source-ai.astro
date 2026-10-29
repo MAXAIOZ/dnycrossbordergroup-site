@@ -14,11 +14,11 @@ const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }, { nam
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Open Source AI: open technology, commercial infrastructure', description, '/open-source-ai', ['Open Source AI', 'Open-weight models', 'Model licensing']), definedTerm('Open Source AI', def, '/open-source-ai')]}>
 <PageHero badge="Open Source · The Route" title="Open Source AI: open technology, commercial infrastructure" {crumbs}
-  lead="Open source is already deeply embedded in enterprise technology. DNY does not compete by owning every underlying model — it builds the commercial operating layer around open AI, concentrating investment on deployment tooling, integrations, governance and support."
+  lead="Open source is already deeply embedded in enterprise technology. DNY does not compete by owning every underlying model. It builds the commercial operating layer around open AI, concentrating investment on deployment tooling, integrations, governance and support."
   primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="Open Source AI" def={def} />
 </PageHero>
 <Fragment set:html={body} />
-<FAQ groups={['open']} title="Open Source AI — common questions" dark />
+<FAQ groups={['open']} title="Open Source AI: common questions" dark />
 <CTABand title="Use open AI with confidence" primary={CTA.brief} secondary={CTA.partner} />
 </Base>

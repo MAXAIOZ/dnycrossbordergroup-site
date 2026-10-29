@@ -30,7 +30,7 @@ export const INDUSTRIES: Industry[] = [
     name: 'Built Environment',
     line: 'Building data, materials, modular construction, computer vision, site inspection and digital twins.',
     description:
-      'Verifiable building-product data, standards mapping and modular construction libraries — combined with aerial and on-site inspection — so design, procurement and asset systems can rely on the same trusted record.',
+      'Verifiable building-product data, standards mapping and modular construction libraries, combined with aerial and on-site inspection, so design, procurement and asset systems can rely on the same trusted record.',
     useCases: ['Open building-product data and standards mapping', 'Modular and MMC component libraries', 'Drone-based site and facade inspection', 'Digital twins for asset handover', 'AI-assisted materials valuation'],
     caps: { data: 'core', agents: 'supporting', vision: 'core', drones: 'core', fde: 'supporting' },
     ventures: ['building-supply', 'facadia', 'auralio', 'dny-aerial-systems'],
@@ -41,7 +41,7 @@ export const INDUSTRIES: Industry[] = [
     name: 'Logistics & Warehousing',
     line: 'Warehouse automation, robotics, predictive operations, supply-chain AI, vision and drones.',
     description:
-      'Robotics, computer vision and AI agents integrated with WMS, ERP and sensor data — the sector where reported Australian AI use is lowest and the deployment upside is highest.',
+      'Robotics, computer vision and AI agents integrated with WMS, ERP and sensor data, the sector where reported Australian AI use is lowest and the deployment upside is highest.',
     useCases: ['Warehouse robotics and automation', 'Vision-based inventory and quality checks', 'Predictive operations and digital twins', 'Supply-chain intelligence', 'Drone-based yard and stock counts'],
     caps: { data: 'supporting', agents: 'core', deploy: 'supporting', vision: 'core', drones: 'supporting', robotics: 'core', fde: 'core' },
     ventures: ['robotic-logistics-warehouse', 'dny-robotic-systems'],
@@ -63,7 +63,7 @@ export const INDUSTRIES: Industry[] = [
     name: 'Enterprise & Professional Services',
     line: 'Enterprise agents, private / hybrid deployment, internal knowledge and workflow automation.',
     description:
-      'AI agents and workflow automation deployed where enterprise data needs to live — with identity, permissions, human oversight and audit built in.',
+      'AI agents and workflow automation deployed where enterprise data needs to live, with identity, permissions, human oversight and audit built in.',
     useCases: ['Internal knowledge assistants', 'Workflow and document automation', 'Private or hybrid model deployment', 'Open-source applications for public-sector and enterprise workflows'],
     caps: { data: 'supporting', agents: 'core', deploy: 'core', fde: 'core' },
     ventures: ['trusted-ai-open-source-platform'],
@@ -72,10 +72,10 @@ export const INDUSTRIES: Industry[] = [
   {
     slug: 'future',
     name: 'Future Verticals',
-    line: 'Mining, agriculture, utilities, health & ageing — future expansion.',
+    line: 'Mining, agriculture, utilities, health & ageing: future expansion.',
     description:
       'Sectors where the same infrastructure applies and where DNY expects to expand over time. These are future expansion areas, not current operations.',
-    useCases: ['Mining — inspection and autonomous operations', 'Agriculture — trusted data and provenance', 'Utilities — asset inspection by drone', 'Health & ageing — service robotics'],
+    useCases: ['Mining: inspection and autonomous operations', 'Agriculture: trusted data and provenance', 'Utilities: asset inspection by drone', 'Health & ageing: service robotics'],
     caps: { data: 'supporting', drones: 'supporting', robotics: 'supporting' },
     ventures: [],
     href: '/industries#future',

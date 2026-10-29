@@ -13,18 +13,18 @@ import { PI_CHAIN, PI_SUBLAYERS } from '../data/architecture';
 import { VENTURES } from '../data/ventures';
 import { techArticle, definedTerm } from '../data/schema';
 
-const title = 'Physical Intelligence';
-const description = 'The Open Physical Intelligence Layer connects DNY’s trusted, open AI infrastructure with drones, robotics, edge systems and real assets — vendor-neutral, governed and auditable.';
-const crumbs = [{ name: 'Physical Intelligence', href: '/physical-intelligence' }];
-const def = 'DNY’s open physical intelligence layer, connecting trusted AI infrastructure with drones, robots, edge systems and real-world assets so that AI can perceive, decide and act — with every step verifiable.';
-const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
+const title = 'Physical Super Intelligence (SI)';
+const description = 'Physical Super Intelligence (SI) is DNY’s direction for AI in the physical world. Today DNY builds the Open Physical SI Layer, connecting trusted, open AI to drones, robots and edge systems for Australian industry.';
+const crumbs = [{ name: 'Physical SI', href: '/physical-intelligence' }];
+const def = 'DNY’s long-term direction for AI that works in the physical world. Drones, robots and edge systems that perceive, decide and act, and improve with every deployment. Today we build the trusted foundations; SI is where they lead, not a claim about current systems.';
+const ventures = VENTURES.filter((v) => v.category === 'Physical SI');
 ---
 <Base {title} {description} breadcrumbs={crumbs}
-  schema={[techArticle('The Open Physical Intelligence Layer', description, '/physical-intelligence', ['Physical AI', 'Robotics', 'Drones', 'Edge AI']), definedTerm('Open Physical Intelligence Layer', def, '/physical-intelligence')]}>
-<PageHero badge="Physical Intelligence" title="Physical Intelligence: trusted AI that acts in the real world" {crumbs}
-  lead="AI’s next stage is not only generating content. It is perceiving real environments, making decisions and carrying out actions. The Open Physical Intelligence Layer is how DNY extends trusted, open AI infrastructure into the physical economy."
+  schema={[techArticle('Open Physical SI Layer', description, '/physical-intelligence', ['Physical AI', 'Robotics', 'Drones', 'Edge AI']), definedTerm('Physical Super Intelligence (SI)', def, '/physical-intelligence')]}>
+<PageHero badge="Physical Super Intelligence (SI)" title="Physical Super Intelligence (SI): trusted AI that acts in the real world" {crumbs}
+  lead="Physical Super Intelligence (SI) is where trusted, open AI meets drones, robots and edge systems. Today, DNY builds the vendor-neutral layer that connects them: physical AI that works safely in Australian industry."
   primary={CTA.partner} secondary={CTA.brief}>
-  <Definition term="Open Physical Intelligence Layer" def={def} />
+  <Definition term="Physical Super Intelligence (SI)" def={def} />
 </PageHero>
 
 <section class="section" aria-labelledby="what-h">
@@ -33,8 +33,8 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
       <span class="kicker">What It Is</span>
       <h2 id="what-h">A connection layer, not a single product</h2>
       <div class="prose" style="margin-top:16px;">
-        <p>The Physical Intelligence Layer is <strong>not a drone company and not a single robotics project</strong>. It is the unified connection layer through which DNY’s Trusted &amp; Open AI Infrastructure reaches the real world.</p>
-        <p>It links AI models, agents, data governance, identity, security and audit with real devices — and keeps everything multi-model, multi-cloud and multi-vendor so customers are never locked into a single supplier.</p>
+        <p>The Physical SI Layer is <strong>not a drone company and not a single robotics project</strong>. It is the unified connection layer through which DNY’s Trusted &amp; Open AI Infrastructure reaches the real world.</p>
+        <p>It links AI models, agents, data governance, identity, security and audit with real devices, and keeps everything multi-model, multi-cloud and multi-vendor so customers are never locked into a single supplier.</p>
       </div>
     </div>
     <div class="reveal-r">
@@ -42,7 +42,7 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
       <h2 class="h2-sm">When AI can act, trust has to be provable</h2>
       <ul class="check-cols" style="margin-top:18px;grid-template-columns:1fr;">
         <li>Devices generate the data that physical-economy decisions depend on.</li>
-        <li>Agents increasingly trigger real actions — a flight, a pick, a stop.</li>
+        <li>Agents increasingly trigger real actions: a flight, a pick, a stop.</li>
         <li>Every device behaviour, data source, AI judgement and key operation can enter the trusted data and audit system.</li>
         <li>Vendor neutrality lets the best global hardware connect through standard interfaces.</li>
       </ul>
@@ -54,7 +54,7 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
   <div class="container">
     <SectionHead kicker="Architecture" id="arch-h" title="From device to verified outcome"
       lead="Every physical intelligence workflow follows the same governed path. Each hop is identity-bound and logged." />
-    <ol class="chain reveal" aria-label="Physical intelligence reference architecture">
+    <ol class="chain reveal" aria-label="Physical SI reference architecture">
       {PI_CHAIN.map((c) => <li><span>{c}</span></li>)}
     </ol>
     <p class="src-note reveal" style="margin-top:14px;">Device → Edge → Trusted Data → Model → Agent → Action → Verification. Text equivalent of the diagram above for screen readers and search systems.</p>
@@ -76,13 +76,13 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
       <div class="big-panel">
         <span class="k">Industrial Intelligence</span>
         <h3>Warehousing, automation and digital twins</h3>
-        <p>Warehouse robots, automation, computer vision and digital twins integrated with WMS, ERP and sensor data — moving from pilots with defined KPIs to autonomous operations.</p>
+        <p>Warehouse robots, automation, computer vision and digital twins integrated with WMS, ERP and sensor data, moving from pilots with defined KPIs to autonomous operations.</p>
         <a href="/industries#logistics-warehousing" class="project-link">Logistics &amp; Warehousing <Arrow /></a>
       </div>
       <div class="big-panel">
         <span class="k">Open Hardware Integration</span>
         <h3>Global devices, standard interfaces</h3>
-        <p>Advanced devices from global manufacturers connect through standard APIs, SDKs and adapters. Hardware is selected on technical maturity, Australian compliance, support and commercial sustainability — never locked to one vendor or country of origin.</p>
+        <p>Advanced devices from global manufacturers connect through standard APIs, SDKs and adapters. Hardware is selected on technical maturity, Australian compliance, support and commercial sustainability, never locked to one vendor or country of origin.</p>
         <div><span class="pill">API</span><span class="pill">SDK</span><span class="pill">Adapters</span><span class="pill">Multi-vendor</span></div>
       </div>
     </div>
@@ -94,13 +94,13 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
     <div class="reveal-l">
       <span class="kicker">Edge Intelligence</span>
       <h2 id="edge-h" class="h2-sm">Edge AI and computer vision</h2>
-      <p class="lead" style="margin-top:14px;">Edge AI runs inference on or near the device, rather than in a distant cloud — for lower latency, resilience and keeping sensitive video on site.</p>
+      <p class="lead" style="margin-top:14px;">Edge AI runs inference on or near the device, rather than in a distant cloud, for lower latency, resilience and keeping sensitive video on site.</p>
     </div>
     <ul class="check-cols reveal-r" style="grid-template-columns:1fr;">
-      <li><strong>Computer vision</strong> — detection, counting, defect and safety analytics from cameras and drones.</li>
-      <li><strong>Sensor fusion</strong> — vision, thermal, lidar and IoT signals combined into one picture.</li>
-      <li><strong>Local inference</strong> — open models optimised for edge hardware.</li>
-      <li><strong>Trusted sync</strong> — results are hashed and synced to trusted data records for audit.</li>
+      <li><strong>Computer vision</strong>: detection, counting, defect and safety analytics from cameras and drones.</li>
+      <li><strong>Sensor fusion</strong>: vision, thermal, lidar and IoT signals combined into one picture.</li>
+      <li><strong>Local inference</strong>: open models optimised for edge hardware.</li>
+      <li><strong>Trusted sync</strong>: results are hashed and synced to trusted data records for audit.</li>
     </ul>
   </div>
 </section>
@@ -110,14 +110,14 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
     <div class="reveal-l">
       <span class="kicker">Autonomous Operations</span>
       <h2 id="auto-h" class="h2-sm">Many devices, one governed workflow</h2>
-      <p class="lead" style="margin-top:14px;">AI agents coordinate drones, robots and industrial systems — with people in control of the decisions that matter.</p>
+      <p class="lead" style="margin-top:14px;">AI agents coordinate drones, robots and industrial systems, with people in control of the decisions that matter.</p>
     </div>
     <ol class="check-cols reveal-r" style="grid-template-columns:1fr;">
-      <li><strong>Task intake</strong> — a business event or schedule creates a task with a defined scope.</li>
-      <li><strong>Agent planning</strong> — an agent plans which devices do what, within its permissions.</li>
-      <li><strong>Device execution</strong> — drones, robots and systems act through standard interfaces.</li>
-      <li><strong>Human checkpoint</strong> — safety-critical steps wait for approval; anomalies escalate.</li>
-      <li><strong>Verified close-out</strong> — results and decisions are written to the audit record. <a href="/trusted-ai#identity-audit" style="color:var(--gold-lt)">How audit works</a></li>
+      <li><strong>Task intake</strong>: a business event or schedule creates a task with a defined scope.</li>
+      <li><strong>Agent planning</strong>: an agent plans which devices do what, within its permissions.</li>
+      <li><strong>Device execution</strong>: drones, robots and systems act through standard interfaces.</li>
+      <li><strong>Human checkpoint</strong>: safety-critical steps wait for approval; anomalies escalate.</li>
+      <li><strong>Verified close-out</strong>: results and decisions are written to the audit record. <a href="/trusted-ai#identity-audit" style="color:var(--gold-lt)">How audit works</a></li>
     </ol>
   </div>
 </section>
@@ -126,10 +126,10 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
   <div class="container split">
     <div class="reveal-l">
       <span class="kicker">Industrial Deployment Environment</span>
-      <h2 id="ailh-h">AILH — where the layer meets the physical economy at scale</h2>
+      <h2 id="ailh-h">AILH: where the layer meets the physical economy at scale</h2>
       <div class="prose" style="margin-top:16px;">
         <p><strong>AILH</strong> is a proposed large-scale industrial deployment environment and an important proof point: a practical setting for connecting open, interoperable AI with physical infrastructure, automation, robotics and supply-chain operations.</p>
-        <p>AILH is one deployment environment for the Physical Intelligence Layer — it does not define Physical AI at DNY, which spans drones, robotics, edge systems and autonomous operations across many sites.</p>
+        <p>AILH is one deployment environment for the Physical SI Layer. It does not define physical AI at DNY, which spans drones, robotics, edge systems and autonomous operations across many sites.</p>
       </div>
     </div>
     <div class="reveal-r">
@@ -138,11 +138,11 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
         <p>AILH and DNY remain separate legal and economic interests unless specifically agreed otherwise. Any engagement is documented through project agreements covering scope, fees, data access, IP, confidentiality, liability, service levels and commercialisation rights. Describing AILH as a deployment environment does not imply DNY ownership or control.</p>
       </div>
       <ol class="check-cols mt-28" style="grid-template-columns:1fr;">
-        <li>Process mapping — high-cost, high-friction or high-risk workflows</li>
-        <li>Data &amp; systems assessment — WMS, ERP, automation, sensors, robotics</li>
-        <li>Use-case prioritisation — value, feasibility, safety, integration</li>
-        <li>Sandbox &amp; pilot — measurable KPIs</li>
-        <li>Production hardening &amp; scale — security, monitoring, governance</li>
+        <li>Process mapping: high-cost, high-friction or high-risk workflows</li>
+        <li>Data &amp; systems assessment: WMS, ERP, automation, sensors, robotics</li>
+        <li>Use-case prioritisation: value, feasibility, safety, integration</li>
+        <li>Sandbox &amp; pilot: measurable KPIs</li>
+        <li>Production hardening &amp; scale: security, monitoring, governance</li>
       </ol>
     </div>
   </div>
@@ -150,13 +150,13 @@ const ventures = VENTURES.filter((v) => v.category === 'Physical Intelligence');
 
 <section class="section" aria-labelledby="pv-h">
   <div class="container">
-    <SectionHead kicker="Ventures on the Layer" id="pv-h" title="Physical intelligence ventures"
+    <SectionHead kicker="Ventures on the Layer" id="pv-h" title="Physical SI ventures"
       lead="Programmes and ventures that build on the layer. Each keeps its own brand, company and business model." />
     <div class="vmini-grid reveal">{ventures.map((v) => <VentureMini v={v} />)}</div>
   </div>
 </section>
 
-<FAQ groups={['physical']} title="Physical Intelligence — common questions" dark />
+<FAQ groups={['physical']} title="Physical SI: common questions" dark />
 
 <CTABand title="Bring trusted AI to physical operations" primary={CTA.brief} secondary={CTA.partner} />
 </Base>

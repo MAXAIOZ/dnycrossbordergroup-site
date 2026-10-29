@@ -39,7 +39,7 @@ export const SITE = {
 };
 
 export type NavChild = { label: string; href: string; desc?: string };
-export type NavItem = { label: string; href: string; children?: NavChild[] };
+export type NavItem = { label: string; href: string; shortLabel?: string; children?: NavChild[] };
 
 export const NAV: NavItem[] = [
   {
@@ -62,7 +62,9 @@ export const NAV: NavItem[] = [
     ],
   },
   {
-    label: 'Physical Intelligence',
+    label: 'Physical Super Intelligence (SI)',
+    // Shown between 1280 and 1439px, where the full name would crowd the nav.
+    shortLabel: 'Physical SI',
     href: '/physical-intelligence',
     children: [
       { label: 'Overview', href: '/physical-intelligence', desc: 'Trusted AI for drones, robots and edge systems' },
@@ -108,12 +110,12 @@ export const CTA = {
 
 // Form enquiry types (brief §19: every form is tagged by type)
 export const ENQUIRY_TYPES = [
-  { value: 'enterprise', label: 'Enterprise — deploy AI or physical intelligence' },
-  { value: 'partnership', label: 'Partnership — technology, channel or industry' },
-  { value: 'investment', label: 'Investment — group or venture materials' },
-  { value: 'developer', label: 'Developer — APIs, integration, open source' },
-  { value: 'visit', label: 'Visit — meet the team in Sydney' },
-  { value: 'trade', label: 'Trade & fleet — EV accessories for dealers, detailers and fleets' },
+  { value: 'enterprise', label: 'Enterprise: deploy AI or Physical Super Intelligence' },
+  { value: 'partnership', label: 'Partnership: technology, channel or industry' },
+  { value: 'investment', label: 'Investment: group or venture materials' },
+  { value: 'developer', label: 'Developer: APIs, integration, open source' },
+  { value: 'visit', label: 'Visit: meet the team in Sydney' },
+  { value: 'trade', label: 'Trade & fleet: EV accessories for dealers, detailers and fleets' },
   { value: 'general', label: 'General enquiry' },
 ] as const;
 
@@ -133,7 +135,7 @@ export const FOOTER = [
       { label: 'AI Infrastructure', href: '/ai-infrastructure' },
       { label: 'Trusted AI', href: '/trusted-ai' },
       { label: 'Open Source AI', href: '/open-source-ai' },
-      { label: 'Physical Intelligence', href: '/physical-intelligence' },
+      { label: 'Physical Super Intelligence (SI)', href: '/physical-intelligence' },
     ],
   },
   {

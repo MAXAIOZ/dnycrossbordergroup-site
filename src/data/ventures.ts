@@ -6,7 +6,7 @@
 
 export type Status = 'Operating' | 'In Development' | 'Proposed' | 'Research' | 'Partnership Opportunity';
 
-export type Category = 'Trusted & Open AI' | 'Physical Intelligence' | 'Industry Ventures';
+export type Category = 'Trusted & Open AI' | 'Physical SI' | 'Industry Ventures';
 
 export type Venture = {
   slug: string;
@@ -33,7 +33,7 @@ export const STATUS_DEFS: Record<Status, string> = {
 
 export const CATEGORY_DEFS: Record<Category, string> = {
   'Trusted & Open AI': 'Ventures that productise the group’s trusted, open AI infrastructure.',
-  'Physical Intelligence': 'Ventures that bring trusted AI to drones, robots and physical operations.',
+  'Physical SI': 'Ventures that bring trusted AI to drones, robots and physical operations.',
   'Industry Ventures': 'Industry businesses that apply the infrastructure in a specific market.',
 };
 
@@ -47,7 +47,7 @@ export const VENTURES: Venture[] = [
     slug: 'trusted-ai-open-source-platform',
     name: 'Australian Trusted AI Open Source Platform',
     short:
-      'An open-core AI platform — model-agnostic, security-isolated and private-deployment capable — paired with an application discovery engine that turns verified news into audited open-source application directions.',
+      'An open-core AI platform, model-agnostic, security-isolated and private-deployment capable, paired with an application discovery engine that turns verified news into audited open-source application directions.',
     category: 'Trusted & Open AI',
     builtOn: 'Trusted & Open AI Infrastructure',
     industries: ['Enterprise', 'Government', 'Cross-border Trade'],
@@ -62,7 +62,7 @@ export const VENTURES: Venture[] = [
     slug: 'trusted-data-oracle',
     name: 'Australian Trusted Data Oracle DAO',
     short:
-      'A not-for-profit, rights-verified data service giving AI agents reliable access to Australian pricing, index and trade data — every figure traceable to its source, governed by an oracle council.',
+      'A not-for-profit, rights-verified data service giving AI agents reliable access to Australian pricing, index and trade data, with every figure traceable to its source, governed by an oracle council.',
     category: 'Trusted & Open AI',
     builtOn: 'Trusted Data, Identity & Verification Foundation',
     industries: ['Cross-border Trade', 'Agriculture', 'Enterprise'],
@@ -76,9 +76,9 @@ export const VENTURES: Venture[] = [
     slug: 'dny-aerial-systems',
     name: 'DNY Aerial Systems',
     short:
-      'Commercial drone systems for government, infrastructure and enterprise — aircraft and component supply, Australian systems integration and lifecycle support.',
-    category: 'Physical Intelligence',
-    builtOn: 'Physical Intelligence — Air',
+      'Commercial drone systems for government, infrastructure and enterprise: aircraft and component supply, Australian systems integration and lifecycle support.',
+    category: 'Physical SI',
+    builtOn: 'Physical SI: Air',
     industries: ['Built Environment', 'Infrastructure & Utilities', 'Enterprise'],
     status: 'In Development',
     capabilities: ['Aerial inspection', 'Mapping & survey', 'Industrial data capture', 'Systems integration', 'Lifecycle support'],
@@ -91,9 +91,9 @@ export const VENTURES: Venture[] = [
     slug: 'dny-robotic-systems',
     name: 'DNY Robotic Systems',
     short:
-      'Embodied and autonomous systems for Australian industrial, logistics and service environments — including the Robotics Experience & Innovation Centre for demonstration, validation and market entry.',
-    category: 'Physical Intelligence',
-    builtOn: 'Physical Intelligence — Embodied',
+      'Embodied and autonomous systems for Australian industrial, logistics and service environments, including the Robotics Experience & Innovation Centre for demonstration, validation and market entry.',
+    category: 'Physical SI',
+    builtOn: 'Physical SI: Embodied',
     industries: ['Logistics & Warehousing', 'Enterprise', 'Hospitality & Care'],
     status: 'In Development',
     capabilities: ['Embodied AI', 'Autonomous navigation', 'Human–robot collaboration', 'Experience & Innovation Centre', 'Market entry for global robotics'],
@@ -106,9 +106,9 @@ export const VENTURES: Venture[] = [
     slug: 'robotic-logistics-warehouse',
     name: 'AI Robotic Logistics Warehouse',
     short:
-      'A robotics-driven fulfilment warehouse for cross-border small-goods e-commerce — WMS, OMS and TMS with AI vision quality checks and robotics-assisted picking.',
-    category: 'Physical Intelligence',
-    builtOn: 'Physical Intelligence — Industrial',
+      'A robotics-driven fulfilment warehouse for cross-border small-goods e-commerce: WMS, OMS and TMS with AI vision quality checks and robotics-assisted picking.',
+    category: 'Physical SI',
+    builtOn: 'Physical SI: Industrial',
     industries: ['Logistics & Warehousing', 'Cross-border Trade'],
     status: 'In Development',
     capabilities: ['Robotics-assisted picking', 'AI vision quality checks', 'WMS / OMS / TMS', 'Fulfilment-as-a-Service'],
@@ -119,7 +119,7 @@ export const VENTURES: Venture[] = [
     slug: 'ai-trade-services',
     name: 'AI Trade Services Platform',
     short:
-      'AI agents for import and export businesses — content, quoting, customer service, translation and trade data — across Australia, New Zealand, ASEAN and Oceania.',
+      'AI agents for import and export businesses: content, quoting, customer service, translation and trade data, across Australia, New Zealand, ASEAN and Oceania.',
     category: 'Industry Ventures',
     builtOn: 'Trusted & Open AI Infrastructure',
     industries: ['Cross-border Trade'],
@@ -134,7 +134,7 @@ export const VENTURES: Venture[] = [
     short:
       'A building-materials and supply-chain business connecting suppliers, manufacturers, builders and trade partners, with a showroom and warehouse in Sydney.',
     category: 'Industry Ventures',
-    builtOn: 'Industry deployment — Built Environment',
+    builtOn: 'Industry deployment: Built Environment',
     industries: ['Built Environment', 'Cross-border Trade'],
     status: 'In Development',
     capabilities: ['Full-category building materials', 'Showroom & warehouse', 'Supply-chain coordination', 'Product data'],
@@ -145,9 +145,9 @@ export const VENTURES: Venture[] = [
     slug: 'facadia',
     name: 'Facadia',
     short:
-      'AI facade intelligence for residential property — a photo of a home’s exterior returns a materials report and a budget estimate instead of a manual quantity take-off.',
+      'AI facade intelligence for residential property: a photo of a home’s exterior returns a materials report and a budget estimate instead of a manual quantity take-off.',
     category: 'Industry Ventures',
-    builtOn: 'Industry deployment — Built Environment',
+    builtOn: 'Industry deployment: Built Environment',
     industries: ['Built Environment', 'Property'],
     status: 'In Development',
     capabilities: ['AI photo analysis', 'Materials identification', 'Budget estimation', 'Privacy by design'],
@@ -158,9 +158,9 @@ export const VENTURES: Venture[] = [
     slug: 'auralio',
     name: 'Auralio',
     short:
-      'AI room restyling — upload one photo of a room and receive a professionally restyled interior concept with category-level “shop this look” suggestions.',
+      'AI room restyling: upload one photo of a room and receive a professionally restyled interior concept with category-level “shop this look” suggestions.',
     category: 'Industry Ventures',
-    builtOn: 'Industry deployment — Built Environment',
+    builtOn: 'Industry deployment: Built Environment',
     industries: ['Property', 'Built Environment', 'Retail'],
     status: 'In Development',
     capabilities: ['Room validation', 'Room reset', 'Style-consistent restyling', 'Shop-this-look links'],
@@ -171,9 +171,9 @@ export const VENTURES: Venture[] = [
     slug: 'ev-accessories',
     name: EV_BRAND,
     short:
-      'Fitted accessories for Australian EVs — floor mats, cargo liners, sunshades and personalised interiors cut to the exact model you drive.',
+      'Fitted accessories for Australian EVs: floor mats, cargo liners, sunshades and personalised interiors cut to the exact model you drive.',
     category: 'Industry Ventures',
-    builtOn: 'Industry deployment — Cross-border Trade',
+    builtOn: 'Industry deployment: Cross-border Trade',
     industries: ['Automotive', 'Retail', 'Cross-border Trade'],
     status: 'In Development',
     capabilities: ['New-model fitment', 'Heat-stable materials', 'B2C retail + B2B trade', 'Australian Consumer Law support'],
@@ -195,7 +195,7 @@ export const ARCHIVED = [
   { name: 'Livestock Data Rights Platform', line: 'Verifiable credentials for livestock export records.' },
 ];
 
-export const CATEGORIES: Category[] = ['Trusted & Open AI', 'Physical Intelligence', 'Industry Ventures'];
+export const CATEGORIES: Category[] = ['Trusted & Open AI', 'Physical SI', 'Industry Ventures'];
 
 export const getVenture = (slug: string) => {
   const v = VENTURES.find((x) => x.slug === slug);

@@ -14,15 +14,15 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'Why is the group called "Cross Border"?',
-        a: 'DNY began in cross-border trade and supply chain between Australia and international markets. That experience — with product data, documents and systems that could not be verified or connected — is why the group now builds trusted AI infrastructure. Cross-border trade remains one of the industries where it is applied.',
+        a: 'DNY began in cross-border trade and supply chain between Australia and international markets. That experience, with product data, documents and systems that could not be verified or connected, is why the group now builds trusted AI infrastructure. Cross-border trade remains one of the industries where it is applied.',
       },
       {
         q: 'Is DNY a single AI platform or a group?',
-        a: `A group. DNY builds shared infrastructure — trusted, open AI and physical intelligence — delivers it through the OPC + FDE network, and commercialises it through ${VENTURE_COUNT_WORD} focused ventures that each have their own customers and business model.`,
+        a: `A group. DNY builds shared infrastructure (trusted, open AI and Physical Super Intelligence), delivers it through the OPC + FDE network, and commercialises it through ${VENTURE_COUNT_WORD} focused ventures that each have their own customers and business model.`,
       },
       {
         q: 'Does DNY train its own foundation model?',
-        a: 'No. DNY works at the commercialisation layer — selecting, evaluating, integrating, governing and operating suitable open and open-weight models — rather than competing to train a frontier model.',
+        a: 'No. DNY works at the commercialisation layer: selecting, evaluating, integrating, governing and operating suitable open and open-weight models, rather than competing to train a frontier model.',
       },
       {
         q: 'What do the project status labels mean?',
@@ -72,12 +72,12 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
         a: 'Physical AI is artificial intelligence that perceives the real world through sensors, reasons about it, and acts through machines such as drones, robots and industrial equipment.',
       },
       {
-        q: 'What is the Open Physical Intelligence Layer?',
+        q: 'What is the Open Physical SI Layer?',
         a: 'It is DNY’s unified connection layer between trusted AI infrastructure and real devices. It links models, agents, data governance, identity, security and audit with drones, robots, edge devices and vision systems, while staying compatible with multiple model, cloud and hardware vendors.',
       },
       {
         q: 'Is DNY a drone company or a robotics company?',
-        a: 'Neither on its own. Drones and robotics are directions within the Physical Intelligence Layer. Specific drone and robotics businesses — DNY Aerial Systems and DNY Robotic Systems — are separate ventures that reuse the group’s infrastructure.',
+        a: 'Neither on its own. Drones and robotics are directions within the Physical SI Layer. The specific drone and robotics businesses (DNY Aerial Systems and DNY Robotic Systems) are separate ventures that reuse the group’s infrastructure.',
       },
       {
         q: 'How are physical AI actions kept safe and accountable?',
@@ -136,7 +136,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     items: [
       {
         q: 'What is embodied AI?',
-        a: 'Embodied AI is AI that operates through a physical body — a robot — so that it can perceive its surroundings, reason about them and act within them.',
+        a: 'Embodied AI is AI that operates through a physical body (a robot), so that it can perceive its surroundings, reason about them and act within them.',
       },
       {
         q: 'What is DNY Robotic Systems?',
@@ -149,7 +149,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     items: [
       {
         q: 'What is an AI agent?',
-        a: 'An AI agent is software that uses an AI model to plan and carry out multi-step tasks — calling tools, systems or devices — rather than only answering a single prompt.',
+        a: 'An AI agent is software that uses an AI model to plan and carry out multi-step tasks by calling tools, systems or devices, rather than only answering a single prompt.',
       },
       {
         q: 'How does DNY govern AI agents?',
@@ -199,7 +199,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'Can dealers, detailers and fleets buy wholesale?',
-        a: 'Yes. Trade and fleet enquiries — including dealer delivery packs and novated lease accessory packs, volume pricing, fleet packs, private label and OEM/ODM development — go through https://dnycrossbordergroup.com/contact?type=trade or info@dnycrossbordergroup.com.',
+        a: 'Yes. Trade and fleet enquiries, including dealer delivery packs and novated lease accessory packs, volume pricing, fleet packs, private label and OEM/ODM development, go through https://dnycrossbordergroup.com/contact?type=trade or info@dnycrossbordergroup.com.',
       },
       {
         q: 'Are electronic or battery-powered EV accessories available?',

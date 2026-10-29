@@ -19,7 +19,7 @@ export const STACK: Layer[] = [
     name: 'Applied Ventures & Industry Solutions',
     role: 'Independent ventures and industry projects',
     summary:
-      `${VENTURE_COUNT_TITLE} focused ventures — from drones and robotics to trade, building materials, EV accessories and property AI — each with its own customers and business model, built on shared group infrastructure.`,
+      `${VENTURE_COUNT_TITLE} focused ventures, from drones and robotics to trade, building materials, EV accessories , each with its own customers and business model, built on shared group infrastructure.`,
     items: ['Aerial Systems', 'Robotic Systems', 'Trusted AI Platform', 'Data Oracle', 'Facadia', 'Auralio'],
     href: '/ventures',
   },
@@ -29,17 +29,17 @@ export const STACK: Layer[] = [
     name: 'OPC + FDE Network',
     role: 'Talent, nodes and industry delivery',
     summary:
-      'Hubs and members — one-person companies and FDEs — matched to real demand and delivering remotely, with DNY as the local partner.',
+      'Hubs and members, one-person companies and FDEs, matched to real demand and delivering remotely, with DNY as the local partner.',
     items: ['OPC nodes', 'FDE delivery', 'Training', 'Incubation', 'Solution delivery'],
     href: '/opc-fde',
   },
   {
     n: 3,
     level: 'Level 2',
-    name: 'Open Physical Intelligence Layer',
+    name: 'Open Physical SI Layer',
     role: 'Connecting AI to the physical world',
     summary:
-      'The unified connection layer between trusted AI and real devices — drones, robots, edge systems, vision and sensor networks — vendor-neutral and auditable.',
+      'The unified connection layer between trusted AI and real devices: drones, robots, edge systems, vision and sensor networks, vendor-neutral and auditable.',
     items: ['Drones', 'Robotics', 'Edge AI', 'Computer vision', 'Autonomous systems'],
     href: '/physical-intelligence',
   },
@@ -49,7 +49,7 @@ export const STACK: Layer[] = [
     name: 'Trusted & Open AI Infrastructure',
     role: 'Digital intelligence infrastructure',
     summary:
-      'Open models, AI agents, APIs and private or hybrid deployment — multi-model, multi-cloud and licence-aware, operated as an accountable Australian service.',
+      'Open models, AI agents, APIs and private or hybrid deployment, multi-model, multi-cloud and licence-aware, operated as an accountable Australian service.',
     items: ['Open models', 'AI agents', 'APIs', 'Private / hybrid', 'Transaction readiness'],
     href: '/ai-infrastructure',
   },
@@ -59,7 +59,7 @@ export const STACK: Layer[] = [
     name: 'Trusted Data, Identity & Verification Foundation',
     role: 'What makes every layer verifiable',
     summary:
-      'A Trusted Data Space with provenance, permissions, versioning, identity and audit — so data, models, devices and decisions can be traced and verified.',
+      'A Trusted Data Space with provenance, permissions, versioning, identity and audit, so that data, models, devices and decisions can be traced and verified.',
     items: ['Data provenance', 'Identity', 'Permissions', 'Audit logs', 'Data sovereignty'],
     href: '/trusted-ai',
   },
@@ -69,7 +69,7 @@ export const STACK: Layer[] = [
 export const HIERARCHY = [
   { level: 'Group', name: 'DNY Cross Border Group', role: 'Group strategy and holding layer', scope: 'Strategy, capital, brand, partnerships, governance and international markets' },
   { level: 'Layers 1–2', name: 'Trusted & Open AI Infrastructure', role: 'Digital intelligence infrastructure', scope: 'Trusted Data Space, open models, identity, audit, APIs, agents and transaction readiness' },
-  { level: 'Layer 3', name: 'Open Physical Intelligence Layer', role: 'Physical intelligence connecting AI to the real world', scope: 'Drones, robotics, edge devices, vision systems, autonomous systems and sensor networks' },
+  { level: 'Layer 3', name: 'Open Physical SI Layer', role: 'Physical SI connecting AI to the real world', scope: 'Drones, robotics, edge devices, vision systems, autonomous systems and sensor networks' },
   { level: 'Layer 4', name: 'OPC + FDE Network', role: 'Talent, node and industry delivery network', scope: 'One person companies, Forward Deployed Entrepreneurs, member and partner tracks, remote delivery with DNY local support' },
   { level: 'Layer 5', name: 'Applied Ventures & Industry Projects', role: 'Independent ventures and industry companies', scope: `${VENTURE_COUNT_TITLE} core ventures across trusted AI, physical intelligence and industry` },
 ];
@@ -121,7 +121,7 @@ export const PI_SUBLAYERS = [
 // AI Infrastructure modules (brief §7)
 export const INFRA_MODULES = [
   { n: '01', name: 'Trusted Data Space', line: 'Data source, permission, version, authorisation, audit and data sovereignty.', href: '/trusted-ai#data-space' },
-  { n: '02', name: 'Open Model Layer', line: 'Clear distinction between open-source, open-weight and source-available models — multi-model and licence-aware.', href: '/open-source-ai' },
+  { n: '02', name: 'Open Model Layer', line: 'Clear distinction between open-source, open-weight and source-available models, with multi-model and licence-aware deployment.', href: '/open-source-ai' },
   { n: '03', name: 'Deployment & Integration', line: 'APIs, private and hybrid deployment, identity and enterprise system integration.', href: '/ai-infrastructure#deployment' },
   { n: '04', name: 'AI Agents & Automation', line: 'Agent orchestration, human oversight and governed workflow execution.', href: '/ai-infrastructure#agents' },
   { n: '05', name: 'Trust, Identity & Audit', line: 'Trusted identity, action authorisation, model and data provenance, and audit.', href: '/trusted-ai#identity-audit' },
@@ -131,7 +131,7 @@ export const INFRA_MODULES = [
 // Trust diagram (brief §14)
 export const TRUST_PILLARS = [
   { k: 'Data provenance', d: 'Where data came from, when, which version, and under what licence.' },
-  { k: 'Identity', d: 'Which person, agent, model or device is acting — verified, not assumed.' },
+  { k: 'Identity', d: 'Which person, agent, model or device is acting, checked rather than assumed.' },
   { k: 'Permission', d: 'What that identity is authorised to read, decide or execute.' },
   { k: 'Audit', d: 'A tamper-evident record of inputs, decisions, actions and outcomes.' },
 ];

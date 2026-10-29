@@ -11,13 +11,13 @@ import partB from '../legacy/trusted-ai-b.html?raw';
 import { CTA } from '../data/site';
 import { techArticle, definedTerm } from '../data/schema';
 const title = 'Trusted AI';
-const description = 'Trusted AI at DNY: a Trusted Data Space plus identity, permission and audit, so that data sources, model versions and AI actions — including those of drones and robots — can be verified and traced.';
+const description = 'Trusted AI at DNY: a Trusted Data Space plus identity, permission and audit, so that data sources, model versions and AI actions, including those of drones and robots, can be verified and traced.';
 const def = 'AI whose data sources, model versions, permissions and actions can be verified, traced and audited.';
 const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }, { name: 'Trusted AI', href: '/trusted-ai' }];
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Trusted AI: trust is the foundation, not a feature', description, '/trusted-ai', ['Trusted AI', 'Trusted Data Space', 'Data provenance', 'AI audit']), definedTerm('Trusted AI', def, '/trusted-ai'), definedTerm('Trusted Data Space', 'A governed environment where data is shared under recorded provenance, versions, licences and permissions, so parties can collaborate without losing control of their data.', '/trusted-ai#data-space')]}>
 <PageHero badge="Trusted AI" title="Trusted AI: trust is the foundation, not a feature" {crumbs}
-  lead="Access to a model is not the same as safe deployment. DNY records where data came from, who may use it, which model produced an answer and which agent or device acted — so AI can be verified, not just believed."
+  lead="Access to a model is not the same as safe deployment. DNY records where data came from, who may use it, which model produced an answer and which agent or device acted, so AI can be verified, not just believed."
   primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="Trusted AI" def={def} />
 </PageHero>
@@ -25,7 +25,7 @@ const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }, { nam
 <section class="section dark" id="identity-audit" aria-labelledby="ia-h">
   <div class="container">
     <SectionHead kicker="Identity, Permission & Audit" id="ia-h" title="Who did what, on whose authority"
-      lead="Every person, AI agent, model and device gets a verifiable identity and explicit permissions — and every significant action leaves an audit record. The same model governs drones and robots in the physical world." />
+      lead="Every person, AI agent, model and device gets a verifiable identity and explicit permissions, and every significant action leaves an audit record. The same model governs drones and robots in the physical world." />
     <TrustDiagram />
     <div class="tiles t4 mt-28 stagger reveal">
       <div class="tile"><span class="t-k">People</span><h3>Users &amp; approvers</h3><p>Role-based access and approval rights.</p></div>
@@ -37,6 +37,6 @@ const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }, { nam
   </div>
 </section>
 <Fragment set:html={partB} />
-<FAQ groups={['trusted']} title="Trusted AI — common questions" dark />
+<FAQ groups={['trusted']} title="Trusted AI: common questions" dark />
 <CTABand title="Make AI verifiable by design" primary={CTA.brief} secondary={CTA.partner} />
 </Base>

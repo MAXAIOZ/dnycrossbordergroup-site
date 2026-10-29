@@ -131,7 +131,7 @@ const year = new Date().getFullYear();
 <div class="scanbar" aria-hidden="true"></div>
 <header class="site-header" role="banner">
   <div class="container nav-wrap">
-    <a href="/" class="brand" aria-label={`${SITE.name} — Home`}>
+    <a href="/" class="brand" aria-label={`${SITE.name}, home page`}>
       <img src="/assets/img/logo.svg" alt={SITE.name} height="44">
     </a>
     <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
@@ -139,8 +139,12 @@ const year = new Date().getFullYear();
     </button>
     <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
       {NAV.map((item) => (
-        <div class={`nav-item${item.children ? ' has-sub' : ''}`}>
-          <a href={item.href} class={sectionActive(item.href) ? 'active' : undefined} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+        <div class={`nav-item${item.children ? ' has-sub' : ''}${item.shortLabel ? ' has-short' : ''}`}>
+          <a href={item.href} class={sectionActive(item.href) ? 'active' : undefined} aria-current={path === item.href ? 'page' : undefined}>
+            {item.shortLabel ? (
+              <><span class="nav-full">{item.label}</span><span class="nav-short">{item.shortLabel}</span></>
+            ) : item.label}
+          </a>
           {item.children && (
             <>
               <button class="sub-toggle" type="button" aria-expanded="false" aria-label={`Show ${item.label} pages`}>

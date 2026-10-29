@@ -124,13 +124,13 @@
       // Build mailto
       const subject  = encodeURIComponent(`[DNY Enquiry] ${topic || 'General'} — ${name}`);
       const body     = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nCompany: ${company || '—'}\nTopic: ${topic || '—'}\n\nMessage:\n${message}`
+        `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'not stated'}\nTopic: ${topic || 'not stated'}\n\nMessage:\n${message}`
       );
       const mailto   = `mailto:info@dnycrossbordergroup.com?subject=${subject}&body=${body}`;
 
       window.location.href = mailto;
 
-      showFormMsg('Your email client is opening. Thank you for reaching out — we will be in touch shortly.', 'success');
+      showFormMsg('Your email client is opening. Thank you for reaching out, we will be in touch shortly.', 'success');
     });
   }
 

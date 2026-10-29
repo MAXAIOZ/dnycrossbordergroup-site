@@ -177,7 +177,7 @@
         done.scrollIntoView({ behavior: 'smooth', block: 'start' });
       })
       .catch(function (err) {
-        say((err && err.message ? err.message : 'The enquiry could not be submitted.') + ' Your details are still here — please try again.', false);
+        say((err && err.message ? err.message : 'The enquiry could not be submitted.') + ' Your details are still here, please try again.', false);
         btn.disabled = false; btn.textContent = 'Submit Enquiry';
       });
   });

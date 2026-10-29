@@ -5,9 +5,9 @@ import { SITE, ENQUIRY_TYPES } from '../data/site';
 import { VENTURES } from '../data/ventures';
 
 const title = 'Contact';
-const description = 'Contact DNY Cross Border Group in Sydney — enterprise, partnership, investment, developer and visit enquiries, each routed to the right team.';
+const description = 'Contact DNY Cross Border Group in Sydney for enterprise, partnership, investment, developer and visit enquiries, each routed to the right team.';
 const crumbs = [{ name: 'Contact', href: '/contact' }];
-const interests: { label: string; slug?: string }[] = [...['Group overview', 'Trusted AI & data', 'Open source AI', 'AI agents', 'Physical intelligence', 'Drones', 'Robotics', 'OPC + FDE network', 'Industry deployment'].map((label) => ({ label })), ...VENTURES.map((v) => ({ label: `Venture: ${v.name}`, slug: v.slug }))];
+const interests: { label: string; slug?: string }[] = [...['Group overview', 'Trusted AI & data', 'Open source AI', 'AI agents', 'Physical SI', 'Drones', 'Robotics', 'OPC + FDE network', 'Industry deployment'].map((label) => ({ label })), ...VENTURES.map((v) => ({ label: `Venture: ${v.name}`, slug: v.slug }))];
 const contactSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
@@ -18,7 +18,7 @@ const contactSchema = {
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={[contactSchema]}>
 <PageHero badge="Contact" title="Contact DNY Cross Border Group" {crumbs}
-  lead="Partnership, investment, enterprise deployment, developer access or a visit to Sydney — choose the type of enquiry and we will route it to the right team." />
+  lead="Partnership, investment, enterprise deployment, developer access or a visit to Sydney: choose the type of enquiry and we will route it to the right team." />
 
 <section class="section" aria-labelledby="ct-h">
   <div class="container">
@@ -40,7 +40,7 @@ const contactSchema = {
         </div>
         <div class="sep-box" style="margin-top:24px;">
           <h3 class="h4">Enquiry types</h3>
-          <p><strong>Enterprise</strong> — deploy AI or physical intelligence. <strong>Partnership</strong> — technology, hardware, channel or industry. <strong>Investment</strong> — group or venture briefings. <strong>Developer</strong> — APIs, integration and open source. <strong>Visit</strong> — meet the team in Sydney.</p>
+          <p><strong>Enterprise</strong>: deploy AI or Physical SI. <strong>Partnership</strong>: technology, hardware, channel or industry. <strong>Investment</strong>: group or venture briefings. <strong>Developer</strong>: APIs, integration and open source. <strong>Visit</strong>: meet the team in Sydney.</p>
         </div>
       </div>
 

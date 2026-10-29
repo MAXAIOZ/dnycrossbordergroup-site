@@ -19,11 +19,11 @@ const JOIN = '/opc-fde/join';
 
 const defs = [
   {
-    term: 'OPC — One Person Company',
+    term: 'OPC (One Person Company)',
     d: 'A business run by one person or a very small team that uses AI agents to deliver at the scale of a much larger firm.',
   },
   {
-    term: 'FDE — Forward Deployed Entrepreneur',
+    term: 'FDE (Forward Deployed Entrepreneur)',
     d: 'A founder who deploys a proven product or service into the Australian and New Zealand market from wherever they are, with DNY as the local partner.',
   },
   {
@@ -172,7 +172,7 @@ const needs = listedNeeds();
 const notes = [
   "Membership is granted after a short review against the Alliance's published criteria. Community membership is free. Professional and Premier are open by application; no fees are charged until the Membership Terms are published, and we will give members at least 30 days' notice of any material change to benefits.",
   'OPC Hubs are in development. Hub benefits apply only once a hub opens; no opening date is promised.',
-  'The service provider directory lists independent firms that members contact directly. DNY does not endorse, supervise or guarantee their services, does not receive referral fees from them, and is not responsible for their advice. Nothing provided through the Alliance — including guides, sessions and directory listings — is legal, tax, financial, insurance or immigration advice.',
+  'The service provider directory lists independent firms that members contact directly. DNY does not endorse, supervise or guarantee their services, does not receive referral fees from them, and is not responsible for their advice. Nothing provided through the Alliance, including guides, sessions and directory listings, is legal, tax, financial, insurance or immigration advice.',
   'Members and partners are independent businesses. They are not employees, agents or representatives of DNY and cannot commit DNY to any obligation.',
   'The ANZ OPC + FDE Alliance is operated by DNY Cross Border Group Pty Ltd.',
 ];
@@ -224,7 +224,7 @@ const schema = [
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={schema} bodyClass="opc-fde-page">
 <PageHero badge="ANZ OPC + FDE Alliance" title="Deliver real projects in Australia and New Zealand" {crumbs}
-  lead="The ANZ OPC + FDE Alliance connects real needs from Australian and New Zealand organisations with one-person companies and Forward Deployed Entrepreneurs around the world. You deliver from wherever you are; DNY is your local partner in Sydney — contracting where a client needs it, meeting clients in local business hours and keeping delivery on track."
+  lead="The ANZ OPC + FDE Alliance connects real needs from Australian and New Zealand organisations with one-person companies and Forward Deployed Entrepreneurs around the world. You deliver from wherever you are; DNY is your local partner in Sydney. We contract where a client needs it, meet clients in local business hours and keep delivery on track."
   primary={{ label: 'Join for Free', href: `${JOIN}?tier=community` }}
   secondary={{ label: 'See Open Needs', href: '#needs' }} />
 
@@ -252,7 +252,7 @@ const schema = [
 <section class="section" id="needs" aria-labelledby="needs-h">
   <div class="container">
     <SectionHead kicker="Open Needs" id="needs-h" title="Open Needs across the DNY group"
-      lead="DNY's own ventures and business lines are the first source of work for Alliance members. Each is being built in Australia now — tell us where you can help." />
+      lead="DNY's own ventures and business lines are the first source of work for Alliance members. Each is being built in Australia now: tell us where you can help." />
 
     {needs.length > 0 && (
       <div class="vgrid reveal" style="margin-bottom:26px;">
@@ -373,7 +373,7 @@ const schema = [
 <section class="section" id="fde" aria-labelledby="fde-h">
   <div class="container">
     <SectionHead kicker="The FDE model" id="fde-h" title="How an FDE deploys into Australia and New Zealand"
-      lead="An FDE takes a proven product or service into a new market — from wherever they are, with DNY as the local partner." />
+      lead="An FDE takes a proven product or service into a new market, from wherever they are, with DNY as the local partner." />
     <div class="layers reveal">
       {fde.map((s, i) => (
         <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>
@@ -425,7 +425,7 @@ const schema = [
   </div>
 </section>
 
-<FAQ groups={['opcfde']} title="ANZ OPC + FDE Alliance — common questions" />
+<FAQ groups={['opcfde']} title="ANZ OPC + FDE Alliance: common questions" />
 
 <CTABand title="Join the network that delivers" primary={{ label: 'Join for Free', href: `${JOIN}?tier=community` }} secondary={CTA.partner} />
 </Base>

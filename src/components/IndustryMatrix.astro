@@ -17,7 +17,7 @@ import { INDUSTRIES, CAPABILITIES } from '../data/industries';
             <th scope="row"><a href={ind.href}>{ind.name}</a>{ind.future && <span class="fut">Future expansion</span>}</th>
             {CAPABILITIES.map((c) => {
               const v = ind.caps[c.key];
-              return <td>{v === 'core' ? <span class="dot core" title="Core">Core</span> : v === 'supporting' ? <span class="dot sup" title="Supporting">Supporting</span> : <span class="dot none">—</span>}</td>;
+              return <td>{v === 'core' ? <span class="dot core" title="Core">Core</span> : v === 'supporting' ? <span class="dot sup" title="Supporting">Supporting</span> : <span class="dot none" aria-label="Not applicable" data-dash-ok>—</span>}</td>;
             })}
           </tr>
         ))}

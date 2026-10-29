@@ -19,15 +19,15 @@ export const KEY_FACTS: [string, string][] = [
   ['What it is', SITE.positioning],
   ['Headquarters', `${SITE.address.display} (Sydney)`],
   ['Markets', 'Australia first; New Zealand (Auckland) as the next network node; global technology partners'],
-  ['Group structure', 'Group holding layer → Trusted & Open AI Infrastructure → Open Physical Intelligence Layer → OPC + FDE delivery network → Applied Ventures'],
-  ['Core focus', 'Trusted AI, open-source and open-weight AI, AI agents, physical AI (commercial drones, embodied robotics, edge AI, autonomous systems), industry deployment'],
+  ['Group structure', 'Group holding layer → Trusted & Open AI Infrastructure → Open Physical SI Layer → OPC + FDE delivery network → Applied Ventures'],
+  ['Core focus', 'Trusted AI, open-source and open-weight AI, AI agents, physical AI toward Physical Super Intelligence (SI): commercial drones, embodied robotics, edge AI and autonomous systems; industry deployment'],
   ['Industries', 'Built environment; logistics and warehousing; cross-border trade; enterprise and professional services; future verticals (mining, agriculture, utilities, health and ageing)'],
   ['Origin', 'Began in cross-border trade and supply chain between Australia and international markets'],
   ['Core ventures', VENTURES.map((v) => v.name).join('; ')],
-  ['Trading lines', `Drone & Robotics Components — passive drone and robot parts plus KST servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND} — fitted accessories for Australian EVs, retail and trade (${U('/ventures/ev-accessories')})`],
+  ['Trading lines', `Drone & Robotics Components: passive drone and robot parts plus KST servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND}: fitted accessories for Australian EVs, retail and trade (${U('/ventures/ev-accessories')})`],
   ['Number of ventures', `${VENTURES.length}` + (new Set(VENTURES.map((v) => v.status)).size === 1 ? `, all currently ${VENTURES[0].status}` : '')],
   ['What DNY does not do', 'DNY does not train its own frontier foundation model, does not manufacture aircraft, and is not a co-working operator'],
-  ['Delivery network', 'OPC + FDE network and the ANZ OPC + FDE Alliance — Sydney first, Auckland next'],
+  ['Delivery network', 'OPC + FDE network and the ANZ OPC + FDE Alliance, Sydney first, Auckland next'],
   ['Vendor stance', 'Multi-model, multi-cloud and multi-hardware; no dependency on a single supplier or country of origin'],
   ['Contact', `${SITE.email} · ${U('/contact')}`],
   ['Website', SITE.url],
@@ -36,7 +36,7 @@ export const KEY_FACTS: [string, string][] = [
 export function llmsTxt(): string {
   const L: string[] = [];
   L.push(`# ${SITE.name}`, '', `> ${SITE.positioning}`, '');
-  L.push(`${SITE.name} is headquartered in Barangaroo, Sydney, Australia, and grew from cross-border trade. It is organised as a group of five layers: a Trusted Data, Identity & Verification Foundation; Trusted & Open AI Infrastructure; the Open Physical Intelligence Layer (drones, robotics, edge AI, autonomous systems); the OPC + FDE delivery network; and Applied Ventures. Ventures are labelled Operating, In Development, Proposed, Research or Partnership Opportunity. Last updated ${SITE.lastUpdated}.`, '');
+  L.push(`${SITE.name} is headquartered in Barangaroo, Sydney, Australia, and grew from cross-border trade. It is organised as a group of five layers: a Trusted Data, Identity & Verification Foundation; Trusted & Open AI Infrastructure; the Open Physical SI Layer (drones, robotics, edge AI, autonomous systems); the OPC + FDE delivery network; and Applied Ventures. Ventures are labelled Operating, In Development, Proposed, Research or Partnership Opportunity. Last updated ${SITE.lastUpdated}.`, '');
   L.push('## Key facts', '');
   KEY_FACTS.forEach(([k, v]) => L.push(`- ${k}: ${v}`));
   L.push('', '## Full text', '', `- [Complete site content for AI systems](${U('/llms-full.txt')}): every page's key content in one Markdown file`, `- [Company facts](${U('/facts')}): canonical facts about the group`, '');
@@ -69,7 +69,7 @@ export function llmsTxt(): string {
     open.forEach((n) => L.push(`- [${n.title}](${U('/opc-fde/needs/' + n.id)}): ${n.sector}; ${n.location}; ${n.delivery}; closes ${n.closes ?? 'open-ended'}.`));
     L.push('');
   }
-  L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems — sourced and quoted on request; no complete drones are sold; no prices published`);
+  L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems, sourced and quoted on request; no complete drones are sold; no prices published`);
   for (const app of ['drone', 'robotics'] as const) {
     L.push(`- [${app === 'drone' ? 'Drone' : 'Robotics'} Components](${U(APP_PATH[app])}): ${PCATS.filter((c) => c.application === app).map((c) => `${c.name} (${PRODUCTS.filter((p) => p.category === c.id).length})`).join(', ')}`);
     PRODUCTS.filter((p) => p.brand && p.application === app).forEach((p) => L.push(`  - [${p.name}](${U('/components/products/' + p.slug)}): ${p.models!.length} model${p.models!.length === 1 ? '' : 's'}; datasheets on request`));
@@ -84,15 +84,15 @@ export function llmsTxt(): string {
 export function llmsFullTxt(): string {
   const L: string[] = [];
   const h = (n: number, t: string) => L.push('', `${'#'.repeat(n)} ${t}`, '');
-  L.push(`# ${SITE.name} — complete site content`, '', `> ${SITE.positioning}`, '', `Source: ${SITE.url} · Last updated: ${SITE.lastUpdated} · Language: English (Australia)`);
+  L.push(`# ${SITE.name}: complete site content`, '', `> ${SITE.positioning}`, '', `Source: ${SITE.url} · Last updated: ${SITE.lastUpdated} · Language: English (Australia)`);
 
   h(2, 'Key facts');
   KEY_FACTS.forEach(([k, v]) => L.push(`- **${k}:** ${v}`));
 
   h(2, 'Group architecture (five layers)');
-  [...STACK].reverse().forEach((l) => L.push(`${l.n}. **${l.name}** — ${l.role}. ${l.summary} (${U(l.href)})`));
+  [...STACK].reverse().forEach((l) => L.push(`${l.n}. **${l.name}**: ${l.role}. ${l.summary} (${U(l.href)})`));
   h(3, 'Group hierarchy');
-  HIERARCHY.forEach((x) => L.push(`- **${x.level} — ${x.name}:** ${x.role}. Scope: ${x.scope}.`));
+  HIERARCHY.forEach((x) => L.push(`- **${x.level}, ${x.name}:** ${x.role}. Scope: ${x.scope}.`));
 
   h(2, 'Trusted & Open AI Infrastructure');
   L.push(`Page: ${U('/ai-infrastructure')}`, '');
@@ -100,10 +100,10 @@ export function llmsFullTxt(): string {
   h(3, 'Trust model');
   TRUST_PILLARS.forEach((p) => L.push(`- **${p.k}:** ${p.d}`));
 
-  h(2, 'Open Physical Intelligence Layer');
-  L.push(`Page: ${U('/physical-intelligence')}`, '', 'The Open Physical Intelligence Layer is not a drone company and not a single robotics project. It is the unified, vendor-neutral connection layer through which DNY’s trusted AI infrastructure reaches drones, robots, edge systems and real assets.', '');
+  h(2, 'Open Physical SI Layer');
+  L.push(`Page: ${U('/physical-intelligence')}`, '', 'The Open Physical SI Layer is not a drone company and not a single robotics project. It is the unified, vendor-neutral connection layer through which DNY’s trusted AI infrastructure reaches drones, robots, edge systems and real assets.', '');
   L.push(`Reference architecture: ${PI_CHAIN.join(' → ')}.`, '', 'Capability loop:');
-  PI_LOOP.forEach((s, i) => L.push(`${i + 1}. **${s.k}** — ${s.d}`));
+  PI_LOOP.forEach((s, i) => L.push(`${i + 1}. **${s.k}**: ${s.d}`));
   L.push('', 'Sub-layers:');
   PI_SUBLAYERS.forEach((s) => L.push(`- **${s.name} (${s.direction}):** ${s.line} (${U(s.href)})`));
   L.push('', 'AILH is a proposed large-scale industrial deployment environment used as a physical-economy proof point. It is a separate legal and economic interest, not owned or controlled by DNY.');
@@ -147,7 +147,7 @@ export function llmsFullTxt(): string {
   h(2, 'Open Needs');
   L.push(`Page: ${U('/opc-fde#needs')}`, `How to express interest: ${U('/opc-fde/join')}`, '', 'Open Needs are curated by DNY from DNY group ventures and business lines, and from verified needs of organisations in Australia and New Zealand. Client names, budgets and contract terms are not published on this website.');
   GROUP_CARDS.forEach((c) => L.push(`- **${c.name}** (${c.category}, ${c.status}): ${c.short} Work areas: ${c.workAreas.join(', ')}. More: ${U(c.href)}. Express interest: ${U('/opc-fde/join?venture=' + c.key)}`));
-  listedNeeds().forEach((n) => L.push('', `- **${n.title}** — ${n.sector}; ${n.location}; delivery ${n.delivery}; contracting ${n.contracting}; ${n.type}; status ${effectiveStatus(n)}${n.closes ? '; closes ' + n.closes : ''}. ${n.summary} Skills: ${n.skills.join(', ')}. Details: ${U('/opc-fde/needs/' + n.id)}`));
+  listedNeeds().forEach((n) => L.push('', `- **${n.title}**: ${n.sector}; ${n.location}; delivery ${n.delivery}; contracting ${n.contracting}; ${n.type}; status ${effectiveStatus(n)}${n.closes ? '; closes ' + n.closes : ''}. ${n.summary} Skills: ${n.skills.join(', ')}. Details: ${U('/opc-fde/needs/' + n.id)}`));
 
   h(2, 'Frequently asked questions');
   for (const g of Object.values(FAQS)) {
@@ -159,7 +159,7 @@ export function llmsFullTxt(): string {
   GLOSSARY.forEach((g) => L.push(`- **${g.term}:** ${g.def}`));
 
   h(2, 'Sources for statistics used on the site');
-  L.push('- 12% of Australian businesses used AI in 2024–25, up from 1% in 2021–22; 1% reported AI use in Transport, Postal & Warehousing; 6% in Construction — Australian Bureau of Statistics, Characteristics of Australian Business 2024–25.', '- 89% of organisations use some open source in their AI stack; 63% use an open model — Linux Foundation Research, 2025.', '- A$22b annual enterprise procurement behind the Buy Australian AI Partnership — Department of Industry, Science and Resources / National AI Centre, 2026.');
+  L.push('- 12% of Australian businesses used AI in 2024–25, up from 1% in 2021–22; 1% reported AI use in Transport, Postal & Warehousing; 6% in Construction, from the Australian Bureau of Statistics, Characteristics of Australian Business 2024–25.', '- 89% of organisations use some open source in their AI stack; 63% use an open model, according to Linux Foundation Research, 2025.', '- A$22b annual enterprise procurement behind the Buy Australian AI Partnership, according to the Department of Industry, Science and Resources and the National AI Centre, 2026.');
 
   h(2, 'Contact');
   L.push(`${SITE.name}, ${SITE.address.display}. Email: ${SITE.email}. Enquiries: ${U('/contact')} (enterprise, partnership, investment, developer, visit).`, '', 'Disclaimer: general information only; not an offer of securities or financial, legal or tax advice. Ventures are at the stage shown by their status label.');

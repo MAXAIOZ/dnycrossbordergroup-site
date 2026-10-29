@@ -12,7 +12,7 @@ import { VENTURES } from '../data/ventures';
 import { techArticle, definedTerm } from '../data/schema';
 
 const title = 'AI Infrastructure';
-const description = 'DNY’s Trusted & Open AI Infrastructure: open and open-weight models, AI agents with human oversight, private and hybrid deployment, and readiness for machine-to-machine transactions — built on verifiable data.';
+const description = 'DNY’s Trusted & Open AI Infrastructure: open and open-weight models, AI agents with human oversight, private and hybrid deployment, and readiness for machine-to-machine transactions, built on verifiable data.';
 const def = 'The digital layer of the DNY group: the models, agents, interfaces, deployment and governance that every DNY venture and physical intelligence deployment builds on.';
 const crumbs = [{ name: 'AI Infrastructure', href: '/ai-infrastructure' }];
 const steps = [
@@ -26,7 +26,7 @@ const ventures = VENTURES.filter((v) => v.category === 'Trusted & Open AI');
 ---
 <Base {title} {description} breadcrumbs={crumbs} schema={[techArticle('Trusted & Open AI Infrastructure', description, '/ai-infrastructure', ['AI infrastructure', 'AI agents', 'Hybrid AI deployment']), definedTerm('Trusted & Open AI Infrastructure', def, '/ai-infrastructure')]}>
 <PageHero badge="AI Infrastructure" title="AI Infrastructure: open models, governed agents, verifiable data" {crumbs}
-  lead="DNY does not train a frontier model. We make capable open AI usable for Australian industry — evaluating, integrating, deploying, governing and operating it as one accountable service."
+  lead="DNY does not train a frontier model. We make capable open AI usable for Australian industry: evaluating, integrating, deploying, governing and operating it as one accountable service."
   primary={CTA.partner} secondary={CTA.brief}>
   <Definition term="Trusted & Open AI Infrastructure" def={def} />
 </PageHero>
@@ -51,11 +51,11 @@ const ventures = VENTURES.filter((v) => v.category === 'Trusted & Open AI');
       <p class="lead" style="margin-top:14px;">An AI agent is software that uses a model to plan and carry out multi-step tasks by calling tools, systems or devices.</p>
     </div>
     <ul class="check-cols reveal-r" style="grid-template-columns:1fr;">
-      <li><strong>Orchestration</strong> — multiple agents and tools coordinated across one workflow.</li>
-      <li><strong>Human oversight</strong> — approval, review and escalation where full autonomy is inappropriate.</li>
-      <li><strong>Permissions</strong> — agents act only within explicitly granted scopes.</li>
-      <li><strong>Evaluation</strong> — agents are tested and licence-checked before production use.</li>
-      <li><strong>Physical reach</strong> — the same agents coordinate drones and robots in <a href="/physical-intelligence#autonomous" style="color:var(--gold-lt)">autonomous operations</a>.</li>
+      <li><strong>Orchestration</strong>: multiple agents and tools coordinated across one workflow.</li>
+      <li><strong>Human oversight</strong>: approval, review and escalation where full autonomy is inappropriate.</li>
+      <li><strong>Permissions</strong>: agents act only within explicitly granted scopes.</li>
+      <li><strong>Evaluation</strong>: agents are tested and licence-checked before production use.</li>
+      <li><strong>Physical reach</strong>: the same agents coordinate drones and robots in <a href="/physical-intelligence#autonomous" style="color:var(--gold-lt)">autonomous operations</a>.</li>
     </ul>
   </div>
 </section>
@@ -63,7 +63,7 @@ const ventures = VENTURES.filter((v) => v.category === 'Trusted & Open AI');
 <section class="section" id="deployment" aria-labelledby="dp-h">
   <div class="container">
     <SectionHead kicker="Deployment" id="dp-h" title="Evaluate → integrate → deploy → govern → operate"
-      lead="One accountable partner from model selection to day-to-day operation — in the cloud, privately or in hybrid environments." />
+      lead="One accountable partner from model selection to day-to-day operation, in the cloud, privately or in hybrid environments." />
     <div class="layers reveal" id="operating-model">
       {steps.map((s, i) => <div class="layer"><div class="layer-idx">{i + 1}</div><div class="layer-body"><h3>{s.k}</h3><p>{s.d}</p></div></div>)}
     </div>
@@ -95,7 +95,7 @@ const ventures = VENTURES.filter((v) => v.category === 'Trusted & Open AI');
   </div>
 </section>
 
-<FAQ groups={['open', 'agents']} title="AI Infrastructure — common questions" dark />
+<FAQ groups={['open', 'agents']} title="AI Infrastructure: common questions" dark />
 
 <CTABand title="Build on accountable AI infrastructure" primary={CTA.brief} secondary={CTA.partner} />
 </Base>
