@@ -73,8 +73,7 @@ export const NAV: NavItem[] = [
   },
   {
     label: 'Physical Super Intelligence (SI)',
-    // Shown between 1280 and 1439px, where the full name would crowd the nav.
-    shortLabel: 'Physical SI',
+    // No shortLabel: with six top-level items the full name fits from 1141px up.
     href: '/physical-intelligence',
     // Parts & Components sits under Physical SI in the navigation, but keeps its own URLs.
     match: ['/physical-intelligence', '/components'],
