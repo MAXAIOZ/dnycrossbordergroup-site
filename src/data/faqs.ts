@@ -191,15 +191,15 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: `Which vehicles do ${EV_BRAND} products fit?`,
-        a: 'Australian-delivered right-hand-drive Tesla Model Y (2022–2025 and 2025+ Juniper) and Model 3 (2019–2023 and 2024+ Highland); BYD Atto 3, Seal, Sealion 7, Dolphin and Shark 6; MG4; Kia EV5; Hyundai IONIQ 5; Polestar 2; XPENG G6; and Zeekr 7X. Coverage varies by product.',
+        a: 'Planned launch fitment covers Australian-delivered right-hand-drive Tesla Model Y (2025+ Juniper and 2022–2025), BYD Sealion 7, Geely EX5, Zeekr 7X, Jaecoo J5 EV and the BYD Shark 6 ute. Tesla Model 3, BYD Atto 2, Atto 3, Sealion 6 and Sealion 8, Geely EX2, Kia EV3 and EV5, MG4 and MG4 Urban, and XPENG G6 follow after launch. Other models, including BYD Seal, Dolphin and Atto 1, Hyundai IONIQ 5, Polestar 2 and Mitsubishi Outlander PHEV, are available on request for trade and fleet customers. Coverage varies by product.',
       },
       {
         q: 'What is in the launch range?',
-        a: '3D all-weather floor mats, personalised stitched mats, boot cargo liners, frunk liners, centre console organisers, magnetic side-window sunshades, glass roof sunshades, seat-back kick protectors, a pet rear-seat hammock and a BYD Shark 6 ute tub mat. All launch products are non-electrical.',
+        a: 'A floor mat and boot liner set, 3D all-weather TPE floor mats, glass roof sunshades, magnetic side-window sunshades, a ute tub mat for the BYD Shark 6, boot cargo liners, frunk liners for models with a usable front trunk, centre console organisers, seat-back kick protectors, a pet rear-seat hammock and personalised stitched mats. All launch products are non-electrical.',
       },
       {
         q: 'Can dealers, detailers and fleets buy wholesale?',
-        a: 'Yes. Trade and fleet enquiries — volume pricing, fleet packs, private label and OEM/ODM development — go through https://dnycrossbordergroup.com/contact?type=trade or info@dnycrossbordergroup.com.',
+        a: 'Yes. Trade and fleet enquiries — including dealer delivery packs and novated lease accessory packs, volume pricing, fleet packs, private label and OEM/ODM development — go through https://dnycrossbordergroup.com/contact?type=trade or info@dnycrossbordergroup.com.',
       },
       {
         q: 'Are electronic or battery-powered EV accessories available?',

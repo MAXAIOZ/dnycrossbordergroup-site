@@ -176,7 +176,7 @@ export const VENTURES: Venture[] = [
     builtOn: 'Industry deployment — Cross-border Trade',
     industries: ['Automotive', 'Retail', 'Cross-border Trade'],
     status: 'In Development',
-    capabilities: ['Model-specific fitment', 'Personalised interiors', 'B2C retail + B2B trade', 'Australian Consumer Law support'],
+    capabilities: ['New-model fitment', 'Heat-stable materials', 'B2C retail + B2B trade', 'Australian Consumer Law support'],
     tech: ['Trusted data'],
     relation:
       'One shared vehicle-fitment and product data set drives both the retail and trade channels; products are developed and customised with manufacturing partners through the OPC + FDE network.',
