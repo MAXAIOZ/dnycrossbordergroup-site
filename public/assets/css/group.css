@@ -557,15 +557,17 @@ h1, h2 { text-wrap: balance; }
 .opc-fde-page .layers { gap: 10px; }
 .opc-fde-page .def-strip { padding: 18px 0 22px; }
 @media (max-width: 700px) {
-  .opc-fde-page .section { padding: 34px 0; }
+  .opc-fde-page .section { padding: 30px 0; }
   .opc-fde-page .page-hero { padding-top: 64px; padding-bottom: 30px; }
-  .opc-fde-page .section-head { margin-bottom: 20px; }
-  .opc-fde-page .need-card { padding: 13px; }
+  .opc-fde-page .section-head { margin-bottom: 18px; }
+  .opc-fde-page .need-card { padding: 12px; }
+  .opc-fde-page .need-card .pill { font-size: 10.5px; padding: 2px 6px; }
+  .opc-fde-page .layer { padding-top: 16px; padding-bottom: 16px; }
   .opc-fde-page .need-card .vcard-name { font-size: 15.5px; }
   .opc-fde-page .tile { padding: 15px; }
   .opc-fde-page .def-strip { padding: 14px 0 16px; gap: 12px; }
   .opc-fde-page .def-item p { font-size: 13px; }
-  .opc-fde-page .mem-list { gap: 6px; font-size: 13px; }
-  .opc-fde-page .mem-notes li { font-size: 12px; }
+  .opc-fde-page .mem-list { gap: 5px; font-size: 12.5px; }
+  .opc-fde-page .mem-notes li { font-size: 11.5px; line-height: 1.6; }
 }
 .opc-fde-page p, .opc-fde-page li { line-height: 1.56; }
