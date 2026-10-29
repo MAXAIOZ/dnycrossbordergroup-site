@@ -540,3 +540,23 @@ h1, h2 { text-wrap: balance; }
 .mem-notes ul { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 9px; }
 .mem-notes li { position: relative; padding-left: 14px; font-size: 12.5px; line-height: 1.7; color: var(--t3); }
 .mem-notes li::before { content: ''; position: absolute; left: 0; top: .7em; width: 4px; height: 4px; border-radius: 50%; background: var(--t3); opacity: .7; }
+
+
+/* /opc-fde layout efficiency: tighter rhythm, four cards per row on desktop */
+.opc-fde-page .section { padding: 60px 0; }
+.opc-fde-page .page-hero { padding-top: 96px; padding-bottom: 48px; }
+.opc-fde-page .section-head { margin-bottom: 32px; }
+.opc-fde-page .section-head .lead { margin-top: 10px; }
+.opc-fde-page .vgrid { grid-template-columns: repeat(auto-fill, minmax(262px, 1fr)); gap: 16px; }
+.opc-fde-page .need-card { padding: 20px; gap: 8px; }
+.opc-fde-page .need-card .vcard-name { font-size: 17px; }
+.opc-fde-page .need-card .vcard-short { font-size: 13.5px; }
+.opc-fde-page .need-card .pill { font-size: 11px; padding: 3px 7px; }
+.opc-fde-page .need-actions { padding-top: 10px; gap: 10px; }
+.opc-fde-page .layers { gap: 10px; }
+.opc-fde-page .def-strip { padding: 18px 0 22px; }
+@media (max-width: 700px) {
+  .opc-fde-page .section { padding: 44px 0; }
+  .opc-fde-page .page-hero { padding-top: 72px; padding-bottom: 36px; }
+  .opc-fde-page .section-head { margin-bottom: 24px; }
+}
