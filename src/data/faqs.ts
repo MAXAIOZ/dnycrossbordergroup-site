@@ -195,7 +195,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'What is in the launch range?',
-        a: 'A floor mat and boot liner set, 3D all-weather TPE floor mats, glass roof sunshades, magnetic side-window sunshades, a ute tub mat for the BYD Shark 6, boot cargo liners, frunk liners for models with a usable front trunk, centre console organisers, seat-back kick protectors, a pet rear-seat hammock and personalised stitched mats. All launch products are non-electrical.',
+        a: 'A floor mat and boot liner set, 3D all-weather TPE floor mats, boot cargo liners, glass roof sunshades, magnetic side-window sunshades, a pet rear-seat hammock, seat-back kick protectors, centre console organisers, frunk liners for models with a usable front trunk, a ute tub mat for the BYD Shark 6 and personalised stitched mats. All launch products are non-electrical.',
       },
       {
         q: 'Can dealers, detailers and fleets buy wholesale?',
