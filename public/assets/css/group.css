@@ -509,6 +509,11 @@ body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button, body.
 }
 .check input[type="checkbox"] { width: 15px; height: 15px; flex: 0 0 15px; margin: 2px 0 0; padding: 0; accent-color: var(--gold); }
 .check a { color: var(--gold-lt); }
+#join-form .check, #join-form .check a {
+  text-transform: none; letter-spacing: 0; font-size: 13px; font-weight: 400;
+  color: var(--t2); line-height: 1.45; margin: 0;
+}
+#join-form .check a { color: var(--gold-lt); text-decoration: underline; }
 fieldset.form-group { border: 0; padding: 0; margin: 0 0 14px; }
 fieldset.form-group legend { font-size: 12.5px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
 
