@@ -157,7 +157,7 @@ const year = new Date().getFullYear();
                   ? item.groups.map((g) => (
                       <div class="sub-group" role="group" aria-label={g.title}>
                         {g.href
-                          ? <a href={g.href} class="sub-group-head">{g.title}</a>
+                          ? <a href={g.href} class="sub-group-head">{g.title}<span class="sgh-arrow" aria-hidden="true">→</span></a>
                           : <span class="sub-group-head">{g.title}</span>}
                         {item.children!.filter((c) => c.group === g.title).map((c) => (
                           <a href={c.href} class="sub-link">
