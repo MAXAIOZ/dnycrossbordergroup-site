@@ -502,8 +502,13 @@ body.has-glow-cursor, body.has-glow-cursor a, body.has-glow-cursor button, body.
 .need-actions .project-link { font-size: 13.5px; }
 
 .check-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 8px; }
-.check { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--t2); line-height: 1.5; }
-.check input { margin-top: 3px; flex: 0 0 auto; }
+.check {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 13px; font-weight: 400; color: var(--t2); line-height: 1.45;
+  text-transform: none; letter-spacing: 0; margin: 0;
+}
+.check input[type="checkbox"] { width: 15px; height: 15px; flex: 0 0 15px; margin: 2px 0 0; padding: 0; accent-color: var(--gold); }
+.check a { color: var(--gold-lt); }
 fieldset.form-group { border: 0; padding: 0; margin: 0 0 14px; }
 fieldset.form-group legend { font-size: 12.5px; font-weight: 600; color: var(--t2); margin-bottom: 6px; }
 

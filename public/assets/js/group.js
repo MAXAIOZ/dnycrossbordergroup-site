@@ -273,9 +273,26 @@
           jsay('Thank you. We have received your application and will reply within five business days.', true);
         })
         .catch(function () {
+          var lines = [
+            'Membership application',
+            'Tier: ' + tierLabel,
+            'Venture of interest: ' + venture,
+            'Name: ' + name,
+            'Email: ' + email,
+            'Country: ' + payload.country,
+            'Joining as: ' + payload.joining_as,
+            'Organisation: ' + (payload.organisation || '-'),
+            'Website: ' + payload.profile_url,
+            'Capabilities: ' + payload.capabilities,
+            'Partner track: ' + payload.partner_track,
+            'Working-hours overlap: ' + payload.overlap,
+            'Direct contracting: ' + payload.contracting,
+            'Need reference: ' + (payload.need || '-'),
+            'Notes: ' + (payload.message || '-')
+          ];
           var mail = 'mailto:' + jf.dataset.email + '?subject=' + encodeURIComponent(subject) +
-            '&body=' + encodeURIComponent('Membership application: ' + tierLabel + '\n' + name + '\n' + email);
-          jsay('We could not send the form just now. Please <a href="' + mail + '">email us directly</a> instead.', false);
+            '&body=' + encodeURIComponent(lines.join('\n'));
+          jsay('We could not send the form just now. Please <a href="' + mail + '">email us directly</a> instead — your answers are already filled in.', false);
         })
         .then(function () { btn.disabled = false; btn.textContent = 'Submit Application'; });
     });
