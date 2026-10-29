@@ -75,7 +75,7 @@ export function llmsTxt(): string {
     open.forEach((n) => L.push(`- [${n.title}](${U('/opc-fde/needs/' + n.id)}): ${n.sector}; ${n.location}; ${n.delivery}; closes ${n.closes ?? 'open-ended'}.`));
     L.push('');
   }
-  L.push('## Drone & Robotics Components', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems, sourced and quoted on request; no complete drones are sold; no prices published`);
+  L.push('## Components catalogue', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems, sourced and quoted on request; no complete drones are sold; no prices published`);
   for (const app of ['drone', 'robotics'] as const) {
     L.push(`- [${app === 'drone' ? 'Drone' : 'Robotics'} Components](${U(APP_PATH[app])}): ${PCATS.filter((c) => c.application === app).map((c) => `${c.name} (${PRODUCTS.filter((p) => p.category === c.id).length})`).join(', ')}`);
     PRODUCTS.filter((p) => p.brand && p.application === app).forEach((p) => L.push(`  - [${p.name}](${U('/components/products/' + p.slug)}): ${p.models!.length} model${p.models!.length === 1 ? '' : 's'}; datasheets on request`));
