@@ -198,6 +198,8 @@
       if (!partnerWrap || !tierSel) return;
       var isPremier = tierSel.value === 'premier';
       partnerWrap.hidden = !isPremier;
+      var pt = partnerWrap.querySelector('input[name="partner_track"]');
+      if (pt) { pt.disabled = !isPremier; if (!isPremier) pt.checked = false; }
       if (!isPremier) {
         var cb = partnerWrap.querySelector('input[type="checkbox"]');
         if (cb) cb.checked = false;

@@ -25,8 +25,10 @@ function magicOk(bytes, ext) {
 }
 
 function makeRef() {
-  const d = new Date();
-  const ymd = `${String(d.getUTCFullYear()).slice(2)}${String(d.getUTCMonth() + 1).padStart(2, '0')}${String(d.getUTCDate()).padStart(2, '0')}`;
+  // Reference dates follow Sydney, so a morning enquiry is dated the day the buyer sent it.
+  const parts = new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Sydney', year: '2-digit', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+  const part = (t) => parts.find((x) => x.type === t).value;
+  const ymd = `${part('year')}${part('month')}${part('day')}`;
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   const rnd = crypto.getRandomValues(new Uint8Array(6));
   return `DNY-Q-${ymd}-${Array.from(rnd, (x) => alphabet[x % alphabet.length]).join('')}`;

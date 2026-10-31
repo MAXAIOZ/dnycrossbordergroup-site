@@ -701,7 +701,7 @@
         "FZ320",
         "FZ10"
       ],
-      "description": "Servos KST lists for unmanned systems.",
+      "description": "KST's FZ series servos, listed by model.",
       "send": [
         "KST model from the list on this page, or the torque, speed, voltage and size you need",
         "What the servo will drive and how it is installed",

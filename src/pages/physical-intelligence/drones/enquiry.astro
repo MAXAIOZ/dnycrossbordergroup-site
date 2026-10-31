@@ -135,10 +135,16 @@ const ROLES = ['End user', 'Reseller', 'Integrator', 'Other'];
         if (match) application.value = match.value;
       }
 
+      // A hidden field must not be submitted either. Display alone is not enough for a browser
+      // that still serialises hidden inputs, so the control is disabled while its group is hidden.
       const sync = () => {
-        orgWrap.hidden = buying.value !== 'Business';
-        F('company').required = buying.value === 'Business';
-        tankWrap.hidden = application.value !== 'Agriculture';
+        const business = buying.value === 'Business';
+        const agriculture = application.value === 'Agriculture';
+        orgWrap.hidden = !business;
+        F('company').required = business;
+        F('company').disabled = !business;
+        tankWrap.hidden = !agriculture;
+        F('tank_capacity').disabled = !agriculture;
       };
       buying.addEventListener('change', sync);
       application.addEventListener('change', sync);

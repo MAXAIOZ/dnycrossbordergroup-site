@@ -601,3 +601,9 @@ h1, h2 { text-wrap: balance; }
   .opc-fde-page .mem-notes li { font-size: 11.5px; line-height: 1.6; }
 }
 .opc-fde-page p, .opc-fde-page li { line-height: 1.56; }
+
+/* Aircraft enquiry: keep a clear rhythm between rows; without it the next label sits on the
+   bottom edge of the previous input. */
+#aircraft-enquiry .enq-block > * + * { margin-top: 17px; }
+#aircraft-enquiry .enq-block > .form-note { margin-top: 10px; }
+@media (max-width: 860px) { #aircraft-enquiry .enq-block > * + * { margin-top: 16px; } }
