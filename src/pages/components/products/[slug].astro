@@ -54,6 +54,12 @@ const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.i
       <ul class="check-cols" style="grid-template-columns:1fr;margin-top:16px;">{p.send.map((s) => <li>{s}</li>)}</ul>
       <h2 class="h2-sm" style="margin-top:32px;">Limitations</h2>
       <ul class="check-cols" style="grid-template-columns:1fr;margin-top:16px;">{p.limits.map((s) => <li>{s}</li>)}</ul>
+      {p.note && (
+        <div class="ds-callout" style="margin-top:24px;">
+          <strong>Before a quote</strong>
+          <span>{p.note}</span>
+        </div>
+      )}
     </div>
     <div class="reveal-r">
       <dl class="vfacts" style="grid-template-columns:1fr;margin-top:0;">
@@ -64,7 +70,7 @@ const related = PRODUCTS.filter((x) => x.category === p.category && x.id !== p.i
         <div class="vfact"><dt>Fit status</dt><dd>{STATUS.fit['per-enquiry']}</dd></div>
         <div class="vfact"><dt>Supply status</dt><dd>{STATUS.supply['on-request']}</dd></div>
       </dl>
-      {brand && <p class="src-note" style="margin-top:16px;">{brand.note}</p>}
+      {brand && <p class="src-note" style="margin-top:16px;" data-ban-ok>{brand.note}</p>}
     </div>
   </div>
 </section>

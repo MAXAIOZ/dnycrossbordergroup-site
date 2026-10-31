@@ -90,9 +90,9 @@ export const PI_CHAIN = ['Device', 'Edge', 'Trusted Data', 'Model', 'Agent', 'Ac
 export const PI_SUBLAYERS = [
   {
     key: 'air',
-    name: 'Air Intelligence',
-    direction: 'Commercial Drone Systems',
-    line: 'Autonomous aerial inspection, sensing, mapping and industrial data capture.',
+    name: 'Drones',
+    direction: 'Construction, Agriculture and Inspection',
+    line: 'Commercial aircraft and components for construction, agriculture and inspection, sourced and quoted on enquiry.',
     href: '/physical-intelligence/drones',
   },
   {

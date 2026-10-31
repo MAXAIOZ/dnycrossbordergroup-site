@@ -37,13 +37,47 @@ for (const f of files) {
   const h1 = (text.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) err(`${rel}: ${h1} <h1> elements`);
   // Only the three standard calls to action may appear as buttons (careers apply links excepted).
-  const allowed = new Set(['Request the Group Brief', 'Partner with DNY', 'Contact us', 'Email your application', 'Apply for this role', 'Back to all roles', 'Send enquiry', 'Go to the homepage', 'Browse Drone Components', 'Explore Robotics Components', 'Browse Robotics Components', 'Request a Quote', 'Add to Enquiry', 'Back to Components', 'Search', 'Trade & Fleet Enquiry', 'Join for Free', 'See Open Needs', 'Apply for Professional', 'Apply for Premier', 'Express Interest', 'Back to Open Needs', 'Submit Application', 'Visit evsider.com', 'Trade enquiry']);
+  const allowed = new Set(['Request the Group Brief', 'Partner with DNY', 'Contact us', 'Email your application', 'Apply for this role', 'Back to all roles', 'Send enquiry', 'Go to the homepage', 'Browse Drone Components', 'Explore Robotics Components', 'Browse Robotics Components', 'Request a Quote', 'Add to Enquiry', 'Back to Components', 'Search', 'Trade & Fleet Enquiry', 'Join for Free', 'See Open Needs', 'Apply for Professional', 'Apply for Premier', 'Express Interest', 'Back to Open Needs', 'Submit Application', 'Visit evsider.com', 'Trade enquiry', 'Request an Aircraft Quote', 'Browse Drone Components', 'Explore Drones', 'Submit Aircraft Enquiry', 'Back to Drones']);
   for (const [, label] of text.matchAll(/<a[^>]*class="btn[^"]*"[^>]*>([^<]+)<\/a>/g)) {
     if (!allowed.has(label.trim().replace(/&amp;/g, '&'))) err(`${rel}: non-standard button "${label.trim()}"`);
   }
   if (/\bLayer [0-9]/.test(text) && rel !== '/index.html') err(`${rel}: layer numbering outside the homepage`);
   if (!/<link rel="canonical"/.test(html) && !rel.includes('404')) err(`${rel}: no canonical`);
 }
+// ---- Banned phrases (design brief 2026-11-01): claims the site must never make about drones.
+// Elements marked data-ban-ok are exempt, which is how the KST brand note keeps its
+// "unless a quote states so" sentence without tripping the check.
+const BANNED = [
+  'do not sell complete drones',
+  'no complete drones',
+  'casa approved',
+  'unrestricted export',
+  'authorised distributor',
+  'approved in australia',
+];
+const stripForBanned = (html) =>
+  html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<head[\s\S]*?<\/head>/gi, ' ')
+    .replace(/<(\w+)(?=[^>]*\bdata-ban-ok\b)[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ');
+for (const f of files) {
+  const rel = f.replace(DIST, '/');
+  if (rel.startsWith('/admin/')) continue;
+  const text = stripForBanned(readFileSync(f, 'utf8')).toLowerCase();
+  for (const phrase of BANNED) {
+    const i = text.indexOf(phrase);
+    if (i === -1) continue;
+    errors++;
+    console.log('✗', `${rel}: banned phrase "${phrase}": ...${text.slice(Math.max(0, i - 40), i + 60).trim()}...`);
+  }
+}
+
 // ---- Em dash check (design decision 2026-10-30): visible copy must not use "—".
 // Exceptions: elements marked data-dash-ok, /admin/, <script>, <style>, HTML comments,
 // and Markdown table cells whose only content is the dash.

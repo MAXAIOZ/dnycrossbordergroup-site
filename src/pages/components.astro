@@ -38,7 +38,7 @@ const schema = {
 <section class="section" aria-labelledby="dr-h">
   <div class="container">
     <SectionHead kicker="Drone Components" id="dr-h" title="Parts and servos for drones"
-      lead="Replacement and structural parts matched to the model and generation you specify, and KST servos by series. We do not sell complete drones; models are used only to identify the right part." />
+      lead="This catalogue covers drone and robotics components. For complete aircraft, explore our <a href='/physical-intelligence/drones' style='color:var(--gold-lt)'>construction, agriculture and inspection drone pages</a>. Components are matched to the exact model and part number and quoted after review." />
     <form class="psearch reveal" action={APP_PATH.drone} method="get" role="search">
       <label class="sr-only" for="dq">Search drone components</label>
       <input id="dq" type="search" name="q" placeholder="Search drone components, e.g. propeller, landing gear, servo">
@@ -64,7 +64,7 @@ const schema = {
     <SectionHead kicker="Services" id="sv-h" title="Sourcing, supply and fit review" />
     <div class="tiles t4 stagger reveal">{SERVICES.map((s) => <div class="tile"><span class="t-k">Service</span><h3>{s.k}</h3><p>{s.d}</p></div>)}</div>
     <p class="reveal" style="margin-top:14px;"><a href="/opc-fde/join?venture=components" class="project-link">Work with us on components as an Alliance member</a></p>
-    <p class="src-note reveal" style="margin-top:16px;">Prices, stock, lead times and supplier authorisation are confirmed only in a written quote. Nothing on these pages is an offer to supply at a stated price. {BRANDS.KST.note}</p>
+    <p class="src-note reveal" style="margin-top:16px;" data-ban-ok>Prices, stock, lead times and supplier authorisation are confirmed only in a written quote. Nothing on these pages is an offer to supply at a stated price. {BRANDS.KST.note}</p>
   </div>
 </section>
 

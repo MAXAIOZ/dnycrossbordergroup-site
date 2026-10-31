@@ -1,0 +1,56 @@
+---
+// Industry pages under the drones hub: construction, agriculture, inspection.
+// The scope note is imported, not retyped, so the three pages and the hub say the same thing.
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHead from '../../../components/SectionHead.astro';
+import Arrow from '../../../components/Arrow.astro';
+import CTABand from '../../../components/CTABand.astro';
+import { DRONE_INDUSTRIES, SCOPE_NOTE, type DroneIndustry } from '../../../data/drone-industries';
+import { techArticle, definedTerm } from '../../../data/schema';
+
+export function getStaticPaths() {
+  return DRONE_INDUSTRIES.map((d) => ({ params: { industry: d.slug }, props: { d } }));
+}
+const { d } = Astro.props as { d: DroneIndustry };
+const path = `/physical-intelligence/drones/${d.slug}`;
+const crumbs = [
+  { name: 'Physical SI', href: '/physical-intelligence', schemaName: 'Physical Super Intelligence (SI)' },
+  { name: 'Drones', href: '/physical-intelligence/drones' },
+  { name: d.title, href: path },
+];
+const enquiry = `/physical-intelligence/drones/enquiry?application=${d.slug}`;
+const schema = [techArticle(d.h1, d.description, path, d.applications), definedTerm(`${d.title.replace(/s$/, '')} sourcing`, d.lead, path)];
+---
+<Base title={d.title} description={d.description} breadcrumbs={crumbs} schema={schema}>
+  <PageHero badge="Drones" title={d.h1} lead={d.lead} {crumbs}
+    primary={{ label: 'Request an Aircraft Quote', href: enquiry }}
+    secondary={{ label: 'Browse Drone Components', href: '/components/drones' }} />
+
+  <section class="section" aria-labelledby="apps-h">
+    <div class="container split">
+      <div class="reveal-l">
+        <span class="kicker">Typical Applications</span>
+        <h2 id="apps-h" class="h2-sm">What these aircraft are used for</h2>
+        <ul class="check-cols" style="grid-template-columns:1fr;margin-top:18px;">{d.applications.map((a) => <li>{a}</li>)}</ul>
+      </div>
+      <div class="reveal-r">
+        <span class="kicker">Your Enquiry</span>
+        <h2 class="h2-sm">What to include</h2>
+        <ul class="check-cols" style="grid-template-columns:1fr;margin-top:18px;">{d.include.map((a) => <li>{a}</li>)}</ul>
+        <p class="mt-28"><a href={enquiry} class="project-link">Request an Aircraft Quote <Arrow /></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" aria-labelledby="scope-h">
+    <div class="container">
+      <SectionHead kicker="Scope" id="scope-h" title="What this covers" />
+      <div class="prose reveal" style="max-width:820px;">{SCOPE_NOTE.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </section>
+
+  <CTABand title="Tell us what you need to fly" lead="Share your application, configuration and delivery location."
+    primary={{ label: 'Request an Aircraft Quote', href: enquiry }}
+    secondary={{ label: 'Browse Drone Components', href: '/components/drones' }} />
+</Base>

@@ -12,7 +12,7 @@ export const GET: APIRoute = () => {
       title: 'DNY Cross Border Group public API',
       version: '2.0.0',
       description:
-        'Endpoints that let AI agents and tools read DNY Cross Border Group content and, acting for a buyer, submit a component quote request. No authentication is required. Every page is also available as Markdown with Accept: text/markdown. Personal information sent to the enquiry endpoint is handled under ' + SITE.url + '/privacy.',
+        'Endpoints that let AI agents and tools read DNY Cross Border Group content and, acting for a buyer, submit a component quote request. Aircraft enquiries are handled through the website form only and are not exposed by this API. No authentication is required. Every page is also available as Markdown with Accept: text/markdown. Personal information sent to the enquiry endpoint is handled under ' + SITE.url + '/privacy.',
       contact: { name: SITE.legalName, email: SITE.email, url: `${SITE.url}/contact` },
     },
     servers: [{ url: SITE.url }],

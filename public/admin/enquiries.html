@@ -40,7 +40,7 @@
 <body>
 <div class="adm">
   <div class="adm-top">
-    <h1>Component Enquiries</h1>
+    <h1>Equipment Enquiries</h1>
     <span class="adm-msg" id="who"></span>
   </div>
   <div class="adm-bar">
@@ -50,7 +50,7 @@
   </div>
   <div class="adm-grid">
     <div class="adm-panel" style="padding:8px 12px;overflow-x:auto;">
-      <table class="adm-t"><thead><tr><th>Reference</th><th>Received</th><th>Contact</th><th>Lines</th><th>Status</th><th>Notify</th></tr></thead><tbody id="rows"><tr><td colspan="6">Loading…</td></tr></tbody></table>
+      <table class="adm-t"><thead><tr><th>Reference</th><th>Type</th><th>Received</th><th>Contact</th><th>Lines</th><th>Status</th><th>Notify</th></tr></thead><tbody id="rows"><tr><td colspan="7">Loading…</td></tr></tbody></table>
     </div>
     <div class="adm-panel" id="detail"><p class="adm-msg">Select an enquiry.</p></div>
   </div>
@@ -74,9 +74,9 @@
       var counts = {}; d.counts.forEach(function (c) { counts[c.status] = c.n; });
       Array.prototype.forEach.call(sel.options, function (o) { if (o.value) o.textContent = o.value + ' (' + (counts[o.value] || 0) + ')'; });
       $('#rows').innerHTML = d.rows.length ? d.rows.map(function (r) {
-        return '<tr data-ref="' + esc(r.ref) + '"' + (r.ref === current ? ' class="on"' : '') + '><td><b>' + esc(r.ref) + '</b></td><td>' + esc(fmt(r.created_at)) + '</td><td>' + esc(r.name) + '<br><small>' + esc(r.company || r.email) + '</small></td><td>' + r.items + '</td><td><span class="pill-s ' + esc(r.status) + '">' + esc(r.status) + '</span></td><td><span class="pill-s ' + esc(r.notify_status) + '">' + esc(r.notify_status) + '</span></td></tr>';
-      }).join('') : '<tr><td colspan="6">No enquiries.</td></tr>';
-    }).catch(function (e) { $('#rows').innerHTML = '<tr><td colspan="6">' + esc(e.message) + '</td></tr>'; });
+        return '<tr data-ref="' + esc(r.ref) + '"' + (r.ref === current ? ' class="on"' : '') + '><td><b>' + esc(r.ref) + '</b></td><td>' + (r.kind === 'aircraft' ? '<span class="pill-s">Aircraft</span>' : '<span class="pill-s">Parts</span>') + '</td><td>' + esc(fmt(r.created_at)) + '</td><td>' + esc(r.name) + '<br><small>' + esc(r.company || r.email) + '</small></td><td>' + r.items + '</td><td><span class="pill-s ' + esc(r.status) + '">' + esc(r.status) + '</span></td><td><span class="pill-s ' + esc(r.notify_status) + '">' + esc(r.notify_status) + '</span></td></tr>';
+      }).join('') : '<tr><td colspan="7">No enquiries.</td></tr>';
+    }).catch(function (e) { $('#rows').innerHTML = '<tr><td colspan="7">' + esc(e.message) + '</td></tr>'; });
   }
   function show(ref) {
     current = ref; location.hash = ref;
@@ -88,8 +88,23 @@
         '<h2>' + esc(e.ref) + '</h2><p class="adm-msg">Received ' + esc(fmt(e.created_at)) + ' · updated ' + esc(fmt(e.updated_at)) + '</p>' +
         '<div class="adm-row" style="margin-top:14px;"><select id="d-status">' + d.statuses.map(function (s) { return '<option' + (s === e.status ? ' selected' : '') + '>' + esc(s) + '</option>'; }).join('') + '</select>' +
         '<input id="d-owner" placeholder="Owner" value="' + esc(e.owner || '') + '"><button class="adm-btn" id="d-save" type="button">Save</button></div>' +
-        '<h3>Contact</h3><div class="adm-kv"><b>Name</b><span>' + esc(e.name) + '</span><b>Email</b><span><a href="mailto:' + esc(e.email) + '?subject=' + encodeURIComponent('Re: ' + e.ref) + '" style="color:var(--gold-lt)">' + esc(e.email) + '</a></span><b>Company</b><span>' + esc(e.company || '—') + '</span><b>Phone</b><span>' + esc(e.phone || '—') + '</span><b>Country</b><span>' + esc(e.country) + '</span><b>Postcode</b><span>' + esc(e.postcode || '—') + '</span><b>Needed by</b><span>' + esc(e.needed_by || '—') + '</span><b>Marketing opt-in</b><span>' + (e.marketing ? 'Yes' : 'No') + '</span><b>Source page</b><span>' + esc(e.source_page || '—') + '</span></div>' +
-        '<h3>Lines</h3><table class="adm-t"><thead><tr><th>Part</th><th>Model</th><th>Part no.</th><th>Qty</th></tr></thead><tbody>' + d.items.map(function (i) { return '<tr><td>' + (i.product_id ? esc(i.product_name) + '<br><small>' + esc(i.product_id) + '</small>' : '<i>Not listed</i>') + (i.description ? '<br><small>' + esc(i.description) + '</small>' : '') + '</td><td>' + esc(i.model || '—') + '</td><td>' + esc(i.part_number || '—') + '</td><td>' + (i.quantity == null ? '—' : i.quantity) + '</td></tr>'; }).join('') + '</tbody></table>' +
+        '<h3>Contact</h3><div class="adm-kv"><b>Name</b><span>' + esc(e.name) + '</span><b>Email</b><span><a href="mailto:' + esc(e.email) + '?subject=' + encodeURIComponent('Re: ' + e.ref) + '" style="color:var(--gold-lt)">' + esc(e.email) + '</a></span><b>Company</b><span>' + esc(e.company || '—') + '</span><b>Phone</b><span>' + esc(e.phone || '—') + '</span><b>Country</b><span>' + esc(e.country) + '</span><b>Postcode or region</b><span>' + esc(e.postcode || '—') + '</span><b>Needed by</b><span>' + esc(e.needed_by || '—') + '</span><b>Marketing opt-in</b><span>' + (e.marketing ? 'Yes' : 'No') + '</span><b>Source page</b><span>' + esc(e.source_page || '—') + '</span></div>' +
+        (e.kind === 'aircraft' && d.aircraft
+          ? '<h3>Aircraft enquiry</h3><div class="adm-kv">' +
+            '<b>Buying as</b><span>' + esc(d.aircraft.buying_as || '—') + '</span>' +
+            '<b>Organisation</b><span>' + esc(d.aircraft.organisation || '—') + '</span>' +
+            '<b>Application</b><span>' + esc(d.aircraft.application || '—') + '</span>' +
+            '<b>Model or requirement</b><span>' + esc(d.aircraft.model_requirement || '—') + '</span>' +
+            '<b>Configuration and payload</b><span>' + esc(d.aircraft.configuration || '—') + '</span>' +
+            '<b>Quantity</b><span>' + esc(d.aircraft.quantity == null ? '—' : d.aircraft.quantity) + '</span>' +
+            '<b>Operating environment</b><span>' + esc(d.aircraft.operating_environment || '—') + '</span>' +
+            '<b>Endurance preference</b><span>' + esc(d.aircraft.endurance || '—') + '</span>' +
+            '<b>Tank or hopper capacity</b><span>' + esc(d.aircraft.tank_capacity || '—') + '</span>' +
+            '<b>Intended use</b><span>' + esc(d.aircraft.intended_use || '—') + '</span>' +
+            '<b>Country of use</b><span>' + esc(d.aircraft.country_of_use || '—') + '</span>' +
+            '<b>Buyer role</b><span>' + esc(d.aircraft.role || '—') + '</span>' +
+            '</div>'
+          : '<h3>Lines</h3><table class="adm-t"><thead><tr><th>Part</th><th>Model</th><th>Part no.</th><th>Qty</th></tr></thead><tbody>' + d.items.map(function (i) { return '<tr><td>' + (i.product_id ? esc(i.product_name) + '<br><small>' + esc(i.product_id) + '</small>' : '<i>Not listed</i>') + (i.description ? '<br><small>' + esc(i.description) + '</small>' : '') + '</td><td>' + esc(i.model || '—') + '</td><td>' + esc(i.part_number || '—') + '</td><td>' + (i.quantity == null ? '—' : i.quantity) + '</td></tr>'; }).join('') + '</tbody></table>') +
         (e.notes ? '<h3>Customer notes</h3><p style="color:var(--t2);font-size:14px;white-space:pre-wrap;">' + esc(e.notes) + '</p>' : '') +
         '<h3>Attachments</h3>' + (d.attachments.length ? d.attachments.map(function (a) { return '<div><a style="color:var(--gold-lt)" href="/api/admin/attachments/' + esc(a.id) + '">' + esc(a.filename) + '</a> <small class="adm-msg">' + Math.round(a.size / 1024) + ' KB</small></div>'; }).join('') : '<p class="adm-msg">None</p>') +
         '<h3>Notification</h3><div class="adm-row"><span class="pill-s ' + esc(e.notify_status) + '">' + esc(e.notify_status) + '</span>' + (e.notify_error ? '<small class="adm-msg">' + esc(e.notify_error) + '</small>' : '') + '<button class="adm-btn" id="d-notify" type="button">Re-send notification</button></div>' +

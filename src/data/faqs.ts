@@ -126,8 +126,16 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
         a: 'Commercial drone systems are used for aerial inspection, mapping and survey, environmental sensing and industrial data capture across infrastructure, construction, utilities and enterprise assets.',
       },
       {
+        q: 'Does DNY sell complete drones?',
+        a: 'DNY accepts enquiries for complete aircraft for construction, agriculture and inspection, alongside components. Supply is confirmed by model, configuration, destination and intended use after review.',
+      },
+      {
+        q: 'Does DNY provide surveying, inspection or spraying services?',
+        a: 'No. DNY currently handles equipment sourcing and sales enquiries. We do not provide flight demonstrations, surveying, inspection operations or agricultural spraying services.',
+      },
+      {
         q: 'What is DNY Aerial Systems?',
-        a: 'DNY Aerial Systems is DNY’s commercial drone venture, currently in development. It is intended to combine aircraft and component supply with Australian systems integration, contract delivery and lifecycle support, reusing the group’s trusted AI infrastructure.',
+        a: 'DNY Aerial Systems is the group’s commercial drone business. Aircraft enquiries are open. Specific models, supplier arrangements and delivery terms are confirmed after review. Operational drone services are not currently offered.',
       },
     ],
   },
@@ -165,8 +173,8 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
         a: 'Passive mechanical parts for drones (propellers and fasteners, airframe parts, mechanical mounts, cases and manual tools), accessories and consumables for robots (commercial cleaning, warehouse and logistics, and industrial gripper parts), and KST servos listed by series and model. Everything is sourced and quoted on request.',
       },
       {
-        q: 'Does DNY sell complete drones?',
-        a: 'No. DNY supplies parts and components only; the equipment model you give us is used to identify the right part.',
+        q: 'Can every listed component be exported?',
+        a: 'Not necessarily. A listing does not confirm export eligibility. We review the exact model, technical specifications, destination and intended use before confirming supply.',
       },
       {
         q: 'How do I get a price for a component?',

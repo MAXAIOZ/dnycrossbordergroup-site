@@ -1,6 +1,6 @@
 {
   "version": "2026-10-25",
-  "scope": "Passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos by series. No complete drones are sold.",
+  "scope": "Drone and robotics components, matched to the exact model and part number and quoted after review. Complete aircraft are handled through separate aircraft enquiries.",
   "statusDefinitions": {
     "information": {
       "general": "General product description. Specifications are confirmed against your model and part number."
@@ -82,8 +82,7 @@
         "Quantity (pairs or sets)"
       ],
       "limits": [
-        "Propellers are model- and generation-specific; no cross-generation fit is offered.",
-        "Propeller blades and passive hardware only; no electrical or powered parts."
+        "Propellers are model- and generation-specific; no cross-generation fit is offered."
       ],
       "keywords": [
         "propeller",
@@ -91,7 +90,8 @@
         "blade",
         "rotor blade"
       ],
-      "publication_status": "published"
+      "publication_status": "published",
+      "note": "Please provide the exact part number, material, dimensions and details of any variable-pitch mechanism. We review these specifications and applicable supply requirements before confirming a quote. Model compatibility alone does not confirm export eligibility."
     },
     {
       "id": "DP-PSCR",
@@ -718,7 +718,8 @@
         "kst",
         "actuator"
       ],
-      "publication_status": "published"
+      "publication_status": "published",
+      "note": "FZ series enquiries are reviewed by exact model, configuration and intended use. Manufacturer documentation and export classification are checked before a supply commitment is made."
     },
     {
       "id": "RC-BRSH",
@@ -1212,7 +1213,7 @@
     "KST": {
       "name": "KST",
       "owner": "KST Meizhou Company Limited",
-      "note": "KST is a trademark of KST Meizhou Company Limited. Series and model names are as published by the manufacturer. DNY sources KST servos through its working relationship with the manufacturer; listing a brand does not mean DNY is its authorised distributor unless a quote states so."
+      "note": "KST is a trademark of KST Meizhou Company Limited. Series and model names are as published by the manufacturer. DNY is not affiliated with, endorsed by or an authorised distributor of KST unless a quote states so. Listings are invitations to enquire; availability, configuration and supply requirements are confirmed after review."
     }
   }
 }

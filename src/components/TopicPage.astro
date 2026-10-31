@@ -12,9 +12,9 @@ import TrustDiagram from './TrustDiagram.astro';
 import PIFlow from './PIFlow.astro';
 import Arrow from './Arrow.astro';
 import { VENTURES } from '../data/ventures';
-import { CTA } from '../data/site';
 import { techArticle, definedTerm } from '../data/schema';
 import type { Topic } from '../data/topics';
+import { CTA } from '../data/site';
 
 export interface Props { t: Topic }
 const { t } = Astro.props;
@@ -26,7 +26,7 @@ const nextDark = () => (dark = !dark);
 ---
 <Base title={t.title} description={t.description} breadcrumbs={crumbs}
   schema={[techArticle(t.h1, t.description, path, t.about ?? [t.term]), definedTerm(t.term, t.def, path)]}>
-<PageHero badge={t.badge} title={t.h1} lead={t.lead} {crumbs} primary={CTA.partner} secondary={CTA.brief}>
+<PageHero badge={t.badge} title={t.h1} lead={t.lead} {crumbs} primary={t.heroPrimary ?? CTA.partner} secondary={t.heroSecondary ?? CTA.brief}>
   <Definition term={t.term} def={t.def} />
 </PageHero>
 
@@ -121,5 +121,5 @@ const nextDark = () => (dark = !dark);
   </section>
 )}
 
-<CTABand title={t.cta.title} lead={t.cta.lead} primary={CTA.brief} secondary={CTA.partner} />
+<CTABand title={t.cta.title} lead={t.cta.lead} primary={t.ctaButtons?.primary ?? CTA.brief} secondary={t.ctaButtons?.secondary ?? CTA.partner} />
 </Base>

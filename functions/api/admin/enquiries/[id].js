@@ -5,13 +5,16 @@ const find = (env, ref) => env.DB.prepare('SELECT * FROM enquiries WHERE ref = ?
 export async function onRequestGet({ params, env }) {
   const e = await find(env, params.id);
   if (!e) return json({ error: 'Not found.' }, 404);
+  const aircraft = (e.kind || 'parts') === 'aircraft'
+    ? await env.DB.prepare('SELECT * FROM enquiry_aircraft WHERE enquiry_id = ?').bind(e.id).first()
+    : null;
   const [items, files, notes] = await Promise.all([
     env.DB.prepare('SELECT * FROM enquiry_items WHERE enquiry_id = ? ORDER BY id').bind(e.id).all(),
     env.DB.prepare('SELECT id, filename, content_type, size FROM enquiry_attachments WHERE enquiry_id = ?').bind(e.id).all(),
     env.DB.prepare('SELECT author, body, created_at FROM enquiry_notes WHERE enquiry_id = ? ORDER BY id DESC').bind(e.id).all(),
   ]);
   delete e.ip_hash;
-  return json({ enquiry: e, items: items.results, attachments: files.results, notes: notes.results, statuses: STATUSES });
+  return json({ enquiry: e, aircraft: aircraft || null, items: items.results, attachments: files.results, notes: notes.results, statuses: STATUSES });
 }
 
 // PATCH /api/admin/enquiries/:ref  { status?, owner? }

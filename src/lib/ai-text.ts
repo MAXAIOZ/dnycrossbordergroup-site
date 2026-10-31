@@ -24,7 +24,7 @@ export const KEY_FACTS: [string, string][] = [
   ['Industries', 'Built environment; logistics and warehousing; cross-border trade; enterprise and professional services; future verticals (mining, agriculture, utilities, health and ageing)'],
   ['Origin', 'Began in cross-border trade and supply chain between Australia and international markets'],
   ['Core ventures', VENTURES.map((v) => v.name).join('; ')],
-  ['Trading lines', `Drone & Robotics Components: passive drone and robot parts plus KST servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND}: fitted EV accessories for trade buyers, now at https://evsider.com (${U('/ventures/ev-accessories')})`],
+  ['Trading lines', `Commercial drones: aircraft enquiries for construction, agriculture and inspection (${U('/physical-intelligence/drones')}); Drone & Robotics Components: drone and robot parts plus servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND}: fitted EV accessories for trade buyers, now at https://evsider.com (${U('/ventures/ev-accessories')})`],
   ['Number of ventures', `${VENTURES.length}` + (new Set(VENTURES.map((v) => v.status)).size === 1 ? `, all currently ${VENTURES[0].status}` : '')],
   ['What DNY does not do', 'DNY does not train its own frontier foundation model, does not manufacture aircraft, and is not a co-working operator'],
   ['Delivery network', 'OPC + FDE network and the ANZ OPC + FDE Alliance, Sydney first, Auckland next'],
@@ -75,7 +75,7 @@ export function llmsTxt(): string {
     open.forEach((n) => L.push(`- [${n.title}](${U('/opc-fde/needs/' + n.id)}): ${n.sector}; ${n.location}; ${n.delivery}; closes ${n.closes ?? 'open-ended'}.`));
     L.push('');
   }
-  L.push('## Components catalogue', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems, sourced and quoted on request; no complete drones are sold; no prices published`);
+  L.push('## Components catalogue', '', `- [Overview](${U('/components')}): components for drones, industrial robots and commercial autonomous systems, sourced and quoted on request; complete aircraft are handled through separate aircraft enquiries; no prices published`);
   for (const app of ['drone', 'robotics'] as const) {
     L.push(`- [${app === 'drone' ? 'Drone' : 'Robotics'} Components](${U(APP_PATH[app])}): ${PCATS.filter((c) => c.application === app).map((c) => `${c.name} (${PRODUCTS.filter((p) => p.category === c.id).length})`).join(', ')}`);
     PRODUCTS.filter((p) => p.brand && p.application === app).forEach((p) => L.push(`  - [${p.name}](${U('/components/products/' + p.slug)}): ${p.models!.length} model${p.models!.length === 1 ? '' : 's'}; datasheets on request`));
@@ -142,8 +142,15 @@ export function llmsFullTxt(): string {
     L.push(`- URL: ${U('/ventures/' + v.slug)} (full page as Markdown: ${U('/ventures/' + v.slug + '.md')})`, `- Status: ${v.status}`, `- Category: ${v.category}`, `- Layer: ${v.layer}`, `- Industries: ${v.industries.join(', ')}`, `- Capabilities: ${v.capabilities.join(', ')}`, `- Technology: ${v.tech.join(', ')}`, `- Summary: ${v.short}`, `- Relationship to DNY infrastructure: ${v.relation}`);
   }
 
+  h(2, 'Drones');
+  L.push(`Page: ${U('/physical-intelligence/drones')}`, '', 'DNY accepts enquiries for complete aircraft for construction, agriculture and inspection, alongside components. Supply is confirmed by model, configuration, destination and intended use after review. Aircraft enquiries are open. DNY does not provide flight demonstrations, surveying, inspection operations or agricultural spraying services, does not manufacture aircraft, and does not quote, take payment or confirm eligibility on the website. Operators are responsible for the qualifications, registrations and approvals their activities require, including Civil Aviation Safety Authority (CASA) requirements. Product listings are invitations to enquire; availability, configuration, price and delivery are confirmed in writing after review of applicable export, import and product requirements.', '');
+  L.push(`- Construction Drones (${U('/physical-intelligence/drones/construction')}): site mapping, photogrammetry, progress imagery, roof assessment and building inspection.`);
+  L.push(`- Agricultural Drones (${U('/physical-intelligence/drones/agriculture')}): crop monitoring, field mapping, spraying and spreading.`);
+  L.push(`- Inspection Drones (${U('/physical-intelligence/drones/inspection')}): solar assets, utilities, pipelines, bridges and industrial facilities.`);
+  L.push(`- Aircraft enquiry (${U('/physical-intelligence/drones/enquiry')}): application, model or requirement, configuration, quantity, intended use, country of use and buyer role; an enquiry reference is issued on submission.`, '');
+
   h(2, 'Drone & Robotics Components');
-  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. The catalogue covers passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos listed by series and model (KST is a trademark of KST Meizhou Company Limited; listing does not imply authorised-distributor status). Full KST datasheets for every listed model are available on request from info@dnycrossbordergroup.com. Complete drones are not sold; equipment models are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
+  L.push(`Page: ${U('/components')}`, '', 'DNY sources and quotes components for drones, industrial robots and commercial autonomous systems. The catalogue covers passive mechanical drone parts, robotics mechanical accessories and cleaning consumables, and KST servos listed by series and model (KST is a trademark of KST Meizhou Company Limited; listing does not imply authorised-distributor status). Full KST datasheets for every listed model are available on request from info@dnycrossbordergroup.com. Complete aircraft are handled through separate aircraft enquiries at /physical-intelligence/drones/enquiry; equipment models on component pages are used only to identify the right part. Fit is confirmed per model and part number; prices, stock and lead times are confirmed only in a written quote.', '');
   PCATS.forEach((c) => L.push(`- **${c.name}** (${c.application}): ${c.summary} Product types: ${PRODUCTS.filter((p) => p.category === c.id).map((p) => p.name).join(', ')}.`));
   PRODUCTS.filter((p) => p.models).forEach((p) => L.push(`- ${p.name} (${U('/components/products/' + p.slug)}): ${p.models!.join(', ')}.`));
 

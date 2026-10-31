@@ -16,6 +16,8 @@ export type Venture = {
   builtOn: string; // which part of the group it builds on
   industries: string[];
   status: Status;
+  // Optional short label shown beside the status, for lines that are open for enquiries.
+  statusNote?: string;
   capabilities: string[];
   tech: string[];
   relation: string; // relationship to DNY infrastructure
@@ -78,15 +80,16 @@ export const VENTURES: Venture[] = [
     slug: 'dny-aerial-systems',
     name: 'DNY Aerial Systems',
     short:
-      'Commercial drone systems for government, infrastructure and enterprise: aircraft and component supply, Australian systems integration and lifecycle support.',
+      'Commercial aircraft and components for construction, agriculture and inspection. Equipment sourcing and sales enquiries are reviewed by model, configuration and destination.',
     category: 'Physical SI',
     builtOn: 'Physical SI: Air',
-    industries: ['Built Environment', 'Infrastructure & Utilities', 'Enterprise'],
+    industries: ['Built Environment', 'Agriculture', 'Infrastructure & Utilities'],
     status: 'In Development',
-    capabilities: ['Aerial inspection', 'Mapping & survey', 'Industrial data capture', 'Systems integration', 'Lifecycle support'],
-    tech: ['Drones', 'Computer vision', 'Edge AI'],
+    statusNote: 'Aircraft enquiries open',
+    capabilities: ['Construction drones', 'Agricultural drones', 'Inspection drones', 'Drone components', 'Supplier warranty coordination'],
+    tech: ['Drones', 'Payloads', 'Components'],
     relation:
-      'Inspection and sensor data flows into trusted data records; computer vision and AI agents produce analysis and reports; device identity, mission permissions and key decisions are recorded for audit.',
+      'Aircraft and components are sourced on a multi-vendor basis. Connecting aerial data to trusted records is a long-term direction under Physical SI, not a current service.',
     featured: true,
   },
   {

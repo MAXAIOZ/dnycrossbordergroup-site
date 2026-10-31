@@ -1,0 +1,200 @@
+---
+// Aircraft enquiry. Same inbox, database and admin flow as the components enquiry; the record is
+// tagged aircraft and gets its own reference series (DNY-A-...). Nothing here quotes or takes payment.
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import { COUNTRIES } from '../../../data/site';
+import { SCOPE_NOTE } from '../../../data/drone-industries';
+import { techArticle } from '../../../data/schema';
+
+const path = '/physical-intelligence/drones/enquiry';
+const crumbs = [
+  { name: 'Physical SI', href: '/physical-intelligence', schemaName: 'Physical Super Intelligence (SI)' },
+  { name: 'Drones', href: '/physical-intelligence/drones' },
+  { name: 'Request an Aircraft Quote', href: path },
+];
+const APPLICATIONS = ['Construction', 'Agriculture', 'Inspection', 'Other'];
+const ROLES = ['End user', 'Reseller', 'Integrator', 'Other'];
+---
+<Base title="Request an Aircraft Quote"
+  description="Send DNY your aircraft application, configuration, quantity and delivery location. We review suitability and confirm availability and supply requirements before a written quote."
+  breadcrumbs={crumbs}
+  schema={[techArticle('Request an Aircraft Quote', 'Aircraft enquiry for construction, agriculture and inspection aircraft and components.', path, ['Commercial drones'])]}>
+
+  <PageHero badge="Drones" title="Request an Aircraft Quote" {crumbs}
+    lead="This form is for aircraft and component enquiries. Please do not use it to book flight demonstrations, surveying, inspection operations or spraying services." />
+
+  <section class="section" aria-label="Aircraft enquiry form">
+    <div class="container">
+      <form id="aircraft-enquiry" class="contact-form enq" novalidate>
+        <fieldset class="enq-block">
+          <legend class="h2-sm">1. Who is asking</legend>
+          <div class="form-row">
+            <div class="form-group"><label for="a-name">Name *</label><input id="a-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+            <div class="form-group"><label for="a-email">Email *</label><input id="a-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-buying">Buying as *</label>
+              <select id="a-buying" name="buying_as" required>
+                <option value="">Select</option>
+                <option>Business</option>
+                <option>Individual</option>
+              </select>
+            </div>
+            <div class="form-group" id="a-org-wrap" hidden>
+              <label for="a-org">Organisation *</label>
+              <input id="a-org" name="company" type="text" autocomplete="organization" maxlength="160">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-country">Country *</label>
+              <select id="a-country" name="country" required><option value="">Select</option>{COUNTRIES.map((c) => <option>{c}</option>)}</select>
+            </div>
+            <div class="form-group"><label for="a-postcode">Delivery region or postcode *</label><input id="a-postcode" name="postcode" type="text" autocomplete="postal-code" required maxlength="40"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-role">Your role *</label>
+              <select id="a-role" name="role" required><option value="">Select</option>{ROLES.map((r) => <option>{r}</option>)}</select>
+            </div>
+            <div class="form-group"><label for="a-date">Needed by</label><input id="a-date" name="needed_by" type="date"></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="enq-block">
+          <legend class="h2-sm">2. The aircraft</legend>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-application">Application *</label>
+              <select id="a-application" name="application" required><option value="">Select</option>{APPLICATIONS.map((a) => <option>{a}</option>)}</select>
+            </div>
+            <div class="form-group"><label for="a-quantity">Quantity *</label><input id="a-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="9999" required></div>
+          </div>
+          <div class="form-group"><label for="a-model">Model or requirement *</label><textarea id="a-model" name="model_requirement" rows="2" maxlength="1000" required placeholder="A specific model, or a description of what the aircraft needs to do."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label for="a-config">Configuration and payload</label><input id="a-config" name="configuration" type="text" maxlength="500" placeholder="Camera, sensor, tank, spreading attachment"></div>
+            <div class="form-group"><label for="a-environment">Operating environment</label><input id="a-environment" name="operating_environment" type="text" maxlength="300" placeholder="Site type, terrain, climate, altitude"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="a-endurance">Endurance preference</label><input id="a-endurance" name="endurance" type="text" maxlength="200" placeholder="Flight time or range you need"></div>
+            <div class="form-group" id="a-tank-wrap" hidden><label for="a-tank">Tank or hopper capacity</label><input id="a-tank" name="tank_capacity" type="text" maxlength="120" placeholder="Litres or kilograms"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label for="a-intended">Intended use *</label><input id="a-intended" name="intended_use" type="text" maxlength="400" required placeholder="What the aircraft will be used for, and by whom"></div>
+            <div class="form-group">
+              <label for="a-use-country">Country of use *</label>
+              <select id="a-use-country" name="country_of_use" required><option value="">Select</option>{COUNTRIES.map((c) => <option>{c}</option>)}</select>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="enq-block">
+          <legend class="h2-sm">3. Supporting detail</legend>
+          <div class="form-group"><label for="a-notes">Notes</label><textarea id="a-notes" name="notes" rows="3" maxlength="4000" placeholder="Anything else we should know."></textarea></div>
+          <div class="form-group"><label for="a-files">Photos or documents</label><input id="a-files" name="files" type="file" multiple accept=".jpg,.jpeg,.png,.webp,.pdf"><span class="form-note">Up to 5 files, 5 MB each. JPG, PNG, WebP or PDF.</span></div>
+          <label class="enq-check"><input type="checkbox" name="marketing" value="yes"> Send me occasional product and service updates. (Optional.)</label>
+          <p class="form-note">We use the information you provide to process your enquiry, as described in our <a href="/privacy" style="color:var(--gold-lt)">Privacy Policy</a>.</p>
+          <p class="form-note" data-scope-note>{SCOPE_NOTE[1]}</p>
+          <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </fieldset>
+
+        <div class="form-submit"><button type="submit" class="btn btn-primary" data-submit>Submit Aircraft Enquiry</button></div>
+        <p class="form-status" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <div class="enq-done" hidden data-done>
+        <h2 class="h2-sm">Enquiry received</h2>
+        <p class="lead" style="margin-top:12px;" data-done-text></p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <a href="/physical-intelligence/drones" class="btn btn-secondary">Back to Drones</a>
+          <a href="/components/drones" class="btn btn-secondary">Browse Drone Components</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const form = document.getElementById('aircraft-enquiry');
+      if (!form) return;
+      const status = form.querySelector('.form-status');
+      const done = document.querySelector('[data-done]');
+      const btn = form.querySelector('[data-submit]');
+      const orgWrap = document.getElementById('a-org-wrap');
+      const tankWrap = document.getElementById('a-tank-wrap');
+      const buying = form.elements.namedItem('buying_as');
+      const application = form.elements.namedItem('application');
+      const F = (n) => form.elements.namedItem(n);
+
+      // Pre-select the application when the visitor arrives from an industry page.
+      const asked = new URLSearchParams(location.search).get('application');
+      if (asked) {
+        const match = [...application.options].find((o) => o.value.toLowerCase() === asked.toLowerCase());
+        if (match) application.value = match.value;
+      }
+
+      const sync = () => {
+        orgWrap.hidden = buying.value !== 'Business';
+        F('company').required = buying.value === 'Business';
+        tankWrap.hidden = application.value !== 'Agriculture';
+      };
+      buying.addEventListener('change', sync);
+      application.addEventListener('change', sync);
+      sync();
+
+      const say = (msg, ok) => {
+        status.hidden = false;
+        status.className = 'form-status ' + (ok ? 'ok' : 'err');
+        status.textContent = msg;
+      };
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (F('_hp').value) return;
+        const need = [['name', 'your name'], ['email', 'your email'], ['buying_as', 'how you are buying'], ['country', 'your country'], ['postcode', 'a delivery region or postcode'], ['application', 'an application'], ['quantity', 'a quantity'], ['model_requirement', 'a model or requirement'], ['intended_use', 'the intended use'], ['country_of_use', 'the country of use'], ['role', 'your role']];
+        for (const [k, label] of need) {
+          if (!String(F(k).value || '').trim()) return say('Please add ' + label + '.', false);
+        }
+        if (buying.value === 'Business' && !F('company').value.trim()) return say('Please add your organisation.', false);
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(F('email').value.trim())) return say('Please enter a valid email address.', false);
+        if (!/^[1-9][0-9]{0,3}$/.test(F('quantity').value)) return say('Quantity must be a whole number of 1 or more.', false);
+        const files = F('files').files;
+        if (files.length > 5) return say('Please attach no more than 5 files.', false);
+        for (const f of files) {
+          if (f.size > 5 * 1024 * 1024) return say(f.name + ' is larger than 5 MB.', false);
+          if (!/\.(jpe?g|png|webp|pdf)$/i.test(f.name)) return say(f.name + ' is not a JPG, PNG, WebP or PDF file.', false);
+        }
+
+        const fd = new FormData();
+        ['name', 'email', 'buying_as', 'company', 'country', 'postcode', 'application', 'quantity', 'model_requirement', 'configuration', 'operating_environment', 'endurance', 'tank_capacity', 'intended_use', 'country_of_use', 'role', 'needed_by', 'notes'].forEach((k) => fd.append(k, String(F(k).value || '').trim()));
+        fd.append('marketing', F('marketing').checked ? 'yes' : 'no');
+        try {
+          fd.append('source_page', sessionStorage.getItem('dny_cta_page') || document.referrer || '');
+          fd.append('landing_page', sessionStorage.getItem('dny_landing') || '');
+        } catch (err) { /* storage unavailable */ }
+        for (const f of files) fd.append('files', f);
+
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+        say('Submitting your enquiry…', true);
+        fetch('/api/aircraft-enquiries', { method: 'POST', body: fd, headers: { Accept: 'application/json' } })
+          .then((r) => r.json().catch(() => ({})).then((j) => ({ ok: r.ok, j })))
+          .then(({ ok, j }) => {
+            if (!ok || !j.reference) throw new Error(j.error || 'The enquiry could not be saved.');
+            done.querySelector('[data-done-text]').textContent =
+              'We have received your enquiry ' + j.reference + '. Our team will review the equipment requirements and contact you if further information is needed. This acknowledgement is not a quote, order acceptance or confirmation of export eligibility.';
+            form.hidden = true;
+            done.hidden = false;
+            done.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          })
+          .catch((err) => {
+            say((err && err.message ? err.message : 'The enquiry could not be submitted.') + ' Your details are still here, please try again.', false);
+            btn.disabled = false;
+            btn.textContent = 'Submit Aircraft Enquiry';
+          });
+      });
+    })();
+  </script>
+</Base>

@@ -14,6 +14,8 @@ export type Product = {
   description: string;
   send: string[];
   limits: string[];
+  // Extra paragraph shown on the product page, for review and eligibility wording.
+  note?: string;
   keywords: string[];
   brand?: string;
   series?: string;

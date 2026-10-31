@@ -27,7 +27,7 @@ export const SITE = {
   // by search engines and AI assistants. Add full URLs here; they are output as schema.org sameAs.
   sameAs: [] as string[],
   // Shown as "Last updated" and used as dateModified in structured data. Bump on content changes.
-  lastUpdated: '2026-10-29',
+  lastUpdated: '2026-11-01',
   // IndexNow key — the matching key file is public/fc7fd0c2dde75c0336dc49f152b48547.txt
   indexNowKey: 'fc7fd0c2dde75c0336dc49f152b48547',
   // Cloudflare Web Analytics token (Cloudflare dashboard → Analytics → Web Analytics). Leave empty to disable.
@@ -80,7 +80,7 @@ export const NAV: NavItem[] = [
     groups: [{ title: 'Physical SI' }, { title: 'Parts & Components', href: '/components' }],
     children: [
       { label: 'Overview', href: '/physical-intelligence', desc: 'Trusted AI for drones, robots and edge systems', group: 'Physical SI' },
-      { label: 'Drones', href: '/physical-intelligence/drones', desc: 'Air Intelligence', group: 'Physical SI' },
+      { label: 'Drones', href: '/physical-intelligence/drones', desc: 'Construction, agriculture and inspection', group: 'Physical SI' },
       { label: 'Robotics', href: '/physical-intelligence/robotics', desc: 'Embodied Intelligence', group: 'Physical SI' },
       { label: 'Drone Components', href: '/components/drones', desc: 'Propellers, airframe parts, mounts, cases, KST servos', group: 'Parts & Components' },
       { label: 'Robotics Components', href: '/components/robotics', desc: 'Cleaning, warehouse, gripper parts and KST servos', group: 'Parts & Components' },

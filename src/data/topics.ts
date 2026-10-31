@@ -32,6 +32,10 @@ export type Topic = {
   about?: string[];
   primary: Link;
   secondary?: Link;
+  // Buttons shown in the hero, when a topic needs different ones from the group defaults.
+  heroPrimary?: Link;
+  heroSecondary?: Link;
+  ctaButtons?: { primary: Link; secondary?: Link };
   blocks: Block[];
   useCases: string[];
   bounds: string[];
@@ -52,56 +56,67 @@ export const TOPICS: Topic[] = [
     ...PI,
     slug: 'drones',
     navTitle: 'Drones',
-    title: 'Commercial Drones: Air Intelligence',
-    description: 'Air Intelligence on the DNY Physical SI Layer: commercial drone systems for autonomous aerial inspection, sensing, mapping and industrial data capture, with trusted data and audit built in.',
-    badge: 'Air Intelligence',
-    h1: 'Commercial drones: Air Intelligence',
-    lead: 'Autonomous aerial inspection, sensing, mapping and industrial data capture, connected to trusted AI so that what a drone sees becomes verified, actionable information.',
-    term: 'Commercial drone systems',
-    def: 'Uncrewed aircraft, sensors and software used for inspection, mapping, sensing and industrial data capture in commercial and government operations.',
-    about: ['Commercial drones', 'Aerial inspection', 'Computer vision'],
-    primary: { label: 'Discuss a drone programme', href: '/contact?type=enterprise' },
-    secondary: { label: 'DNY Aerial Systems', href: '/ventures/dny-aerial-systems' },
+    title: 'Commercial Drones and Components',
+    description: 'Commercial aircraft and components for construction, agriculture and inspection. Tell us your application and we confirm availability and supply requirements before a written quote.',
+    badge: 'Drones',
+    h1: 'Drones for Construction, Agriculture and Inspection',
+    lead: 'Explore commercial aircraft and components for construction, agriculture and infrastructure inspection. Tell us your application, required configuration and delivery location. We review suitable options and confirm availability and supply requirements before issuing a written quote.',
+    term: 'Commercial aircraft and components',
+    def: 'Uncrewed aircraft, payloads and replacement parts used for construction, agriculture and infrastructure inspection work in commercial operations.',
+    about: ['Commercial drones', 'Construction drones', 'Agricultural drones', 'Inspection drones'],
+    primary: { label: 'Request an Aircraft Quote', href: '/physical-intelligence/drones/enquiry' },
+    secondary: { label: 'Browse Drone Components', href: '/components/drones' },
+    heroPrimary: { label: 'Request an Aircraft Quote', href: '/physical-intelligence/drones/enquiry' },
+    heroSecondary: { label: 'Browse Drone Components', href: '/components/drones' },
     blocks: [
       {
-        kind: 'roles', kicker: 'How It Fits', title: 'DNY is not a drone company: drones are one direction of the layer',
-        lead: 'The commercial drone programme is the first industry programme under Physical SI. It can operate as an independent brand and company while reusing group infrastructure.',
+        kind: 'tiles', kicker: 'Where Aircraft Are Used', title: 'Four directions',
+        lead: 'Aircraft, payloads and the parts that keep them flying, for the three sectors below.',
         items: [
-          { name: 'DNY Group', d: 'Strategy, platform, trusted infrastructure, ecosystem and capital.' },
-          { name: 'Physical SI Layer', d: 'The unified connection between devices and AI.' },
-          { name: 'Drone venture', d: 'Products, services, customers, operations and revenue: DNY Aerial Systems.' },
+          { k: 'Build', name: 'Construction Drones', d: 'Site mapping, photogrammetry, progress imagery, roof assessment and building inspection.', href: '/physical-intelligence/drones/construction' },
+          { k: 'Grow', name: 'Agricultural Drones', d: 'Crop monitoring, field mapping, spraying and spreading.', href: '/physical-intelligence/drones/agriculture' },
+          { k: 'Inspect', name: 'Inspection Drones', d: 'Solar assets, utilities, pipelines, bridges and industrial facilities.', href: '/physical-intelligence/drones/inspection' },
+          { k: 'Parts', name: 'Drone Components', d: 'Replacement propellers, airframe parts, mounts, cases and servos.', href: '/components/drones' },
         ],
       },
       {
-        kind: 'steps', kicker: 'The Trusted Loop', title: 'From flight to verified report',
+        kind: 'steps', kicker: 'How enquiries work', title: 'Three steps, in writing',
         items: [
-          { name: 'Data return', d: 'Inspection, vision and sensor data flows into the Trusted Data Space with source, time and device identity.', k: 'Trusted Data Space' },
-          { name: 'AI processing', d: 'Computer vision and AI agents generate analysis, tasks, reports and anomaly handling.', k: 'Vision + Agents' },
-          { name: 'Trusted record', d: 'Models, data, device identity, mission permissions and key judgements are recorded for audit.', k: 'Audit' },
+          { name: 'Tell us your application.', d: 'Application, configuration, quantity and delivery location.' },
+          { name: 'We review.', d: 'Suitable aircraft and payloads, and the export, import and product requirements that apply.' },
+          { name: 'Written quote.', d: 'Price, configuration and delivery are confirmed in writing. Nothing is confirmed before then.' },
         ],
       },
       {
-        kind: 'tiles', kicker: 'Capabilities', title: 'What Air Intelligence covers',
-        items: [
-          { k: 'Inspect', name: 'Aerial inspection', d: 'Infrastructure, facades, roofs, utilities and industrial assets.' },
-          { k: 'Map', name: 'Mapping & survey', d: 'Photogrammetry and site models for construction and asset management.' },
-          { k: 'Sense', name: 'Environmental sensing', d: 'Thermal, multispectral and environmental payloads.' },
-          { k: 'Capture', name: 'Industrial data capture', d: 'Repeatable missions that feed digital twins and maintenance systems.' },
+        kind: 'prose', kicker: 'Scope', title: 'What this covers', paras: [
+          'DNY currently handles equipment sourcing and sales enquiries. We do not provide flight demonstrations, surveying, inspection operations or agricultural spraying services. Operators are responsible for obtaining the qualifications, registrations and approvals required for their activities.',
+          'Product listings are invitations to enquire. Availability, configuration, price and delivery are confirmed in writing after review of applicable export, import and product requirements.',
+        ],
+      },
+      {
+        kind: 'prose', kicker: 'Future Direction', title: 'Where Physical SI fits', paras: [
+          'Over time, DNY aims to connect aerial data to trusted records, so that what a drone captures can be verified and audited. This is a long-term direction under Physical Super Intelligence (SI). It is not a service DNY offers today.',
         ],
       },
     ],
-    useCases: ['Infrastructure and utility asset inspection', 'Construction progress and facade inspection', 'Mapping and survey for project and asset records', 'Yard, stockpile and inventory counts', 'Emergency and environmental assessment support'],
-    bounds: ['DNY Aerial Systems is In Development; no products, contracts or approvals are implied.', 'Operations will be subject to Civil Aviation Safety Authority (CASA) requirements and customer authorisations.', 'Aircraft are sourced on a multi-vendor basis; DNY does not claim to manufacture aircraft.'],
+    useCases: ['Site mapping and photogrammetry', 'Progress and roof imagery', 'Crop monitoring and spraying', 'Solar, utility and industrial inspection'],
+    bounds: [
+      'Aircraft enquiries are open. Specific models, supplier arrangements and delivery terms are confirmed after review.',
+      'DNY does not provide flight demonstrations, surveying, inspection operations or agricultural spraying services.',
+      'Operators are responsible for the qualifications, registrations and approvals their activities require, including Civil Aviation Safety Authority (CASA) requirements.',
+      'DNY does not manufacture aircraft.',
+    ],
     related: [{ label: 'Edge AI & vision', href: '/physical-intelligence#edge' }, { label: 'Built Environment', href: '/industries#built-environment' }],
     ventures: ['dny-aerial-systems'],
     faq: ['drones'],
     parts: {
     title: 'Parts for drones',
-    text: 'Replacement propellers, airframe parts, mounts, cases and KST servos, matched to your model and part number.',
+    text: 'Replacement propellers, airframe parts, mounts, cases and servos, matched to your model and part number.',
     href: '/components/drones',
     label: 'Browse Drone Components',
   },
-  cta: { title: 'Plan a governed drone programme', lead: 'Inspection, mapping or data capture: tell us about your assets.', primary: { label: 'Start an enterprise conversation', href: '/contact?type=enterprise' }, secondary: { label: 'Partner as a supplier', href: '/contact?type=partnership' } },
+  ctaButtons: { primary: { label: 'Request an Aircraft Quote', href: '/physical-intelligence/drones/enquiry' }, secondary: { label: 'Browse Drone Components', href: '/components/drones' } },
+  cta: { title: 'Tell us what you need to fly', lead: 'Share your application, configuration and delivery location.', primary: { label: 'Request an Aircraft Quote', href: '/physical-intelligence/drones/enquiry' }, secondary: { label: 'Browse Drone Components', href: '/components/drones' } },
   },
   {
     ...PI,

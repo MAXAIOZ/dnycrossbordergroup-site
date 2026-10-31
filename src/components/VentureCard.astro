@@ -15,7 +15,7 @@ const H = headingLevel;
 >
   <div class="vcard-top">
     <span class="vcard-cat">{v.category}</span>
-    <StatusBadge status={v.status} />
+    <span style="display:inline-flex;gap:8px;flex-wrap:wrap;align-items:center;"><StatusBadge status={v.status} />{v.statusNote && <span class="line-badge">{v.statusNote}</span>}</span>
   </div>
   <H class="vcard-name"><a href={`/ventures/${v.slug}`}>{v.name}</a></H>
   <p class="vcard-short">{v.short}</p>
