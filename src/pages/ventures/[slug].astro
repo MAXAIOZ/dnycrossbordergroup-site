@@ -39,7 +39,7 @@ const schema = {
   primary={v.site ? { label: v.site.label, href: v.site.url } : CTA.partner}
   secondary={v.site ? CTA.partner : CTA.brief}>
   <dl class="vfacts">
-    <div class="vfact"><dt>Status</dt><dd><StatusBadge status={v.status} />{v.statusNote && <span class="line-badge" style="margin-left:8px;">{v.statusNote}</span>}<span class="sr-only">: {STATUS_DEFS[v.status]}</span></dd></div>
+    <div class="vfact"><dt>Status</dt><dd><StatusBadge status={v.status} />{v.statusNote && <span class="line-badge" style="margin-left:8px;white-space:nowrap;">{v.statusNote}</span>}<span class="sr-only">: {STATUS_DEFS[v.status]}</span></dd></div>
     <div class="vfact"><dt>Builds on</dt><dd>{v.builtOn}</dd></div>
     <div class="vfact"><dt>Industry</dt><dd>{v.industries.join(', ')}</dd></div>
     <div class="vfact"><dt>Core capabilities</dt><dd>{v.capabilities.join(' · ')}</dd></div>
