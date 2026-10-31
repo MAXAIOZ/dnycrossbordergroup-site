@@ -97,6 +97,10 @@
     revealEls.forEach(el => el.classList.add('visible'));
   }
 
+  // The reveal is decoration, not a gate. If the observer never fires (print, capture
+  // tools, a script error elsewhere), show everything rather than leave the page blank.
+  setTimeout(() => revealEls.forEach(el => el.classList.add('visible')), 2000);
+
   /* ---------- Contact form ---------- */
   const form = document.getElementById('contact-form');
 
