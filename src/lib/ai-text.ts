@@ -36,7 +36,7 @@ export const KEY_FACTS: [string, string][] = [
 export function llmsTxt(): string {
   const L: string[] = [];
   L.push(`# ${SITE.name}`, '', `> ${SITE.positioning}`, '');
-  L.push(`${SITE.name} is headquartered in Barangaroo, Sydney, Australia, and grew from cross-border trade. It is organised as a group of five layers: a Trusted Data, Identity & Verification Foundation; Trusted & Open AI Infrastructure; the Open Physical SI Layer (drones, robotics, edge AI, autonomous systems); the OPC + FDE delivery network; and Applied Ventures. Ventures are labelled Operating, In Development, Proposed, Research or Partnership Opportunity. Last updated ${SITE.lastUpdated}.`, '');
+  L.push(`${SITE.name} is headquartered in Barangaroo, Sydney, Australia, and grew from cross-border trade. It is organised as a group of five layers: a Trusted Data, Identity & Verification Foundation; Trusted & Open AI Infrastructure; the Open Physical SI Layer (drones, robotics, edge AI, autonomous systems); the OPC + FDE delivery network; and Applied Ventures. Ventures are labelled Operating, Pilot, In Development, Proposed, Research or Partnership Opportunity. Last updated ${SITE.lastUpdated}.`, '');
   L.push('## Key facts', '');
   KEY_FACTS.forEach(([k, v]) => L.push(`- ${k}: ${v}`));
   L.push('', '## Full text', '', `- [Complete site content for AI systems](${U('/llms-full.txt')}): every page's key content in one Markdown file`, `- [Company facts](${U('/facts')}): canonical facts about the group`, '');

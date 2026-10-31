@@ -4,7 +4,7 @@
 // To rename a venture (e.g. once a standalone brand is registered), change `name` only.
 // ─────────────────────────────────────────────────────────────
 
-export type Status = 'Operating' | 'In Development' | 'Proposed' | 'Research' | 'Partnership Opportunity';
+export type Status = 'Operating' | 'Pilot' | 'In Development' | 'Proposed' | 'Research' | 'Partnership Opportunity';
 
 export type Category = 'Trusted & Open AI' | 'Physical SI' | 'Industry Ventures';
 
@@ -25,6 +25,7 @@ export type Venture = {
 
 export const STATUS_DEFS: Record<Status, string> = {
   Operating: 'Live with customers or users.',
+  Pilot: 'Live and taking orders in a pilot phase while operations are proven.',
   'In Development': 'Being designed, built or validated; not yet generally available.',
   Proposed: 'Defined concept awaiting partners, approvals or funding.',
   Research: 'Exploratory research or technical investigation.',
@@ -171,11 +172,11 @@ export const VENTURES: Venture[] = [
     slug: 'ev-accessories',
     name: EV_BRAND,
     short:
-      'Fitted accessories for electric vehicles, supplied to dealers, retailers, detailers and fleets under the Evsider brand. Range and fitment at evsider.com.',
+      'Fitted accessories for electric vehicles, supplied to dealers, retailers, detailers and fleets. Now taking trade orders at evsider.com.',
     category: 'Industry Ventures',
     builtOn: 'Industry deployment: Cross-border Trade',
     industries: ['Automotive', 'Retail', 'Cross-border Trade'],
-    status: 'In Development',
+    status: 'Pilot',
     capabilities: ['New-model fitment', 'Heat-stable materials', 'Trade supply', 'Delivery packs and private label'],
     tech: ['Trusted data'],
     relation:

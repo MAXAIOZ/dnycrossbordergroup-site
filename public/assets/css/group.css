@@ -109,6 +109,8 @@
 }
 .sb-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px rgba(239,159,39,.18); animation: sbPulse 2.4s ease-in-out infinite; }
 .status-badge.s-operating { color: var(--cyan); border-color: var(--bc); background: var(--cyan-dim); }
+/* Pilot: live and taking orders, but new. Cyan outline, no fill, so it reads apart from Operating. */
+.status-badge.s-pilot { color: var(--cyan); border-color: var(--cyan); background: transparent; }
 .status-badge.s-proposed, .status-badge.s-research { color: var(--t2); border-color: var(--b2); background: var(--glass); }
 @keyframes sbPulse { 50% { opacity: .45; } }
 

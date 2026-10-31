@@ -26,7 +26,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
       {
         q: 'What do the project status labels mean?',
-        a: 'Operating means live with customers; In Development means being designed, built or validated; Proposed means a defined concept awaiting partners, approvals or funding; Research means exploratory; Partnership Opportunity means open to a partner to lead or co-develop.',
+        a: 'Operating means live with customers; Pilot means live and taking orders in a pilot phase; In Development means being designed, built or validated; Proposed means a defined concept awaiting partners, approvals or funding; Research means exploratory; Partnership Opportunity means open to a partner to lead or co-develop.',
       },
     ],
   },
@@ -187,7 +187,7 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     items: [
       {
         q: `What is ${EV_BRAND}?`,
-        a: `${EV_BRAND} is DNY Cross Border Group’s electric-vehicle accessories business, now trading through its brand site at https://evsider.com. It supplies fitted floor mats, liners, sunshades and cabin accessories for specific electric and plug-in hybrid models to dealers, retailers, detailers and fleets.`,
+        a: `${EV_BRAND} is DNY Cross Border Group’s electric-vehicle accessories business, now in a pilot phase and taking trade orders through its brand site at https://evsider.com. It supplies fitted floor mats, liners, sunshades and cabin accessories for specific electric and plug-in hybrid models to dealers, retailers, detailers and fleets.`,
       },
       {
         q: 'Where can trade buyers see the range and vehicle fitment?',
