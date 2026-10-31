@@ -19,6 +19,7 @@ export type Venture = {
   capabilities: string[];
   tech: string[];
   relation: string; // relationship to DNY infrastructure
+  site?: { label: string; url: string }; // live external brand site, linked from the venture hero
   featured?: boolean;
   body?: string; // legacy/long-form body file in src/legacy (defaults to slug)
 };
@@ -179,6 +180,7 @@ export const VENTURES: Venture[] = [
     status: 'Pilot',
     capabilities: ['New-model fitment', 'Heat-stable materials', 'Trade supply', 'Delivery packs and private label'],
     tech: ['Trusted data'],
+    site: { label: 'Visit evsider.com', url: 'https://evsider.com' },
     relation:
       'One shared vehicle-fitment and product data set serves every trade buyer; products are developed and customised with manufacturing partners through the OPC + FDE network.',
   },

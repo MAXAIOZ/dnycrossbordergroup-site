@@ -36,7 +36,8 @@ const schema = {
 ---
 <Base title={v.name} {description} breadcrumbs={crumbs} schema={[schema]}>
 <PageHero badge={`Venture · ${v.category}`} title={v.name} lead={m.lead || v.short} {crumbs}
-  primary={CTA.partner} secondary={CTA.brief}>
+  primary={v.site ? { label: v.site.label, href: v.site.url } : CTA.partner}
+  secondary={v.site ? CTA.partner : CTA.brief}>
   <dl class="vfacts">
     <div class="vfact"><dt>Status</dt><dd><StatusBadge status={v.status} /><span class="sr-only">: {STATUS_DEFS[v.status]}</span></dd></div>
     <div class="vfact"><dt>Builds on</dt><dd>{v.builtOn}</dd></div>
