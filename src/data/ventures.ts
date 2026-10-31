@@ -180,7 +180,7 @@ export const VENTURES: Venture[] = [
     capabilities: ['New-model fitment', 'Heat-stable materials', 'Trade supply', 'Delivery packs and private label'],
     tech: ['Trusted data'],
     relation:
-      'One shared vehicle-fitment and product data set drives both the retail and trade channels; products are developed and customised with manufacturing partners through the OPC + FDE network.',
+      'One shared vehicle-fitment and product data set serves every trade buyer; products are developed and customised with manufacturing partners through the OPC + FDE network.',
   },
 ];
 
