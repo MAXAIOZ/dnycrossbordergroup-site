@@ -37,9 +37,9 @@ export const CATEGORY_DEFS: Record<Category, string> = {
   'Industry Ventures': 'Industry businesses that apply the infrastructure in a specific market.',
 };
 
-// Consumer brand for the EV accessories venture. Working name pending trademark and
-// domain checks — change it here only and every page, card and llms.txt entry follows.
-export const EV_BRAND = 'DNY VoltGear';
+// Brand for the EV accessories venture. The brand site is live at evsider.com; change the
+// name here only and every page, card and llms.txt entry follows.
+export const EV_BRAND = 'Evsider by DNY';
 
 // Core ventures — shown in navigation, cards and venture pages.
 export const VENTURES: Venture[] = [
@@ -171,12 +171,12 @@ export const VENTURES: Venture[] = [
     slug: 'ev-accessories',
     name: EV_BRAND,
     short:
-      'Fitted accessories for Australian EVs: floor mats, cargo liners, sunshades and personalised interiors cut to the exact model you drive.',
+      'Fitted accessories for electric vehicles, supplied to dealers, retailers, detailers and fleets under the Evsider brand. Range and fitment at evsider.com.',
     category: 'Industry Ventures',
     builtOn: 'Industry deployment: Cross-border Trade',
     industries: ['Automotive', 'Retail', 'Cross-border Trade'],
     status: 'In Development',
-    capabilities: ['New-model fitment', 'Heat-stable materials', 'B2C retail + B2B trade', 'Australian Consumer Law support'],
+    capabilities: ['New-model fitment', 'Heat-stable materials', 'Trade supply', 'Delivery packs and private label'],
     tech: ['Trusted data'],
     relation:
       'One shared vehicle-fitment and product data set drives both the retail and trade channels; products are developed and customised with manufacturing partners through the OPC + FDE network.',

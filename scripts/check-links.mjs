@@ -37,7 +37,7 @@ for (const f of files) {
   const h1 = (text.match(/<h1[\s>]/g) || []).length;
   if (h1 !== 1) err(`${rel}: ${h1} <h1> elements`);
   // Only the three standard calls to action may appear as buttons (careers apply links excepted).
-  const allowed = new Set(['Request the Group Brief', 'Partner with DNY', 'Contact us', 'Email your application', 'Apply for this role', 'Back to all roles', 'Send enquiry', 'Go to the homepage', 'Browse Drone Components', 'Explore Robotics Components', 'Browse Robotics Components', 'Request a Quote', 'Add to Enquiry', 'Back to Components', 'Search', 'Trade & Fleet Enquiry', 'Join for Free', 'See Open Needs', 'Apply for Professional', 'Apply for Premier', 'Express Interest', 'Back to Open Needs', 'Submit Application']);
+  const allowed = new Set(['Request the Group Brief', 'Partner with DNY', 'Contact us', 'Email your application', 'Apply for this role', 'Back to all roles', 'Send enquiry', 'Go to the homepage', 'Browse Drone Components', 'Explore Robotics Components', 'Browse Robotics Components', 'Request a Quote', 'Add to Enquiry', 'Back to Components', 'Search', 'Trade & Fleet Enquiry', 'Join for Free', 'See Open Needs', 'Apply for Professional', 'Apply for Premier', 'Express Interest', 'Back to Open Needs', 'Submit Application', 'Visit evsider.com', 'Trade enquiry']);
   for (const [, label] of text.matchAll(/<a[^>]*class="btn[^"]*"[^>]*>([^<]+)<\/a>/g)) {
     if (!allowed.has(label.trim().replace(/&amp;/g, '&'))) err(`${rel}: non-standard button "${label.trim()}"`);
   }

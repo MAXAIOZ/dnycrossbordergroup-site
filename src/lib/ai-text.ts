@@ -24,7 +24,7 @@ export const KEY_FACTS: [string, string][] = [
   ['Industries', 'Built environment; logistics and warehousing; cross-border trade; enterprise and professional services; future verticals (mining, agriculture, utilities, health and ageing)'],
   ['Origin', 'Began in cross-border trade and supply chain between Australia and international markets'],
   ['Core ventures', VENTURES.map((v) => v.name).join('; ')],
-  ['Trading lines', `Drone & Robotics Components: passive drone and robot parts plus KST servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND}: fitted accessories for Australian EVs, retail and trade (${U('/ventures/ev-accessories')})`],
+  ['Trading lines', `Drone & Robotics Components: passive drone and robot parts plus KST servos, sourced and quoted on request (${U('/components')}); ${EV_BRAND}: fitted EV accessories for trade buyers, now at https://evsider.com (${U('/ventures/ev-accessories')})`],
   ['Number of ventures', `${VENTURES.length}` + (new Set(VENTURES.map((v) => v.status)).size === 1 ? `, all currently ${VENTURES[0].status}` : '')],
   ['What DNY does not do', 'DNY does not train its own frontier foundation model, does not manufacture aircraft, and is not a co-working operator'],
   ['Delivery network', 'OPC + FDE network and the ANZ OPC + FDE Alliance, Sydney first, Auckland next'],

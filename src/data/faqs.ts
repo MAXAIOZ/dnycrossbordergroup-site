@@ -187,23 +187,11 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
     items: [
       {
         q: `What is ${EV_BRAND}?`,
-        a: `${EV_BRAND} is DNY Cross Border Group’s electric-vehicle accessories business, currently in development. It supplies fitted floor mats, cargo liners, sunshades and personalised interiors cut for specific Australian EV models, through a retail store and a trade channel. The retail store has not opened yet.`,
+        a: `${EV_BRAND} is DNY Cross Border Group’s electric-vehicle accessories business, now trading through its brand site at https://evsider.com. It supplies fitted floor mats, liners, sunshades and cabin accessories for specific electric and plug-in hybrid models to dealers, retailers, detailers and fleets.`,
       },
       {
-        q: `Which vehicles do ${EV_BRAND} products fit?`,
-        a: 'Planned launch fitment covers Australian-delivered right-hand-drive Tesla Model Y (2025+ Juniper and 2022–2025), BYD Sealion 7, Geely EX5, Zeekr 7X, Jaecoo J5 EV and the BYD Shark 6 ute. Tesla Model 3, BYD Atto 2, Atto 3, Sealion 6 and Sealion 8, Geely EX2, Kia EV3 and EV5, MG4 and MG4 Urban, and XPENG G6 follow after launch. Other models, including BYD Seal, Dolphin and Atto 1, Hyundai IONIQ 5, Polestar 2 and Mitsubishi Outlander PHEV, are available on request for trade and fleet customers. Coverage varies by product.',
-      },
-      {
-        q: 'What is in the launch range?',
-        a: 'A floor mat and boot liner set, 3D all-weather TPE floor mats, boot cargo liners, glass roof sunshades, magnetic side-window sunshades, a pet rear-seat hammock, seat-back kick protectors, centre console organisers, frunk liners for models with a usable front trunk, a ute tub mat for the BYD Shark 6 and personalised stitched mats. All launch products are non-electrical.',
-      },
-      {
-        q: 'Can dealers, detailers and fleets buy wholesale?',
-        a: 'Yes. Trade and fleet enquiries, including dealer delivery packs and novated lease accessory packs, volume pricing, fleet packs, private label and OEM/ODM development, go through https://dnycrossbordergroup.com/contact?type=trade or info@dnycrossbordergroup.com.',
-      },
-      {
-        q: 'Are electronic or battery-powered EV accessories available?',
-        a: 'Not yet. Electronic accessories will be released only after compliance and compatibility assessment for Australia, and lithium-battery products only after battery testing, transport and insurance requirements are confirmed.',
+        q: 'Where can trade buyers see the range and vehicle fitment?',
+        a: 'On https://evsider.com, which lists the eleven product categories, fitment for 20 models and the trade enquiry form.',
       },
     ],
   },
