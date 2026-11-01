@@ -92,3 +92,14 @@ OG 图另外补了 5 张无人机页面缺失的（`physical-intelligence--drone
 - FAQ 组 key、FAQ 标题与问题文字、`industries.ts` 的 ventures、`architecture.ts` 的列举、`/facts`、`llms.txt`、`ventures.json`、OG 图（`ventures--cultural-heritage-programme.jpg`）全部跟随
 - 页面 H1、`<title>`、Open Needs 卡片、两个表单的预选值实测均为新名
 - 截图按新页面重拍
+
+## 11. 行业标签（Max 指出）
+
+原来这个 venture 的 Industry 写的是 Cross-border Trade，跟它的实际内容不符：它是文化项目，不是贸易业务。
+
+- `industries`：`['Cross-border Trade']` → `['Culture & Creative Industries']`
+- `builtOn`：`'Industry deployment: Cross-border Trade'` → `'Future vertical: Culture & Creative Industries'`
+
+用 "Future vertical" 而不是 "Industry deployment"，是因为这个方向目前在 `/industries` 里就在 Future Verticals 区块，还没有现存业务落地，写成已部署会夸大口径。
+
+这个 venture 现在与实物贸易类的三个 venture（建材、EV 配件、AI 贸易服务）不再共用行业标签；页面上的 "trade" 只剩页脚公司简介与其他 venture 的关联卡片，正文已无。
