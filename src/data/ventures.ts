@@ -15,6 +15,9 @@ export type Venture = {
   category: Category;
   builtOn: string; // which part of the group it builds on
   industries: string[];
+  // Optional replacement for the "Industry" fact label, for ventures that do not belong to an
+  // industry we serve. Defaults to "Industry".
+  industryLabel?: string;
   status: Status;
   // Optional short label shown beside the status, for lines that are open for enquiries.
   statusNote?: string;
@@ -195,6 +198,7 @@ export const VENTURES: Venture[] = [
     category: 'Industry Ventures',
     builtOn: 'Future vertical: Culture & Creative Industries',
     industries: ['Culture & Creative Industries'],
+    industryLabel: 'Sector',
     status: 'In Development',
     capabilities: ['Documentation and translation', 'Digital presentation', 'Exhibitions and events', 'Partners and channels'],
     tech: ['Trusted data', 'AI agents'],
