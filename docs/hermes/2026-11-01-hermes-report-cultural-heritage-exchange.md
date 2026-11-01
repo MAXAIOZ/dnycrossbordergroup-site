@@ -103,3 +103,12 @@ OG 图另外补了 5 张无人机页面缺失的（`physical-intelligence--drone
 用 "Future vertical" 而不是 "Industry deployment"，是因为这个方向目前在 `/industries` 里就在 Future Verticals 区块，还没有现存业务落地，写成已部署会夸大口径。
 
 这个 venture 现在与实物贸易类的三个 venture（建材、EV 配件、AI 贸易服务）不再共用行业标签；页面上的 "trade" 只剩页脚公司简介与其他 venture 的关联卡片，正文已无。
+
+## 12. 事实栏标签（Max 指出）
+
+接着第 11 节：名称改成 Culture & Creative Industries 之后，标签仍然写 "Industry"，对这个 venture 仍然不通：它不属于 DNY 服务的某个行业。
+
+- `Venture` 类型新增可选字段 `industryLabel?: string`，默认仍是 `Industry`，其他 10 个 venture 不受影响
+- 本 venture 设 `industryLabel: 'Sector'`
+- 事实栏现在读作：Sector: Culture & Creative Industries；`/ventures` 卡片同
+- `buildsOn` 那一行仍是 Future vertical，两者一致：方向在未来垂直领域，不是已服务的行业
