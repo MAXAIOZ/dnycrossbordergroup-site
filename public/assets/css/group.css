@@ -607,3 +607,13 @@ h1, h2 { text-wrap: balance; }
 #aircraft-enquiry .enq-block > * + * { margin-top: 17px; }
 #aircraft-enquiry .enq-block > .form-note { margin-top: 10px; }
 @media (max-width: 860px) { #aircraft-enquiry .enq-block > * + * { margin-top: 16px; } }
+
+/* Cultural Heritage Exchange: the no-profit statement has to be the first thing a reader
+   understands, and the identity line under it has to stay easy to read rather than fade. */
+.heritage-note { border-left: 3px solid var(--gold); background: rgba(239, 159, 39, 0.14); }
+.heritage-note p { font-size: 15px; line-height: 1.65; color: var(--t1); }
+.heritage-fine {
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(239, 159, 39, 0.35);
+  font-size: 13.5px; line-height: 1.55; color: var(--t1); opacity: .92;
+}
+@media (max-width: 600px) { .heritage-note p { font-size: 14.5px; } }
