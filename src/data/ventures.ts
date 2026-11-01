@@ -187,6 +187,20 @@ export const VENTURES: Venture[] = [
     relation:
       'One shared vehicle-fitment and product data set serves every trade buyer; products are developed and customised with manufacturing partners through the OPC + FDE network.',
   },
+  {
+    slug: 'cultural-heritage-exchange',
+    name: 'DNY Cultural Heritage Exchange',
+    short:
+      'A cross-border venture that helps living cultural heritage and traditional craft, from anywhere, reach new audiences around the world. DNY takes no profit from the base work; revenue sharing starts only if a project later earns commercial income.',
+    category: 'Industry Ventures',
+    builtOn: 'Industry deployment: Cross-border Trade',
+    industries: ['Cross-border Trade'],
+    status: 'In Development',
+    capabilities: ['Documentation and translation', 'Digital presentation', 'Exhibitions and events', 'Partners and channels'],
+    tech: ['Trusted data', 'AI agents'],
+    relation:
+      'Provenance, rights and permission records are kept as trusted data. OPC members connect venues, partners and channels; FDE members build digital exhibitions, multilingual content and agent tools.',
+  },
 ];
 
 const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];

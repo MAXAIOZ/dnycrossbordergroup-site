@@ -68,6 +68,9 @@ const evidence: Record<string, string> = {
     <div class="tiles t4 stagger reveal">
       {future.useCases.map((u) => { const [k, d] = u.split(': '); return <div class="tile"><span class="t-k">Future expansion</span><h3>{k}</h3><p>{d}</p></div>; })}
     </div>
+    {future.ventures.length > 0 && (
+      <p class="src-note reveal" style="margin-top:14px;">Related venture: {future.ventures.map((s) => <a href={`/ventures/${s}`} style="color:var(--gold-lt)">{vname(s)}</a>)}</p>
+    )}
     <p class="src-note reveal" style="margin-top:18px;">Future verticals describe intended expansion directions only, not current operations.</p>
   </div>
 </section>

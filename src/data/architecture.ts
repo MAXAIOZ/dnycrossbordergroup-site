@@ -19,8 +19,8 @@ export const STACK: Layer[] = [
     name: 'Applied Ventures & Industry Solutions',
     role: 'Independent ventures and industry projects',
     summary:
-      `${VENTURE_COUNT_TITLE} focused ventures, from drones and robotics to trade, building materials, EV accessories , each with its own customers and business model, built on shared group infrastructure.`,
-    items: ['Aerial Systems', 'Robotic Systems', 'Trusted AI Platform', 'Data Oracle', 'Facadia', 'Auralio'],
+      `${VENTURE_COUNT_TITLE} focused ventures, from drones and robotics to trade, building materials, EV accessories and cultural heritage, each with its own customers and business model, built on shared group infrastructure.`,
+    items: ['Aerial Systems', 'Robotic Systems', 'Trusted AI Platform', 'Data Oracle', 'Facadia', 'Auralio', 'Cultural Heritage Exchange'],
     href: '/ventures',
   },
   {

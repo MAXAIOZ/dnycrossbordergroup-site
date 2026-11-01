@@ -148,4 +148,15 @@ const schema = {
     </div>
   </div>
 </section>
+<script is:inline>
+  // ?venture= preselects the venture of interest, so a link from a venture page lands on the
+  // right choice. Only slugs that exist in the select are accepted.
+  (() => {
+    const wanted = new URLSearchParams(location.search).get('venture');
+    const select = document.getElementById('j-venture');
+    if (!wanted || !select) return;
+    const match = [...select.options].find((o) => o.value === wanted);
+    if (match) select.value = match.value;
+  })();
+</script>
 </Base>
