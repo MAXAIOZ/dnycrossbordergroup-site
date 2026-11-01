@@ -79,3 +79,16 @@ OG 图另外补了 5 张无人机页面缺失的（`physical-intelligence--drone
 - `venture-desktop.jpg` 桌面整页（含不盈利区块与身份说明那行小字）
 - `venture-mobile.jpg` 手机 390px（横向溢出 0）
 - `ventures-list-desktop.jpg` `/ventures` 列表中的新卡片
+
+## 10. 改名（Max 已定）
+
+"Exchange" 在英文里读起来像交易市场或交易所，跟这个项目"不盈利、权利在先"的定位相反。Max 选定改为 **DNY Cultural Heritage Programme**。
+
+改动范围：
+
+- `ventures.ts`：slug `cultural-heritage-exchange` → `cultural-heritage-programme`，name 同步
+- 页面正文文件改名 `src/legacy/cultural-heritage-programme.html`，正文里的机构名改用 `{{name}}` 占位，以后改名只改 `ventures.ts` 一处
+- 旧 URL 301 到新 URL：`/ventures/cultural-heritage-exchange` 与 `.html` 两条规则写进 `public/_redirects`，实测 code=301、Location 正确
+- FAQ 组 key、FAQ 标题与问题文字、`industries.ts` 的 ventures、`architecture.ts` 的列举、`/facts`、`llms.txt`、`ventures.json`、OG 图（`ventures--cultural-heritage-programme.jpg`）全部跟随
+- 页面 H1、`<title>`、Open Needs 卡片、两个表单的预选值实测均为新名
+- 截图按新页面重拍

@@ -1,3 +1,5 @@
+> 名称变更（2026-11-01，Max 决定）：本文件写作 "Exchange"，已上线名称改为 **DNY Cultural Heritage Programme**，slug `cultural-heritage-programme`。正文文案未变，仅名称与其所在句子跟随。旧 URL 已 301。
+
 # 新增 Venture：DNY Cultural Heritage Exchange（给 Hermes）
 
 日期：2026-11-01（同日修订为 v3）· 设计：Claude · 实施：Hermes · 状态：**待 Max 确认后开工**
