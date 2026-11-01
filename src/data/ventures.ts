@@ -196,8 +196,8 @@ export const VENTURES: Venture[] = [
     short:
       'A cross-border venture that helps living cultural heritage and traditional craft, from anywhere, reach new audiences around the world. DNY takes no profit from the base work; revenue sharing starts only if a project later earns commercial income.',
     category: 'Industry Ventures',
-    builtOn: 'Future vertical: Culture & Creative Industries',
-    industries: ['Culture & Creative Industries'],
+    builtOn: 'Future vertical: Cultural & Creative Industries',
+    industries: ['Cultural & Creative Industries'],
     industryLabel: 'Sector',
     status: 'In Development',
     capabilities: ['Documentation and translation', 'Digital presentation', 'Exhibitions and events', 'Partners and channels'],
