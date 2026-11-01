@@ -66,7 +66,7 @@ export const VENTURES: Venture[] = [
     slug: 'trusted-data-oracle',
     name: 'Australian Trusted Data Oracle DAO',
     short:
-      'A not-for-profit, rights-verified data service giving AI agents reliable access to Australian pricing, index and trade data, with every figure traceable to its source, governed by an oracle council.',
+      'A rights-verified data service giving AI agents reliable access to Australian pricing, index and trade data, with every figure traceable to its source, governed by an oracle council rather than a single commercial operator.',
     category: 'Trusted & Open AI',
     builtOn: 'Trusted Data, Identity & Verification Foundation',
     industries: ['Cross-border Trade', 'Agriculture', 'Enterprise'],
