@@ -81,3 +81,5 @@
 /admin/ /admin/enquiries 302
 /parts /components 301
 /components/index /components 301
+/ventures/cultural-heritage-exchange /ventures/cultural-heritage-programme 301
+/ventures/cultural-heritage-exchange.html /ventures/cultural-heritage-programme 301

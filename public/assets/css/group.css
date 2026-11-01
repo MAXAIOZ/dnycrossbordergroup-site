@@ -608,7 +608,7 @@ h1, h2 { text-wrap: balance; }
 #aircraft-enquiry .enq-block > .form-note { margin-top: 10px; }
 @media (max-width: 860px) { #aircraft-enquiry .enq-block > * + * { margin-top: 16px; } }
 
-/* Cultural Heritage Exchange: the no-profit statement has to be the first thing a reader
+/* Cultural Heritage Programme: the no-profit statement has to be the first thing a reader
    understands, and the identity line under it has to stay easy to read rather than fade. */
 .heritage-note { border-left: 3px solid var(--gold); background: rgba(239, 159, 39, 0.14); }
 .heritage-note p { font-size: 15px; line-height: 1.65; color: var(--t1); }

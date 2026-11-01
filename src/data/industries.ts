@@ -77,7 +77,7 @@ export const INDUSTRIES: Industry[] = [
       'Sectors where the same infrastructure applies and where DNY expects to expand over time. These are future expansion areas, not current operations.',
     useCases: ['Mining: inspection and autonomous operations', 'Agriculture: trusted data and provenance', 'Utilities: asset inspection by drone', 'Health & ageing: service robotics', 'Culture and creative industries: living heritage and traditional craft reaching new audiences'],
     caps: { data: 'supporting', drones: 'supporting', robotics: 'supporting' },
-    ventures: ['cultural-heritage-exchange'],
+    ventures: ['cultural-heritage-programme'],
     href: '/industries#future',
     future: true,
   },

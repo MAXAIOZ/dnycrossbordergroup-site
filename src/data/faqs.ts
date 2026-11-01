@@ -190,11 +190,11 @@ export const FAQS: Record<string, { title: string; items: QA[] }> = {
       },
     ],
   },
-  'cultural-heritage-exchange': {
-    title: 'DNY Cultural Heritage Exchange',
+  'cultural-heritage-programme': {
+    title: 'DNY Cultural Heritage Programme',
     items: [
       {
-        q: 'Is DNY Cultural Heritage Exchange a charity?',
+        q: 'Is DNY Cultural Heritage Programme a charity?',
         a: 'No. It is a venture of DNY Cross Border Group Pty Ltd and does not seek donations. DNY takes no profit from the base work of a project. Revenue sharing applies only if a project later earns commercial income, under a separate written agreement.',
       },
       {

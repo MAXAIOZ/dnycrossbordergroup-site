@@ -188,8 +188,8 @@ export const VENTURES: Venture[] = [
       'One shared vehicle-fitment and product data set serves every trade buyer; products are developed and customised with manufacturing partners through the OPC + FDE network.',
   },
   {
-    slug: 'cultural-heritage-exchange',
-    name: 'DNY Cultural Heritage Exchange',
+    slug: 'cultural-heritage-programme',
+    name: 'DNY Cultural Heritage Programme',
     short:
       'A cross-border venture that helps living cultural heritage and traditional craft, from anywhere, reach new audiences around the world. DNY takes no profit from the base work; revenue sharing starts only if a project later earns commercial income.',
     category: 'Industry Ventures',
